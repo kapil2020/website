@@ -1,12 +1,15 @@
 {
-  "name": "kapil-kumar-meena-portfolio",
+  "name": "kapil-meena-portfolio",
   "private": true,
-  "version": "0.0.0",
+  "version": "1.0.0",
   "type": "module",
+  "homepage": "https://kapil2020.github.io/website/",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d dist"
   },
   "dependencies": {
     "react-dom": "^19.2.3",
@@ -19,6 +22,7 @@
     "three": "^0.174.0"
   },
   "devDependencies": {
+    "gh-pages": "^6.3.0",
     "@types/node": "^22.14.0",
     "@vitejs/plugin-react": "^5.0.0",
     "typescript": "~5.8.2",
