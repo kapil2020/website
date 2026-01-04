@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { 
@@ -160,7 +159,7 @@ const App: React.FC = () => {
         )}
       </AnimatePresence>
 
-      {/* MODERN STICKY HEADER */}
+      {/* MODERN STICKY HEADER - FIXED OVERLAP ISSUE */}
       <nav 
         className={`fixed top-0 left-0 right-0 z-[100] transition-all duration-500 ${
           scrolled 
@@ -168,49 +167,51 @@ const App: React.FC = () => {
             : 'py-6 bg-transparent border-b border-transparent'
         }`}
       >
-        <div className="max-w-7xl mx-auto px-6 md:px-8 flex items-center justify-between">
+        <div className="max-w-7xl mx-auto px-6 md:px-8 flex items-center justify-between gap-4">
             
-            {/* Left: Modern Logo */}
-            <a href="#home" className="flex items-center gap-3 group z-[60]" aria-label="Go to Home">
+            {/* Left: Modern Logo - Added shrink-0 and whitespace-nowrap to prevent squashing */}
+            <a href="#home" className="flex items-center gap-3 group z-[60] shrink-0" aria-label="Go to Home">
                <div className={`w-10 h-10 rounded-xl flex items-center justify-center text-white font-bold text-xl shadow-lg transition-transform duration-500 group-hover:rotate-12 bg-gradient-to-br from-blue-600 to-purple-600`}>
                  K
                </div>
-               <div className="flex flex-col">
+               <div className="flex flex-col whitespace-nowrap">
                  <span className="font-bold text-lg leading-none tracking-tight">Kapil Meena</span>
                  <span className="text-[10px] uppercase tracking-[0.2em] text-accent font-bold mt-0.5">PhD Researcher</span>
                </div>
             </a>
             
-            {/* Center: Smart Floating Navigation (Desktop) */}
+            {/* Center: Smart Floating Navigation (Desktop) - Changed from absolute to flex-1 justify-center */}
             <div 
-              className={`hidden lg:flex items-center gap-1 bg-white/60 dark:bg-slate-900/60 backdrop-blur-lg border border-white/20 dark:border-white/10 p-1.5 rounded-full shadow-lg absolute left-1/2 -translate-x-1/2 transition-all duration-500 ${
-                scrolled ? 'translate-y-0 opacity-100 scale-100' : 'translate-y-0 opacity-100 scale-105'
-              }`}
+              className={`hidden lg:flex items-center flex-1 justify-center transition-all duration-500`}
             >
-              {navLinks.map((item) => {
-                const isActive = activeSection === item.id;
-                return (
-                  <a 
-                    key={item.name} 
-                    href={`#${item.id}`} 
-                    onClick={() => setActiveSection(item.id)}
-                    className={`relative px-5 py-2 rounded-full text-xs font-bold uppercase tracking-wider transition-colors hover:text-primary z-10 ${isActive ? 'text-primary' : 'text-text-muted'}`}
-                  >
-                    {isActive && (
-                      <motion.div
-                        layoutId="activeTab"
-                        className="absolute inset-0 bg-white dark:bg-slate-800 rounded-full shadow-sm"
-                        transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
-                      />
-                    )}
-                    <span className="relative z-10">{item.name}</span>
-                  </a>
-                );
-              })}
+              <div className={`flex items-center gap-1 bg-white/60 dark:bg-slate-900/60 backdrop-blur-lg border border-white/20 dark:border-white/10 p-1.5 rounded-full shadow-lg ${
+                scrolled ? 'scale-100' : 'scale-105'
+              }`}>
+                {navLinks.map((item) => {
+                  const isActive = activeSection === item.id;
+                  return (
+                    <a 
+                      key={item.name} 
+                      href={`#${item.id}`} 
+                      onClick={() => setActiveSection(item.id)}
+                      className={`relative px-5 py-2 rounded-full text-xs font-bold uppercase tracking-wider transition-colors hover:text-primary z-10 ${isActive ? 'text-primary' : 'text-text-muted'}`}
+                    >
+                      {isActive && (
+                        <motion.div
+                          layoutId="activeTab"
+                          className="absolute inset-0 bg-white dark:bg-slate-800 rounded-full shadow-sm"
+                          transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
+                        />
+                      )}
+                      <span className="relative z-10">{item.name}</span>
+                    </a>
+                  );
+                })}
+              </div>
             </div>
             
-            {/* Right: Controls & Actions */}
-            <div className="flex items-center gap-3 z-[60]">
+            {/* Right: Controls & Actions - Added shrink-0 */}
+            <div className="flex items-center gap-3 z-[60] shrink-0">
                 {/* Color Picker */}
                 <div className="relative group hidden sm:block">
                     <button 
@@ -1020,7 +1021,7 @@ const App: React.FC = () => {
                              
                              <div className="flex gap-3">
                                 <a href={PROFILE.github} target="_blank" className="p-4 rounded-full bg-white/5 hover:bg-white hover:text-black transition-all border border-white/10" aria-label="Github"><Github size={20}/></a>
-                                <a href={PROFILE.scholar} target="_blank" className="p-4 rounded-full bg-white/5 hover:bg-white hover:text-black transition-all border border-white/10" aria-label="Scholar"><GraduationCap size={20}/></a>
+                                <a href={PROFILE.scholar} target="_blank" className="p-4 rounded-full bg-white/5 hover:bg-white hover:text-black transition-all border border-white/10\" aria-label="Scholar"><GraduationCap size={20}/></a>
                              </div>
                         </div>
                     </div>
