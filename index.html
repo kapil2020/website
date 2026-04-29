@@ -406,6 +406,167 @@
       /* Heading underline that draws on hover */
       .head-underline { background-image: linear-gradient(90deg, #2F80ED, #9B51E0); background-size: 0% 2px; background-repeat: no-repeat; background-position: 0 100%; padding-bottom: 4px; transition: background-size .55s cubic-bezier(0.2,0.8,0.2,1); }
       .head-underline:hover { background-size: 100% 2px; }
+
+      /* === Tier 1 features — scroll progress, toast, BibTeX button, ⌘K palette === */
+      #scroll-progress {
+        position: fixed; top: 0; left: 0; height: 3px; width: 0;
+        background: linear-gradient(90deg, #2F80ED 0%, #9B51E0 33%, #EB5757 66%, #F2994A 100%);
+        z-index: 9999; pointer-events: none;
+        transition: width .12s linear;
+        box-shadow: 0 0 8px rgba(47,128,237,0.4);
+      }
+      .app-toast {
+        position: fixed; bottom: 28px; left: 50%; transform: translate(-50%, 24px);
+        background: rgba(15,23,42,0.94); color: #fff;
+        padding: 10px 18px; border-radius: 999px; font-size: 13px;
+        font-family: "Computer Modern Typewriter", ui-monospace, monospace;
+        letter-spacing: 0.02em;
+        box-shadow: 0 12px 30px -8px rgba(15,23,42,0.45), 0 0 0 1px rgba(255,255,255,0.06) inset;
+        opacity: 0; pointer-events: none;
+        transition: opacity .25s ease, transform .35s cubic-bezier(0.2,0.8,0.2,1);
+        z-index: 10001;
+        display: flex; align-items: center; gap: 10px;
+      }
+      .app-toast.show { opacity: 1; transform: translate(-50%, 0); }
+      .app-toast .toast-dot { width: 8px; height: 8px; border-radius: 50%; background: #2F80ED; box-shadow: 0 0 0 4px rgba(47,128,237,0.18); }
+
+      .bib-btn {
+        display: inline-flex; align-items: center; gap: 4px;
+        padding: 4px 9px; border-radius: 7px; font-size: 11px; font-weight: 700;
+        font-family: "Computer Modern Typewriter", ui-monospace, monospace;
+        letter-spacing: 0.04em;
+        background: rgba(155,81,224,0.08);
+        color: #9B51E0;
+        border: 1px solid rgba(155,81,224,0.22);
+        cursor: pointer;
+        transition: background .25s, border-color .25s, transform .15s;
+      }
+      .bib-btn:hover { background: rgba(155,81,224,0.15); border-color: rgba(155,81,224,0.45); }
+      .bib-btn:active { transform: scale(0.96); }
+
+      /* ===== ⌘K Command Palette ===== */
+      #cmdk-root { position: fixed; inset: 0; z-index: 10000; display: none; }
+      #cmdk-root.open { display: block; }
+      .cmdk-backdrop {
+        position: absolute; inset: 0;
+        background: rgba(15,23,42,0.55);
+        backdrop-filter: blur(8px) saturate(140%);
+        -webkit-backdrop-filter: blur(8px) saturate(140%);
+        animation: cmdk-fade .25s ease both;
+      }
+      @keyframes cmdk-fade { from { opacity: 0; } to { opacity: 1; } }
+      .cmdk-shell {
+        position: relative;
+        width: min(640px, calc(100% - 32px));
+        margin: 12vh auto 0;
+        background: rgba(255,255,255,0.96);
+        border: 1px solid rgba(15,23,42,0.08);
+        border-radius: 16px;
+        box-shadow: 0 24px 64px -12px rgba(15,23,42,0.35), 0 0 0 1px rgba(255,255,255,0.6) inset;
+        overflow: hidden;
+        font-family: "Computer Modern Serif", serif;
+        animation: cmdk-pop .35s cubic-bezier(0.2,0.8,0.2,1) both;
+      }
+      .dark .cmdk-shell {
+        background: rgba(15,23,42,0.96);
+        border-color: rgba(255,255,255,0.10);
+      }
+      @keyframes cmdk-pop { from { opacity: 0; transform: translateY(-8px) scale(0.98); } to { opacity: 1; transform: translateY(0) scale(1); } }
+      .cmdk-input-row {
+        display: flex; align-items: center; gap: 12px;
+        padding: 14px 18px; border-bottom: 1px solid rgba(15,23,42,0.06);
+      }
+      .dark .cmdk-input-row { border-bottom-color: rgba(255,255,255,0.06); }
+      .cmdk-prompt {
+        font-family: "Computer Modern Typewriter", ui-monospace, monospace;
+        font-size: 11px; font-weight: 700;
+        color: #fff; background: linear-gradient(135deg, #2F80ED, #9B51E0);
+        padding: 4px 8px; border-radius: 6px; letter-spacing: 0.06em;
+        box-shadow: 0 2px 8px rgba(155,81,224,0.32);
+      }
+      .cmdk-input {
+        flex: 1; background: transparent; border: 0; outline: 0;
+        font-family: "Computer Modern Serif", serif;
+        font-size: 17px; color: var(--color-text);
+      }
+      .cmdk-kbd {
+        font-family: "Computer Modern Typewriter", ui-monospace, monospace;
+        font-size: 10px; font-weight: 700;
+        padding: 3px 7px; border-radius: 5px;
+        background: rgba(15,23,42,0.06); color: var(--color-text-muted);
+        border: 1px solid rgba(15,23,42,0.08);
+      }
+      .dark .cmdk-kbd { background: rgba(255,255,255,0.06); border-color: rgba(255,255,255,0.08); }
+      .cmdk-list {
+        list-style: none; margin: 0; padding: 8px;
+        max-height: 56vh; overflow-y: auto;
+      }
+      .cmdk-item {
+        display: flex; align-items: center; gap: 12px;
+        padding: 10px 12px; border-radius: 10px;
+        cursor: pointer; user-select: none;
+        font-size: 14px; color: var(--color-text);
+        transition: background .15s ease;
+      }
+      .cmdk-item .cmdk-grp {
+        font-family: "Computer Modern Typewriter", ui-monospace, monospace;
+        font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase;
+        color: var(--color-text-muted); margin-left: auto;
+      }
+      .cmdk-item .cmdk-icon {
+        width: 28px; height: 28px; display: flex; align-items: center; justify-content: center;
+        border-radius: 7px; font-size: 13px;
+        background: rgba(47,128,237,0.10); color: #2F80ED;
+      }
+      .cmdk-item.active, .cmdk-item:hover { background: rgba(47,128,237,0.10); }
+      .dark .cmdk-item.active, .dark .cmdk-item:hover { background: rgba(56,189,248,0.10); }
+      .cmdk-section {
+        font-family: "Computer Modern Typewriter", ui-monospace, monospace;
+        font-size: 10px; letter-spacing: 0.22em; text-transform: uppercase;
+        color: var(--color-text-muted);
+        padding: 10px 14px 4px; opacity: 0.7;
+      }
+      .cmdk-foot {
+        display: flex; gap: 14px; padding: 10px 16px;
+        border-top: 1px solid rgba(15,23,42,0.06);
+        font-family: "Computer Modern Typewriter", ui-monospace, monospace;
+        font-size: 10px; color: var(--color-text-muted);
+      }
+      .dark .cmdk-foot { border-top-color: rgba(255,255,255,0.06); }
+      .cmdk-foot kbd {
+        font-family: inherit; font-size: 10px; font-weight: 700;
+        padding: 2px 6px; border-radius: 4px;
+        background: rgba(15,23,42,0.06); border: 1px solid rgba(15,23,42,0.08);
+        margin-right: 4px;
+      }
+      .dark .cmdk-foot kbd { background: rgba(255,255,255,0.06); border-color: rgba(255,255,255,0.08); }
+      .cmdk-empty {
+        padding: 24px 16px; text-align: center;
+        color: var(--color-text-muted); font-style: italic;
+      }
+      .cmdk-hint {
+        position: fixed; right: 22px; bottom: 22px; z-index: 60;
+        display: inline-flex; align-items: center; gap: 8px;
+        padding: 8px 12px; border-radius: 999px;
+        background: rgba(255,255,255,0.85);
+        backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+        border: 1px solid rgba(15,23,42,0.08);
+        font-family: "Computer Modern Typewriter", ui-monospace, monospace;
+        font-size: 11px; color: var(--color-text-muted);
+        box-shadow: 0 6px 18px -6px rgba(15,23,42,0.18);
+        cursor: pointer; user-select: none;
+        transition: transform .25s ease, background .25s;
+      }
+      .cmdk-hint:hover { transform: translateY(-2px); }
+      .dark .cmdk-hint { background: rgba(15,23,42,0.85); border-color: rgba(255,255,255,0.10); }
+      .cmdk-hint kbd {
+        font-family: inherit; font-size: 10px; font-weight: 700;
+        padding: 2px 6px; border-radius: 4px;
+        background: rgba(15,23,42,0.06); border: 1px solid rgba(15,23,42,0.08);
+        color: var(--color-text);
+      }
+      .dark .cmdk-hint kbd { background: rgba(255,255,255,0.06); border-color: rgba(255,255,255,0.10); color: #fff; }
+      @media (max-width: 640px) { .cmdk-hint { display: none; } }
     </style>
 
 <link rel="stylesheet" href="/index.css">
@@ -433,5 +594,298 @@
       <div class="blob blob-3"></div>
     </div>
     <div id="root"></div>
+
+    <!-- Tier-1 runtime: scroll progress, ⌘K palette, BibTeX copy, animated counters -->
+    <div id="scroll-progress"></div>
+    <div id="cmdk-root" aria-hidden="true">
+      <div class="cmdk-backdrop" data-cmdk-close></div>
+      <div class="cmdk-shell" role="dialog" aria-modal="true" aria-label="Command Palette">
+        <div class="cmdk-input-row">
+          <span class="cmdk-prompt">⌘K</span>
+          <input class="cmdk-input" id="cmdk-input" placeholder="Type a command or jump to a section…" autocomplete="off" spellcheck="false" />
+          <kbd class="cmdk-kbd" data-cmdk-close>ESC</kbd>
+        </div>
+        <ul class="cmdk-list" id="cmdk-list" role="listbox"></ul>
+        <div class="cmdk-foot">
+          <span><kbd>↑</kbd><kbd>↓</kbd> navigate</span>
+          <span><kbd>↵</kbd> select</span>
+          <span><kbd>esc</kbd> close</span>
+          <span style="margin-left:auto;opacity:0.7;">kapil-meena.dev</span>
+        </div>
+      </div>
+    </div>
+    <button class="cmdk-hint" id="cmdk-hint" aria-label="Open command palette"><kbd>⌘</kbd><kbd>K</kbd> Quick nav</button>
+
+    <script>
+    (function(){
+      // ---------- Console easter-egg ----------
+      try {
+        var ascii = [
+          '',
+          '  _  __          _ _ ',
+          " | |/ /__ _ _ __(_) |",
+          " | ' // _` | '_ \\\\ | |",
+          ' | . \\\\ (_| | |_) ||_|',
+          ' |_|\\\\_\\\\__,_| .__(_|_)',
+          '             |_|     ',
+          ''
+        ].join('\n');
+        console.log('%c' + ascii, 'color:#2F80ED;font-family:ui-monospace,monospace;font-size:11px;line-height:1.1');
+        console.log('%cHey there, fellow developer! 👋', 'font-size:15px;font-weight:700;color:#9B51E0');
+        console.log('%cThis portfolio was crafted with React + Vite + Tailwind, hand-tuned animations, and a lot of LaTeX love.', 'font-size:12px;color:#475569');
+        console.log('%cPress %c⌘K%c (or Ctrl+K) to open the command palette.', 'font-size:12px;color:#475569', 'background:#0f172a;color:#fff;padding:1px 6px;border-radius:4px;font-family:ui-monospace,monospace', 'font-size:12px;color:#475569');
+        console.log('%c→ Reach out: kapil.meena@kgpian.iitkgp.ac.in', 'font-size:12px;color:#EB5757;font-weight:600');
+        console.log('%c→ Code:      github.com/kapil2020', 'font-size:12px;color:#F2994A;font-weight:600');
+      } catch(e){}
+
+      // ---------- Scroll progress bar ----------
+      var bar = document.getElementById('scroll-progress');
+      function updateProgress(){
+        var h = document.documentElement, b = document.body;
+        var total = (h.scrollHeight || b.scrollHeight) - h.clientHeight;
+        var pct = total > 0 ? (h.scrollTop || b.scrollTop) / total * 100 : 0;
+        bar.style.width = Math.min(100, Math.max(0, pct)) + '%';
+      }
+      addEventListener('scroll', updateProgress, {passive:true});
+      addEventListener('resize', updateProgress, {passive:true});
+      requestAnimationFrame(updateProgress);
+
+      // ---------- Toast helper ----------
+      function toast(msg){
+        var t = document.createElement('div');
+        t.className = 'app-toast';
+        t.innerHTML = '<span class="toast-dot"></span>' + msg;
+        document.body.appendChild(t);
+        requestAnimationFrame(function(){ t.classList.add('show'); });
+        setTimeout(function(){
+          t.classList.remove('show');
+          setTimeout(function(){ t.remove(); }, 320);
+        }, 2200);
+      }
+      function copyText(text, message){
+        var done = function(){ toast(message || 'Copied to clipboard'); };
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+          navigator.clipboard.writeText(text).then(done, function(){ fallback(); });
+        } else { fallback(); }
+        function fallback(){
+          var ta = document.createElement('textarea');
+          ta.value = text; ta.style.position='fixed'; ta.style.opacity='0';
+          document.body.appendChild(ta); ta.select();
+          try { document.execCommand('copy'); done(); } catch(e){}
+          ta.remove();
+        }
+      }
+      window.__toast = toast; window.__copyText = copyText;
+
+      // ---------- BibTeX builder + click handler ----------
+      function slug(s){ return (s||'').toLowerCase().replace(/[^a-z0-9]+/g,'').slice(0,12); }
+      function buildBibtex(d){
+        var firstAuthor = (d.authors||'').split(',')[0].trim().replace(/\\./g,'').split(/\\s+/).pop() || 'meena';
+        var firstTitleWord = (d.title||'paper').split(/\\s+/).map(function(w){return w.replace(/[^a-zA-Z]/g,'');}).filter(Boolean)[0] || 'paper';
+        var key = slug(firstAuthor) + (d.year||'') + slug(firstTitleWord);
+        var authors = (d.authors||'').split(',').map(function(a){return a.trim();}).filter(Boolean).join(' and ');
+        var isJournal = ((d.type||'')+'').toLowerCase().indexOf('journal') !== -1;
+        var entry = isJournal ? 'article' : 'inproceedings';
+        var venueKey = isJournal ? 'journal' : 'booktitle';
+        var lines = [
+          '@' + entry + '{' + key + ',',
+          '  title   = {' + (d.title||'') + '},',
+          '  author  = {' + authors + '},',
+          '  ' + venueKey + ' = {' + (d.venue||'') + '},',
+          '  year    = {' + (d.year||'') + '},'
+        ];
+        if (d.status) lines.push('  note    = {' + d.status + '},');
+        if (d.link)   lines.push('  url     = {' + d.link + '},');
+        lines.push('}');
+        return lines.join('\\n');
+      }
+      document.addEventListener('click', function(ev){
+        var btn = ev.target.closest && ev.target.closest('[data-bib-title]');
+        if (!btn) return;
+        ev.preventDefault();
+        var d = {
+          title: btn.getAttribute('data-bib-title'),
+          authors: btn.getAttribute('data-bib-authors'),
+          venue: btn.getAttribute('data-bib-venue'),
+          year: btn.getAttribute('data-bib-year'),
+          type: btn.getAttribute('data-bib-type'),
+          status: btn.getAttribute('data-bib-status'),
+          link: btn.getAttribute('data-bib-link')
+        };
+        copyText(buildBibtex(d), 'BibTeX copied to clipboard');
+      });
+
+      // ---------- Animated stat counters ----------
+      function animateCounter(el){
+        var target = parseInt(el.getAttribute('data-counter'), 10);
+        var suffix = el.getAttribute('data-suffix') || '';
+        if (isNaN(target)) return;
+        var duration = 1600;
+        var start = performance.now();
+        function step(now){
+          var t = Math.min((now - start) / duration, 1);
+          var eased = 1 - Math.pow(1 - t, 3);
+          el.textContent = Math.round(target * eased) + suffix;
+          if (t < 1) requestAnimationFrame(step);
+        }
+        requestAnimationFrame(step);
+      }
+      var counterIO = ('IntersectionObserver' in window) ? new IntersectionObserver(function(entries){
+        entries.forEach(function(e){
+          if (e.isIntersecting && !e.target.dataset.counterDone){
+            e.target.dataset.counterDone = '1';
+            animateCounter(e.target);
+            counterIO.unobserve(e.target);
+          }
+        });
+      }, {threshold: 0.45}) : null;
+      function scanCounters(){
+        var nodes = document.querySelectorAll('[data-counter]:not([data-counter-init])');
+        nodes.forEach(function(el){
+          el.dataset.counterInit = '1';
+          el.textContent = '0' + (el.getAttribute('data-suffix')||'');
+          if (counterIO) counterIO.observe(el); else animateCounter(el);
+        });
+      }
+      // React renders after this script runs; scan periodically + on mutations
+      scanCounters();
+      var mo = new MutationObserver(function(){ scanCounters(); });
+      mo.observe(document.body, {childList:true, subtree:true});
+
+      // ---------- ⌘K Command Palette ----------
+      var SCHOLAR = 'https://scholar.google.com/citations?user=5jIAPTEAAAAJ&hl=en';
+      var GITHUB  = 'https://github.com/kapil2020';
+      var LINKEDIN= 'https://www.linkedin.com/in/kapilmeena/';
+      var EMAIL   = 'kapil.meena@kgpian.iitkgp.ac.in';
+      var HUMAN   = 'https://sites.google.com/cornell.edu/youngseokim/human-lab?authuser=0';
+
+      var CMDS = [
+        // navigation
+        {label:'Home',          group:'Navigate', icon:'⌂', kw:'home top intro hero', run:function(){go('home');}},
+        {label:'About',         group:'Navigate', icon:'§', kw:'about bio',           run:function(){go('about');}},
+        {label:'Research',      group:'Navigate', icon:'∰', kw:'research areas',     run:function(){go('research');}},
+        {label:'Publications',  group:'Navigate', icon:'¶', kw:'publications papers journal trr', run:function(){go('publications');}},
+        {label:'Projects',      group:'Navigate', icon:'⌘', kw:'projects code repos',run:function(){go('projects');}},
+        {label:'Experience',    group:'Navigate', icon:'☗', kw:'experience career',  run:function(){go('experience');}},
+        {label:'Awards',        group:'Navigate', icon:'★', kw:'awards honors',      run:function(){go('awards');}},
+        {label:'Skills',        group:'Navigate', icon:'⌥', kw:'skills stack',       run:function(){go('skills');}},
+        {label:'Leadership',    group:'Navigate', icon:'☉', kw:'leadership service', run:function(){go('leadership');}},
+        {label:'Travel',        group:'Navigate', icon:'⌖', kw:'travel global footprint', run:function(){go('travel');}},
+        {label:'Contact',       group:'Navigate', icon:'✉', kw:'contact email',      run:function(){go('contact');}},
+        // actions
+        {label:'Copy email address',   group:'Action', icon:'✎', kw:'email copy mail',  run:function(){copyText(EMAIL,'Email copied · ' + EMAIL);}},
+        {label:'Open Google Scholar',  group:'Open',   icon:'⌬', kw:'scholar publications citations google', run:function(){window.open(SCHOLAR,'_blank','noopener');}},
+        {label:'Open GitHub profile',  group:'Open',   icon:'⎈', kw:'github code repos source', run:function(){window.open(GITHUB,'_blank','noopener');}},
+        {label:'Open LinkedIn',        group:'Open',   icon:'⌖', kw:'linkedin profile network', run:function(){window.open(LINKEDIN,'_blank','noopener');}},
+        {label:'Open HUMAN Lab (UCLA)',group:'Open',   icon:'∇', kw:'ucla human lab youngseo postdoc', run:function(){window.open(HUMAN,'_blank','noopener');}},
+        {label:'Toggle dark mode',     group:'Action', icon:'☾', kw:'dark light theme mode toggle', run:function(){document.documentElement.classList.toggle('dark');}},
+        {label:'Scroll to top',        group:'Action', icon:'↑', kw:'top scroll up', run:function(){window.scrollTo({top:0,behavior:'smooth'});}},
+        {label:'Print / Save as PDF',  group:'Action', icon:'⎙', kw:'print pdf cv resume', run:function(){window.print();}}
+      ];
+      function go(id){
+        var el = document.getElementById(id);
+        if (el) el.scrollIntoView({behavior:'smooth', block:'start'});
+        else { location.hash = '#' + id; }
+      }
+
+      var root = document.getElementById('cmdk-root');
+      var input = document.getElementById('cmdk-input');
+      var list = document.getElementById('cmdk-list');
+      var hintBtn = document.getElementById('cmdk-hint');
+      var active = 0;
+      var filtered = CMDS.slice();
+
+      function score(item, q){
+        if (!q) return 1;
+        q = q.toLowerCase();
+        var hay = (item.label + ' ' + (item.kw||'')).toLowerCase();
+        if (hay.indexOf(q) !== -1) return 2;
+        // simple subsequence
+        var i = 0, j = 0;
+        while (i < hay.length && j < q.length){
+          if (hay[i] === q[j]) j++;
+          i++;
+        }
+        return j === q.length ? 1 : 0;
+      }
+      function render(){
+        list.innerHTML = '';
+        var q = input.value.trim();
+        filtered = CMDS.map(function(c){ return {c:c, s:score(c,q)}; })
+                       .filter(function(x){ return x.s > 0; })
+                       .sort(function(a,b){ return b.s - a.s; })
+                       .map(function(x){ return x.c; });
+        if (filtered.length === 0){
+          list.innerHTML = '<li class="cmdk-empty">No matches for "' + q.replace(/[<>&]/g,'') + '"</li>';
+          return;
+        }
+        active = 0;
+        var lastGroup = null;
+        filtered.forEach(function(c, i){
+          if (c.group !== lastGroup){
+            var sec = document.createElement('li');
+            sec.className = 'cmdk-section';
+            sec.textContent = c.group;
+            list.appendChild(sec);
+            lastGroup = c.group;
+          }
+          var li = document.createElement('li');
+          li.className = 'cmdk-item' + (i === 0 ? ' active' : '');
+          li.setAttribute('role','option');
+          li.setAttribute('data-idx', i);
+          li.innerHTML = '<span class="cmdk-icon">' + c.icon + '</span><span class="cmdk-label"></span><span class="cmdk-grp">' + c.group + '</span>';
+          li.querySelector('.cmdk-label').textContent = c.label;
+          li.addEventListener('mouseenter', function(){ setActive(i); });
+          li.addEventListener('click', function(){ run(i); });
+          list.appendChild(li);
+        });
+      }
+      function setActive(i){
+        active = i;
+        var items = list.querySelectorAll('.cmdk-item');
+        items.forEach(function(el){ el.classList.remove('active'); });
+        var idx = Array.prototype.findIndex.call(items, function(el){ return +el.getAttribute('data-idx') === i; });
+        if (idx >= 0){
+          items[idx].classList.add('active');
+          items[idx].scrollIntoView({block:'nearest'});
+        }
+      }
+      function run(i){
+        var c = filtered[i];
+        if (!c) return;
+        close();
+        setTimeout(function(){ try{ c.run(); }catch(e){ console.error(e); } }, 60);
+      }
+      function open(){
+        root.classList.add('open');
+        root.setAttribute('aria-hidden','false');
+        input.value = '';
+        render();
+        setTimeout(function(){ input.focus(); }, 30);
+      }
+      function close(){
+        root.classList.remove('open');
+        root.setAttribute('aria-hidden','true');
+      }
+      addEventListener('keydown', function(ev){
+        var open_ = root.classList.contains('open');
+        if ((ev.metaKey || ev.ctrlKey) && (ev.key === 'k' || ev.key === 'K')){
+          ev.preventDefault();
+          if (open_) close(); else open();
+          return;
+        }
+        if (!open_) return;
+        if (ev.key === 'Escape'){ ev.preventDefault(); close(); }
+        else if (ev.key === 'ArrowDown'){ ev.preventDefault(); setActive(Math.min(active+1, filtered.length-1)); }
+        else if (ev.key === 'ArrowUp'){ ev.preventDefault(); setActive(Math.max(active-1, 0)); }
+        else if (ev.key === 'Enter'){ ev.preventDefault(); run(active); }
+      });
+      input.addEventListener('input', render);
+      root.querySelectorAll('[data-cmdk-close]').forEach(function(el){
+        el.addEventListener('click', close);
+      });
+      hintBtn.addEventListener('click', open);
+    })();
+    </script>
 </body>
 </html>
