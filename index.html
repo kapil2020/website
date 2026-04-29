@@ -323,6 +323,89 @@
 
       @keyframes prompt-glow { 0%,100% { box-shadow: 0 0 0 0 rgba(47,128,237,0.0); } 50% { box-shadow: 0 0 0 4px rgba(47,128,237,0.18); } }
       .prompt-dot { animation: prompt-glow 3.2s ease-in-out infinite; }
+
+      /* === Award-grade section system === */
+      @keyframes sec-rule-grow { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+      .sec-rule { transform-origin: left center; animation: sec-rule-grow 1.2s cubic-bezier(0.2,0.8,0.2,1) forwards; }
+
+      .sec-watermark {
+        position: absolute;
+        font-family: "Computer Modern Serif", serif;
+        font-weight: 900;
+        font-size: clamp(7rem, 14vw, 13rem);
+        line-height: 0.78;
+        color: rgba(15,23,42,0.045);
+        pointer-events: none;
+        user-select: none;
+        letter-spacing: -0.05em;
+        z-index: 0;
+      }
+      .dark .sec-watermark { color: rgba(255,255,255,0.045); }
+
+      /* Refined card surface — replaces the heavy premium-glass for cards */
+      .pro-card {
+        position: relative;
+        background: rgba(255,255,255,0.72);
+        backdrop-filter: blur(18px) saturate(160%);
+        -webkit-backdrop-filter: blur(18px) saturate(160%);
+        border: 1px solid rgba(15,23,42,0.07);
+        border-radius: 18px;
+        transition: transform .45s cubic-bezier(0.2,0.8,0.2,1),
+                    box-shadow .45s cubic-bezier(0.2,0.8,0.2,1),
+                    border-color .45s;
+        box-shadow:
+          0 1px 0 rgba(255,255,255,0.55) inset,
+          0 1px 2px rgba(15,23,42,0.04),
+          0 4px 14px -6px rgba(15,23,42,0.05);
+      }
+      .pro-card:hover {
+        transform: translateY(-4px);
+        border-color: rgba(47,128,237,0.22);
+        box-shadow:
+          0 1px 0 rgba(255,255,255,0.55) inset,
+          0 18px 36px -14px rgba(47,128,237,0.18),
+          0 6px 18px -6px rgba(15,23,42,0.10);
+      }
+      .dark .pro-card {
+        background: rgba(15,23,42,0.55);
+        border-color: rgba(255,255,255,0.08);
+        box-shadow:
+          0 1px 0 rgba(255,255,255,0.04) inset,
+          0 8px 24px -10px rgba(0,0,0,0.45);
+      }
+      .dark .pro-card:hover {
+        border-color: rgba(56,189,248,0.30);
+        box-shadow:
+          0 1px 0 rgba(255,255,255,0.04) inset,
+          0 22px 50px -18px rgba(56,189,248,0.20);
+      }
+
+      /* Subtle accent ribbon along the top of cards */
+      .pro-card::before {
+        content: '';
+        position: absolute; left: 14px; right: 14px; top: 0;
+        height: 2px;
+        background: linear-gradient(90deg, transparent, rgba(47,128,237,0.0), transparent);
+        transition: background .5s ease;
+        border-radius: 2px;
+      }
+      .pro-card:hover::before {
+        background: linear-gradient(90deg, transparent, rgba(47,128,237,0.55), rgba(155,81,224,0.55), rgba(235,87,87,0.55), transparent);
+      }
+
+      /* Section section padding utility — tighten the global rhythm */
+      .sec-pad { padding-top: 4.5rem; padding-bottom: 4.5rem; }
+      @media (min-width: 768px) { .sec-pad { padding-top: 5.5rem; padding-bottom: 5.5rem; } }
+
+      /* Reveal-on-scroll helper for non-motion children (kept, used selectively) */
+      @keyframes reveal-up {
+        from { opacity: 0; transform: translateY(14px); }
+        to   { opacity: 1; transform: translateY(0); }
+      }
+
+      /* Heading underline that draws on hover */
+      .head-underline { background-image: linear-gradient(90deg, #2F80ED, #9B51E0); background-size: 0% 2px; background-repeat: no-repeat; background-position: 0 100%; padding-bottom: 4px; transition: background-size .55s cubic-bezier(0.2,0.8,0.2,1); }
+      .head-underline:hover { background-size: 100% 2px; }
     </style>
 
 <link rel="stylesheet" href="/index.css">
