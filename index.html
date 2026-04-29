@@ -154,13 +154,13 @@
       }
       .blob {
         position: absolute;
-        filter: blur(80px);
-        opacity: 0.4;
-        animation: blob 10s infinite alternate;
+        filter: blur(100px);
+        opacity: 0.22;
+        animation: blob 14s infinite alternate;
       }
-      .blob-1 { top: -10%; left: -10%; width: 50vw; height: 50vw; background: #3b82f6; }
-      .blob-2 { bottom: -10%; right: -10%; width: 50vw; height: 50vw; background: #8b5cf6; animation-delay: 2s; }
-      .blob-3 { top: 40%; left: 40%; width: 40vw; height: 40vw; background: #ec4899; animation-delay: 4s; }
+      .blob-1 { top: -10%; left: -10%; width: 50vw; height: 50vw; background: #2F80ED; }
+      .blob-2 { bottom: -10%; right: -10%; width: 50vw; height: 50vw; background: #9B51E0; animation-delay: 2s; }
+      .blob-3 { top: 40%; left: 40%; width: 40vw; height: 40vw; background: #F2994A; animation-delay: 4s; }
 
       ::-webkit-scrollbar { width: 8px; }
       ::-webkit-scrollbar-track { background: transparent; }
@@ -251,6 +251,38 @@
       .magnetic-btn { transition: transform .25s cubic-bezier(0.2,0.8,0.2,1), box-shadow .25s, background-color .25s; }
       .magnetic-btn:hover { transform: translateY(-2px); }
       .magnetic-btn:active { transform: translateY(0); }
+
+      /* === Apple-style hero palette (#2F80ED #9B51E0 #EB5757 #F2994A) === */
+      @keyframes apple-grad-shift {
+        0%, 100% { background-position: 0% 50%; }
+        50%      { background-position: 100% 50%; }
+      }
+      .apple-gradient-text {
+        background: linear-gradient(90deg, #2F80ED 0%, #9B51E0 35%, #EB5757 70%, #F2994A 100%);
+        background-size: 220% 100%;
+        -webkit-background-clip: text;
+        background-clip: text;
+        -webkit-text-fill-color: transparent;
+        animation: apple-grad-shift 12s ease-in-out infinite;
+      }
+      @keyframes apple-halo-spin { to { transform: rotate(360deg); } }
+      .apple-halo {
+        background: conic-gradient(from 0deg, #2F80ED, #9B51E0, #EB5757, #F2994A, #2F80ED);
+        animation: apple-halo-spin 28s linear infinite;
+      }
+      .apple-arrow { display: inline-block; transition: transform .35s cubic-bezier(0.2,0.8,0.2,1); }
+      .group:hover .apple-arrow { transform: translateX(5px); }
+      @keyframes hero-blob-drift {
+        0%, 100% { transform: translate(0,0) scale(1); }
+        33%      { transform: translate(40px,-30px) scale(1.08); }
+        66%      { transform: translate(-30px,30px) scale(0.94); }
+      }
+      .hero-blob { animation: hero-blob-drift 18s ease-in-out infinite; }
+      @keyframes scroll-cue {
+        0%, 100% { transform: translateY(0); opacity: .5; }
+        50%      { transform: translateY(6px); opacity: 1; }
+      }
+      .scroll-cue { animation: scroll-cue 2.4s ease-in-out infinite; }
     </style>
 
 <link rel="stylesheet" href="/index.css">
