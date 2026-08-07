@@ -24,7 +24,8 @@ assets/css/style.css      design system and layout
 assets/css/fonts.css      @font-face declarations
 assets/fonts/*.woff2      self-hosted webfonts (latin subset)
 assets/img/*.jpg          portrait and press clipping
-assets/js/main.js         theme, nav, publication filtering, lightbox
+assets/js/main.js         theme, nav, publications explorer, lightbox
+qa.js                     Playwright checks (see below)
 .nojekyll                 serve files verbatim on GitHub Pages
 ```
 
@@ -85,8 +86,8 @@ scroll reveals, a counting animation on the figures and one ticker.
 Everything lives in `index.html`.
 
 - **Publications** — copy an `<article class="pub">` block and set `data-type`
-  (`journal` / `conference` / `patent`), `data-year`, `data-venue`, `data-topics` (space
-  separated: `behaviour exposure learning active routing`) and the `data-bib` JSON payload.
+  (`journal` / `conference` / `patent`), `data-year`, `data-venue`, `data-topics` (one of
+  `behaviour` / `exposure` / `learning` / `active` / `routing`) and the `data-bib` JSON payload.
   Facet options and counts update themselves; only the hero button, the section heading and the
   ticker carry hard-coded totals.
 - **Topic labels** — the `TOPIC_LABEL` / `TOPIC_ORDER` maps at the top of the explorer block in
@@ -108,6 +109,24 @@ python3 -m http.server 8000
 
 GitHub Pages serves this repository. Asset paths are relative, so the site works both at a
 domain root and under the `/website/` sub-path.
+
+**Bump the cache key when you touch CSS or JS.** `index.html` loads them as
+`assets/css/style.css?v=YYYYMMDDx`. Without a new key a returning visitor gets the new HTML with
+yesterday's stylesheet, and half the page renders unstyled. Change every `?v=` in `index.html`
+together.
+
+## Checks
+
+`qa.js` (Playwright) covers what is easy to break:
+
+- every class used in the markup resolves to a CSS rule, and both stylesheets parsed
+- no horizontal overflow at 320 / 360 / 390 / 430 / 600 / 768 / 1024 / 1280 / 1440 / 1920 px
+- no touch target under 30 px on phones, no console or request errors
+- filters, grouping, sorting, search, BibTeX, theme persistence, lightbox, `/` shortcut
+- the mobile filter rail and menu
+
+Scroll reveals are gated behind an `html.js` class, so if JavaScript never runs the content is
+plain and visible rather than stuck at `opacity: 0`.
 
 ---
 
