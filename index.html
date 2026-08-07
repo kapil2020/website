@@ -5,35 +5,36 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="color-scheme" content="light dark">
 
-<title>Kapil Kumar Meena, Ph.D. — Postdoctoral Researcher, UCLA</title>
-<meta name="description" content="Dr. Kapil Kumar Meena is a Postdoctoral Researcher at the HUMAN Lab, UCLA. He builds behavioural models and routing tools that cut what commuters breathe — work covered by The Hindu and published in Transport Policy and Transportation Research Record.">
+<title>Kapil Kumar Meena, Ph.D. — Postdoctoral Researcher, University of California, Los Angeles</title>
+<meta name="description" content="Dr. Kapil Kumar Meena is a Postdoctoral Researcher at the HUMAN Lab, University of California, Los Angeles. He builds behavioural models and routing tools that cut what commuters breathe — work covered by The Hindu and published in Transport Policy and Transportation Research Record.">
 <meta name="author" content="Kapil Kumar Meena">
 <link rel="canonical" href="https://kapil2020.github.io/website/">
 
 <meta property="og:type" content="profile">
-<meta property="og:title" content="Kapil Kumar Meena, Ph.D. — Postdoctoral Researcher, UCLA">
+<meta property="og:title" content="Kapil Kumar Meena, Ph.D. — Postdoctoral Researcher, University of California, Los Angeles">
 <meta property="og:description" content="Behavioural models and routing tools that cut what commuters breathe. HUMAN Lab, University of California, Los Angeles.">
 <meta property="og:url" content="https://kapil2020.github.io/website/">
 <meta property="og:image" content="https://kapil2020.github.io/website/assets/img/kapil-portrait.jpg">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Kapil Kumar Meena, Ph.D. — Postdoctoral Researcher, UCLA">
+<meta name="twitter:title" content="Kapil Kumar Meena, Ph.D. — Postdoctoral Researcher, University of California, Los Angeles">
 <meta name="twitter:description" content="Behavioural models and routing tools that cut what commuters breathe.">
 <meta name="twitter:image" content="https://kapil2020.github.io/website/assets/img/kapil-portrait.jpg">
 
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%230e0e10'/%3E%3Ccircle cx='16' cy='16' r='6' fill='%23d8430e'/%3E%3C/svg%3E">
 <link rel="apple-touch-icon" href="assets/img/kapil-portrait-sm.jpg">
 
+<link rel="preload" href="assets/fonts/InstrumentSerif-normal-400.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="assets/fonts/InstrumentSans-normal-400_700.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="assets/fonts/Newsreader-normal-400_600.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="assets/css/fonts.css">
 <link rel="stylesheet" href="assets/css/style.css">
 
 <script>
+  /* Light is the default on arrival; dark is opt-in and remembered. */
   (function () {
     try {
       var s = localStorage.getItem('theme');
-      document.documentElement.setAttribute('data-theme',
-        s || (matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'));
+      if (s === 'dark') document.documentElement.setAttribute('data-theme', 'dark');
     } catch (e) {}
   })();
 </script>
@@ -46,7 +47,7 @@
   "honorificPrefix": "Dr.",
   "honorificSuffix": "Ph.D.",
   "jobTitle": "Postdoctoral Researcher",
-  "affiliation": { "@type": "CollegeOrUniversity", "name": "University of California, Los Angeles" },
+  "affiliation": { "@type": "CollegeOrUniversity", "name": "University of California, Los Angeles", "alternateName": "UCLA" },
   "alumniOf": [
     { "@type": "CollegeOrUniversity", "name": "Indian Institute of Technology Kharagpur" },
     { "@type": "CollegeOrUniversity", "name": "Indian Institute of Technology Roorkee" }
@@ -102,7 +103,7 @@
       <span class="nm">Kapil Kumar Meena</span>
       <span class="deg">PhD</span>
       <span class="sep" aria-hidden="true"></span>
-      <span class="aff">UCLA · HUMAN Lab</span>
+      <span class="aff">University of California, Los Angeles</span>
     </a>
 
     <nav class="nav" id="nav" aria-label="Primary">
@@ -134,50 +135,78 @@
 <main id="main">
 
 <!-- =====================================================================
-     Hero
+     Hero — masthead
      ===================================================================== -->
 <section class="hero" id="top">
+  <div class="wrap">
+    <p class="hero-kick">
+      <span><span class="beacon" aria-hidden="true"></span>Postdoctoral Researcher &mdash; <b>HUMAN&nbsp;Lab</b></span>
+    </p>
+
+    <h1>Kapil Kumar Meena<span class="deg">, Ph.D.</span></h1>
+
+    <p class="hero-title">
+      <span class="role">Postdoctoral Researcher</span>
+      <span class="at"><a href="https://sites.google.com/cornell.edu/youngseokim/human-lab" target="_blank" rel="noopener">HUMAN Lab</a> &middot; University of California, Los Angeles</span>
+    </p>
+  </div>
+
   <div class="wrap hero-grid">
-    <div>
-      <p class="hero-kick">
-        <span><span class="beacon" aria-hidden="true"></span>Postdoctoral Researcher &mdash; <b>HUMAN&nbsp;Lab, UCLA</b></span>
-      </p>
+    <div class="hero-head">
+      <div class="hero-bio">
+        <p>I study how people actually choose to move through a city &mdash; and what those choices
+          cost them in the air they breathe. My research joins <strong>discrete choice theory</strong>,
+          <strong>panel field experiments</strong> and <strong>machine learning</strong> to explain
+          travel behaviour under environmental stress, and then turns those models into tools people
+          can use. The aim is a human-centred mobility system that is measurably cleaner, healthier
+          and more equitable &mdash; not only more efficient.</p>
 
-      <h1>
-        <span class="ln">Kapil</span>
-        <span class="ln">Kumar</span>
-        <span class="ln ln--last">Meena<span class="phd">Ph.D.</span></span>
-      </h1>
+        <p>The work is deliberately interdisciplinary. It sits between transportation engineering,
+          environmental health, behavioural and decision science, and applied data science, and it
+          runs the full distance from instrument design and field data collection through
+          econometric estimation to deployed software and policy evidence. Alongside empirical work
+          I develop methods: I am currently building <strong>PD&nbsp;MUSE</strong>, a methodological
+          framework for panel-data choice modelling.</p>
 
-      <div class="hero-line" data-rule></div>
-
-      <p class="hero-say">
-        Commuting fills <i>8%</i> of an Indian city-dweller&rsquo;s day and <i>a third</i>
-        of the pollution they breathe. I build the models &mdash; and the tools &mdash;
-        that change that number.
-      </p>
+        <p>Prior to joining the University of California, Los Angeles, I completed my
+          <strong>Ph.D. in Transportation Engineering at IIT Kharagpur</strong>, advised by
+          <strong>Prof. Arkopal Kishore Goswami</strong>, where my thesis developed an integrated
+          framework for pollution-aware urban mobility. I hold an
+          <strong>M.Tech in Transportation Engineering from IIT Roorkee</strong>, advised by
+          <strong>Prof. Amit Agarwal</strong>, and a B.Tech in Civil Engineering (Honours) from
+          Rajasthan Technical University, Kota. I was a research consultant on electric mobility at
+          <strong>WRI India</strong> and an international research exchange fellow at the
+          <strong>University of Leeds</strong>.</p>
+      </div>
 
       <dl class="hero-meta">
         <div>
           <dt>Now</dt>
-          <dd>Postdoc, <a href="https://sites.google.com/cornell.edu/youngseokim/human-lab" target="_blank" rel="noopener"><b>HUMAN Lab</b></a>, UCLA &nbsp;·&nbsp; adv. Prof. Youngseo Kim</dd>
+          <dd><b>Postdoctoral Researcher</b>, HUMAN Lab, University of California, Los Angeles<br>
+            <span class="adv">Advisor: Prof. Youngseo Kim</span></dd>
         </div>
         <div>
           <dt>Ph.D.</dt>
-          <dd>IIT Kharagpur, 2026 &nbsp;·&nbsp; adv. Prof. Arkopal K. Goswami</dd>
+          <dd><b>IIT Kharagpur</b>, Transportation Engineering, 2026<br>
+            <span class="adv">Advisor: Prof. Arkopal Kishore Goswami</span></dd>
         </div>
         <div>
-          <dt>Field</dt>
-          <dd>Travel behaviour &nbsp;·&nbsp; air-quality exposure &nbsp;·&nbsp; machine learning</dd>
+          <dt>M.Tech</dt>
+          <dd><b>IIT Roorkee</b>, Transportation Engineering, 2021<br>
+            <span class="adv">Advisor: Prof. Amit Agarwal</span></dd>
+        </div>
+        <div>
+          <dt>B.Tech</dt>
+          <dd><b>Rajasthan Technical University</b>, Civil Engineering (Honours), Kota, 2019</dd>
         </div>
       </dl>
 
       <div class="hero-cta">
         <a class="btn btn--fill" href="#publications">
-          24 publications <svg aria-hidden="true"><use href="#i-arrow"></use></svg>
+          28 publications <svg aria-hidden="true"><use href="#i-arrow"></use></svg>
         </a>
         <a class="btn btn--line" href="https://raw.githubusercontent.com/kapil2020/web/main/CV_Kapil_2026_Updated.pdf" target="_blank" rel="noopener">
-          <svg aria-hidden="true"><use href="#i-down"></use></svg> CV
+          <svg aria-hidden="true"><use href="#i-down"></use></svg> Curriculum vitae
         </a>
         <button class="btn btn--line" type="button" data-copy="kapil.meena@kgpian.iitkgp.ac.in" data-copy-msg="Email copied">
           <svg aria-hidden="true"><use href="#i-mail"></use></svg> Email
@@ -191,7 +220,7 @@
       </div>
       <div class="hero-tag">
         <div class="t">Los Angeles, California</div>
-        <div class="d">HUMAN Lab, University of California, Los Angeles</div>
+        <div class="d">HUMAN Lab &middot; University of California, Los Angeles</div>
       </div>
     </div>
   </div>
@@ -201,28 +230,28 @@
 <div class="ticker" aria-hidden="true">
   <div class="ticker-track">
     <div class="ticker-set">
-      <span><b>UCLA</b> HUMAN Lab</span>
+      <span><b>University of California, Los Angeles</b> · HUMAN Lab</span>
       <span>Ph.D. <b>IIT Kharagpur</b></span>
       <span>M.Tech <b>IIT Roorkee</b></span>
       <span><em>200+</em> citations</span>
       <span>h-index <em>6</em></span>
       <span>i10-index <em>6</em></span>
-      <span><b>10</b> journal articles</span>
-      <span><b>13</b> conference papers</span>
+      <span><b>12</b> journal articles</span>
+      <span><b>15</b> conference papers</span>
       <span><b>1</b> patent filed</span>
       <span>Covered by <em>The Hindu</em></span>
       <span>TRB · IATBR · WCTR · EASTS</span>
       <span>Reviewer, <b>Transport Policy</b></span>
     </div>
     <div class="ticker-set">
-      <span><b>UCLA</b> HUMAN Lab</span>
+      <span><b>University of California, Los Angeles</b> · HUMAN Lab</span>
       <span>Ph.D. <b>IIT Kharagpur</b></span>
       <span>M.Tech <b>IIT Roorkee</b></span>
       <span><em>200+</em> citations</span>
       <span>h-index <em>6</em></span>
       <span>i10-index <em>6</em></span>
-      <span><b>10</b> journal articles</span>
-      <span><b>13</b> conference papers</span>
+      <span><b>12</b> journal articles</span>
+      <span><b>15</b> conference papers</span>
       <span><b>1</b> patent filed</span>
       <span>Covered by <em>The Hindu</em></span>
       <span>TRB · IATBR · WCTR · EASTS</span>
@@ -239,12 +268,69 @@
     <header class="masthead" data-rise>
       <div class="idx">01</div>
       <div>
-        <span class="eyebrow">Research</span>
-        <h2>What the work found</h2>
-        <p class="dek">Four numbers from my dissertation and the DRUM routing engine. Each one is a
-          published result, not a rounded claim.</p>
+        <span class="eyebrow">Research programme</span>
+        <h2>A single question, four directions</h2>
+        <p class="dek">My work spans transportation engineering, environmental health, behavioural science
+          and applied machine learning. Below: the programme, then what it has found.</p>
       </div>
     </header>
+
+    <div class="programme" data-rise>
+      <div>
+        <p class="stance">One question, approached from four directions:
+          <strong>how do people decide to move, and what does that decision cost them?</strong></p>
+        <p>Answering it takes the instruments of transportation engineering to measure, behavioural
+          and decision science to explain, statistics and machine learning to generalise, and
+          software engineering to deliver. I work across all four &mdash; and I build the instruments
+          as well as the models, because a finding that never reaches a commuter or a planner has not
+          finished its job.</p>
+      </div>
+
+      <div class="pillars">
+        <article class="pillar">
+          <span class="k">01</span>
+          <div>
+            <h4>Behaviour &amp; decision science</h4>
+            <p>Discrete choice, hybrid latent-class and integrated choice latent variable models;
+              stated-preference design, willingness-to-pay estimation and two-wave panel field
+              experiments.</p>
+            <div class="fields">Transport economics &middot; behavioural economics &middot; econometrics</div>
+          </div>
+        </article>
+
+        <article class="pillar">
+          <span class="k">02</span>
+          <div>
+            <h4>Environment &amp; health</h4>
+            <p>Measuring what commuters actually inhale across transport micro-environments,
+              inhaled-dose comparison, and health-impact assessment of active travel.</p>
+            <div class="fields">Air quality &middot; exposure science &middot; public health</div>
+          </div>
+        </article>
+
+        <article class="pillar">
+          <span class="k">03</span>
+          <div>
+            <h4>Methods &amp; machine learning</h4>
+            <p>Deep and geostatistical models for sparse sensor networks, interpretable
+              learning for choice prediction, and computer vision for the built environment.
+              <strong>In development: PD&nbsp;MUSE</strong>, a methodological framework for
+              panel-data choice modelling.</p>
+            <div class="fields">Statistics &middot; machine learning &middot; spatial data science</div>
+          </div>
+        </article>
+
+        <article class="pillar">
+          <span class="k">04</span>
+          <div>
+            <h4>Systems &amp; policy</h4>
+            <p>Routing algorithms and decision-support tools, accessibility and transit-oriented
+              development prioritisation, and evidence built for transport and clean-air policy.</p>
+            <div class="fields">Operations &middot; decision analytics &middot; public policy</div>
+          </div>
+        </article>
+      </div>
+    </div>
 
     <!-- Headline findings -->
     <div class="glance" data-rise>
@@ -277,11 +363,12 @@
       <div class="cell cell--wide">
         <div class="lbl"><span class="dot"></span> Output by year</div>
         <div class="years">
-          <div class="year-col"><div class="stack"><div class="seg seg--c" style="height:11%"></div></div><span class="yn">1</span><span class="yl">&rsquo;22</span></div>
-          <div class="year-col"><div class="stack"><div class="seg seg--c" style="height:11%"></div></div><span class="yn">1</span><span class="yl">&rsquo;23</span></div>
-          <div class="year-col"><div class="stack"><div class="seg seg--j" style="height:11%"></div><div class="seg seg--c" style="height:33%"></div></div><span class="yn">4</span><span class="yl">&rsquo;24</span></div>
-          <div class="year-col"><div class="stack"><div class="seg seg--j" style="height:44%"></div><div class="seg seg--c" style="height:56%"></div></div><span class="yn">9</span><span class="yl">&rsquo;25</span></div>
-          <div class="year-col"><div class="stack"><div class="seg seg--j" style="height:56%"></div><div class="seg seg--c" style="height:33%"></div><div class="seg seg--p" style="height:11%"></div></div><span class="yn">9</span><span class="yl">&rsquo;26</span></div>
+          <div class="year-col"><div class="stack"><div class="seg seg--j" style="height:8.3%"></div></div><span class="yn">1</span><span class="yl">&rsquo;21</span></div>
+          <div class="year-col"><div class="stack"><div class="seg seg--c" style="height:8.3%"></div></div><span class="yn">1</span><span class="yl">&rsquo;22</span></div>
+          <div class="year-col"><div class="stack"><div class="seg seg--j" style="height:8.3%"></div><div class="seg seg--c" style="height:8.3%"></div></div><span class="yn">2</span><span class="yl">&rsquo;23</span></div>
+          <div class="year-col"><div class="stack"><div class="seg seg--j" style="height:16.7%"></div><div class="seg seg--c" style="height:33.3%"></div></div><span class="yn">6</span><span class="yl">&rsquo;24</span></div>
+          <div class="year-col"><div class="stack"><div class="seg seg--j" style="height:50.0%"></div><div class="seg seg--c" style="height:41.7%"></div><div class="seg seg--p" style="height:8.3%"></div></div><span class="yn">12</span><span class="yl">&rsquo;25</span></div>
+          <div class="year-col"><div class="stack"><div class="seg seg--j" style="height:16.7%"></div><div class="seg seg--c" style="height:33.3%"></div></div><span class="yn">6</span><span class="yl">&rsquo;26</span></div>
         </div>
         <div class="legend">
           <span><i style="background:var(--ink)"></i> Journal</span>
@@ -297,9 +384,48 @@
       </div>
       <div class="cell cell--half">
         <div class="lbl"><span class="dot"></span> Field sites</div>
-        <span class="bignum"><span data-count="6">0</span></span>
-        <p class="cap">Indian cities surveyed: Delhi, Kolkata, Mumbai, Kharagpur and tier-2/3
-          cities across the country.</p>
+        <span class="bignum"><span data-count="5">0</span></span>
+        <p class="cap">study contexts across India &mdash; Delhi, Kolkata, Mumbai, Kharagpur and
+          tier-2/3 cities.</p>
+      </div>
+
+      <!-- The seasonal panel experiment -->
+      <div class="cell cell--full">
+        <div class="lbl"><span class="dot"></span> The seasonal experiment</div>
+        <div class="season">
+          <div>
+            <h3>Winter decides who reroutes</h3>
+            <p>The core of my dissertation is a <strong>two-wave route-choice panel</strong>: the same
+              <strong>723 Kolkata commuters</strong> surveyed once in winter and again in summer,
+              yielding <strong>5,224 choice observations</strong>. Following the same people across
+              seasons separates a real change in preference from a change in who happens to answer.</p>
+            <p>Air quality weighs roughly <strong>four times</strong> more heavily on route choice in
+              winter than in summer, and willingness to pay for cleaner air is <strong>1.8&times;</strong>
+              higher per AQI band. Commuters valued a pre-trip AQI alert more than an equivalent
+              reduction in physical exposure &mdash; which makes real-time air-quality information the
+              cheapest policy lever available. AQI literacy, not income, is the dominant moderator.</p>
+            <div class="scale">
+              <div><b>723</b><span>Commuters</span></div>
+              <div><b>5,224</b><span>Observations</span></div>
+              <div><b>2</b><span>Seasons</span></div>
+              <div><b>3</b><span>Model families</span></div>
+            </div>
+          </div>
+
+          <div class="compare">
+            <div class="grp">
+              <div class="t">Weight on air quality in route choice</div>
+              <div class="bar bar--winter"><span class="who">Winter</span><span class="fill"><i style="--w:100%"></i></span><span class="val">4.0&times;</span></div>
+              <div class="bar bar--summer"><span class="who">Summer</span><span class="fill"><i style="--w:25%"></i></span><span class="val">1.0&times;</span></div>
+            </div>
+            <div class="grp">
+              <div class="t">Willingness to pay per AQI band</div>
+              <div class="bar bar--winter"><span class="who">Winter</span><span class="fill"><i style="--w:100%"></i></span><span class="val">1.8&times;</span></div>
+              <div class="bar bar--summer"><span class="who">Summer</span><span class="fill"><i style="--w:56%"></i></span><span class="val">1.0&times;</span></div>
+            </div>
+            <p class="note">Panel binary logit, machine learning and deep learning models, triangulated.</p>
+          </div>
+        </div>
       </div>
 
       <!-- Method -->
@@ -356,16 +482,27 @@
       <article class="theme">
         <span class="num">02</span>
         <div>
-          <h3>Behavioural segmentation</h3>
-          <p>Hybrid latent-class choice models that separate travellers who <em>can</em> switch
-            from those who only say they would &mdash; the core of my dissertation.</p>
-          <div class="stat"><b>2-wave</b> commuter panel <span style="color:var(--faint)">·</span> Kolkata &amp; Delhi</div>
-          <div class="go"><a class="lnk" href="https://survey-iitkgp.vercel.app/" target="_blank" rel="noopener">The survey instrument <svg aria-hidden="true"><use href="#i-out"></use></svg></a></div>
+          <h3>Seasonal panel experiments</h3>
+          <p>Two-wave panels that follow the <em>same</em> commuters through winter and summer, so a
+            shift in behaviour can be attributed to the season rather than to the sample.</p>
+          <div class="stat"><b>723</b> commuters <span style="color:var(--faint)">·</span> 5,224 observations <span style="color:var(--faint)">·</span> Kolkata</div>
+          <div class="go"><a class="lnk" href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=6904230" target="_blank" rel="noopener">Read the preprint <svg aria-hidden="true"><use href="#i-out"></use></svg></a></div>
         </div>
       </article>
 
       <article class="theme">
         <span class="num">03</span>
+        <div>
+          <h3>Behavioural segmentation</h3>
+          <p>Hybrid latent-class and integrated choice latent variable models that separate travellers
+            who <em>can</em> switch from those who only say they would.</p>
+          <div class="stat"><b>Hybrid</b> latent class <span style="color:var(--faint)">·</span> ICLV <span style="color:var(--faint)">·</span> mixed logit</div>
+          <div class="go"><a class="lnk" href="https://survey-iitkgp.vercel.app/" target="_blank" rel="noopener">The survey instrument <svg aria-hidden="true"><use href="#i-out"></use></svg></a></div>
+        </div>
+      </article>
+
+      <article class="theme">
+        <span class="num">04</span>
         <div>
           <h3>Sustainable routing</h3>
           <p>DRUM offers five routes &mdash; shortest, fastest, least-exposure, least-energy and a
@@ -376,13 +513,24 @@
       </article>
 
       <article class="theme">
-        <span class="num">04</span>
+        <span class="num">05</span>
         <div>
           <h3>Active mobility &amp; access</h3>
           <p>First/last-mile cycling to suburban rail, walkability from street imagery, and
             transit-oriented development priorities for Indian cities.</p>
           <div class="stat"><b>Mumbai</b> suburban rail <span style="color:var(--faint)">·</span> ICLV model</div>
           <div class="go"><a class="lnk" href="https://doi.org/10.1080/15568318.2025.2572818" target="_blank" rel="noopener">Read the study <svg aria-hidden="true"><use href="#i-out"></use></svg></a></div>
+        </div>
+      </article>
+
+      <article class="theme">
+        <span class="num">06</span>
+        <div>
+          <h3>Learning from sparse data</h3>
+          <p>India runs about a third of the air-quality stations it needs. Geostatistical and deep
+            models fill the gaps so exposure can be estimated street by street.</p>
+          <div class="stat"><b>GeoNBeats</b> <span style="color:var(--faint)">·</span> hybrid kriging + deep learning</div>
+          <div class="go"><a class="lnk" href="https://doi.org/10.1109/AIEI69164.2026.11496657" target="_blank" rel="noopener">Read the paper <svg aria-hidden="true"><use href="#i-out"></use></svg></a></div>
         </div>
       </article>
     </div>
@@ -462,9 +610,9 @@
       <div class="idx">03</div>
       <div>
         <span class="eyebrow">Publications</span>
-        <h2>Twenty-four entries</h2>
-        <p class="dek">Ten journal articles, thirteen conference papers and one filed patent.
-          Identifiers match the appendix of my doctoral thesis.</p>
+        <h2>Twenty-eight entries</h2>
+        <p class="dek">Twelve journal articles, fifteen refereed conference papers and one filed
+          patent, newest first. Author order is as published; my name is set in bold.</p>
         <div class="side">
           <a class="lnk" href="https://scholar.google.com/citations?user=5jIAPTEAAAAJ&hl=en" target="_blank" rel="noopener">
             Google Scholar <svg aria-hidden="true"><use href="#i-out"></use></svg>
@@ -475,9 +623,9 @@
 
     <div class="pubbar">
       <div class="tabs" role="group" aria-label="Filter publications">
-        <button class="tab" type="button" data-f="all" aria-pressed="true">All <span class="c">24</span></button>
-        <button class="tab" type="button" data-f="journal" aria-pressed="false">Journals <span class="c">10</span></button>
-        <button class="tab" type="button" data-f="conference" aria-pressed="false">Conferences <span class="c">13</span></button>
+        <button class="tab" type="button" data-f="all" aria-pressed="true">All <span class="c">28</span></button>
+        <button class="tab" type="button" data-f="journal" aria-pressed="false">Journals <span class="c">12</span></button>
+        <button class="tab" type="button" data-f="conference" aria-pressed="false">Conferences <span class="c">15</span></button>
         <button class="tab" type="button" data-f="patent" aria-pressed="false">Patent <span class="c">1</span></button>
       </div>
       <div class="find">
@@ -489,207 +637,247 @@
 
     <div class="pubs" id="pubs">
 
-      <!-- ============ 2026 ============ -->
       <article class="pub" data-type="journal" data-year="2026">
-        <div class="id">[J3]</div>
+        <div class="id">[J1]</div>
         <div>
           <h3><a href="https://doi.org/10.1177/03611981261429472" target="_blank" rel="noopener">Not all travellers think alike: Segmenting travel behaviour under air pollution exposure using a hybrid latent class and discrete choice approach</a></h3>
-          <p class="au"><span class="me">Meena, K. K.</span> and Goswami, A. K.</p>
+          <p class="au"><span class="me">Meena, K. K.</span>, Goswami, A. K.</p>
           <p class="vn">Transportation Research Record<span class="yr">2026</span></p>
         </div>
         <div class="acts">
-          <a class="act act--doi" href="https://doi.org/10.1177/03611981261429472" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-out"></use></svg> DOI</a>
-          <button class="act" type="button" data-bib='{"type":"article","title":"Not all travellers think alike: Segmenting travel behaviour under air pollution exposure using a hybrid latent class and discrete choice approach","authors":"Meena, K. K. and Goswami, A. K.","venue":"Transportation Research Record","year":"2026","doi":"10.1177/03611981261429472"}'><svg aria-hidden="true"><use href="#i-copy"></use></svg> BibTeX</button>
+          <span class="act act--review">Accepted</span>
+  <a class="act act--doi" href="https://doi.org/10.1177/03611981261429472" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-out"></use></svg> DOI</a>
+  <button class="act" type="button" data-bib='{"type": "article", "title": "Not all travellers think alike: Segmenting travel behaviour under air pollution exposure using a hybrid latent class and discrete choice approach", "authors": "Meena, K. K. and Goswami, A. K.", "venue": "Transportation Research Record", "year": "2026", "doi": "10.1177/03611981261429472", "note": "Accepted"}'><svg aria-hidden="true"><use href="#i-copy"></use></svg> BibTeX</button>
         </div>
       </article>
 
       <article class="pub" data-type="journal" data-year="2026">
-        <div class="id">[J5]</div>
+        <div class="id">[J2]</div>
         <div>
           <h3>Beyond time and cost: Seasonal air-quality preferences in travel mode choice from a two-wave commuter panel</h3>
-          <p class="au"><span class="me">Meena, K. K.</span> and Goswami, A. K.</p>
+          <p class="au"><span class="me">Meena, K. K.</span>, Goswami, A. K.</p>
           <p class="vn">Transportation Research Record<span class="yr">2026</span></p>
         </div>
         <div class="acts">
           <span class="act act--review">Under review</span>
-          <button class="act" type="button" data-bib='{"type":"article","title":"Beyond time and cost: Seasonal air-quality preferences in travel mode choice from a two-wave commuter panel","authors":"Meena, K. K. and Goswami, A. K.","venue":"Transportation Research Record","year":"2026","note":"Under review"}'><svg aria-hidden="true"><use href="#i-copy"></use></svg> BibTeX</button>
+  <button class="act" type="button" data-bib='{"type": "article", "title": "Beyond time and cost: Seasonal air-quality preferences in travel mode choice from a two-wave commuter panel", "authors": "Meena, K. K. and Goswami, A. K.", "venue": "Transportation Research Record", "year": "2026", "note": "Under review"}'><svg aria-hidden="true"><use href="#i-copy"></use></svg> BibTeX</button>
         </div>
       </article>
 
-      <article class="pub" data-type="journal" data-year="2026">
-        <div class="id">[J8]</div>
-        <div>
-          <h3><a href="https://doi.org/10.11175/easts.16.PP3879" target="_blank" rel="noopener">Assessing air pollution exposure to school children in different modes of transport while commuting to school: A case of Kharagpur, India</a></h3>
-          <p class="au">Sumbhate, A., <span class="me">Meena, K. K.</span> and Goswami, A. K.</p>
-          <p class="vn">Journal of the Eastern Asia Society for Transportation Studies, 16<span class="yr">2026</span></p>
-        </div>
-        <div class="acts">
-          <a class="act act--doi" href="https://doi.org/10.11175/easts.16.PP3879" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-out"></use></svg> DOI</a>
-          <button class="act" type="button" data-bib='{"type":"article","title":"Assessing air pollution exposure to school children in different modes of transport while commuting to school: A case of Kharagpur, India","authors":"Sumbhate, A. and Meena, K. K. and Goswami, A. K.","venue":"Journal of the Eastern Asia Society for Transportation Studies","volume":"16","year":"2026","doi":"10.11175/easts.16.PP3879"}'><svg aria-hidden="true"><use href="#i-copy"></use></svg> BibTeX</button>
-        </div>
-      </article>
-
-      <article class="pub" data-type="journal" data-year="2026">
-        <div class="id">[J9]</div>
-        <div>
-          <h3><a href="https://doi.org/10.1109/AIEI69164.2026.11496657" target="_blank" rel="noopener">GeoNBeats: Unified spatio-temporal neural basis expansion for air quality estimation in sparse sensor networks</a></h3>
-          <p class="au">Joshi, V., <span class="me">Meena, K. K.</span> and Goswami, A. K.</p>
-          <p class="vn">IEEE International Conference on AI Engineering and Innovation (AIEI)<span class="yr">2026</span></p>
-        </div>
-        <div class="acts">
-          <a class="act act--doi" href="https://doi.org/10.1109/AIEI69164.2026.11496657" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-out"></use></svg> DOI</a>
-          <button class="act" type="button" data-bib='{"type":"inproceedings","title":"GeoNBeats: Unified spatio-temporal neural basis expansion for air quality estimation in sparse sensor networks","authors":"Joshi, V. and Meena, K. K. and Goswami, A. K.","venue":"IEEE International Conference on AI Engineering and Innovation (AIEI)","year":"2026","doi":"10.1109/AIEI69164.2026.11496657"}'><svg aria-hidden="true"><use href="#i-copy"></use></svg> BibTeX</button>
-        </div>
-      </article>
-
-      <article class="pub" data-type="journal" data-year="2026">
-        <div class="id">[J10]</div>
-        <div>
-          <h3><a href="https://doi.org/10.1109/COMSNETS67989.2026.11418296" target="_blank" rel="noopener">A hybrid geostatistical and deep learning framework for urban pollutant concentration prediction from sparse data</a></h3>
-          <p class="au">Gupta, C., Amitabh, A., <span class="me">Meena, K. K.</span> and Goswami, A. K.</p>
-          <p class="vn">IEEE International Conference on Communication Systems and Networks (COMSNETS)<span class="yr">2026</span></p>
-        </div>
-        <div class="acts">
-          <a class="act act--doi" href="https://doi.org/10.1109/COMSNETS67989.2026.11418296" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-out"></use></svg> DOI</a>
-          <button class="act" type="button" data-bib='{"type":"inproceedings","title":"A hybrid geostatistical and deep learning framework for urban pollutant concentration prediction from sparse data","authors":"Gupta, C. and Amitabh, A. and Meena, K. K. and Goswami, A. K.","venue":"IEEE International Conference on Communication Systems and Networks (COMSNETS)","year":"2026","doi":"10.1109/COMSNETS67989.2026.11418296"}'><svg aria-hidden="true"><use href="#i-copy"></use></svg> BibTeX</button>
-        </div>
-      </article>
-
-      <article class="pub" data-type="patent" data-year="2026">
-        <div class="id">[P1]</div>
-        <div>
-          <h3>Personalised dynamic route planning system for sustainable urban mobility</h3>
-          <p class="au"><span class="me">Meena, K. K.</span> and Goswami, A. K.</p>
-          <p class="vn">Indian Patent Application #202631018379<span class="yr">Filed</span></p>
-        </div>
-        <div class="acts">
-          <button class="act" type="button" data-bib='{"type":"misc","title":"Personalised dynamic route planning system for sustainable urban mobility","authors":"Meena, K. K. and Goswami, A. K.","venue":"Indian Patent Application #202631018379","year":"2026","note":"Patent application filed"}'><svg aria-hidden="true"><use href="#i-copy"></use></svg> BibTeX</button>
-        </div>
-      </article>
-
-      <article class="pub" data-type="conference" data-year="2026">
-        <div class="id">[C1]</div>
-        <div>
-          <h3>Not all travellers think alike: Segmenting travel behaviour under air pollution exposure using a hybrid latent class and discrete choice approach</h3>
-          <p class="au"><span class="me">Meena, K. K.</span> and Goswami, A. K.</p>
-          <p class="vn">Transportation Research Board (TRB) 105th Annual Meeting, Washington, DC<span class="yr">2026</span></p>
-        </div>
-        <div class="acts">
-          <button class="act" type="button" data-bib='{"type":"inproceedings","title":"Not all travellers think alike: Segmenting travel behaviour under air pollution exposure using a hybrid latent class and discrete choice approach","authors":"Meena, K. K. and Goswami, A. K.","venue":"Transportation Research Board (TRB) 105th Annual Meeting, Washington, DC","year":"2026"}'><svg aria-hidden="true"><use href="#i-copy"></use></svg> BibTeX</button>
-        </div>
-      </article>
-
-      <article class="pub" data-type="conference" data-year="2026">
-        <div class="id">[C5]</div>
-        <div>
-          <h3>Developing an integrated walkability score using image-based feature extraction and user preferences</h3>
-          <p class="au">Singh, A., <span class="me">Meena, K. K.</span>, Sharma, G., Goswami, A. K. and Mishra, S.</p>
-          <p class="vn">World Conference of Transport Research (WCTR), France<span class="yr">2026</span></p>
-        </div>
-        <div class="acts">
-          <span class="act act--review">Accepted</span>
-          <button class="act" type="button" data-bib='{"type":"inproceedings","title":"Developing an integrated walkability score using image-based feature extraction and user preferences","authors":"Singh, A. and Meena, K. K. and Sharma, G. and Goswami, A. K. and Mishra, S.","venue":"World Conference of Transport Research (WCTR), France","year":"2026","note":"Accepted for presentation and publication"}'><svg aria-hidden="true"><use href="#i-copy"></use></svg> BibTeX</button>
-        </div>
-      </article>
-
-      <article class="pub" data-type="conference" data-year="2026">
-        <div class="id">[C13]</div>
-        <div>
-          <h3>GeoNBeats: Unified spatio-temporal neural basis expansion for air quality estimation in sparse sensor networks</h3>
-          <p class="au">Joshi, V., <span class="me">Meena, K. K.</span> and Goswami, A. K.</p>
-          <p class="vn">IEEE International Conference on AI Engineering and Innovation (AIEI)<span class="yr">2026</span></p>
-        </div>
-        <div class="acts">
-          <button class="act" type="button" data-bib='{"type":"inproceedings","title":"GeoNBeats: Unified spatio-temporal neural basis expansion for air quality estimation in sparse sensor networks","authors":"Joshi, V. and Meena, K. K. and Goswami, A. K.","venue":"IEEE International Conference on AI Engineering and Innovation (AIEI)","year":"2026"}'><svg aria-hidden="true"><use href="#i-copy"></use></svg> BibTeX</button>
-        </div>
-      </article>
-
-      <!-- ============ 2025 ============ -->
       <article class="pub" data-type="journal" data-year="2025">
-        <div class="id">[J2]</div>
+        <div class="id">[J3]</div>
         <div>
-          <h3><a href="https://doi.org/10.1177/03611981251331011" target="_blank" rel="noopener">Dynamic route planning for urban green mobility: Development of a web application offering sustainable route options to commuters</a></h3>
-          <p class="au"><span class="me">Meena, K. K.</span>, Singh, A. K. and Goswami, A. K.</p>
-          <p class="vn">Transportation Research Record<span class="yr">2025</span></p>
+          <h3>Beyond choice modelling: Bridging econometric theory and deep learning for robust mode choice prediction</h3>
+          <p class="au"><span class="me">Meena, K. K.</span>, Goswami, A. K.</p>
+          <p class="vn">Transportation Research Part A: Policy and Practice<span class="yr">2025</span></p>
         </div>
         <div class="acts">
-          <a class="act act--doi" href="https://doi.org/10.1177/03611981251331011" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-out"></use></svg> DOI</a>
-          <button class="act" type="button" data-bib='{"type":"article","title":"Dynamic route planning for urban green mobility: Development of a web application offering sustainable route options to commuters","authors":"Meena, K. K. and Singh, A. K. and Goswami, A. K.","venue":"Transportation Research Record","year":"2025","doi":"10.1177/03611981251331011"}'><svg aria-hidden="true"><use href="#i-copy"></use></svg> BibTeX</button>
+          <span class="act act--review">Under review</span>
+  <button class="act" type="button" data-bib='{"type": "article", "title": "Beyond choice modelling: Bridging econometric theory and deep learning for robust mode choice prediction", "authors": "Meena, K. K. and Goswami, A. K.", "venue": "Transportation Research Part A: Policy and Practice", "year": "2025", "note": "Under review"}'><svg aria-hidden="true"><use href="#i-copy"></use></svg> BibTeX</button>
         </div>
       </article>
 
       <article class="pub" data-type="journal" data-year="2025">
         <div class="id">[J4]</div>
         <div>
-          <h3>Do commuters reroute for cleaner air? Seasonal salience in route choice behaviour from a two-wave panel in Kolkata, India</h3>
-          <p class="au"><span class="me">Meena, K. K.</span> and Goswami, A. K.</p>
+          <h3><a href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=6904230" target="_blank" rel="noopener">Do commuters reroute for cleaner air? Seasonal salience in route choice behaviour from a two-wave panel in Kolkata, India</a></h3>
+          <p class="au"><span class="me">Meena, K. K.</span>, Goswami, A. K.</p>
           <p class="vn">Travel Behaviour &amp; Society<span class="yr">2025</span></p>
         </div>
         <div class="acts">
           <span class="act act--review">Under review</span>
-          <button class="act" type="button" data-bib='{"type":"article","title":"Do commuters reroute for cleaner air? Seasonal salience in route choice behaviour from a two-wave panel in Kolkata, India","authors":"Meena, K. K. and Goswami, A. K.","venue":"Travel Behaviour and Society","year":"2025","note":"Under review"}'><svg aria-hidden="true"><use href="#i-copy"></use></svg> BibTeX</button>
+  <a class="act act--doi" href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=6904230" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-out"></use></svg> Preprint</a>
+  <button class="act" type="button" data-bib='{"type": "article", "title": "Do commuters reroute for cleaner air? Seasonal salience in route choice behaviour from a two-wave panel in Kolkata, India", "authors": "Meena, K. K. and Goswami, A. K.", "venue": "Travel Behaviour and Society", "year": "2025", "note": "Under review"}'><svg aria-hidden="true"><use href="#i-copy"></use></svg> BibTeX</button>
+        </div>
+      </article>
+
+      <article class="pub" data-type="journal" data-year="2025">
+        <div class="id">[J5]</div>
+        <div>
+          <h3><a href="https://doi.org/10.1177/03611981251331011" target="_blank" rel="noopener">Dynamic route planning for urban green mobility: Development of a web application offering sustainable route options to commuters</a></h3>
+          <p class="au"><span class="me">Meena, K. K.</span>, Singh, A. K., Goswami, A. K.</p>
+          <p class="vn">Transportation Research Record<span class="yr">2025</span></p>
+        </div>
+        <div class="acts">
+          <a class="act act--doi" href="https://doi.org/10.1177/03611981251331011" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-out"></use></svg> DOI</a>
+  <button class="act" type="button" data-bib='{"type": "article", "title": "Dynamic route planning for urban green mobility: Development of a web application offering sustainable route options to commuters", "authors": "Meena, K. K. and Singh, A. K. and Goswami, A. K.", "venue": "Transportation Research Record", "year": "2025", "doi": "10.1177/03611981251331011"}'><svg aria-hidden="true"><use href="#i-copy"></use></svg> BibTeX</button>
         </div>
       </article>
 
       <article class="pub" data-type="journal" data-year="2025">
         <div class="id">[J6]</div>
         <div>
-          <h3><a href="https://doi.org/10.1080/15568318.2025.2572818" target="_blank" rel="noopener">An integrated choice latent variable (ICLV) model to assess the willingness to bicycle for the first mile: A case of Mumbai suburban rail</a></h3>
-          <p class="au">Manoj, B. S., <span class="me">Meena, K. K.</span>, Panchal, H., Sharma, G. S. and Goswami, A. K.</p>
-          <p class="vn">International Journal of Sustainable Transportation<span class="yr">2025</span></p>
+          <h3><a href="https://doi.org/10.11175/easts.16.PP3879" target="_blank" rel="noopener">Assessing air pollution exposure to school children in different modes of transport while commuting to school: A case of Kharagpur, India</a></h3>
+          <p class="au">Sumbhate, A., <span class="me">Meena, K. K.</span>, Goswami, A. K.</p>
+          <p class="vn">Journal of the Eastern Asia Society for Transportation Studies, vol. 16<span class="yr">2025</span></p>
         </div>
         <div class="acts">
-          <a class="act act--doi" href="https://doi.org/10.1080/15568318.2025.2572818" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-out"></use></svg> DOI</a>
-          <button class="act" type="button" data-bib='{"type":"article","title":"An integrated choice latent variable (ICLV) model to assess the willingness to bicycle for the first mile: A case of Mumbai suburban rail","authors":"Manoj, B. S. and Meena, K. K. and Panchal, H. and Sharma, G. S. and Goswami, A. K.","venue":"International Journal of Sustainable Transportation","year":"2025","doi":"10.1080/15568318.2025.2572818"}'><svg aria-hidden="true"><use href="#i-copy"></use></svg> BibTeX</button>
+          <a class="act act--doi" href="https://doi.org/10.11175/easts.16.PP3879" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-out"></use></svg> DOI</a>
+  <button class="act" type="button" data-bib='{"type": "article", "title": "Assessing air pollution exposure to school children in different modes of transport while commuting to school: A case of Kharagpur, India", "authors": "Sumbhate, A. and Meena, K. K. and Goswami, A. K.", "venue": "Journal of the Eastern Asia Society for Transportation Studies", "year": "2025", "volume": "16", "doi": "10.11175/easts.16.PP3879"}'><svg aria-hidden="true"><use href="#i-copy"></use></svg> BibTeX</button>
         </div>
       </article>
 
       <article class="pub" data-type="journal" data-year="2025">
         <div class="id">[J7]</div>
         <div>
-          <h3><a href="https://doi.org/10.1080/29941849.2025.2516475" target="_blank" rel="noopener">A prioritisation framework to identify key attributes of transit-oriented development (TOD) using a multi-criteria decision-making approach: An Indian context</a></h3>
-          <p class="au">Manoj, B. S., <span class="me">Meena, K. K.</span> and Goswami, A. K.</p>
-          <p class="vn">Sustainable Transport and Livability<span class="yr">2025</span></p>
+          <h3><a href="https://doi.org/10.1080/15568318.2025.2572818" target="_blank" rel="noopener">Modeling bicycle choice behavior and its potential health impact: Case of first/last mile access to suburban rail</a></h3>
+          <p class="au">Manoj, B. S., <span class="me">Meena, K. K.</span>, Panchal, H., Sharma, G., Goswami, A. K.</p>
+          <p class="vn">International Journal of Sustainable Transportation<span class="yr">2025</span></p>
+        </div>
+        <div class="acts">
+          <a class="act act--doi" href="https://doi.org/10.1080/15568318.2025.2572818" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-out"></use></svg> DOI</a>
+  <button class="act" type="button" data-bib='{"type": "article", "title": "Modeling bicycle choice behavior and its potential health impact: Case of first/last mile access to suburban rail", "authors": "Manoj, B. S. and Meena, K. K. and Panchal, H. and Sharma, G. and Goswami, A. K.", "venue": "International Journal of Sustainable Transportation", "year": "2025", "doi": "10.1080/15568318.2025.2572818"}'><svg aria-hidden="true"><use href="#i-copy"></use></svg> BibTeX</button>
+        </div>
+      </article>
+
+      <article class="pub" data-type="journal" data-year="2025">
+        <div class="id">[J8]</div>
+        <div>
+          <h3><a href="https://doi.org/10.1080/29941849.2025.2516475" target="_blank" rel="noopener">A prioritization framework to identify key attributes of transit-oriented development (TOD) using a multi-criteria decision-making (MCDM) approach: An Indian context</a></h3>
+          <p class="au">Manoj, B. S., <span class="me">Meena, K. K.</span>, Goswami, A. K.</p>
+          <p class="vn">Sustainable Transport and Livability, vol. 2<span class="yr">2025</span></p>
         </div>
         <div class="acts">
           <a class="act act--doi" href="https://doi.org/10.1080/29941849.2025.2516475" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-out"></use></svg> DOI</a>
-          <button class="act" type="button" data-bib='{"type":"article","title":"A prioritisation framework to identify key attributes of transit-oriented development (TOD) using a multi-criteria decision-making approach: An Indian context","authors":"Manoj, B. S. and Meena, K. K. and Goswami, A. K.","venue":"Sustainable Transport and Livability","year":"2025","doi":"10.1080/29941849.2025.2516475"}'><svg aria-hidden="true"><use href="#i-copy"></use></svg> BibTeX</button>
+  <button class="act" type="button" data-bib='{"type": "article", "title": "A prioritization framework to identify key attributes of transit-oriented development (TOD) using a multi-criteria decision-making (MCDM) approach: An Indian context", "authors": "Manoj, B. S. and Meena, K. K. and Goswami, A. K.", "venue": "Sustainable Transport and Livability", "year": "2025", "volume": "2", "doi": "10.1080/29941849.2025.2516475"}'><svg aria-hidden="true"><use href="#i-copy"></use></svg> BibTeX</button>
+        </div>
+      </article>
+
+      <article class="pub" data-type="journal" data-year="2024">
+        <div class="id">[J9]</div>
+        <div>
+          <h3><a href="https://doi.org/10.1016/j.tranpol.2024.05.024" target="_blank" rel="noopener">A review of air pollution exposure impacts on travel behaviour and way forward</a></h3>
+          <p class="au"><span class="me">Meena, K. K.</span>, Goswami, A. K.</p>
+          <p class="vn">Transport Policy, vol. 154, pp. 48&ndash;60<span class="yr">2024</span></p>
+        </div>
+        <div class="acts">
+          <a class="act act--doi" href="https://doi.org/10.1016/j.tranpol.2024.05.024" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-out"></use></svg> DOI</a>
+  <button class="act" type="button" data-bib='{"type": "article", "title": "A review of air pollution exposure impacts on travel behaviour and way forward", "authors": "Meena, K. K. and Goswami, A. K.", "venue": "Transport Policy", "year": "2024", "volume": "154", "pages": "48--60", "doi": "10.1016/j.tranpol.2024.05.024"}'><svg aria-hidden="true"><use href="#i-copy"></use></svg> BibTeX</button>
+        </div>
+      </article>
+
+      <article class="pub" data-type="journal" data-year="2024">
+        <div class="id">[J10]</div>
+        <div>
+          <h3><a href="https://www.sciencedirect.com/science/article/pii/S2772662224000638" target="_blank" rel="noopener">A machine learning approach for unraveling the influence of air quality awareness on travel behavior</a></h3>
+          <p class="au"><span class="me">Meena, K. K.</span>, Bairwa, D., Agarwal, A.</p>
+          <p class="vn">Decision Analytics Journal, vol. 11, 100459<span class="yr">2024</span></p>
+        </div>
+        <div class="acts">
+          <a class="act act--doi" href="https://www.sciencedirect.com/science/article/pii/S2772662224000638" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-out"></use></svg> Article</a>
+  <button class="act" type="button" data-bib='{"type": "article", "title": "A machine learning approach for unraveling the influence of air quality awareness on travel behavior", "authors": "Meena, K. K. and Bairwa, D. and Agarwal, A.", "venue": "Decision Analytics Journal", "year": "2024", "volume": "11", "pages": "100459"}'><svg aria-hidden="true"><use href="#i-copy"></use></svg> BibTeX</button>
+        </div>
+      </article>
+
+      <article class="pub" data-type="journal" data-year="2023">
+        <div class="id">[J11]</div>
+        <div>
+          <h3>Perception of commuters towards air quality in Delhi</h3>
+          <p class="au"><span class="me">Meena, K. K.</span>, Singh, V., Agarwal, A.</p>
+          <p class="vn">Journal of Transport &amp; Health, vol. 31, 101643<span class="yr">2023</span></p>
+        </div>
+        <div class="acts">
+          <button class="act" type="button" data-bib='{"type": "article", "title": "Perception of commuters towards air quality in Delhi", "authors": "Meena, K. K. and Singh, V. and Agarwal, A.", "venue": "Journal of Transport and Health", "year": "2023", "volume": "31", "pages": "101643"}'><svg aria-hidden="true"><use href="#i-copy"></use></svg> BibTeX</button>
+        </div>
+      </article>
+
+      <article class="pub" data-type="journal" data-year="2021">
+        <div class="id">[J12]</div>
+        <div>
+          <h3><a href="https://www.sciencedirect.com/science/article/pii/S2212095521001310" target="_blank" rel="noopener">Travellers&rsquo; exposure to air pollution: A systematic review and future directions</a></h3>
+          <p class="au">Singh, V., <span class="me">Meena, K. K.</span>, Agarwal, A.</p>
+          <p class="vn">Urban Climate, vol. 38, 100901<span class="yr">2021</span></p>
+        </div>
+        <div class="acts">
+          <a class="act act--doi" href="https://www.sciencedirect.com/science/article/pii/S2212095521001310" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-out"></use></svg> Article</a>
+  <button class="act" type="button" data-bib='{"type": "article", "title": "Travellers&#39; exposure to air pollution: A systematic review and future directions", "authors": "Singh, V. and Meena, K. K. and Agarwal, A.", "venue": "Urban Climate", "year": "2021", "volume": "38", "pages": "100901"}'><svg aria-hidden="true"><use href="#i-copy"></use></svg> BibTeX</button>
+        </div>
+      </article>
+
+      <article class="pub" data-type="conference" data-year="2026">
+        <div class="id">[C1]</div>
+        <div>
+          <h3>Not all travellers think alike: Segmenting travel behaviour under air pollution exposure</h3>
+          <p class="au"><span class="me">Meena, K. K.</span>, Goswami, A. K.</p>
+          <p class="vn">Transportation Research Board (TRB) 105th Annual Meeting, Washington, DC<span class="yr">2026</span></p>
+        </div>
+        <div class="acts">
+          <button class="act" type="button" data-bib='{"type": "inproceedings", "title": "Not all travellers think alike: Segmenting travel behaviour under air pollution exposure", "authors": "Meena, K. K. and Goswami, A. K.", "venue": "Transportation Research Board (TRB) 105th Annual Meeting, Washington, DC", "year": "2026"}'><svg aria-hidden="true"><use href="#i-copy"></use></svg> BibTeX</button>
+        </div>
+      </article>
+
+      <article class="pub" data-type="conference" data-year="2026">
+        <div class="id">[C2]</div>
+        <div>
+          <h3><a href="https://doi.org/10.1109/COMSNETS67989.2026.11418296" target="_blank" rel="noopener">A hybrid geostatistical and deep learning framework for urban pollutant concentration prediction from sparse data</a></h3>
+          <p class="au">Gupta, C., Amitabh, A., <span class="me">Meena, K. K.</span>, Goswami, A. K.</p>
+          <p class="vn">18th International Conference on Communication Systems &amp; Networks (COMSNETS), IEEE<span class="yr">2026</span></p>
+        </div>
+        <div class="acts">
+          <a class="act act--doi" href="https://doi.org/10.1109/COMSNETS67989.2026.11418296" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-out"></use></svg> DOI</a>
+  <button class="act" type="button" data-bib='{"type": "inproceedings", "title": "A hybrid geostatistical and deep learning framework for urban pollutant concentration prediction from sparse data", "authors": "Gupta, C. and Amitabh, A. and Meena, K. K. and Goswami, A. K.", "venue": "18th International Conference on Communication Systems and Networks (COMSNETS), IEEE", "year": "2026", "doi": "10.1109/COMSNETS67989.2026.11418296"}'><svg aria-hidden="true"><use href="#i-copy"></use></svg> BibTeX</button>
+        </div>
+      </article>
+
+      <article class="pub" data-type="conference" data-year="2026">
+        <div class="id">[C3]</div>
+        <div>
+          <h3><a href="https://doi.org/10.1109/AIEI69164.2026.11496657" target="_blank" rel="noopener">GeoNBeats: Unified spatio-temporal neural basis expansion for air quality estimation in sparse sensor networks</a></h3>
+          <p class="au">Joshi, V., <span class="me">Meena, K. K.</span>, Goswami, A. K.</p>
+          <p class="vn">IEEE International Conference on AI Engineering and Innovation (AIEI)<span class="yr">2026</span></p>
+        </div>
+        <div class="acts">
+          <a class="act act--doi" href="https://doi.org/10.1109/AIEI69164.2026.11496657" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-out"></use></svg> DOI</a>
+  <button class="act" type="button" data-bib='{"type": "inproceedings", "title": "GeoNBeats: Unified spatio-temporal neural basis expansion for air quality estimation in sparse sensor networks", "authors": "Joshi, V. and Meena, K. K. and Goswami, A. K.", "venue": "IEEE International Conference on AI Engineering and Innovation (AIEI)", "year": "2026", "doi": "10.1109/AIEI69164.2026.11496657"}'><svg aria-hidden="true"><use href="#i-copy"></use></svg> BibTeX</button>
+        </div>
+      </article>
+
+      <article class="pub" data-type="conference" data-year="2026">
+        <div class="id">[C4]</div>
+        <div>
+          <h3>Developing an integrated walkability score using image-based feature extraction and user preferences</h3>
+          <p class="au">Singh, A., <span class="me">Meena, K. K.</span>, Sharma, G., Goswami, A. K., Mishra, S.</p>
+          <p class="vn">Transportation Research Board (TRB) 105th Annual Meeting, Washington, DC &middot; also World Conference on Transport Research (WCTR), France<span class="yr">2026</span></p>
+        </div>
+        <div class="acts">
+          <span class="act act--review">Accepted</span>
+  <button class="act" type="button" data-bib='{"type": "inproceedings", "title": "Developing an integrated walkability score using image-based feature extraction and user preferences", "authors": "Singh, A. and Meena, K. K. and Sharma, G. and Goswami, A. K. and Mishra, S.", "venue": "Transportation Research Board (TRB) 105th Annual Meeting, Washington, DC", "year": "2026", "note": "Also accepted at WCTR 2026, France"}'><svg aria-hidden="true"><use href="#i-copy"></use></svg> BibTeX</button>
         </div>
       </article>
 
       <article class="pub" data-type="conference" data-year="2025">
-        <div class="id">[C2]</div>
+        <div class="id">[C5]</div>
         <div>
-          <h3>Dynamic route planning for urban green mobility: Development of a web application offering sustainable route options to commuters</h3>
-          <p class="au"><span class="me">Meena, K. K.</span>, Singh, A. K. and Goswami, A. K.</p>
+          <h3>Dynamic route planning for urban green mobility</h3>
+          <p class="au"><span class="me">Meena, K. K.</span>, Singh, A. K., Goswami, A. K.</p>
           <p class="vn">7th International Conference of the Transportation Research Group of India (CTRG-2023), SVNIT Surat<span class="yr">2025</span></p>
         </div>
         <div class="acts">
-          <button class="act" type="button" data-bib='{"type":"inproceedings","title":"Dynamic route planning for urban green mobility: Development of a web application offering sustainable route options to commuters","authors":"Meena, K. K. and Singh, A. K. and Goswami, A. K.","venue":"7th International Conference of the Transportation Research Group of India (CTRG-2023), SVNIT Surat","year":"2025"}'><svg aria-hidden="true"><use href="#i-copy"></use></svg> BibTeX</button>
+          <button class="act" type="button" data-bib='{"type": "inproceedings", "title": "Dynamic route planning for urban green mobility", "authors": "Meena, K. K. and Singh, A. K. and Goswami, A. K.", "venue": "7th International Conference of the Transportation Research Group of India (CTRG), SVNIT Surat", "year": "2025"}'><svg aria-hidden="true"><use href="#i-copy"></use></svg> BibTeX</button>
         </div>
       </article>
 
       <article class="pub" data-type="conference" data-year="2025">
         <div class="id">[C6]</div>
         <div>
-          <h3>A prioritisation framework to identify key attributes of transit-oriented development (TOD) using a multi-criteria decision-making approach: An Indian context</h3>
-          <p class="au">Manoj, B. S., <span class="me">Meena, K. K.</span> and Goswami, A. K.</p>
-          <p class="vn">1st World Symposium on Sustainable Transport and Livability (WSSTL-2025), IISc Bengaluru<span class="yr">2025</span></p>
+          <h3>Assessing the air pollution exposure to school children in different modes of transport while commuting to school</h3>
+          <p class="au">Sumbhate, A., <span class="me">Meena, K. K.</span>, Goswami, A. K.</p>
+          <p class="vn">Proceedings of the Eastern Asia Society for Transportation Studies (EASTS), Jakarta<span class="yr">2025</span></p>
         </div>
         <div class="acts">
-          <button class="act" type="button" data-bib='{"type":"inproceedings","title":"A prioritisation framework to identify key attributes of transit-oriented development (TOD) using a multi-criteria decision-making approach: An Indian context","authors":"Manoj, B. S. and Meena, K. K. and Goswami, A. K.","venue":"1st World Symposium on Sustainable Transport and Livability (WSSTL-2025), IISc Bengaluru","year":"2025"}'><svg aria-hidden="true"><use href="#i-copy"></use></svg> BibTeX</button>
+          <button class="act" type="button" data-bib='{"type": "inproceedings", "title": "Assessing the air pollution exposure to school children in different modes of transport while commuting to school", "authors": "Sumbhate, A. and Meena, K. K. and Goswami, A. K.", "venue": "Proceedings of the Eastern Asia Society for Transportation Studies (EASTS), Jakarta", "year": "2025"}'><svg aria-hidden="true"><use href="#i-copy"></use></svg> BibTeX</button>
         </div>
       </article>
 
       <article class="pub" data-type="conference" data-year="2025">
         <div class="id">[C7]</div>
         <div>
-          <h3>Assessing the air pollution exposure to school children in different modes of transport while commuting to school: A case of Kharagpur, India</h3>
-          <p class="au">Sumbhate, A., <span class="me">Meena, K. K.</span> and Goswami, A. K.</p>
-          <p class="vn">Proceedings of the Eastern Asia Society for Transportation Studies (EASTS), Jakarta<span class="yr">2025</span></p>
+          <h3>A prioritization framework to identify key attributes of transit-oriented development (TOD)</h3>
+          <p class="au">Manoj, B. S., <span class="me">Meena, K. K.</span>, Goswami, A. K.</p>
+          <p class="vn">1st World Symposium on Sustainable Transport and Livability (WSSTL-2025), IISc Bengaluru<span class="yr">2025</span></p>
         </div>
         <div class="acts">
-          <button class="act" type="button" data-bib='{"type":"inproceedings","title":"Assessing the air pollution exposure to school children in different modes of transport while commuting to school: A case of Kharagpur, India","authors":"Sumbhate, A. and Meena, K. K. and Goswami, A. K.","venue":"Proceedings of the Eastern Asia Society for Transportation Studies (EASTS), Jakarta","year":"2025"}'><svg aria-hidden="true"><use href="#i-copy"></use></svg> BibTeX</button>
+          <button class="act" type="button" data-bib='{"type": "inproceedings", "title": "A prioritization framework to identify key attributes of transit-oriented development (TOD)", "authors": "Manoj, B. S. and Meena, K. K. and Goswami, A. K.", "venue": "1st World Symposium on Sustainable Transport and Livability (WSSTL), IISc Bengaluru", "year": "2025"}'><svg aria-hidden="true"><use href="#i-copy"></use></svg> BibTeX</button>
         </div>
       </article>
 
@@ -697,11 +885,11 @@
         <div class="id">[C8]</div>
         <div>
           <h3>Accessibility assessment of urban public transit to key facilities through spatial analysis: A case study of Delhi</h3>
-          <p class="au">Kodukulla, R., <span class="me">Meena, K. K.</span>, Sharma, G. and Goswami, A. K.</p>
-          <p class="vn">TIPCE 2025, IIT Roorkee<span class="yr">2025</span></p>
+          <p class="au">Kodukulla, R., <span class="me">Meena, K. K.</span>, Sharma, G., Goswami, A. K.</p>
+          <p class="vn">Transportation Infrastructure Projects: Conception to Execution (TIPCE), IIT Roorkee<span class="yr">2025</span></p>
         </div>
         <div class="acts">
-          <button class="act" type="button" data-bib='{"type":"inproceedings","title":"Accessibility assessment of urban public transit to key facilities through spatial analysis: A case study of Delhi","authors":"Kodukulla, R. and Meena, K. K. and Sharma, G. and Goswami, A. K.","venue":"TIPCE 2025, IIT Roorkee","year":"2025"}'><svg aria-hidden="true"><use href="#i-copy"></use></svg> BibTeX</button>
+          <button class="act" type="button" data-bib='{"type": "inproceedings", "title": "Accessibility assessment of urban public transit to key facilities through spatial analysis: A case study of Delhi", "authors": "Kodukulla, R. and Meena, K. K. and Sharma, G. and Goswami, A. K.", "venue": "Transportation Infrastructure Projects: Conception to Execution (TIPCE), IIT Roorkee", "year": "2025"}'><svg aria-hidden="true"><use href="#i-copy"></use></svg> BibTeX</button>
         </div>
       </article>
 
@@ -709,86 +897,96 @@
         <div class="id">[C9]</div>
         <div>
           <h3>Air pollution exposure among Kolkata&rsquo;s auto-rickshaw drivers: PM variability, health risks, and predictive modelling</h3>
-          <p class="au">Dasgupta, S., <span class="me">Meena, K. K.</span>, Majumdar, D. and Goswami, A. K.</p>
-          <p class="vn">AEEE India Conference on Energies<span class="yr">2025</span></p>
+          <p class="au">Dasgupta, S., <span class="me">Meena, K. K.</span>, Majumdar, D., Goswami, A. K.</p>
+          <p class="vn">Energies, AEEE India Conference<span class="yr">2025</span></p>
         </div>
         <div class="acts">
-          <button class="act" type="button" data-bib='{"type":"inproceedings","title":"Air pollution exposure among Kolkata auto-rickshaw drivers: PM variability, health risks, and predictive modelling","authors":"Dasgupta, S. and Meena, K. K. and Majumdar, D. and Goswami, A. K.","venue":"AEEE India Conference on Energies","year":"2025"}'><svg aria-hidden="true"><use href="#i-copy"></use></svg> BibTeX</button>
-        </div>
-      </article>
-
-      <!-- ============ 2024 ============ -->
-      <article class="pub" data-type="journal" data-year="2024">
-        <div class="id">[J1]</div>
-        <div>
-          <h3><a href="https://doi.org/10.1016/j.tranpol.2024.05.024" target="_blank" rel="noopener">A review of air pollution exposure impacts on travel behaviour and way forward</a></h3>
-          <p class="au"><span class="me">Meena, K. K.</span> and Goswami, A. K.</p>
-          <p class="vn">Transport Policy, 154, 48&ndash;60<span class="yr">2024</span></p>
-        </div>
-        <div class="acts">
-          <a class="act act--doi" href="https://doi.org/10.1016/j.tranpol.2024.05.024" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-out"></use></svg> DOI</a>
-          <button class="act" type="button" data-bib='{"type":"article","title":"A review of air pollution exposure impacts on travel behaviour and way forward","authors":"Meena, K. K. and Goswami, A. K.","venue":"Transport Policy","volume":"154","pages":"48--60","year":"2024","doi":"10.1016/j.tranpol.2024.05.024"}'><svg aria-hidden="true"><use href="#i-copy"></use></svg> BibTeX</button>
+          <button class="act" type="button" data-bib='{"type": "inproceedings", "title": "Air pollution exposure among Kolkata&#39;s auto-rickshaw drivers: PM variability, health risks, and predictive modelling", "authors": "Dasgupta, S. and Meena, K. K. and Majumdar, D. and Goswami, A. K.", "venue": "Energies, AEEE India Conference", "year": "2025"}'><svg aria-hidden="true"><use href="#i-copy"></use></svg> BibTeX</button>
         </div>
       </article>
 
       <article class="pub" data-type="conference" data-year="2024">
         <div class="id">[C10]</div>
         <div>
-          <h3>Breathable modes to school: Assessing the air pollution exposure of travel choices for school children in urban environments</h3>
-          <p class="au">Sumbhate, A., <span class="me">Meena, K. K.</span> and Goswami, A. K.</p>
-          <p class="vn">52nd Urban Affairs Association (UAA) Annual Meeting, Nashville, Tennessee<span class="yr">2024</span></p>
+          <h3>Impact of air pollution on informed decision-making for choice of a travel mode</h3>
+          <p class="au"><span class="me">Meena, K. K.</span>, Taneja, R., Agarwal, A.</p>
+          <p class="vn">16th International Conference on Communication Systems &amp; Networks (COMSNETS), IEEE<span class="yr">2024</span></p>
         </div>
         <div class="acts">
-          <button class="act" type="button" data-bib='{"type":"inproceedings","title":"Breathable modes to school: Assessing the air pollution exposure of travel choices for school children in urban environments","authors":"Sumbhate, A. and Meena, K. K. and Goswami, A. K.","venue":"52nd Urban Affairs Association (UAA) Annual Meeting, Nashville, Tennessee","year":"2024"}'><svg aria-hidden="true"><use href="#i-copy"></use></svg> BibTeX</button>
+          <button class="act" type="button" data-bib='{"type": "inproceedings", "title": "Impact of air pollution on informed decision-making for choice of a travel mode", "authors": "Meena, K. K. and Taneja, R. and Agarwal, A.", "venue": "16th International Conference on Communication Systems and Networks (COMSNETS), IEEE", "year": "2024"}'><svg aria-hidden="true"><use href="#i-copy"></use></svg> BibTeX</button>
         </div>
       </article>
 
       <article class="pub" data-type="conference" data-year="2024">
         <div class="id">[C11]</div>
         <div>
-          <h3>Analysing user behaviour along dedicated bicycle facilities in an urban environment</h3>
-          <p class="au">Mohanty, P., <span class="me">Meena, K. K.</span> and Goswami, A. K.</p>
-          <p class="vn">52nd Urban Affairs Association (UAA) Annual Meeting, Nashville, Tennessee<span class="yr">2024</span></p>
+          <h3>Breathable modes to school: Assessing the air pollution exposure of travel choices for school children in urban environments</h3>
+          <p class="au">Sumbhate, A., <span class="me">Meena, K. K.</span>, Goswami, A. K.</p>
+          <p class="vn">52nd Urban Affairs Association (UAA) Annual Meeting, Nashville<span class="yr">2024</span></p>
         </div>
         <div class="acts">
-          <button class="act" type="button" data-bib='{"type":"inproceedings","title":"Analysing user behaviour along dedicated bicycle facilities in an urban environment","authors":"Mohanty, P. and Meena, K. K. and Goswami, A. K.","venue":"52nd Urban Affairs Association (UAA) Annual Meeting, Nashville, Tennessee","year":"2024"}'><svg aria-hidden="true"><use href="#i-copy"></use></svg> BibTeX</button>
+          <button class="act" type="button" data-bib='{"type": "inproceedings", "title": "Breathable modes to school: Assessing the air pollution exposure of travel choices for school children in urban environments", "authors": "Sumbhate, A. and Meena, K. K. and Goswami, A. K.", "venue": "52nd Urban Affairs Association (UAA) Annual Meeting, Nashville", "year": "2024"}'><svg aria-hidden="true"><use href="#i-copy"></use></svg> BibTeX</button>
         </div>
       </article>
 
       <article class="pub" data-type="conference" data-year="2024">
         <div class="id">[C12]</div>
         <div>
-          <h3>Assessing the willingness to bicycle for the first mile to the Mumbai suburban rail</h3>
-          <p class="au">Manoj, B. S., <span class="me">Meena, K. K.</span>, Panchal, H., Sharma, G. and Goswami, A. K.</p>
-          <p class="vn">17th International Association for Travel Behaviour Research (IATBR), Vienna<span class="yr">2024</span></p>
+          <h3>Analysing user behaviour along dedicated bicycle facilities in an urban environment</h3>
+          <p class="au">Mohanty, P., <span class="me">Meena, K. K.</span>, Goswami, A. K.</p>
+          <p class="vn">52nd Urban Affairs Association (UAA) Annual Meeting, Nashville<span class="yr">2024</span></p>
         </div>
         <div class="acts">
-          <button class="act" type="button" data-bib='{"type":"inproceedings","title":"Assessing the willingness to bicycle for the first mile to the Mumbai suburban rail","authors":"Manoj, B. S. and Meena, K. K. and Panchal, H. and Sharma, G. and Goswami, A. K.","venue":"17th International Association for Travel Behaviour Research (IATBR), Vienna","year":"2024"}'><svg aria-hidden="true"><use href="#i-copy"></use></svg> BibTeX</button>
+          <button class="act" type="button" data-bib='{"type": "inproceedings", "title": "Analysing user behaviour along dedicated bicycle facilities in an urban environment", "authors": "Mohanty, P. and Meena, K. K. and Goswami, A. K.", "venue": "52nd Urban Affairs Association (UAA) Annual Meeting, Nashville", "year": "2024"}'><svg aria-hidden="true"><use href="#i-copy"></use></svg> BibTeX</button>
         </div>
       </article>
 
-      <!-- ============ 2023 & earlier ============ -->
-      <article class="pub" data-type="conference" data-year="2023">
-        <div class="id">[C3]</div>
+      <article class="pub" data-type="conference" data-year="2024">
+        <div class="id">[C13]</div>
         <div>
-          <h3>A review of air pollution exposure impacts on travel behaviour and way forward</h3>
-          <p class="au"><span class="me">Meena, K. K.</span> and Goswami, A. K.</p>
-          <p class="vn">16th World Conference on Transport Research (WCTR), Montréal<span class="yr">2023</span></p>
+          <h3>Assessing the willingness to bicycle for the first mile to the Mumbai suburban rail</h3>
+          <p class="au">Manoj, B. S., <span class="me">Meena, K. K.</span>, Panchal, H., Sharma, G., Goswami, A. K.</p>
+          <p class="vn">17th International Association for Travel Behaviour Research (IATBR), Vienna<span class="yr">2024</span></p>
         </div>
         <div class="acts">
-          <button class="act" type="button" data-bib='{"type":"inproceedings","title":"A review of air pollution exposure impacts on travel behaviour and way forward","authors":"Meena, K. K. and Goswami, A. K.","venue":"16th World Conference on Transport Research (WCTR), Montreal","year":"2023"}'><svg aria-hidden="true"><use href="#i-copy"></use></svg> BibTeX</button>
+          <button class="act" type="button" data-bib='{"type": "inproceedings", "title": "Assessing the willingness to bicycle for the first mile to the Mumbai suburban rail", "authors": "Manoj, B. S. and Meena, K. K. and Panchal, H. and Sharma, G. and Goswami, A. K.", "venue": "17th International Association for Travel Behaviour Research (IATBR), Vienna", "year": "2024"}'><svg aria-hidden="true"><use href="#i-copy"></use></svg> BibTeX</button>
+        </div>
+      </article>
+
+      <article class="pub" data-type="conference" data-year="2023">
+        <div class="id">[C14]</div>
+        <div>
+          <h3>A review of air pollution exposure impacts on travel behaviour and way forward</h3>
+          <p class="au"><span class="me">Meena, K. K.</span>, Goswami, A. K.</p>
+          <p class="vn">16th World Conference on Transport Research (WCTR), Montr&eacute;al<span class="yr">2023</span></p>
+        </div>
+        <div class="acts">
+          <button class="act" type="button" data-bib='{"type": "inproceedings", "title": "A review of air pollution exposure impacts on travel behaviour and way forward", "authors": "Meena, K. K. and Goswami, A. K.", "venue": "16th World Conference on Transport Research (WCTR), Montreal", "year": "2023"}'><svg aria-hidden="true"><use href="#i-copy"></use></svg> BibTeX</button>
         </div>
       </article>
 
       <article class="pub" data-type="conference" data-year="2022">
-        <div class="id">[C4]</div>
+        <div class="id">[C15]</div>
         <div>
           <h3>On-road pollution exposure in multiple transport micro-environments: A case study of tier-2 and tier-3 cities in India</h3>
-          <p class="au"><span class="me">Meena, K. K.</span>, Kumar, R. and Goswami, A. K.</p>
+          <p class="au"><span class="me">Meena, K. K.</span>, Kumar, R., Goswami, A. K.</p>
           <p class="vn">14th International Conference on Transport Planning and Implementation Methodologies for Developing Countries (TPMDC), IIT Bombay<span class="yr">2022</span></p>
         </div>
         <div class="acts">
-          <button class="act" type="button" data-bib='{"type":"inproceedings","title":"On-road pollution exposure in multiple transport micro-environments: A case study of tier-2 and tier-3 cities in India","authors":"Meena, K. K. and Kumar, R. and Goswami, A. K.","venue":"14th International Conference on Transport Planning and Implementation Methodologies for Developing Countries (TPMDC), IIT Bombay","year":"2022"}'><svg aria-hidden="true"><use href="#i-copy"></use></svg> BibTeX</button>
+          <button class="act" type="button" data-bib='{"type": "inproceedings", "title": "On-road pollution exposure in multiple transport micro-environments: A case study of tier-2 and tier-3 cities in India", "authors": "Meena, K. K. and Kumar, R. and Goswami, A. K.", "venue": "14th TPMDC, IIT Bombay", "year": "2022"}'><svg aria-hidden="true"><use href="#i-copy"></use></svg> BibTeX</button>
+        </div>
+      </article>
+
+      <article class="pub" data-type="patent" data-year="2025">
+        <div class="id">[P1]</div>
+        <div>
+          <h3>Personalised dynamic route planning system for sustainable urban mobility</h3>
+          <p class="au"><span class="me">Meena, K. K.</span>, Goswami, A. K.</p>
+          <p class="vn">Indian Patent Application #202631018379<span class="yr">2025</span></p>
+        </div>
+        <div class="acts">
+          <span class="act act--review">Filed 2025</span>
+  <button class="act" type="button" data-bib='{"type": "misc", "title": "Personalised dynamic route planning system for sustainable urban mobility", "authors": "Meena, K. K. and Goswami, A. K.", "venue": "Indian Patent Application #202631018379", "year": "2025", "note": "Filed 2025"}'><svg aria-hidden="true"><use href="#i-copy"></use></svg> BibTeX</button>
         </div>
       </article>
 
@@ -797,7 +995,7 @@
     <p class="noresults" id="noresults">Nothing matches that search.</p>
 
     <div class="pubfoot">
-      <span id="shown">Showing all 24 entries</span>
+      <span id="shown">Showing all 28 entries</span>
       <a class="lnk" href="https://scholar.google.com/citations?user=5jIAPTEAAAAJ&hl=en" target="_blank" rel="noopener">
         Citations on Scholar <svg aria-hidden="true"><use href="#i-out"></use></svg>
       </a>
@@ -889,7 +1087,7 @@
         <span class="yr">2026 — now</span>
         <div class="mark"></div>
         <h4>Postdoctoral Researcher</h4>
-        <div class="org">HUMAN Lab<br>UCLA, Los Angeles</div>
+        <div class="org">HUMAN Lab<br>University of California, Los Angeles</div>
         <div class="adv">adv. <b>Prof. Youngseo Kim</b></div>
       </article>
       <article class="stop">
@@ -1046,7 +1244,7 @@
       </a>
       <div>
         <span class="k">Based in</span>
-        <span class="v">HUMAN Lab, UCLA · Los Angeles, California</span>
+        <span class="v">HUMAN Lab, University of California, Los Angeles<br>Los Angeles, California, USA</span>
       </div>
       <a href="https://scholar.google.com/citations?user=5jIAPTEAAAAJ&hl=en" target="_blank" rel="noopener">
         <span class="k">Scholar</span>
