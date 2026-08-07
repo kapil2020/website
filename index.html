@@ -20,14 +20,18 @@
 <meta name="twitter:description" content="Behavioural models and routing tools that cut what commuters breathe.">
 <meta name="twitter:image" content="https://kapil2020.github.io/website/assets/img/kapil-portrait.jpg">
 
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%230e0e10'/%3E%3Ccircle cx='16' cy='16' r='6' fill='%23d8430e'/%3E%3C/svg%3E">
-<link rel="apple-touch-icon" href="assets/img/kapil-portrait-sm.jpg">
+<link rel="icon" href="assets/img/favicon.ico" sizes="16x16 32x32 48x48">
+<link rel="icon" href="assets/img/favicon.svg?v=20260807f" type="image/svg+xml">
+<link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png?v=20260807f">
+<link rel="manifest" href="site.webmanifest?v=20260807f">
+<meta name="theme-color" content="#fcfcfa" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0e0e10" media="(prefers-color-scheme: dark)">
 
 <link rel="preload" href="assets/fonts/InstrumentSerif-normal-400.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="assets/fonts/InstrumentSans-normal-400_700.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="assets/fonts/Newsreader-normal-400_600.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="assets/css/fonts.css?v=20260807e">
-<link rel="stylesheet" href="assets/css/style.css?v=20260807e">
+<link rel="stylesheet" href="assets/css/fonts.css?v=20260807f">
+<link rel="stylesheet" href="assets/css/style.css?v=20260807f">
 
 <script>
   /* Light is the default on arrival; dark is opt-in and remembered.
@@ -161,35 +165,36 @@
   <div class="wrap hero-grid">
     <div class="hero-head">
       <div class="hero-bio">
-        <p>I study how people decide to move through a city, and what those decisions cost them in
-          the air they breathe. The evidence comes from the field: a
-          <span class="hl hl--behaviour">two-wave panel of 723 commuters</span> followed through
-          winter and summer in Kolkata, stated-choice experiments across Delhi and Mumbai, and
-          on-road exposure measurement in tier-2 and tier-3 cities. The question underneath is
-          always the same &mdash; when will a traveller actually change, and
-          <em>who is able to?</em></p>
+        <p>I am a transportation researcher. My work is about how people decide to travel &mdash;
+          which mode, which route, at which hour &mdash; and how those decisions meet the
+          environment they move through. What holds my attention is the moment behaviour
+          <em>changes</em>: under air pollution, under heat, under a new piece of infrastructure or
+          a new piece of information. Understanding when a traveller will shift, and who is
+          constrained from shifting at all, is the thread running through everything I do.</p>
 
-        <p>Answering it needs several toolkits at once.
-          <span class="hl hl--behaviour">Discrete choice modelling</span> &mdash; hybrid latent
-          class, integrated choice latent variable and mixed logit &mdash; together with
-          <span class="hl hl--behaviour">stated-preference design</span>,
-          <span class="hl hl--behaviour">panel econometrics</span> and
-          <span class="hl hl--learning">machine learning</span> for sparse spatial data. I also
-          build the methods themselves: <span class="hl hl--learning">PD&#8209;MUSE</span> recasts
-          structured choice estimation as a convex program. It is the apparatus of behavioural
-          economics and decision analytics as much as of transportation engineering, which is why
-          the same models speak to <span class="hl hl--routing">policy</span> and to
-          <span class="hl hl--routing">management</span> questions.</p>
+        <div class="interests">
+          <p class="interests-lbl">Research interests</p>
+          <ul class="tags">
+            <li class="tag tag--behaviour">Travel behaviour &amp; discrete choice modelling</li>
+            <li class="tag tag--behaviour">Stated-preference &amp; panel experiments</li>
+            <li class="tag tag--exposure">Air-quality exposure &amp; health</li>
+            <li class="tag tag--exposure">Heat &amp; thermal stress in daily travel</li>
+            <li class="tag tag--active">Active mobility, walkability &amp; accessibility</li>
+            <li class="tag tag--learning">Machine learning for urban &amp; environmental data</li>
+            <li class="tag tag--routing">Decision support for sustainable mobility</li>
+            <li class="tag tag--routing">Transport policy &amp; equity</li>
+          </ul>
+        </div>
 
-        <p>The output is not only papers. <span class="hl hl--routing">DRUM</span>, the routing
-          engine built from my thesis, returns the least-exposure and least-energy route across an
-          Indian city and was covered by <em>The Hindu</em>. The same programme has produced
-          evidence on <span class="hl hl--active">transit-oriented development</span>,
-          <span class="hl hl--active">walkability</span>,
-          <span class="hl hl--active">first/last-mile cycling</span> and
-          <span class="hl hl--exposure">children&rsquo;s exposure on the school commute</span>
-          &mdash; the operational and policy face of
-          <span class="hl hl--exposure">sustainable mobility</span>.</p>
+        <p>Method is where I spend most of my time. I design
+          <span class="hl hl--behaviour">stated-preference and panel experiments</span>, estimate
+          <span class="hl hl--behaviour">hybrid latent class, ICLV and mixed logit models</span>,
+          and develop new estimation approaches &mdash; most recently
+          <span class="hl hl--learning">PD&#8209;MUSE</span>. I also build the software the work
+          runs on: survey instruments, routing engines and dashboards. The apparatus belongs to
+          <span class="hl hl--routing">behavioural economics</span> and
+          <span class="hl hl--routing">decision analytics</span> as much as to transportation
+          engineering.</p>
 
         <p class="hero-lineage">Ph.D. <strong>IIT Kharagpur</strong> (Prof. Arkopal Kishore
           Goswami) &middot; M.Tech <strong>IIT Roorkee</strong> (Prof. Amit Agarwal) &middot;
@@ -1307,6 +1312,6 @@
   <svg aria-hidden="true"><use href="#i-check"></use></svg><span id="toast-t"></span>
 </div>
 
-<script src="assets/js/main.js?v=20260807e" defer></script>
+<script src="assets/js/main.js?v=20260807f" defer></script>
 </body>
 </html>

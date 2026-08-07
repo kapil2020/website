@@ -24,7 +24,9 @@ assets/css/style.css      design system and layout
 assets/css/fonts.css      @font-face declarations
 assets/fonts/*.woff2      self-hosted webfonts (latin subset)
 assets/img/*.jpg          portrait and press clipping
+assets/img/favicon.*      monogram icon — svg source, .ico, 32/180/512 png
 assets/js/main.js         theme, nav, publications explorer, lightbox
+site.webmanifest          icon set and colours for installed/pinned use
 qa.js                     Playwright checks (see below)
 .nojekyll                 serve files verbatim on GitHub Pages
 ```
@@ -43,7 +45,9 @@ heading, the publication identifier, and the keyword highlights in the hero.
 | Active mobility & accessibility | teal `#0e7c66` |
 | Routing & decision tools | amber `#9a6a00` |
 
-Rose doubles as the primary interface accent — links, active nav, section eyebrows.
+Rose doubles as the primary interface accent — links, active nav, section eyebrows. The
+favicon is a monogram K on ink, its diagonal in that same rose; it is drawn as SVG paths
+rather than set in a typeface, so it rasterises cleanly all the way down to 16 px.
 
 | Role | Typeface |
 | --- | --- |
@@ -57,6 +61,9 @@ scroll reveals, a counting animation on the figures and one ticker.
 
 ### Features
 
+- **The hero says who, not what was found.** Who the researcher is and what holds his
+  attention, then the research interests as colour-coded tags rather than a run-on
+  sentence, then how the work is actually done. Findings live in the sections below.
 - **Research programme first.** The research section opens with the four directions the work
   runs in — behaviour and decision science, environment and health, methods and machine
   learning, systems and policy — each naming the disciplines it bridges.
@@ -103,6 +110,10 @@ Everything lives in `index.html`.
   ticker carry hard-coded totals.
 - **Topic labels** — the `TOPIC_LABEL` / `TOPIC_ORDER` maps at the top of the explorer block in
   `assets/js/main.js`.
+- **Research interests** — the `<li class="tag tag--…">` items in `.interests`; the modifier
+  picks the hue, so use the same five names as the publications.
+- **Favicon** — edit `assets/img/favicon.svg`, then re-export the `.ico` and the three PNGs
+  from it at 16/32/48, 32, 180 and 512 px.
 - **Figures** — `data-count` on a `<span>` drives the counting animation; the unit sits in a
   sibling `.u` span so it survives the animation.
 - **Bar chart** — each `.seg` height is a percentage of the tallest year (currently 12, in 2025).
