@@ -31,9 +31,19 @@ qa.js                     Playwright checks (see below)
 
 ### Design system
 
-Warm paper (`#fcfcfa`) and near-black ink, with **two accent colours that mean something**:
-orange for exposure and pollution, teal for clean and green routing. They are used in the
-figures, the chart legend and the publication identifiers — never as decoration.
+Warm paper (`#fcfcfa`) and near-black ink. **Colour carries meaning, never decoration** — each
+research area owns one hue, reused wherever that area appears: the facet swatch, the group
+heading, the publication identifier, and the keyword highlights in the hero.
+
+| Area | Hue |
+| --- | --- |
+| Travel behaviour & choice modelling | indigo `#3b3f9e` |
+| Air quality & exposure | orange `#d8430e` |
+| Machine learning & prediction | rose `#c2255c` |
+| Active mobility & accessibility | teal `#0e7c66` |
+| Routing & decision tools | amber `#9a6a00` |
+
+Rose doubles as the primary interface accent — links, active nav, section eyebrows.
 
 | Role | Typeface |
 | --- | --- |
@@ -55,7 +65,8 @@ scroll reveals, a counting animation on the figures and one ticker.
   stacked bar chart of output by year, and a five-stage diagram of the method.
 - **Press coverage.** A designed preview of *The Hindu* article alongside the scanned page,
   which opens full size in a lightbox.
-- **Publications explorer.** All 28 entries — 12 journal articles, 15 refereed conference papers
+- **Publications explorer.** Opens filtered to the twelve journal articles; every other filter
+  is one click away. All 28 entries — 12 journal articles, 15 refereed conference papers
   and one filed patent — with a faceted filter rail (research area, type, year, venue),
   full-text search, grouping by topic / year / type, sorting, collapsible group headings, DOI
   links and one-click BibTeX. Facets and their counts are derived from the markup, so adding a
