@@ -163,21 +163,24 @@ button { font: inherit; }
 }
 .prose a:hover { color: var(--accent); box-shadow: inset 0 -2px 0 var(--accent); }
 
-/* Keyword highlight — a tinted ground behind the terms that matter. */
+/* Keyword highlight — a tinted ground behind the terms that matter. The tint
+   is spread with a shadow rather than padding, so it never widens the inline
+   box: a comma or full stop after the phrase still sits tight against it. */
 .hl {
-  background: var(--t-learning);
+  --hl: var(--t-learning);
+  background: var(--hl);
+  box-shadow: 0 0 0 0.16em var(--hl);
   color: var(--ink);
   font-weight: 550;
-  padding: 0.06em 0.22em;
-  border-radius: 3px;
+  border-radius: 2px;
   box-decoration-break: clone;
   -webkit-box-decoration-break: clone;
 }
-.hl--behaviour { background: var(--t-behaviour); }
-.hl--exposure  { background: var(--t-exposure); }
-.hl--learning  { background: var(--t-learning); }
-.hl--active    { background: var(--t-active); }
-.hl--routing   { background: var(--t-routing); }
+.hl--behaviour { --hl: var(--t-behaviour); }
+.hl--exposure  { --hl: var(--t-exposure); }
+.hl--learning  { --hl: var(--t-learning); }
+.hl--active    { --hl: var(--t-active); }
+.hl--routing   { --hl: var(--t-routing); }
 
 /* --- Layout ------------------------------------------------------------- */
 
@@ -531,6 +534,48 @@ html[data-theme="dark"] .themebtn .moon { display: block; }
   max-width: 62ch;
 }
 .hero-bio p + p { margin-top: 0.9em; }
+
+/* Research interests. Tagged rather than written out, and coloured with the
+   same five hues the publications explorer uses, so one hue means one area
+   wherever it appears. */
+.interests { margin: clamp(1.25rem, 2.6vw, 1.7rem) 0; max-width: 62ch; }
+.hero-bio .interests-lbl {
+  font-family: var(--mono);
+  font-size: 0.6563rem;
+  line-height: 1;
+  letter-spacing: 0.11em;
+  text-transform: uppercase;
+  color: var(--faint);
+  margin: 0 0 0.7rem;
+}
+.tags { display: flex; flex-wrap: wrap; gap: 0.4rem; margin: 0; padding: 0; list-style: none; }
+.tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.4rem 0.65rem;
+  border-radius: var(--r);
+  background: var(--tag-tint);
+  color: var(--ink);
+  font-family: var(--sans);
+  font-size: 0.8125rem;
+  font-weight: 550;
+  line-height: 1.25;
+  letter-spacing: -0.004em;
+}
+.tag::before {
+  content: "";
+  flex: none;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--tag-hue);
+}
+.tag--behaviour { --tag-hue: var(--c-behaviour); --tag-tint: var(--t-behaviour); }
+.tag--exposure  { --tag-hue: var(--c-exposure);  --tag-tint: var(--t-exposure); }
+.tag--learning  { --tag-hue: var(--c-learning);  --tag-tint: var(--t-learning); }
+.tag--active    { --tag-hue: var(--c-active);    --tag-tint: var(--t-active); }
+.tag--routing   { --tag-hue: var(--c-routing);   --tag-tint: var(--t-routing); }
 .hero-lineage {
   margin-top: 1.4rem !important;
   padding-top: 1.1rem;

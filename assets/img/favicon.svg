@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Kapil Kumar Meena">
+  <rect width="64" height="64" rx="14" fill="#0e0e10"/>
+  <!-- A monogram K: stem and upper arm in paper, the diagonal in the site's
+       rose accent. Drawn as paths so it needs no webfont and rasterises
+       identically at 16 px and 512 px. -->
+  <g fill="none" stroke-width="8" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M21 16 V48" stroke="#fcfcfa"/>
+    <path d="M23 32 L43 16" stroke="#fcfcfa"/>
+    <path d="M23 32 L45 48" stroke="#c2255c"/>
+  </g>
+</svg>
