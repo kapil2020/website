@@ -26,12 +26,15 @@
 <link rel="preload" href="assets/fonts/InstrumentSerif-normal-400.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="assets/fonts/InstrumentSans-normal-400_700.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="assets/fonts/Newsreader-normal-400_600.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="assets/css/fonts.css">
-<link rel="stylesheet" href="assets/css/style.css">
+<link rel="stylesheet" href="assets/css/fonts.css?v=20260807c">
+<link rel="stylesheet" href="assets/css/style.css?v=20260807c">
 
 <script>
-  /* Light is the default on arrival; dark is opt-in and remembered. */
+  /* Light is the default on arrival; dark is opt-in and remembered.
+     The `js` class gates the scroll-reveal styles, so if this script or
+     main.js never runs the content is simply visible rather than hidden. */
   (function () {
+    document.documentElement.className += ' js';
     try {
       var s = localStorage.getItem('theme');
       if (s === 'dark') document.documentElement.setAttribute('data-theme', 'dark');
@@ -253,6 +256,37 @@
 </div>
 
 <!-- =====================================================================
+     Currently
+     ===================================================================== -->
+<section class="now-band" aria-label="Current work">
+  <div class="wrap">
+    <h2 class="band-label">Currently</h2>
+    <div class="now-grid">
+      <article class="now" data-rise>
+        <p class="tagline"><i aria-hidden="true"></i> Methods</p>
+        <h3>PD&#8209;MUSE</h3>
+        <p class="sub">Primal&ndash;Dual Maximum-Utility Structured Estimator</p>
+        <p>Nested and inverse product-differentiation logit models buy realistic substitution
+          patterns at the cost of a likelihood that is no longer concave. PD&#8209;MUSE recasts
+          estimation as a convex program, and confines what remains to a bounded, low-dimensional
+          search.</p>
+        <p class="note">Under review &middot; <em>Transportation Research Part B: Methodological</em></p>
+      </article>
+
+      <article class="now" data-rise>
+        <p class="tagline"><i aria-hidden="true"></i> Fieldwork</p>
+        <h3>HEAT</h3>
+        <p class="sub">Heat &middot; Exposure &middot; Activity &middot; Travel</p>
+        <p>As cities warm, people shift trips earlier, shorten them, or change mode &mdash; and those
+          who cannot absorb the heat instead. HEAT connects thermal stress to how days are scheduled
+          and how journeys are actually made.</p>
+        <p class="note">In progress &middot; HUMAN Lab, University of California, Los Angeles</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- =====================================================================
      01 — Research: findings first, as figures
      ===================================================================== -->
 <section class="sec" id="research">
@@ -267,39 +301,8 @@
       </div>
     </header>
 
-    <div class="now-grid" data-rise>
-      <article class="now">
-        <span class="tagline"><i></i> Current &mdash; methodological</span>
-        <h3>PD&#8209;MUSE<span class="sub">Primal&ndash;Dual Maximum-Utility Structured Estimator</span></h3>
-        <p>Structured choice models buy realistic substitution at the price of a likelihood that is
-          no longer concave. PD&#8209;MUSE recasts estimation as a <strong>convex program</strong> in
-          the choice probabilities and confines the remaining nonconvexity to a
-          <strong>bounded, low-dimensional search</strong> &mdash; so the optimum can be verified.</p>
-        <div class="models">
-          <div class="model"><div class="m">MNL</div><div class="r">reproduces maximum likelihood to <b>2&times;10<sup>&minus;9</sup></b></div></div>
-          <div class="model"><div class="m">NL</div><div class="r">likelihood gap <b>0.08</b> / <b>3.39</b> vs <b>43</b> / <b>58</b> sequential</div></div>
-          <div class="model"><div class="m">IPDL</div><div class="r">recovers <b>crossing</b> groupings no nesting tree can hold</div></div>
-        </div>
-        <p class="venue-note">Under review &middot; Transportation Research Part B: Methodological</p>
-      </article>
-
-      <article class="now">
-        <span class="tagline"><i></i> Current &mdash; empirical</span>
-        <h3>HEAT<span class="sub">Heat &middot; Exposure &middot; Activity &middot; Travel</span></h3>
-        <p>How rising heat reshapes when people travel, how far, and by which mode &mdash; and who
-          carries the exposure when they cannot shift.</p>
-        <div class="heat">
-          <div><span class="l">H</span><span>Heat &mdash; thermal stress across the day</span></div>
-          <div><span class="l">E</span><span>Exposure &mdash; what that costs the traveller</span></div>
-          <div><span class="l">A</span><span>Activity &mdash; what gets rescheduled or dropped</span></div>
-          <div><span class="l">T</span><span>Travel &mdash; the mode and route that follow</span></div>
-        </div>
-        <p class="venue-note">In progress &middot; HUMAN Lab, University of California, Los Angeles</p>
-      </article>
-    </div>
-
     <div class="programme" data-rise>
-      <div>
+      <div class="stance-col">
         <p class="stance">One question, approached from four directions:
           <strong>how do people decide to move, and what does that decision cost them?</strong></p>
         <p>Answering it takes the instruments of transportation engineering to measure, behavioural
@@ -336,9 +339,8 @@
           <div>
             <h4>Methods &amp; machine learning</h4>
             <p>Deep and geostatistical models for sparse sensor networks, interpretable
-              learning for choice prediction, and computer vision for the built environment.
-              <strong>In development: PD&nbsp;MUSE</strong>, a methodological framework for
-              panel-data choice modelling.</p>
+              learning for choice prediction, computer vision for the built environment, and
+              convex reformulations of structured choice estimation.</p>
             <div class="fields">Statistics &middot; machine learning &middot; spatial data science</div>
           </div>
         </article>
@@ -627,7 +629,7 @@
 
         <div class="pubs" id="pubs">
 
-      <article class="pub" data-type="journal" data-year="2026" data-topics="behaviour exposure" data-venue="Transportation Research Record">
+      <article class="pub" data-type="journal" data-year="2026" data-topics="behaviour" data-venue="Transportation Research Record">
         <div class="id">[J1]</div>
         <div class="pub-main">
           <h3><a href="https://doi.org/10.1177/03611981261429472" target="_blank" rel="noopener">Not all travellers think alike: Segmenting travel behaviour under air pollution exposure using a hybrid latent class and discrete choice approach</a></h3>
@@ -641,7 +643,7 @@
         </div>
       </article>
 
-      <article class="pub" data-type="journal" data-year="2026" data-topics="behaviour exposure" data-venue="Transportation Research Record">
+      <article class="pub" data-type="journal" data-year="2026" data-topics="behaviour" data-venue="Transportation Research Record">
         <div class="id">[J2]</div>
         <div class="pub-main">
           <h3>Beyond time and cost: Seasonal air-quality preferences in travel mode choice from a two-wave commuter panel</h3>
@@ -654,7 +656,7 @@
         </div>
       </article>
 
-      <article class="pub" data-type="journal" data-year="2025" data-topics="behaviour learning" data-venue="Transportation Research Part A">
+      <article class="pub" data-type="journal" data-year="2025" data-topics="learning" data-venue="Transportation Research Part A">
         <div class="id">[J3]</div>
         <div class="pub-main">
           <h3>Beyond choice modelling: Bridging econometric theory and deep learning for robust mode choice prediction</h3>
@@ -667,7 +669,7 @@
         </div>
       </article>
 
-      <article class="pub" data-type="journal" data-year="2025" data-topics="behaviour exposure" data-venue="Travel Behaviour &amp; Society">
+      <article class="pub" data-type="journal" data-year="2025" data-topics="behaviour" data-venue="Travel Behaviour &amp; Society">
         <div class="id">[J4]</div>
         <div class="pub-main">
           <h3><a href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=6904230" target="_blank" rel="noopener">Do commuters reroute for cleaner air? Seasonal salience in route choice behaviour from a two-wave panel in Kolkata, India</a></h3>
@@ -681,7 +683,7 @@
         </div>
       </article>
 
-      <article class="pub" data-type="journal" data-year="2025" data-topics="routing exposure" data-venue="Transportation Research Record">
+      <article class="pub" data-type="journal" data-year="2025" data-topics="routing" data-venue="Transportation Research Record">
         <div class="id">[J5]</div>
         <div class="pub-main">
           <h3><a href="https://doi.org/10.1177/03611981251331011" target="_blank" rel="noopener">Dynamic route planning for urban green mobility: Development of a web application offering sustainable route options to commuters</a></h3>
@@ -707,7 +709,7 @@
         </div>
       </article>
 
-      <article class="pub" data-type="journal" data-year="2025" data-topics="active behaviour" data-venue="International Journal of Sustainable Transportation">
+      <article class="pub" data-type="journal" data-year="2025" data-topics="active" data-venue="International Journal of Sustainable Transportation">
         <div class="id">[J7]</div>
         <div class="pub-main">
           <h3><a href="https://doi.org/10.1080/15568318.2025.2572818" target="_blank" rel="noopener">Modeling bicycle choice behavior and its potential health impact: Case of first/last mile access to suburban rail</a></h3>
@@ -733,7 +735,7 @@
         </div>
       </article>
 
-      <article class="pub" data-type="journal" data-year="2024" data-topics="exposure behaviour" data-venue="Transport Policy">
+      <article class="pub" data-type="journal" data-year="2024" data-topics="exposure" data-venue="Transport Policy">
         <div class="id">[J9]</div>
         <div class="pub-main">
           <h3><a href="https://doi.org/10.1016/j.tranpol.2024.05.024" target="_blank" rel="noopener">A review of air pollution exposure impacts on travel behaviour and way forward</a></h3>
@@ -746,7 +748,7 @@
         </div>
       </article>
 
-      <article class="pub" data-type="journal" data-year="2024" data-topics="learning behaviour exposure" data-venue="Decision Analytics Journal">
+      <article class="pub" data-type="journal" data-year="2024" data-topics="learning" data-venue="Decision Analytics Journal">
         <div class="id">[J10]</div>
         <div class="pub-main">
           <h3><a href="https://www.sciencedirect.com/science/article/pii/S2772662224000638" target="_blank" rel="noopener">A machine learning approach for unraveling the influence of air quality awareness on travel behavior</a></h3>
@@ -784,7 +786,7 @@
         </div>
       </article>
 
-      <article class="pub" data-type="conference" data-year="2026" data-topics="behaviour exposure" data-venue="Transportation Research Board (TRB)">
+      <article class="pub" data-type="conference" data-year="2026" data-topics="behaviour" data-venue="Transportation Research Board (TRB)">
         <div class="id">[C1]</div>
         <div class="pub-main">
           <h3>Not all travellers think alike: Segmenting travel behaviour under air pollution exposure</h3>
@@ -796,7 +798,7 @@
         </div>
       </article>
 
-      <article class="pub" data-type="conference" data-year="2026" data-topics="learning exposure" data-venue="COMSNETS (IEEE)">
+      <article class="pub" data-type="conference" data-year="2026" data-topics="learning" data-venue="COMSNETS (IEEE)">
         <div class="id">[C2]</div>
         <div class="pub-main">
           <h3><a href="https://doi.org/10.1109/COMSNETS67989.2026.11418296" target="_blank" rel="noopener">A hybrid geostatistical and deep learning framework for urban pollutant concentration prediction from sparse data</a></h3>
@@ -809,7 +811,7 @@
         </div>
       </article>
 
-      <article class="pub" data-type="conference" data-year="2026" data-topics="learning exposure" data-venue="IEEE AIEI">
+      <article class="pub" data-type="conference" data-year="2026" data-topics="learning" data-venue="IEEE AIEI">
         <div class="id">[C3]</div>
         <div class="pub-main">
           <h3><a href="https://doi.org/10.1109/AIEI69164.2026.11496657" target="_blank" rel="noopener">GeoNBeats: Unified spatio-temporal neural basis expansion for air quality estimation in sparse sensor networks</a></h3>
@@ -822,7 +824,7 @@
         </div>
       </article>
 
-      <article class="pub" data-type="conference" data-year="2026" data-topics="active learning" data-venue="Transportation Research Board (TRB)">
+      <article class="pub" data-type="conference" data-year="2026" data-topics="active" data-venue="Transportation Research Board (TRB)">
         <div class="id">[C4]</div>
         <div class="pub-main">
           <h3>Developing an integrated walkability score using image-based feature extraction and user preferences</h3>
@@ -883,7 +885,7 @@
         </div>
       </article>
 
-      <article class="pub" data-type="conference" data-year="2025" data-topics="exposure learning" data-venue="AEEE India">
+      <article class="pub" data-type="conference" data-year="2025" data-topics="exposure" data-venue="AEEE India">
         <div class="id">[C9]</div>
         <div class="pub-main">
           <h3>Air pollution exposure among Kolkata&rsquo;s auto-rickshaw drivers: PM variability, health risks, and predictive modelling</h3>
@@ -895,7 +897,7 @@
         </div>
       </article>
 
-      <article class="pub" data-type="conference" data-year="2024" data-topics="behaviour exposure" data-venue="COMSNETS (IEEE)">
+      <article class="pub" data-type="conference" data-year="2024" data-topics="behaviour" data-venue="COMSNETS (IEEE)">
         <div class="id">[C10]</div>
         <div class="pub-main">
           <h3>Impact of air pollution on informed decision-making for choice of a travel mode</h3>
@@ -931,7 +933,7 @@
         </div>
       </article>
 
-      <article class="pub" data-type="conference" data-year="2024" data-topics="active behaviour" data-venue="IATBR">
+      <article class="pub" data-type="conference" data-year="2024" data-topics="active" data-venue="IATBR">
         <div class="id">[C13]</div>
         <div class="pub-main">
           <h3>Assessing the willingness to bicycle for the first mile to the Mumbai suburban rail</h3>
@@ -943,7 +945,7 @@
         </div>
       </article>
 
-      <article class="pub" data-type="conference" data-year="2023" data-topics="exposure behaviour" data-venue="WCTR">
+      <article class="pub" data-type="conference" data-year="2023" data-topics="exposure" data-venue="WCTR">
         <div class="id">[C14]</div>
         <div class="pub-main">
           <h3>A review of air pollution exposure impacts on travel behaviour and way forward</h3>
@@ -1282,6 +1284,6 @@
   <svg aria-hidden="true"><use href="#i-check"></use></svg><span id="toast-t"></span>
 </div>
 
-<script src="assets/js/main.js" defer></script>
+<script src="assets/js/main.js?v=20260807c" defer></script>
 </body>
 </html>
