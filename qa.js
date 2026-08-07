@@ -88,8 +88,9 @@ const IGNORE_CLASS = new Set(['sr', 'is-in', 'on', 'open', 'hide', 'stuck', 'me'
     const rows = () => p.$$eval('#pubs .pub', e => e.length);
     const pick = (k, v) => p.click(`label.opt:has(input[data-key="${k}"][value="${v}"])`);
 
-    (await p.textContent('#shown')) === '28 entries' ? ok('28 entries listed') : bad('entry count wrong: ' + await p.textContent('#shown'));
+    (await p.textContent('#shown')) === '12 of 28 entries' ? ok('lands with journals filtered (12 of 28)') : bad('landing filter wrong: ' + await p.textContent('#shown'));
 
+    await p.click('#clear'); await p.waitForTimeout(200);
     for (const [mode, expect] of [['year', 28], ['type', 28], ['none', 28], ['topic', 28]]) {
       await p.selectOption('#group', mode); await p.waitForTimeout(200);
       const n = await rows();
@@ -144,6 +145,7 @@ const IGNORE_CLASS = new Set(['sr', 'is-in', 'on', 'open', 'hide', 'stuck', 'me'
     (await p.$eval('#rail-body', e => getComputedStyle(e).display)) === 'none' ? ok('filter rail starts collapsed') : bad('rail not collapsed');
     await p.click('#rail-toggle'); await p.waitForTimeout(400);
     (await p.$eval('#rail-body', e => getComputedStyle(e).display)) !== 'none' ? ok('filter rail opens') : bad('rail did not open');
+    await p.click('label.opt:has(input[data-key="type"][value="journal"])'); await p.waitForTimeout(200);
     await p.click('label.opt:has(input[data-key="type"][value="patent"])'); await p.waitForTimeout(300);
     (await p.textContent('#shown')).startsWith('1 of') ? ok('mobile facet filters') : bad('mobile facet → ' + await p.textContent('#shown'));
     await p.click('#menu'); await p.waitForTimeout(350);

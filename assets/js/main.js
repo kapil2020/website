@@ -246,6 +246,10 @@
     routing:   'Routing & decision tools'
   };
   var TOPIC_ORDER = ['behaviour', 'exposure', 'learning', 'active', 'routing'];
+  var TOPIC_VAR = {
+    behaviour: 'var(--c-behaviour)', exposure: 'var(--c-exposure)',
+    learning: 'var(--c-learning)', active: 'var(--c-active)', routing: 'var(--c-routing)'
+  };
   var TYPE_LABEL  = { journal: 'Journal article', conference: 'Conference paper', patent: 'Patent' };
   var TYPE_ORDER  = ['journal', 'conference', 'patent'];
 
@@ -276,7 +280,8 @@
     var railBt   = $('#rail-toggle');
     var railCount = $('#rail-count');
 
-    var picked = { topic: [], type: [], year: [], venue: [] };
+    /* Journals lead on arrival; everything else is one click away. */
+    var picked = { topic: [], type: ['journal'], year: [], venue: [] };
     var collapsed = {};   /* group headings the visitor folded away */
 
     function tally(key) {
@@ -330,12 +335,15 @@
           if (g.cap && i >= g.cap) li.className = 'hide';
           var lab = document.createElement('label');
           lab.className = 'opt';
+          var swatch = g.key === 'topic'
+            ? '<span class="swatch" style="background:' + TOPIC_VAR[v] + '" aria-hidden="true"></span>'
+            : '';
           lab.innerHTML =
             '<input type="checkbox" value="' + v + '" data-key="' + g.key + '">' +
             '<span class="box" aria-hidden="true"><svg><use href="#i-check"></use></svg></span>' +
-            '<span class="lab"></span>' +
+            '<span class="lab">' + swatch + '</span>' +
             '<span class="n">' + counts[v] + '</span>';
-          lab.querySelector('.lab').textContent = label(g.key, v);
+          lab.querySelector('.lab').appendChild(document.createTextNode(label(g.key, v)));
           li.appendChild(lab);
           ul.appendChild(li);
         });
@@ -380,12 +388,14 @@
       return true;
     }
 
-    function heading(text, count, id) {
+    function heading(text, count, id, tone) {
       var b = document.createElement('button');
       b.type = 'button';
       b.className = 'grp-head';
+      if (tone) b.style.setProperty('--grp', tone);
       b.setAttribute('aria-expanded', collapsed[id] ? 'false' : 'true');
       b.innerHTML = '<svg class="caret" aria-hidden="true"><use href="#i-chev"></use></svg>' +
+                    (tone ? '<span class="swatch" aria-hidden="true"></span>' : '') +
                     '<span class="t"></span><span class="n">' + count + '</span>';
       b.querySelector('.t').textContent = text;
       b.addEventListener('click', function () {
@@ -428,7 +438,8 @@
 
           keys.forEach(function (k) {
             var id = mode + ':' + k;
-            listEl.appendChild(heading(label(mode, k), buckets[k].length, id));
+            listEl.appendChild(heading(label(mode, k), buckets[k].length, id,
+              mode === 'topic' ? TOPIC_VAR[k] : null));
             if (!collapsed[id]) buckets[k].forEach(put);
           });
         }
@@ -446,6 +457,7 @@
 
     /* --- wiring ---------------------------------------------------------- */
     buildFacets();
+    $$('#facets input[data-key="type"][value="journal"]').forEach(function (b) { b.checked = true; });
 
     if (q) {
       var qt = null;

@@ -21,15 +21,30 @@
   --line:       #e5e3dd;
   --line-2:     #efeeea;
 
-  /* Functional accents */
-  --exposure:      #d8430e;   /* pollution / exposure */
-  --exposure-tint: #fdf0ea;
-  --clean:         #0e7c66;   /* green routing / sustainable */
-  --clean-tint:    #e8f4f1;
-  --hindu:         #c8102e;   /* The Hindu masthead red */
+  /* One colour per research area — used on facet dots, group headings and
+     keyword highlights, never as decoration. */
+  --c-behaviour: #3b3f9e;   /* travel behaviour & choice modelling */
+  --c-exposure:  #d8430e;   /* air quality & exposure               */
+  --c-learning:  #c2255c;   /* machine learning & prediction        */
+  --c-active:    #0e7c66;   /* active mobility & accessibility      */
+  --c-routing:   #9a6a00;   /* routing & decision tools             */
 
-  --accent:      var(--exposure);
-  --accent-ring: rgba(216, 67, 14, 0.22);
+  --t-behaviour: #eeeefb;
+  --t-exposure:  #fdf0ea;
+  --t-learning:  #fdeef4;
+  --t-active:    #e8f4f1;
+  --t-routing:   #faf3e4;
+
+  /* Legacy aliases kept so the figures keep their meaning */
+  --exposure:      var(--c-exposure);
+  --exposure-tint: var(--t-exposure);
+  --clean:         var(--c-active);
+  --clean-tint:    var(--t-active);
+  --hindu:         #c8102e;
+
+  --accent:      #c2255c;   /* the primary interface accent */
+  --accent-tint: var(--t-learning);
+  --accent-ring: rgba(194, 37, 92, 0.22);
 
   --display: "Instrument Serif", "Iowan Old Style", Georgia, "Times New Roman", serif;
   --sans:  "Instrument Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
@@ -63,13 +78,27 @@ html[data-theme="dark"] {
   --line:       #26262c;
   --line-2:     #1b1b20;
 
-  --exposure:      #ff7a45;
-  --exposure-tint: #26170f;
-  --clean:         #3ac9a0;
-  --clean-tint:    #0e2420;
+  --c-behaviour: #9298ff;
+  --c-exposure:  #ff7a45;
+  --c-learning:  #ff87b0;
+  --c-active:    #3ac9a0;
+  --c-routing:   #e0a94a;
+
+  --t-behaviour: #15162b;
+  --t-exposure:  #26170f;
+  --t-learning:  #2a1520;
+  --t-active:    #0e2420;
+  --t-routing:   #241c0e;
+
+  --exposure:      var(--c-exposure);
+  --exposure-tint: var(--t-exposure);
+  --clean:         var(--c-active);
+  --clean-tint:    var(--t-active);
   --hindu:         #ff5a6e;
 
-  --accent-ring: rgba(255, 122, 69, 0.24);
+  --accent:      #ff87b0;
+  --accent-tint: var(--t-learning);
+  --accent-ring: rgba(255, 135, 176, 0.26);
 }
 
 /* --- Reset -------------------------------------------------------------- */
@@ -133,6 +162,22 @@ button { font: inherit; }
   transition: box-shadow var(--t) var(--ease), color var(--t) var(--ease);
 }
 .prose a:hover { color: var(--accent); box-shadow: inset 0 -2px 0 var(--accent); }
+
+/* Keyword highlight — a tinted ground behind the terms that matter. */
+.hl {
+  background: var(--t-learning);
+  color: var(--ink);
+  font-weight: 550;
+  padding: 0.06em 0.22em;
+  border-radius: 3px;
+  box-decoration-break: clone;
+  -webkit-box-decoration-break: clone;
+}
+.hl--behaviour { background: var(--t-behaviour); }
+.hl--exposure  { background: var(--t-exposure); }
+.hl--learning  { background: var(--t-learning); }
+.hl--active    { background: var(--t-active); }
+.hl--routing   { background: var(--t-routing); }
 
 /* --- Layout ------------------------------------------------------------- */
 
@@ -485,7 +530,17 @@ html[data-theme="dark"] .themebtn .moon { display: block; }
   letter-spacing: -0.003em;
   max-width: 62ch;
 }
-.hero-bio p + p { margin-top: 0.85em; }
+.hero-bio p + p { margin-top: 0.9em; }
+.hero-lineage {
+  margin-top: 1.4rem !important;
+  padding-top: 1.1rem;
+  border-top: 1px solid var(--line);
+  font-family: var(--sans) !important;
+  font-size: 0.8438rem !important;
+  line-height: 1.6 !important;
+  color: var(--muted) !important;
+}
+.hero-lineage strong { color: var(--ink); font-weight: 600; }
 .hero-bio strong { color: var(--ink); font-weight: 600; }
 .hero-bio em { font-style: italic; }
 .hero-bio a {
@@ -1165,6 +1220,8 @@ html[data-theme="dark"] .preview:hover { box-shadow: 0 18px 40px -22px rgba(0, 0
 .opt input:focus-visible + .box { outline: 2px solid var(--accent); outline-offset: 2px; }
 .opt input:checked ~ .lab { color: var(--ink); font-weight: 550; }
 .opt .n { font-family: var(--mono); font-size: 0.625rem; color: var(--faint); padding-top: 0.15rem; }
+.opt .lab { display: flex; align-items: baseline; gap: 0.5rem; }
+.opt .swatch { width: 7px; height: 7px; border-radius: 50%; flex: none; transform: translateY(-1px); }
 
 .more {
   margin-top: 0.5rem;
@@ -1252,8 +1309,10 @@ html[data-theme="dark"] .preview:hover { box-shadow: 0 18px 40px -22px rgba(0, 0
   font-size: 1.0625rem;
   font-weight: 600;
   letter-spacing: -0.025em;
-  color: var(--accent);
+  color: var(--grp, var(--accent));
 }
+.grp-head .swatch { width: 8px; height: 8px; border-radius: 50%; background: var(--grp, var(--accent)); flex: none; }
+.grp-head { border-bottom-color: var(--grp, var(--line)); border-bottom-width: 1px; }
 .grp-head .n { font-family: var(--mono); font-size: 0.6875rem; color: var(--faint); }
 .grp-head:hover .t { color: var(--ink); }
 
@@ -1276,9 +1335,11 @@ html[data-theme="dark"] .preview:hover { box-shadow: 0 18px 40px -22px rgba(0, 0
   padding-top: 0.15rem;
   letter-spacing: 0.02em;
 }
-.pub[data-type="journal"] .id { color: var(--ink); }
-.pub[data-type="conference"] .id { color: var(--accent); }
-.pub[data-type="patent"] .id { color: var(--clean); }
+.pub[data-topics="behaviour"] .id { color: var(--c-behaviour); }
+.pub[data-topics="exposure"]  .id { color: var(--c-exposure); }
+.pub[data-topics="learning"]  .id { color: var(--c-learning); }
+.pub[data-topics="active"]    .id { color: var(--c-active); }
+.pub[data-topics="routing"]   .id { color: var(--c-routing); }
 
 .pub h3 {
   font-size: 1.0313rem;
