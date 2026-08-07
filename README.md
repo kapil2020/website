@@ -36,7 +36,8 @@ figures, the chart legend and the publication identifiers — never as decoratio
 
 | Role | Typeface |
 | --- | --- |
-| Display, headings, interface | Instrument Sans |
+| The name, at masthead size | Instrument Serif |
+| Headings and interface | Instrument Sans |
 | Reading prose, pull quotes, venues | Newsreader |
 | Data, labels, identifiers | DM Mono |
 
@@ -45,14 +46,18 @@ scroll reveals, a counting animation on the figures and one ticker.
 
 ### Features
 
-- **Findings as figures.** The research section leads with published numbers — exposure share,
-  LEAP and LECR route savings, the monitoring-station gap — plus a stacked bar chart of output
-  by year and a five-stage diagram of the method.
+- **Research programme first.** The research section opens with the four directions the work
+  runs in — behaviour and decision science, environment and health, methods and machine
+  learning, systems and policy — each naming the disciplines it bridges.
+- **Findings as figures.** Published numbers rather than adjectives: exposure share, LEAP and
+  LECR route savings, the monitoring-station gap, a two-wave seasonal panel comparison, a
+  stacked bar chart of output by year, and a five-stage diagram of the method.
 - **Press coverage.** A designed preview of *The Hindu* article alongside the scanned page,
   which opens full size in a lightbox.
-- **Publications.** All 24 entries with the identifiers used in the thesis appendix
-  (`[J1]`–`[J10]`, `[C1]`–`[C13]`, `[P1]`), DOI links, type filters, full-text search and
-  one-click BibTeX. Entries are plain HTML, so the list works without JavaScript.
+- **Publications.** All 28 entries — 12 journal articles, 15 refereed conference papers and one
+  filed patent — sequenced newest first as `[J1]`–`[J12]`, `[C1]`–`[C15]` and `[P1]`, with DOI
+  links, type filters, full-text search and one-click BibTeX. Entries are plain HTML, so the
+  list works without JavaScript.
 - **Light and dark.** The site always opens light, whatever the visitor's OS setting. Dark is
   opt-in via the toggle and is remembered from then on, applied before first paint so there is
   no flash.
@@ -77,10 +82,10 @@ Everything lives in `index.html`.
 
 - **Publications** — copy an `<article class="pub">` block. Set `data-type` to `journal`,
   `conference` or `patent`, `data-year` to the year, and the `data-bib` JSON payload for the
-  BibTeX button. Update the counts in the filter tabs.
+  BibTeX button. Update the counts in the filter tabs, the hero button and the ticker.
 - **Figures** — `data-count` on a `<span>` drives the counting animation; the unit sits in a
   sibling `.u` span so it survives the animation.
-- **Bar chart** — each `.seg` height is a percentage of the tallest year (currently 9).
+- **Bar chart** — each `.seg` height is a percentage of the tallest year (currently 12, in 2025).
 - **Colours** — the custom properties at the top of `assets/css/style.css`
   (`:root` for light, `html[data-theme="dark"]` for dark).
 

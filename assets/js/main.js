@@ -111,7 +111,9 @@
   if (!still && 'IntersectionObserver' in window) {
     var rise = new IntersectionObserver(function (entries) {
       entries.forEach(function (en) {
-        if (!en.isIntersecting) return;
+        /* Fire when it scrolls in — or immediately if the visitor already
+           landed past it (an anchor jump, or a reload part-way down). */
+        if (!en.isIntersecting && en.boundingClientRect.top >= 0) return;
         en.target.classList.add('is-in');
         rise.unobserve(en.target);
       });
@@ -121,24 +123,14 @@
     risers.forEach(function (el) { el.classList.add('is-in'); });
   }
 
-  /* The hero rule draws itself once on load. */
-  var rule = $('[data-rule]');
-  if (rule && !still) {
-    rule.style.transform = 'scaleX(0)';
-    rule.style.transition = 'transform 1s cubic-bezier(.22,.68,.16,1) .35s';
-    requestAnimationFrame(function () {
-      requestAnimationFrame(function () { rule.style.transform = 'scaleX(1)'; });
-    });
-  }
-
   /* ---- Counters ---------------------------------------------------------- */
 
-  function run(el) {
+  function run(el, instant) {
     var target = parseInt(el.getAttribute('data-count'), 10);
     if (isNaN(target)) return;
     var group = target >= 1000;
     var fmt = function (n) { return group ? n.toLocaleString('en-US') : String(n); };
-    if (still) { el.textContent = fmt(target); return; }
+    if (still || instant) { el.textContent = fmt(target); return; }
 
     var dur = 1200, t0 = null;
     function tick(now) {
@@ -155,14 +147,15 @@
   if (counters.length && 'IntersectionObserver' in window) {
     var cw = new IntersectionObserver(function (entries) {
       entries.forEach(function (en) {
-        if (!en.isIntersecting) return;
-        run(en.target);
+        var above = en.boundingClientRect.top < 0;
+        if (!en.isIntersecting && !above) return;
+        run(en.target, above);
         cw.unobserve(en.target);
       });
-    }, { threshold: 0.5 });
+    }, { threshold: 0.4 });
     counters.forEach(function (el) { cw.observe(el); });
   } else {
-    counters.forEach(run);
+    counters.forEach(function (el) { run(el, true); });
   }
 
   /* ---- Toast + clipboard -------------------------------------------------- */
