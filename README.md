@@ -1,87 +1,99 @@
-# Kapil Kumar Meena, Ph.D. — personal academic website
+# Kapil Kumar Meena, Ph.D.
 
-[![Website](https://img.shields.io/badge/Live-kapil2020.github.io%2Fwebsite-1f5eb3?style=flat-square)](https://kapil2020.github.io/website/)
-[![Scholar](https://img.shields.io/badge/Google-Scholar-4285F4?style=flat-square&logo=googlescholar&logoColor=white)](https://scholar.google.com/citations?user=5jIAPTEAAAAJ)
-[![LinkedIn](https://img.shields.io/badge/LinkedIn-Profile-0077B5?style=flat-square&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/kapilmeena/)
+[![Website](https://img.shields.io/badge/Live-kapil2020.github.io%2Fwebsite-d8430e?style=flat-square)](https://kapil2020.github.io/website/)
+[![Scholar](https://img.shields.io/badge/Google-Scholar-0e0e10?style=flat-square&logo=googlescholar&logoColor=white)](https://scholar.google.com/citations?user=5jIAPTEAAAAJ)
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-Profile-0e0e10?style=flat-square&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/kapilmeena/)
 
 Postdoctoral Researcher at the [HUMAN Lab](https://sites.google.com/cornell.edu/youngseokim/human-lab),
-University of California, Los Angeles, working with Prof. Youngseo Kim on travel behaviour,
-air-quality exposure and machine learning for sustainable urban mobility.
+University of California, Los Angeles, working with Prof. Youngseo Kim.
 Ph.D. in Transportation Engineering, IIT Kharagpur (2026), advised by Prof. Arkopal K. Goswami.
+
+Research: travel behaviour, air-quality exposure and machine learning for sustainable urban
+mobility. The DRUM routing engine built from this work was covered by *The Hindu* in June 2025.
 
 ---
 
-## About this site
+## The site
 
-A hand-built static site — no framework, no build step, no bundler. Open `index.html`
-in a browser and it runs.
+Hand-built and static. No framework, no build step, no bundler, no third-party request at
+runtime — open `index.html` and it runs.
 
 ```
-index.html                 all markup and content
-assets/css/style.css       design system and layout
-assets/css/fonts.css       @font-face declarations
-assets/fonts/*.woff2       self-hosted webfonts (latin subset)
-assets/js/main.js          theme, navigation, publication filtering, map
-.nojekyll                  serve files verbatim on GitHub Pages
+index.html                all markup and content
+assets/css/style.css      design system and layout
+assets/css/fonts.css      @font-face declarations
+assets/fonts/*.woff2      self-hosted webfonts (latin subset)
+assets/img/*.jpg          portrait and press clipping
+assets/js/main.js         theme, nav, publication filtering, lightbox
+.nojekyll                 serve files verbatim on GitHub Pages
 ```
 
-### Design
+### Design system
 
-Typography-first and deliberately restrained: Source Serif 4 for headings and reading
-copy, Inter for interface text, JetBrains Mono for labels. A single deep-blue accent,
-hairline rules instead of heavy shadows, and generous white space.
+Warm paper (`#fcfcfa`) and near-black ink, with **two accent colours that mean something**:
+orange for exposure and pollution, teal for clean and green routing. They are used in the
+figures, the chart legend and the publication identifiers — never as decoration.
+
+| Role | Typeface |
+| --- | --- |
+| Display, headings, interface | Instrument Sans |
+| Reading prose, pull quotes, venues | Newsreader |
+| Data, labels, identifiers | DM Mono |
+
+Corners are 4 px, borders are hairlines, and shadows are almost absent. Motion is limited to
+scroll reveals, a counting animation on the figures and one ticker.
 
 ### Features
 
-- **Light and dark themes** — follows the operating system by default, with a manual
-  toggle stored in `localStorage`. The theme is applied before first paint, so there is
-  no flash of the wrong colours.
-- **Publications** — filter by type (journal / conference / patent), full-text search
-  across title, authors and venue, one-click BibTeX copy, and DOI links. Entries are
-  plain HTML, so the list is complete without JavaScript and is indexable.
-- **Responsive** — a single fluid layout from 320 px upwards; no horizontal scrolling
-  at any width.
-- **Accessible** — semantic landmarks, visible focus rings, a skip link, ARIA state on
-  interactive controls, and full support for `prefers-reduced-motion`.
-- **Fast** — self-hosted fonts, inline SVG icons, no third-party JavaScript on load.
-  Leaflet is fetched only if the footprint map scrolls into view, and the section
-  removes itself cleanly if that fetch fails.
-- **Printable** — a print stylesheet turns the page into a readable CV.
+- **Findings as figures.** The research section leads with published numbers — exposure share,
+  LEAP and LECR route savings, the monitoring-station gap — plus a stacked bar chart of output
+  by year and a five-stage diagram of the method.
+- **Press coverage.** A designed preview of *The Hindu* article alongside the scanned page,
+  which opens full size in a lightbox.
+- **Publications.** All 24 entries with the identifiers used in the thesis appendix
+  (`[J1]`–`[J10]`, `[C1]`–`[C13]`, `[P1]`), DOI links, type filters, full-text search and
+  one-click BibTeX. Entries are plain HTML, so the list works without JavaScript.
+- **Light and dark.** Follows the OS by default; a manual choice is stored and applied before
+  first paint, so there is no flash.
+- **Responsive.** One fluid layout from 320 px up. The portrait bleeds to the viewport edge on
+  desktop and runs full width under the header on phones.
+- **Accessible.** Landmarks, skip link, focus rings, ARIA state, and full
+  `prefers-reduced-motion` support.
+- **Printable.** A print stylesheet turns the page into a readable CV.
 
 ### Keyboard
 
 | Key | Action |
 | --- | --- |
 | <kbd>/</kbd> | Focus the publication search |
-| <kbd>Esc</kbd> | Clear search, close the menu or the image viewer |
+| <kbd>Esc</kbd> | Clear search, close the menu or the lightbox |
 
 ---
 
-## Editing the content
+## Editing
 
 Everything lives in `index.html`.
 
-- **Publications** — copy an existing `<article class="pub">` block. Set `data-type`
-  to `journal`, `conference` or `patent` and `data-year` to the year; the filter counts
-  in the toolbar and the `[n]` numbering are the only things to update by hand.
-- **Metrics** — the numbers in the hero strip are the `data-count` attributes on
-  `.metric .n`; they animate up from zero on first view.
-- **Theme colours** — the custom properties at the top of `assets/css/style.css`
+- **Publications** — copy an `<article class="pub">` block. Set `data-type` to `journal`,
+  `conference` or `patent`, `data-year` to the year, and the `data-bib` JSON payload for the
+  BibTeX button. Update the counts in the filter tabs.
+- **Figures** — `data-count` on a `<span>` drives the counting animation; the unit sits in a
+  sibling `.u` span so it survives the animation.
+- **Bar chart** — each `.seg` height is a percentage of the tallest year (currently 9).
+- **Colours** — the custom properties at the top of `assets/css/style.css`
   (`:root` for light, `html[data-theme="dark"]` for dark).
 
 ## Local preview
 
-No dependencies required:
-
 ```bash
 python3 -m http.server 8000
-# then open http://localhost:8000
+# open http://localhost:8000
 ```
 
 ## Deployment
 
-GitHub Pages serves the site from this repository. Asset paths are relative, so the
-site works both at a domain root and under the `/website/` sub-path.
+GitHub Pages serves this repository. Asset paths are relative, so the site works both at a
+domain root and under the `/website/` sub-path.
 
 ---
 
@@ -92,4 +104,5 @@ site works both at a domain root and under the `/website/` sub-path.
 - **Scholar** — [scholar.google.com](https://scholar.google.com/citations?user=5jIAPTEAAAAJ)
 - **GitHub** — [@kapil2020](https://github.com/kapil2020)
 
-Fonts are distributed under the SIL Open Font License 1.1.
+Fonts are distributed under the SIL Open Font License 1.1. The press clipping is reproduced
+from *The Hindu*, 8 June 2025.
