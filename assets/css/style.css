@@ -647,6 +647,62 @@ html[data-theme="dark"] .themebtn .moon { display: block; }
 .legend span { display: inline-flex; align-items: center; gap: 0.45rem; font-family: var(--mono); font-size: 0.625rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); }
 .legend i { width: 9px; height: 9px; display: inline-block; }
 
+/* Seasonal panel figure */
+.season { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 0.85fr); gap: clamp(1.5rem, 4vw, 3.5rem); align-items: start; }
+@media (max-width: 860px) { .season { grid-template-columns: minmax(0, 1fr); } }
+
+.season h3 { font-size: clamp(1.3rem, 2.4vw, 1.75rem); margin-bottom: 0.85rem; letter-spacing: -0.032em; }
+.season p { font-family: var(--serif); font-size: 0.9688rem; line-height: 1.62; color: var(--muted); }
+.season p + p { margin-top: 0.8rem; }
+
+.scale { display: flex; flex-wrap: wrap; gap: 0 clamp(1.25rem, 3vw, 2.25rem); margin-top: 1.5rem; padding-top: 1.25rem; border-top: 1px solid var(--line-2); }
+.scale div { padding: 0.35rem 0; }
+.scale b {
+  display: block;
+  font-size: clamp(1.15rem, 2vw, 1.45rem);
+  font-weight: 600;
+  letter-spacing: -0.035em;
+  color: var(--ink);
+  font-variant-numeric: tabular-nums;
+  line-height: 1.1;
+}
+.scale span {
+  display: block;
+  font-family: var(--mono);
+  font-size: 0.5625rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--faint);
+  margin-top: 0.3rem;
+}
+
+.compare { display: grid; gap: 1.4rem; }
+.compare .grp .t {
+  font-family: var(--mono);
+  font-size: 0.5625rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--faint);
+  margin-bottom: 0.7rem;
+}
+.bar { display: grid; grid-template-columns: 58px minmax(0, 1fr) auto; gap: 0.7rem; align-items: center; margin-bottom: 0.45rem; }
+.bar .who { font-family: var(--mono); font-size: 0.6875rem; color: var(--ink-2); }
+.bar .fill { height: 10px; background: var(--line-2); position: relative; overflow: hidden; }
+.bar .fill i {
+  position: absolute; inset: 0 auto 0 0;
+  display: block;
+  width: var(--w, 0%);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 900ms var(--ease);
+}
+.is-in .bar .fill i { transform: scaleX(1); }
+.bar--winter .fill i { background: var(--exposure); }
+.bar--summer .fill i { background: var(--clean); }
+.bar .val { font-family: var(--mono); font-size: 0.6875rem; color: var(--ink); font-weight: 500; min-width: 34px; text-align: right; }
+.compare .grp:nth-child(2) .fill i { transition-delay: 160ms; }
+.compare .note { font-size: 0.75rem; color: var(--faint); font-family: var(--serif); font-style: italic; margin-top: 0.9rem; }
+
 /* Method pipeline */
 .pipeline { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 0; position: relative; }
 .pipeline::before {

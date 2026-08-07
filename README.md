@@ -53,8 +53,9 @@ scroll reveals, a counting animation on the figures and one ticker.
 - **Publications.** All 24 entries with the identifiers used in the thesis appendix
   (`[J1]`–`[J10]`, `[C1]`–`[C13]`, `[P1]`), DOI links, type filters, full-text search and
   one-click BibTeX. Entries are plain HTML, so the list works without JavaScript.
-- **Light and dark.** Follows the OS by default; a manual choice is stored and applied before
-  first paint, so there is no flash.
+- **Light and dark.** The site always opens light, whatever the visitor's OS setting. Dark is
+  opt-in via the toggle and is remembered from then on, applied before first paint so there is
+  no flash.
 - **Responsive.** One fluid layout from 320 px up. The portrait bleeds to the viewport edge on
   desktop and runs full width under the header on phones.
 - **Accessible.** Landmarks, skip link, focus rings, ARIA state, and full

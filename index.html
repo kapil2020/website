@@ -5,18 +5,18 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="color-scheme" content="light dark">
 
-<title>Kapil Kumar Meena, Ph.D. — Postdoctoral Researcher, UCLA</title>
-<meta name="description" content="Dr. Kapil Kumar Meena is a Postdoctoral Researcher at the HUMAN Lab, UCLA. He builds behavioural models and routing tools that cut what commuters breathe — work covered by The Hindu and published in Transport Policy and Transportation Research Record.">
+<title>Kapil Kumar Meena, Ph.D. — Postdoctoral Researcher, University of California, Los Angeles</title>
+<meta name="description" content="Dr. Kapil Kumar Meena is a Postdoctoral Researcher at the HUMAN Lab, University of California, Los Angeles. He builds behavioural models and routing tools that cut what commuters breathe — work covered by The Hindu and published in Transport Policy and Transportation Research Record.">
 <meta name="author" content="Kapil Kumar Meena">
 <link rel="canonical" href="https://kapil2020.github.io/website/">
 
 <meta property="og:type" content="profile">
-<meta property="og:title" content="Kapil Kumar Meena, Ph.D. — Postdoctoral Researcher, UCLA">
+<meta property="og:title" content="Kapil Kumar Meena, Ph.D. — Postdoctoral Researcher, University of California, Los Angeles">
 <meta property="og:description" content="Behavioural models and routing tools that cut what commuters breathe. HUMAN Lab, University of California, Los Angeles.">
 <meta property="og:url" content="https://kapil2020.github.io/website/">
 <meta property="og:image" content="https://kapil2020.github.io/website/assets/img/kapil-portrait.jpg">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Kapil Kumar Meena, Ph.D. — Postdoctoral Researcher, UCLA">
+<meta name="twitter:title" content="Kapil Kumar Meena, Ph.D. — Postdoctoral Researcher, University of California, Los Angeles">
 <meta name="twitter:description" content="Behavioural models and routing tools that cut what commuters breathe.">
 <meta name="twitter:image" content="https://kapil2020.github.io/website/assets/img/kapil-portrait.jpg">
 
@@ -29,11 +29,11 @@
 <link rel="stylesheet" href="assets/css/style.css">
 
 <script>
+  /* Light is the default on arrival; dark is opt-in and remembered. */
   (function () {
     try {
       var s = localStorage.getItem('theme');
-      document.documentElement.setAttribute('data-theme',
-        s || (matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'));
+      if (s === 'dark') document.documentElement.setAttribute('data-theme', 'dark');
     } catch (e) {}
   })();
 </script>
@@ -46,7 +46,7 @@
   "honorificPrefix": "Dr.",
   "honorificSuffix": "Ph.D.",
   "jobTitle": "Postdoctoral Researcher",
-  "affiliation": { "@type": "CollegeOrUniversity", "name": "University of California, Los Angeles" },
+  "affiliation": { "@type": "CollegeOrUniversity", "name": "University of California, Los Angeles", "alternateName": "UCLA" },
   "alumniOf": [
     { "@type": "CollegeOrUniversity", "name": "Indian Institute of Technology Kharagpur" },
     { "@type": "CollegeOrUniversity", "name": "Indian Institute of Technology Roorkee" }
@@ -102,7 +102,7 @@
       <span class="nm">Kapil Kumar Meena</span>
       <span class="deg">PhD</span>
       <span class="sep" aria-hidden="true"></span>
-      <span class="aff">UCLA · HUMAN Lab</span>
+      <span class="aff">University of California, Los Angeles</span>
     </a>
 
     <nav class="nav" id="nav" aria-label="Primary">
@@ -140,7 +140,7 @@
   <div class="wrap hero-grid">
     <div>
       <p class="hero-kick">
-        <span><span class="beacon" aria-hidden="true"></span>Postdoctoral Researcher &mdash; <b>HUMAN&nbsp;Lab, UCLA</b></span>
+        <span><span class="beacon" aria-hidden="true"></span>Postdoctoral Researcher &mdash; <b>HUMAN&nbsp;Lab</b></span>
       </p>
 
       <h1>
@@ -160,7 +160,7 @@
       <dl class="hero-meta">
         <div>
           <dt>Now</dt>
-          <dd>Postdoc, <a href="https://sites.google.com/cornell.edu/youngseokim/human-lab" target="_blank" rel="noopener"><b>HUMAN Lab</b></a>, UCLA &nbsp;·&nbsp; adv. Prof. Youngseo Kim</dd>
+          <dd>Postdoc, <a href="https://sites.google.com/cornell.edu/youngseokim/human-lab" target="_blank" rel="noopener"><b>HUMAN Lab</b></a>, University of California, Los Angeles &nbsp;·&nbsp; adv. Prof. Youngseo Kim</dd>
         </div>
         <div>
           <dt>Ph.D.</dt>
@@ -191,7 +191,7 @@
       </div>
       <div class="hero-tag">
         <div class="t">Los Angeles, California</div>
-        <div class="d">HUMAN Lab, University of California, Los Angeles</div>
+        <div class="d">HUMAN Lab &middot; University of California, Los Angeles</div>
       </div>
     </div>
   </div>
@@ -201,7 +201,7 @@
 <div class="ticker" aria-hidden="true">
   <div class="ticker-track">
     <div class="ticker-set">
-      <span><b>UCLA</b> HUMAN Lab</span>
+      <span><b>University of California, Los Angeles</b> · HUMAN Lab</span>
       <span>Ph.D. <b>IIT Kharagpur</b></span>
       <span>M.Tech <b>IIT Roorkee</b></span>
       <span><em>200+</em> citations</span>
@@ -215,7 +215,7 @@
       <span>Reviewer, <b>Transport Policy</b></span>
     </div>
     <div class="ticker-set">
-      <span><b>UCLA</b> HUMAN Lab</span>
+      <span><b>University of California, Los Angeles</b> · HUMAN Lab</span>
       <span>Ph.D. <b>IIT Kharagpur</b></span>
       <span>M.Tech <b>IIT Roorkee</b></span>
       <span><em>200+</em> citations</span>
@@ -297,9 +297,48 @@
       </div>
       <div class="cell cell--half">
         <div class="lbl"><span class="dot"></span> Field sites</div>
-        <span class="bignum"><span data-count="6">0</span></span>
-        <p class="cap">Indian cities surveyed: Delhi, Kolkata, Mumbai, Kharagpur and tier-2/3
-          cities across the country.</p>
+        <span class="bignum"><span data-count="5">0</span></span>
+        <p class="cap">study contexts across India &mdash; Delhi, Kolkata, Mumbai, Kharagpur and
+          tier-2/3 cities.</p>
+      </div>
+
+      <!-- The seasonal panel experiment -->
+      <div class="cell cell--full">
+        <div class="lbl"><span class="dot"></span> The seasonal experiment</div>
+        <div class="season">
+          <div>
+            <h3>Winter decides who reroutes</h3>
+            <p>The core of my dissertation is a <strong>two-wave route-choice panel</strong>: the same
+              <strong>723 Kolkata commuters</strong> surveyed once in winter and again in summer,
+              yielding <strong>5,224 choice observations</strong>. Following the same people across
+              seasons separates a real change in preference from a change in who happens to answer.</p>
+            <p>Air quality weighs roughly <strong>four times</strong> more heavily on route choice in
+              winter than in summer, and willingness to pay for cleaner air is <strong>1.8&times;</strong>
+              higher per AQI band. Commuters valued a pre-trip AQI alert more than an equivalent
+              reduction in physical exposure &mdash; which makes real-time air-quality information the
+              cheapest policy lever available. AQI literacy, not income, is the dominant moderator.</p>
+            <div class="scale">
+              <div><b>723</b><span>Commuters</span></div>
+              <div><b>5,224</b><span>Observations</span></div>
+              <div><b>2</b><span>Seasons</span></div>
+              <div><b>3</b><span>Model families</span></div>
+            </div>
+          </div>
+
+          <div class="compare">
+            <div class="grp">
+              <div class="t">Weight on air quality in route choice</div>
+              <div class="bar bar--winter"><span class="who">Winter</span><span class="fill"><i style="--w:100%"></i></span><span class="val">4.0&times;</span></div>
+              <div class="bar bar--summer"><span class="who">Summer</span><span class="fill"><i style="--w:25%"></i></span><span class="val">1.0&times;</span></div>
+            </div>
+            <div class="grp">
+              <div class="t">Willingness to pay per AQI band</div>
+              <div class="bar bar--winter"><span class="who">Winter</span><span class="fill"><i style="--w:100%"></i></span><span class="val">1.8&times;</span></div>
+              <div class="bar bar--summer"><span class="who">Summer</span><span class="fill"><i style="--w:56%"></i></span><span class="val">1.0&times;</span></div>
+            </div>
+            <p class="note">Panel binary logit, machine learning and deep learning models, triangulated.</p>
+          </div>
+        </div>
       </div>
 
       <!-- Method -->
@@ -356,16 +395,27 @@
       <article class="theme">
         <span class="num">02</span>
         <div>
-          <h3>Behavioural segmentation</h3>
-          <p>Hybrid latent-class choice models that separate travellers who <em>can</em> switch
-            from those who only say they would &mdash; the core of my dissertation.</p>
-          <div class="stat"><b>2-wave</b> commuter panel <span style="color:var(--faint)">·</span> Kolkata &amp; Delhi</div>
-          <div class="go"><a class="lnk" href="https://survey-iitkgp.vercel.app/" target="_blank" rel="noopener">The survey instrument <svg aria-hidden="true"><use href="#i-out"></use></svg></a></div>
+          <h3>Seasonal panel experiments</h3>
+          <p>Two-wave panels that follow the <em>same</em> commuters through winter and summer, so a
+            shift in behaviour can be attributed to the season rather than to the sample.</p>
+          <div class="stat"><b>723</b> commuters <span style="color:var(--faint)">·</span> 5,224 observations <span style="color:var(--faint)">·</span> Kolkata</div>
+          <div class="go"><a class="lnk" href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=6904230" target="_blank" rel="noopener">Read the preprint <svg aria-hidden="true"><use href="#i-out"></use></svg></a></div>
         </div>
       </article>
 
       <article class="theme">
         <span class="num">03</span>
+        <div>
+          <h3>Behavioural segmentation</h3>
+          <p>Hybrid latent-class and integrated choice latent variable models that separate travellers
+            who <em>can</em> switch from those who only say they would.</p>
+          <div class="stat"><b>Hybrid</b> latent class <span style="color:var(--faint)">·</span> ICLV <span style="color:var(--faint)">·</span> mixed logit</div>
+          <div class="go"><a class="lnk" href="https://survey-iitkgp.vercel.app/" target="_blank" rel="noopener">The survey instrument <svg aria-hidden="true"><use href="#i-out"></use></svg></a></div>
+        </div>
+      </article>
+
+      <article class="theme">
+        <span class="num">04</span>
         <div>
           <h3>Sustainable routing</h3>
           <p>DRUM offers five routes &mdash; shortest, fastest, least-exposure, least-energy and a
@@ -376,13 +426,24 @@
       </article>
 
       <article class="theme">
-        <span class="num">04</span>
+        <span class="num">05</span>
         <div>
           <h3>Active mobility &amp; access</h3>
           <p>First/last-mile cycling to suburban rail, walkability from street imagery, and
             transit-oriented development priorities for Indian cities.</p>
           <div class="stat"><b>Mumbai</b> suburban rail <span style="color:var(--faint)">·</span> ICLV model</div>
           <div class="go"><a class="lnk" href="https://doi.org/10.1080/15568318.2025.2572818" target="_blank" rel="noopener">Read the study <svg aria-hidden="true"><use href="#i-out"></use></svg></a></div>
+        </div>
+      </article>
+
+      <article class="theme">
+        <span class="num">06</span>
+        <div>
+          <h3>Learning from sparse data</h3>
+          <p>India runs about a third of the air-quality stations it needs. Geostatistical and deep
+            models fill the gaps so exposure can be estimated street by street.</p>
+          <div class="stat"><b>GeoNBeats</b> <span style="color:var(--faint)">·</span> hybrid kriging + deep learning</div>
+          <div class="go"><a class="lnk" href="https://doi.org/10.1109/AIEI69164.2026.11496657" target="_blank" rel="noopener">Read the paper <svg aria-hidden="true"><use href="#i-out"></use></svg></a></div>
         </div>
       </article>
     </div>
@@ -621,12 +682,13 @@
       <article class="pub" data-type="journal" data-year="2025">
         <div class="id">[J4]</div>
         <div>
-          <h3>Do commuters reroute for cleaner air? Seasonal salience in route choice behaviour from a two-wave panel in Kolkata, India</h3>
+          <h3><a href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=6904230" target="_blank" rel="noopener">Do commuters reroute for cleaner air? Seasonal salience in route choice behaviour from a two-wave panel in Kolkata, India</a></h3>
           <p class="au"><span class="me">Meena, K. K.</span> and Goswami, A. K.</p>
           <p class="vn">Travel Behaviour &amp; Society<span class="yr">2025</span></p>
         </div>
         <div class="acts">
           <span class="act act--review">Under review</span>
+          <a class="act act--doi" href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=6904230" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-out"></use></svg> Preprint</a>
           <button class="act" type="button" data-bib='{"type":"article","title":"Do commuters reroute for cleaner air? Seasonal salience in route choice behaviour from a two-wave panel in Kolkata, India","authors":"Meena, K. K. and Goswami, A. K.","venue":"Travel Behaviour and Society","year":"2025","note":"Under review"}'><svg aria-hidden="true"><use href="#i-copy"></use></svg> BibTeX</button>
         </div>
       </article>
@@ -889,7 +951,7 @@
         <span class="yr">2026 — now</span>
         <div class="mark"></div>
         <h4>Postdoctoral Researcher</h4>
-        <div class="org">HUMAN Lab<br>UCLA, Los Angeles</div>
+        <div class="org">HUMAN Lab<br>University of California, Los Angeles</div>
         <div class="adv">adv. <b>Prof. Youngseo Kim</b></div>
       </article>
       <article class="stop">
@@ -1046,7 +1108,7 @@
       </a>
       <div>
         <span class="k">Based in</span>
-        <span class="v">HUMAN Lab, UCLA · Los Angeles, California</span>
+        <span class="v">HUMAN Lab, University of California, Los Angeles<br>Los Angeles, California, USA</span>
       </div>
       <a href="https://scholar.google.com/citations?user=5jIAPTEAAAAJ&hl=en" target="_blank" rel="noopener">
         <span class="k">Scholar</span>

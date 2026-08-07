@@ -27,15 +27,8 @@
     });
   }
 
-  var mq = matchMedia('(prefers-color-scheme: dark)');
-  var follow = function (e) {
-    var saved = null;
-    try { saved = localStorage.getItem('theme'); } catch (err) {}
-    if (!saved) setTheme(e.matches ? 'dark' : 'light');
-  };
-  if (mq.addEventListener) mq.addEventListener('change', follow);
-  else if (mq.addListener) mq.addListener(follow);
-
+  /* The site opens light regardless of the OS setting — dark is a deliberate
+     choice made with the toggle, and it is remembered from then on. */
   setTheme(document.documentElement.getAttribute('data-theme') || 'light');
 
   /* ---- Header, progress rail, back-to-top ------------------------------- */
