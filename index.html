@@ -1,891 +1,1268 @@
-
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Kapil Kumar Meena | PhD Researcher | Sustainable Mobility</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    
-    <!-- Leaflet Map -->
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
-    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="color-scheme" content="light dark">
 
-    <!-- LaTeX Font (Computer Modern) -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/aaaakshat/cm-web-fonts@latest/fonts.css">
-    
-    <script>
-      tailwind.config = {
-        darkMode: 'class',
-        theme: {
-          extend: {
-            colors: {
-              primary: 'var(--color-primary)',
-              secondary: 'var(--color-secondary)',
-              background: 'var(--color-background)',
-              surface: 'var(--color-surface)',
-              text: 'var(--color-text)',
-              'text-muted': 'var(--color-text-muted)',
-              accent: 'var(--color-accent)',
-            },
-            fontFamily: {
-              sans: ['"Computer Modern Sans"', 'sans-serif'],
-              serif: ['"Computer Modern Serif"', 'serif'],
-              mono: ['"Computer Modern Typewriter"', 'monospace'],
-              heading: ['"Computer Modern Serif"', 'serif'],
-            },
-            animation: {
-              'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
-              'float': 'float 6s ease-in-out infinite',
-              'shimmer': 'shimmer 2s infinite linear',
-              'blob': 'blob 7s infinite',
-            },
-            keyframes: {
-              float: {
-                '0%, 100%': { transform: 'translateY(0)' },
-                '50%': { transform: 'translateY(-15px)' },
-              },
-              shimmer: {
-                '0%': { backgroundPosition: '-200% 0' },
-                '100%': { backgroundPosition: '200% 0' },
-              },
-              blob: {
-                "0%": { transform: "translate(0px, 0px) scale(1)" },
-                "33%": { transform: "translate(30px, -50px) scale(1.1)" },
-                "66%": { transform: "translate(-20px, 20px) scale(0.9)" },
-                "100%": { transform: "translate(0px, 0px) scale(1)" }
-              }
-            }
-          }
-        }
-      }
-    </script>
-    <style>
-      :root {
-        --color-primary: #020617;
-        --color-secondary: #334155;
-        --color-background: #ffffff;
-        --color-surface: #ffffff;
-        --color-text: #0f172a;
-        --color-text-muted: #475569;
-        --color-accent: #2563eb;
-        --glass-bg: rgba(255, 255, 255, 0.65);
-      }
+<title>Kapil Kumar Meena, Ph.D. — Postdoctoral Researcher, UCLA</title>
+<meta name="description" content="Dr. Kapil Kumar Meena is a Postdoctoral Researcher at the HUMAN Lab, University of California, Los Angeles. His research links travel behaviour, air-quality exposure and machine learning to build cleaner, fairer urban mobility systems.">
+<meta name="author" content="Kapil Kumar Meena">
+<link rel="canonical" href="https://kapil2020.github.io/website/">
 
-      .dark {
-        --color-primary: #f8fafc;
-        --color-secondary: #94a3b8;
-        --color-background: #020617;
-        --color-surface: #0f172a;
-        --color-text: #f1f5f9;
-        --color-text-muted: #94a3b8;
-        --color-accent: #38bdf8;
-        --glass-bg: rgba(15, 23, 42, 0.6);
-      }
+<meta property="og:type" content="profile">
+<meta property="og:title" content="Kapil Kumar Meena, Ph.D. — Postdoctoral Researcher, UCLA">
+<meta property="og:description" content="Travel behaviour, air-quality exposure and machine learning for sustainable urban mobility. HUMAN Lab, University of California, Los Angeles.">
+<meta property="og:url" content="https://kapil2020.github.io/website/">
+<meta property="og:image" content="https://github.com/kapil2020/web/blob/main/kp_1.png?raw=true">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Kapil Kumar Meena, Ph.D. — Postdoctoral Researcher, UCLA">
+<meta name="twitter:description" content="Travel behaviour, air-quality exposure and machine learning for sustainable urban mobility.">
+<meta name="twitter:image" content="https://github.com/kapil2020/web/blob/main/kp_1.png?raw=true">
 
-      body { 
-        margin: 0; 
-        background-color: var(--color-background); 
-        color: var(--color-text);
-        transition: background-color 0.5s ease;
-        -webkit-font-smoothing: antialiased;
-        font-family: "Computer Modern Serif", serif;
-      }
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2314171c'/%3E%3Ctext x='32' y='43' font-family='Georgia,serif' font-size='30' font-weight='700' fill='%23ffffff' text-anchor='middle'%3EKM%3C/text%3E%3C/svg%3E">
+<link rel="apple-touch-icon" href="https://github.com/kapil2020/web/blob/main/kp_1.png?raw=true">
 
-      /* === BEAST MODE GLASS === */
-      .premium-glass {
-        background: var(--glass-bg);
-        backdrop-filter: blur(24px) saturate(180%);
-        -webkit-backdrop-filter: blur(24px) saturate(180%);
-        border: 1px solid rgba(255, 255, 255, 0.5);
-        box-shadow: 
-          0 4px 6px -1px rgba(0, 0, 0, 0.05), 
-          inset 0 0 20px rgba(255,255,255,0.5);
-        transition: all 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
-        position: relative;
-        overflow: hidden;
-      }
-      
-      .dark .premium-glass {
-        border: 1px solid rgba(255,255,255,0.1);
-        box-shadow: inset 0 0 20px rgba(255,255,255,0.05);
-      }
+<link rel="preload" href="assets/fonts/SourceSerif4-normal-400_700.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/fonts/Inter-normal-400_700.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="assets/css/fonts.css">
+<link rel="stylesheet" href="assets/css/style.css">
 
-      .premium-glass:hover {
-        transform: translateY(-5px);
-        box-shadow: 
-          0 20px 40px -10px rgba(var(--color-accent), 0.15),
-          0 0 0 1px rgba(var(--color-accent), 0.2);
-        border-color: var(--color-accent);
-      }
-      
-      /* Rainbow Border Bottom */
-      .glass-rainbow-border::after {
-        content: '';
-        position: absolute;
-        bottom: 0;
-        left: 0;
-        right: 0;
-        height: 3px;
-        background: linear-gradient(90deg, #3b82f6, #10b981, #f59e0b, #ec4899);
-        opacity: 0.8;
-      }
+<script>
+  /* Set the theme before first paint so there is no flash. */
+  (function () {
+    try {
+      var saved = localStorage.getItem('theme');
+      var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      document.documentElement.setAttribute('data-theme', saved || (prefersDark ? 'dark' : 'light'));
+    } catch (e) {}
+  })();
+</script>
 
-      /* Spotlight Effect */
-      .spotlight-card::before {
-        content: '';
-        position: absolute;
-        inset: 0;
-        background: radial-gradient(800px circle at var(--mouse-x, -100%) var(--mouse-y, -100%), rgba(56, 189, 248, 0.08), transparent 40%);
-        pointer-events: none;
-        z-index: 1;
-        transition: opacity 0.3s;
-        opacity: 0;
-      }
-      .spotlight-card:hover::before { opacity: 1; }
-
-      /* Animated Background Blobs */
-      .blob-bg {
-        position: fixed;
-        top: 0; left: 0; width: 100vw; height: 100vh;
-        z-index: -1;
-        overflow: hidden;
-        pointer-events: none;
-      }
-      .blob {
-        position: absolute;
-        filter: blur(100px);
-        opacity: 0.22;
-        animation: blob 14s infinite alternate;
-      }
-      .blob-1 { top: -10%; left: -10%; width: 50vw; height: 50vw; background: #2F80ED; }
-      .blob-2 { bottom: -10%; right: -10%; width: 50vw; height: 50vw; background: #9B51E0; animation-delay: 2s; }
-      .blob-3 { top: 40%; left: 40%; width: 40vw; height: 40vw; background: #F2994A; animation-delay: 4s; }
-
-      ::-webkit-scrollbar { width: 8px; }
-      ::-webkit-scrollbar-track { background: transparent; }
-      ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 4px; }
-      .dark ::-webkit-scrollbar-thumb { background: #334155; }
-
-      /* === Editorial / Academic motion utilities === */
-      @keyframes word-cycle {
-        0%, 22% { opacity: 1; transform: translateY(0); filter: blur(0); }
-        25%, 97% { opacity: 0; transform: translateY(-10px); filter: blur(2px); }
-        100% { opacity: 1; transform: translateY(0); filter: blur(0); }
-      }
-      .rotating-word {
-        position: absolute; left: 0; top: 0;
-        animation: word-cycle 14s infinite ease-in-out;
-        opacity: 0;
-        white-space: nowrap;
-      }
-      .rotating-word:nth-child(1) { animation-delay: 0s; }
-      .rotating-word:nth-child(2) { animation-delay: 3.5s; }
-      .rotating-word:nth-child(3) { animation-delay: 7s; }
-      .rotating-word:nth-child(4) { animation-delay: 10.5s; }
-
-      @keyframes marquee-scroll {
-        from { transform: translateX(0); }
-        to { transform: translateX(-50%); }
-      }
-      .marquee-track {
-        animation: marquee-scroll 45s linear infinite;
-        will-change: transform;
-      }
-      .marquee-track:hover { animation-play-state: paused; }
-
-      @keyframes spin-slow { to { transform: rotate(360deg); } }
-      .spin-slow { animation: spin-slow 80s linear infinite; transform-origin: center; }
-      .spin-rev  { animation: spin-slow 60s linear infinite reverse; transform-origin: center; }
-
-      @keyframes draw-rule {
-        from { transform: scaleX(0); }
-        to   { transform: scaleX(1); }
-      }
-      .draw-rule { transform-origin: left center; animation: draw-rule 1.4s cubic-bezier(0.2,0.8,0.2,1) 0.3s both; }
-
-      @keyframes shimmer-text-kf {
-        0%, 100% { background-position: 0% 50%; }
-        50%      { background-position: 100% 50%; }
-      }
-      .shimmer-ink {
-        background: linear-gradient(90deg, var(--color-text) 0%, var(--color-accent) 30%, #a855f7 55%, #ec4899 75%, var(--color-text) 100%);
-        background-size: 220% 100%;
-        -webkit-background-clip: text;
-        background-clip: text;
-        -webkit-text-fill-color: transparent;
-        animation: shimmer-text-kf 8s ease-in-out infinite;
-      }
-
-      .academic-grid::before {
-        content: '';
-        position: absolute; inset: 0;
-        background-image:
-          linear-gradient(to right, rgba(15,23,42,0.04) 1px, transparent 1px),
-          linear-gradient(to bottom, rgba(15,23,42,0.04) 1px, transparent 1px);
-        background-size: 56px 56px;
-        mask-image: radial-gradient(ellipse 80% 60% at 50% 40%, black 30%, transparent 75%);
-        -webkit-mask-image: radial-gradient(ellipse 80% 60% at 50% 40%, black 30%, transparent 75%);
-        pointer-events: none;
-      }
-      .dark .academic-grid::before {
-        background-image:
-          linear-gradient(to right, rgba(255,255,255,0.05) 1px, transparent 1px),
-          linear-gradient(to bottom, rgba(255,255,255,0.05) 1px, transparent 1px);
-      }
-
-      .ink-underline {
-        background-image: linear-gradient(90deg, currentColor, currentColor);
-        background-size: 100% 2px;
-        background-repeat: no-repeat;
-        background-position: 0 100%;
-        padding-bottom: 2px;
-      }
-
-      @keyframes float-soft {
-        0%, 100% { transform: translateY(0); }
-        50%      { transform: translateY(-6px); }
-      }
-      .float-soft { animation: float-soft 6s ease-in-out infinite; }
-
-      .magnetic-btn { transition: transform .25s cubic-bezier(0.2,0.8,0.2,1), box-shadow .25s, background-color .25s; }
-      .magnetic-btn:hover { transform: translateY(-2px); }
-      .magnetic-btn:active { transform: translateY(0); }
-
-      /* === Apple-style hero palette (#2F80ED #9B51E0 #EB5757 #F2994A) === */
-      @keyframes apple-grad-shift {
-        0%, 100% { background-position: 0% 50%; }
-        50%      { background-position: 100% 50%; }
-      }
-      .apple-gradient-text {
-        background: linear-gradient(90deg, #2F80ED 0%, #9B51E0 35%, #EB5757 70%, #F2994A 100%);
-        background-size: 220% 100%;
-        -webkit-background-clip: text;
-        background-clip: text;
-        -webkit-text-fill-color: transparent;
-        animation: apple-grad-shift 12s ease-in-out infinite;
-      }
-      @keyframes apple-halo-spin { to { transform: rotate(360deg); } }
-      .apple-halo {
-        background: conic-gradient(from 0deg, #2F80ED, #9B51E0, #EB5757, #F2994A, #2F80ED);
-        animation: apple-halo-spin 28s linear infinite;
-      }
-      .apple-arrow { display: inline-block; transition: transform .35s cubic-bezier(0.2,0.8,0.2,1); }
-      .group:hover .apple-arrow { transform: translateX(5px); }
-      @keyframes hero-blob-drift {
-        0%, 100% { transform: translate(0,0) scale(1); }
-        33%      { transform: translate(40px,-30px) scale(1.08); }
-        66%      { transform: translate(-30px,30px) scale(0.94); }
-      }
-      .hero-blob { animation: hero-blob-drift 18s ease-in-out infinite; }
-      @keyframes scroll-cue {
-        0%, 100% { transform: translateY(0); opacity: .5; }
-        50%      { transform: translateY(6px); opacity: 1; }
-      }
-      .scroll-cue { animation: scroll-cue 2.4s ease-in-out infinite; }
-
-      /* === Coding-aesthetic hero animations === */
-      @keyframes type-reveal { to { clip-path: inset(0 0 0 0); } }
-      .typewriter-line {
-        clip-path: inset(0 100% 0 0);
-        animation: type-reveal 3.6s steps(60, end) forwards;
-      }
-      @keyframes caret-blink { 0%, 49% { opacity: 1; } 50%, 100% { opacity: 0; } }
-      .caret { display: inline-block; width: 0.55ch; height: 1.05em; vertical-align: -0.15em; background: currentColor; margin-left: 4px; animation: caret-blink 1.05s steps(2) infinite; }
-
-      @keyframes line-fade-up { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
-      .code-line { opacity: 0; animation: line-fade-up .55s cubic-bezier(0.2,0.8,0.2,1) forwards; }
-
-      .code-window {
-        background: linear-gradient(180deg, rgba(255,255,255,0.85) 0%, rgba(248,250,252,0.85) 100%);
-        backdrop-filter: blur(20px) saturate(160%);
-        -webkit-backdrop-filter: blur(20px) saturate(160%);
-        border: 1px solid rgba(15,23,42,0.08);
-        box-shadow:
-          0 1px 0 rgba(255,255,255,0.6) inset,
-          0 22px 40px -20px rgba(15,23,42,0.20),
-          0 4px 14px -4px rgba(15,23,42,0.08);
-      }
-      .dark .code-window {
-        background: linear-gradient(180deg, rgba(15,23,42,0.78) 0%, rgba(2,6,23,0.78) 100%);
-        border-color: rgba(255,255,255,0.08);
-        box-shadow:
-          0 1px 0 rgba(255,255,255,0.04) inset,
-          0 22px 40px -20px rgba(0,0,0,0.55);
-      }
-
-      .syn-key { color: #9B51E0; }
-      .syn-prop { color: #2F80ED; }
-      .syn-str { color: #F2994A; }
-      .syn-punct { color: #94a3b8; }
-      .syn-num { color: #EB5757; }
-      .ln-num { color: rgba(100,116,139,0.6); user-select: none; }
-
-      @keyframes prompt-glow { 0%,100% { box-shadow: 0 0 0 0 rgba(47,128,237,0.0); } 50% { box-shadow: 0 0 0 4px rgba(47,128,237,0.18); } }
-      .prompt-dot { animation: prompt-glow 3.2s ease-in-out infinite; }
-
-      /* === Award-grade section system === */
-      @keyframes sec-rule-grow { from { transform: scaleX(0); } to { transform: scaleX(1); } }
-      .sec-rule { transform-origin: left center; animation: sec-rule-grow 1.2s cubic-bezier(0.2,0.8,0.2,1) forwards; }
-
-      .sec-watermark {
-        position: absolute;
-        font-family: "Computer Modern Serif", serif;
-        font-weight: 900;
-        font-size: clamp(7rem, 14vw, 13rem);
-        line-height: 0.78;
-        color: rgba(15,23,42,0.045);
-        pointer-events: none;
-        user-select: none;
-        letter-spacing: -0.05em;
-        z-index: 0;
-      }
-      .dark .sec-watermark { color: rgba(255,255,255,0.045); }
-
-      /* Refined card surface — replaces the heavy premium-glass for cards */
-      .pro-card {
-        position: relative;
-        background: rgba(255,255,255,0.72);
-        backdrop-filter: blur(18px) saturate(160%);
-        -webkit-backdrop-filter: blur(18px) saturate(160%);
-        border: 1px solid rgba(15,23,42,0.07);
-        border-radius: 18px;
-        transition: transform .45s cubic-bezier(0.2,0.8,0.2,1),
-                    box-shadow .45s cubic-bezier(0.2,0.8,0.2,1),
-                    border-color .45s;
-        box-shadow:
-          0 1px 0 rgba(255,255,255,0.55) inset,
-          0 1px 2px rgba(15,23,42,0.04),
-          0 4px 14px -6px rgba(15,23,42,0.05);
-      }
-      .pro-card:hover {
-        transform: translateY(-4px);
-        border-color: rgba(47,128,237,0.22);
-        box-shadow:
-          0 1px 0 rgba(255,255,255,0.55) inset,
-          0 18px 36px -14px rgba(47,128,237,0.18),
-          0 6px 18px -6px rgba(15,23,42,0.10);
-      }
-      .dark .pro-card {
-        background: rgba(15,23,42,0.55);
-        border-color: rgba(255,255,255,0.08);
-        box-shadow:
-          0 1px 0 rgba(255,255,255,0.04) inset,
-          0 8px 24px -10px rgba(0,0,0,0.45);
-      }
-      .dark .pro-card:hover {
-        border-color: rgba(56,189,248,0.30);
-        box-shadow:
-          0 1px 0 rgba(255,255,255,0.04) inset,
-          0 22px 50px -18px rgba(56,189,248,0.20);
-      }
-
-      /* Subtle accent ribbon along the top of cards */
-      .pro-card::before {
-        content: '';
-        position: absolute; left: 14px; right: 14px; top: 0;
-        height: 2px;
-        background: linear-gradient(90deg, transparent, rgba(47,128,237,0.0), transparent);
-        transition: background .5s ease;
-        border-radius: 2px;
-      }
-      .pro-card:hover::before {
-        background: linear-gradient(90deg, transparent, rgba(47,128,237,0.55), rgba(155,81,224,0.55), rgba(235,87,87,0.55), transparent);
-      }
-
-      /* Section section padding utility — tighten the global rhythm */
-      .sec-pad { padding-top: 4.5rem; padding-bottom: 4.5rem; }
-      @media (min-width: 768px) { .sec-pad { padding-top: 5.5rem; padding-bottom: 5.5rem; } }
-
-      /* Reveal-on-scroll helper for non-motion children (kept, used selectively) */
-      @keyframes reveal-up {
-        from { opacity: 0; transform: translateY(14px); }
-        to   { opacity: 1; transform: translateY(0); }
-      }
-
-      /* Heading underline that draws on hover */
-      .head-underline { background-image: linear-gradient(90deg, #2F80ED, #9B51E0); background-size: 0% 2px; background-repeat: no-repeat; background-position: 0 100%; padding-bottom: 4px; transition: background-size .55s cubic-bezier(0.2,0.8,0.2,1); }
-      .head-underline:hover { background-size: 100% 2px; }
-
-      /* === Tier 1 features — scroll progress, toast, BibTeX button, ⌘K palette === */
-      #scroll-progress {
-        position: fixed; top: 0; left: 0; height: 3px; width: 0;
-        background: linear-gradient(90deg, #2F80ED 0%, #9B51E0 33%, #EB5757 66%, #F2994A 100%);
-        z-index: 9999; pointer-events: none;
-        transition: width .12s linear;
-        box-shadow: 0 0 8px rgba(47,128,237,0.4);
-      }
-      .app-toast {
-        position: fixed; bottom: 28px; left: 50%; transform: translate(-50%, 24px);
-        background: rgba(15,23,42,0.94); color: #fff;
-        padding: 10px 18px; border-radius: 999px; font-size: 13px;
-        font-family: "Computer Modern Typewriter", ui-monospace, monospace;
-        letter-spacing: 0.02em;
-        box-shadow: 0 12px 30px -8px rgba(15,23,42,0.45), 0 0 0 1px rgba(255,255,255,0.06) inset;
-        opacity: 0; pointer-events: none;
-        transition: opacity .25s ease, transform .35s cubic-bezier(0.2,0.8,0.2,1);
-        z-index: 10001;
-        display: flex; align-items: center; gap: 10px;
-      }
-      .app-toast.show { opacity: 1; transform: translate(-50%, 0); }
-      .app-toast .toast-dot { width: 8px; height: 8px; border-radius: 50%; background: #2F80ED; box-shadow: 0 0 0 4px rgba(47,128,237,0.18); }
-
-      .bib-btn {
-        display: inline-flex; align-items: center; gap: 4px;
-        padding: 4px 9px; border-radius: 7px; font-size: 11px; font-weight: 700;
-        font-family: "Computer Modern Typewriter", ui-monospace, monospace;
-        letter-spacing: 0.04em;
-        background: rgba(155,81,224,0.08);
-        color: #9B51E0;
-        border: 1px solid rgba(155,81,224,0.22);
-        cursor: pointer;
-        transition: background .25s, border-color .25s, transform .15s;
-      }
-      .bib-btn:hover { background: rgba(155,81,224,0.15); border-color: rgba(155,81,224,0.45); }
-      .bib-btn:active { transform: scale(0.96); }
-
-      /* ===== ⌘K Command Palette ===== */
-      #cmdk-root { position: fixed; inset: 0; z-index: 10000; display: none; }
-      #cmdk-root.open { display: block; }
-      .cmdk-backdrop {
-        position: absolute; inset: 0;
-        background: rgba(15,23,42,0.55);
-        backdrop-filter: blur(8px) saturate(140%);
-        -webkit-backdrop-filter: blur(8px) saturate(140%);
-        animation: cmdk-fade .25s ease both;
-      }
-      @keyframes cmdk-fade { from { opacity: 0; } to { opacity: 1; } }
-      .cmdk-shell {
-        position: relative;
-        width: min(640px, calc(100% - 32px));
-        margin: 12vh auto 0;
-        background: rgba(255,255,255,0.96);
-        border: 1px solid rgba(15,23,42,0.08);
-        border-radius: 16px;
-        box-shadow: 0 24px 64px -12px rgba(15,23,42,0.35), 0 0 0 1px rgba(255,255,255,0.6) inset;
-        overflow: hidden;
-        font-family: "Computer Modern Serif", serif;
-        animation: cmdk-pop .35s cubic-bezier(0.2,0.8,0.2,1) both;
-      }
-      .dark .cmdk-shell {
-        background: rgba(15,23,42,0.96);
-        border-color: rgba(255,255,255,0.10);
-      }
-      @keyframes cmdk-pop { from { opacity: 0; transform: translateY(-8px) scale(0.98); } to { opacity: 1; transform: translateY(0) scale(1); } }
-      .cmdk-input-row {
-        display: flex; align-items: center; gap: 12px;
-        padding: 14px 18px; border-bottom: 1px solid rgba(15,23,42,0.06);
-      }
-      .dark .cmdk-input-row { border-bottom-color: rgba(255,255,255,0.06); }
-      .cmdk-prompt {
-        font-family: "Computer Modern Typewriter", ui-monospace, monospace;
-        font-size: 11px; font-weight: 700;
-        color: #fff; background: linear-gradient(135deg, #2F80ED, #9B51E0);
-        padding: 4px 8px; border-radius: 6px; letter-spacing: 0.06em;
-        box-shadow: 0 2px 8px rgba(155,81,224,0.32);
-      }
-      .cmdk-input {
-        flex: 1; background: transparent; border: 0; outline: 0;
-        font-family: "Computer Modern Serif", serif;
-        font-size: 17px; color: var(--color-text);
-      }
-      .cmdk-kbd {
-        font-family: "Computer Modern Typewriter", ui-monospace, monospace;
-        font-size: 10px; font-weight: 700;
-        padding: 3px 7px; border-radius: 5px;
-        background: rgba(15,23,42,0.06); color: var(--color-text-muted);
-        border: 1px solid rgba(15,23,42,0.08);
-      }
-      .dark .cmdk-kbd { background: rgba(255,255,255,0.06); border-color: rgba(255,255,255,0.08); }
-      .cmdk-list {
-        list-style: none; margin: 0; padding: 8px;
-        max-height: 56vh; overflow-y: auto;
-      }
-      .cmdk-item {
-        display: flex; align-items: center; gap: 12px;
-        padding: 10px 12px; border-radius: 10px;
-        cursor: pointer; user-select: none;
-        font-size: 14px; color: var(--color-text);
-        transition: background .15s ease;
-      }
-      .cmdk-item .cmdk-grp {
-        font-family: "Computer Modern Typewriter", ui-monospace, monospace;
-        font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase;
-        color: var(--color-text-muted); margin-left: auto;
-      }
-      .cmdk-item .cmdk-icon {
-        width: 28px; height: 28px; display: flex; align-items: center; justify-content: center;
-        border-radius: 7px; font-size: 13px;
-        background: rgba(47,128,237,0.10); color: #2F80ED;
-      }
-      .cmdk-item.active, .cmdk-item:hover { background: rgba(47,128,237,0.10); }
-      .dark .cmdk-item.active, .dark .cmdk-item:hover { background: rgba(56,189,248,0.10); }
-      .cmdk-section {
-        font-family: "Computer Modern Typewriter", ui-monospace, monospace;
-        font-size: 10px; letter-spacing: 0.22em; text-transform: uppercase;
-        color: var(--color-text-muted);
-        padding: 10px 14px 4px; opacity: 0.7;
-      }
-      .cmdk-foot {
-        display: flex; gap: 14px; padding: 10px 16px;
-        border-top: 1px solid rgba(15,23,42,0.06);
-        font-family: "Computer Modern Typewriter", ui-monospace, monospace;
-        font-size: 10px; color: var(--color-text-muted);
-      }
-      .dark .cmdk-foot { border-top-color: rgba(255,255,255,0.06); }
-      .cmdk-foot kbd {
-        font-family: inherit; font-size: 10px; font-weight: 700;
-        padding: 2px 6px; border-radius: 4px;
-        background: rgba(15,23,42,0.06); border: 1px solid rgba(15,23,42,0.08);
-        margin-right: 4px;
-      }
-      .dark .cmdk-foot kbd { background: rgba(255,255,255,0.06); border-color: rgba(255,255,255,0.08); }
-      .cmdk-empty {
-        padding: 24px 16px; text-align: center;
-        color: var(--color-text-muted); font-style: italic;
-      }
-      .cmdk-hint {
-        position: fixed; right: 22px; bottom: 22px; z-index: 60;
-        display: inline-flex; align-items: center; gap: 8px;
-        padding: 8px 12px; border-radius: 999px;
-        background: rgba(255,255,255,0.85);
-        backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
-        border: 1px solid rgba(15,23,42,0.08);
-        font-family: "Computer Modern Typewriter", ui-monospace, monospace;
-        font-size: 11px; color: var(--color-text-muted);
-        box-shadow: 0 6px 18px -6px rgba(15,23,42,0.18);
-        cursor: pointer; user-select: none;
-        transition: transform .25s ease, background .25s;
-      }
-      .cmdk-hint:hover { transform: translateY(-2px); }
-      .dark .cmdk-hint { background: rgba(15,23,42,0.85); border-color: rgba(255,255,255,0.10); }
-      .cmdk-hint kbd {
-        font-family: inherit; font-size: 10px; font-weight: 700;
-        padding: 2px 6px; border-radius: 4px;
-        background: rgba(15,23,42,0.06); border: 1px solid rgba(15,23,42,0.08);
-        color: var(--color-text);
-      }
-      .dark .cmdk-hint kbd { background: rgba(255,255,255,0.06); border-color: rgba(255,255,255,0.10); color: #fff; }
-      @media (max-width: 640px) { .cmdk-hint { display: none; } }
-    </style>
-
-<link rel="stylesheet" href="/index.css">
-  <script type="importmap">
+<script type="application/ld+json">
 {
-  "imports": {
-    "react-dom/": "https://esm.sh/react-dom@^19.2.3/",
-    "react/": "https://esm.sh/react@^19.2.3/",
-    "react": "https://esm.sh/react@^19.2.3",
-    "lucide-react": "https://esm.sh/lucide-react@^0.561.0",
-    "@react-three/fiber": "https://esm.sh/@react-three/fiber@^9.4.2",
-    "maath/": "https://esm.sh/maath@^0.10.8/",
-    "framer-motion": "https://esm.sh/framer-motion@^12.23.26",
-    "@react-three/drei": "https://esm.sh/@react-three/drei@^10.7.7",
-    "three": "https://esm.sh/three@^0.174.0"
-  }
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Kapil Kumar Meena",
+  "honorificPrefix": "Dr.",
+  "honorificSuffix": "Ph.D.",
+  "jobTitle": "Postdoctoral Researcher",
+  "affiliation": {
+    "@type": "CollegeOrUniversity",
+    "name": "University of California, Los Angeles"
+  },
+  "alumniOf": [
+    { "@type": "CollegeOrUniversity", "name": "Indian Institute of Technology Kharagpur" },
+    { "@type": "CollegeOrUniversity", "name": "Indian Institute of Technology Roorkee" }
+  ],
+  "email": "mailto:kapil.meena@kgpian.iitkgp.ac.in",
+  "url": "https://kapil2020.github.io/website/",
+  "image": "https://github.com/kapil2020/web/blob/main/kp_1.png?raw=true",
+  "knowsAbout": [
+    "Travel behaviour modelling",
+    "Discrete choice modelling",
+    "Air pollution exposure",
+    "Sustainable urban mobility",
+    "Machine learning for transportation",
+    "Active mobility"
+  ],
+  "sameAs": [
+    "https://scholar.google.com/citations?user=5jIAPTEAAAAJ&hl=en",
+    "https://www.linkedin.com/in/kapilmeena/",
+    "https://github.com/kapil2020"
+  ]
 }
 </script>
-  <script type="module" crossorigin src="/website/assets/index-kxNtbVOU.js"></script>
 </head>
-  <body>
-    <div class="blob-bg">
-      <div class="blob blob-1"></div>
-      <div class="blob blob-2"></div>
-      <div class="blob blob-3"></div>
-    </div>
-    <div id="root"></div>
 
-    <!-- Tier-1 runtime: scroll progress, ⌘K palette, BibTeX copy, animated counters -->
-    <div id="scroll-progress"></div>
-    <div id="cmdk-root" aria-hidden="true">
-      <div class="cmdk-backdrop" data-cmdk-close></div>
-      <div class="cmdk-shell" role="dialog" aria-modal="true" aria-label="Command Palette">
-        <div class="cmdk-input-row">
-          <span class="cmdk-prompt">⌘K</span>
-          <input class="cmdk-input" id="cmdk-input" placeholder="Type a command or jump to a section…" autocomplete="off" spellcheck="false" />
-          <kbd class="cmdk-kbd" data-cmdk-close>ESC</kbd>
-        </div>
-        <ul class="cmdk-list" id="cmdk-list" role="listbox"></ul>
-        <div class="cmdk-foot">
-          <span><kbd>↑</kbd><kbd>↓</kbd> navigate</span>
-          <span><kbd>↵</kbd> select</span>
-          <span><kbd>esc</kbd> close</span>
-          <span style="margin-left:auto;opacity:0.7;">kapil-meena.dev</span>
-        </div>
+<body>
+
+<a class="skip-link" href="#main">Skip to content</a>
+
+<!-- ====================================================================== -->
+<!-- Icon sprite                                                            -->
+<!-- ====================================================================== -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <symbol id="i-mail" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="4.5" width="19" height="15" rx="2.5"/><path d="m3 6.5 9 6 9-6"/></symbol>
+  <symbol id="i-github" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.9a3.4 3.4 0 0 0-.9-2.6c3-.3 6.2-1.5 6.2-6.7A5.2 5.2 0 0 0 20 5.4a4.9 4.9 0 0 0-.1-3.6s-1.1-.3-3.6 1.4a12.3 12.3 0 0 0-6.6 0C7.2 1.5 6.1 1.8 6.1 1.8A4.9 4.9 0 0 0 6 5.4a5.2 5.2 0 0 0-1.4 3.6c0 5.2 3.2 6.4 6.2 6.7a3.4 3.4 0 0 0-.9 2.6V22"/></symbol>
+  <symbol id="i-linkedin" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-11h4v1.5A6 6 0 0 1 16 8z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></symbol>
+  <symbol id="i-scholar" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 9 12 4 2 9l10 5 10-5Z"/><path d="M6 11.2V16c0 1.7 2.7 3 6 3s6-1.3 6-3v-4.8"/><path d="M22 9v6"/></symbol>
+  <symbol id="i-external" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 4h6v6"/><path d="M20 4 10 14"/><path d="M18 14v4.5A1.5 1.5 0 0 1 16.5 20h-11A1.5 1.5 0 0 1 4 18.5v-11A1.5 1.5 0 0 1 5.5 6H10"/></symbol>
+  <symbol id="i-download" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12"/><path d="m7.5 10.5 4.5 4.5 4.5-4.5"/><path d="M4 20h16"/></symbol>
+  <symbol id="i-search" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.6-3.6"/></symbol>
+  <symbol id="i-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4.2"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></symbol>
+  <symbol id="i-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20.5 14.3A8.6 8.6 0 0 1 9.7 3.5a8.6 8.6 0 1 0 10.8 10.8Z"/></symbol>
+  <symbol id="i-menu" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></symbol>
+  <symbol id="i-close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"><path d="M6 6l12 12M18 6 6 18"/></symbol>
+  <symbol id="i-up" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V5"/><path d="m6 11 6-6 6 6"/></symbol>
+  <symbol id="i-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 5 7 7-7 7"/></symbol>
+  <symbol id="i-award" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="9" r="5.5"/><path d="m8.5 13.8-1.3 7.4L12 18.7l4.8 2.5-1.3-7.4"/></symbol>
+  <symbol id="i-pin" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12S4 16 4 10a8 8 0 1 1 16 0Z"/><circle cx="12" cy="10" r="2.8"/></symbol>
+  <symbol id="i-book" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4.5A2.5 2.5 0 0 1 6.5 2H20v18H6.5A2.5 2.5 0 0 0 4 22.5Z"/><path d="M4 17.5A2.5 2.5 0 0 1 6.5 15H20"/></symbol>
+  <symbol id="i-code" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="m8 6-6 6 6 6M16 6l6 6-6 6"/></symbol>
+  <symbol id="i-copy" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="8.5" y="8.5" width="12" height="12" rx="2"/><path d="M4.5 15.5h-.5a2 2 0 0 1-2-2v-9a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v.5"/></symbol>
+  <symbol id="i-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m4 12.5 5 5L20 6.5"/></symbol>
+  <symbol id="i-users" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.9"/><path d="M16 3.1a4 4 0 0 1 0 7.8"/></symbol>
+  <symbol id="i-quote" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 7H5a2 2 0 0 0-2 2v3a2 2 0 0 0 2 2h2c0 2-1 3-3 4"/><path d="M20 7h-4a2 2 0 0 0-2 2v3a2 2 0 0 0 2 2h2c0 2-1 3-3 4"/></symbol>
+  <symbol id="i-wind" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10.5a3 3 0 1 0-3-3"/><path d="M3 16h13a3 3 0 1 1-3 3"/><path d="M3 12h16"/></symbol>
+  <symbol id="i-route" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="18" r="3"/><circle cx="18" cy="6" r="3"/><path d="M18 9v3a4 4 0 0 1-4 4h-4"/></symbol>
+  <symbol id="i-brain" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5a3 3 0 0 0-6 0 3 3 0 0 0-2 5.2A3 3 0 0 0 6 16a3 3 0 0 0 6 1Z"/><path d="M12 5a3 3 0 0 1 6 0 3 3 0 0 1 2 5.2A3 3 0 0 1 18 16a3 3 0 0 1-6 1Z"/></symbol>
+  <symbol id="i-db" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5.5" rx="8" ry="3"/><path d="M4 5.5v13c0 1.7 3.6 3 8 3s8-1.3 8-3v-13"/><path d="M4 12c0 1.7 3.6 3 8 3s8-1.3 8-3"/></symbol>
+  <symbol id="i-bike" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="5.5" cy="17" r="3.5"/><circle cx="18.5" cy="17" r="3.5"/><path d="M9 17 12 8h3l-4 9M14 8h3l1.5 9"/><circle cx="16.5" cy="4.5" r="1"/></symbol>
+  <symbol id="i-doc" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2.5H7a2 2 0 0 0-2 2v15a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7.5Z"/><path d="M14 2.5v5h5"/><path d="M8.5 13h7M8.5 17h4"/></symbol>
+  <symbol id="i-cal" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></symbol>
+  <symbol id="i-flask" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9.5 3v6.2L4.3 18a2 2 0 0 0 1.7 3h12a2 2 0 0 0 1.7-3l-5.2-8.8V3"/><path d="M8 3h8M6.8 14.5h10.4"/></symbol>
+</svg>
+
+<!-- ====================================================================== -->
+<!-- Header                                                                 -->
+<!-- ====================================================================== -->
+<header class="site-header" id="site-header">
+  <div class="wrap header-inner">
+    <a class="brand" href="#top" aria-label="Kapil Kumar Meena — home">
+      <span class="brand-mark" aria-hidden="true">KM</span>
+      <span class="brand-text">
+        <strong>Kapil Kumar Meena</strong>
+        <em>Ph.D. &middot; UCLA</em>
+      </span>
+    </a>
+
+    <nav class="nav" id="primary-nav" aria-label="Primary">
+      <a href="#about">About</a>
+      <a href="#research">Research</a>
+      <a href="#publications">Publications</a>
+      <a href="#projects">Projects</a>
+      <a href="#experience">Experience</a>
+      <a href="#honours">Honours</a>
+      <a href="#contact">Contact</a>
+      <a class="nav-cv" href="https://raw.githubusercontent.com/kapil2020/web/main/CV_Kapil_2026_Updated.pdf" target="_blank" rel="noopener">Curriculum vitae &rsaquo;</a>
+    </nav>
+
+    <div class="header-actions">
+      <button class="icon-btn theme-toggle" id="theme-toggle" type="button" aria-label="Switch to dark theme" title="Toggle theme">
+        <svg class="sun" aria-hidden="true"><use href="#i-sun"></use></svg>
+        <svg class="moon" aria-hidden="true"><use href="#i-moon"></use></svg>
+      </button>
+      <a class="btn btn--primary btn--sm header-cv" href="https://raw.githubusercontent.com/kapil2020/web/main/CV_Kapil_2026_Updated.pdf" target="_blank" rel="noopener">
+        <svg class="ico" aria-hidden="true"><use href="#i-download"></use></svg> CV
+      </a>
+      <button class="icon-btn nav-toggle" id="nav-toggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="primary-nav">
+        <svg class="open" aria-hidden="true"><use href="#i-menu"></use></svg>
+      </button>
+    </div>
+  </div>
+  <div class="progress" aria-hidden="true"><i id="progress-bar"></i></div>
+</header>
+
+<main id="main">
+
+<!-- ====================================================================== -->
+<!-- Hero                                                                   -->
+<!-- ====================================================================== -->
+<section class="hero" id="top">
+  <div class="wrap hero-grid">
+
+    <div class="hero-main">
+      <p class="eyebrow">
+        <span class="pulse" aria-hidden="true"></span>
+        <span>Postdoctoral Researcher &middot; HUMAN Lab, <b>UCLA</b></span>
+      </p>
+
+      <h1>
+        Kapil Kumar Meena
+        <span class="suffix">Ph.D. &middot; Transportation Engineering</span>
+      </h1>
+
+      <p class="hero-role">
+        I study how people actually move through cities &mdash; and what it costs them to breathe while doing it.
+      </p>
+
+      <p class="prose hero-lead">
+        I am a transportation researcher working at the intersection of <strong>travel behaviour</strong>,
+        <strong>air-quality exposure</strong> and <strong>machine learning</strong>. My work combines discrete
+        choice theory with large-scale urban data to design mobility systems that are cleaner, healthier and
+        more equitable &mdash; and to turn those models into tools people can actually use.
+      </p>
+
+      <ul class="hero-affil">
+        <li>
+          <span class="k">Position</span>
+          <span>Postdoctoral Researcher, <a href="https://sites.google.com/cornell.edu/youngseokim/human-lab" target="_blank" rel="noopener">HUMAN Lab</a></span>
+        </li>
+        <li>
+          <span class="k">Institution</span>
+          <span>University of California, Los Angeles (UCLA)</span>
+        </li>
+        <li>
+          <span class="k">Advisor</span>
+          <span>Prof. Youngseo Kim</span>
+        </li>
+        <li>
+          <span class="k">Ph.D.</span>
+          <span>IIT Kharagpur, 2026 &mdash; advised by Prof. Arkopal K. Goswami</span>
+        </li>
+      </ul>
+
+      <div class="hero-cta">
+        <a class="btn btn--primary" href="#publications">
+          <svg class="ico" aria-hidden="true"><use href="#i-book"></use></svg> Read the research
+        </a>
+        <a class="btn btn--ghost" href="https://raw.githubusercontent.com/kapil2020/web/main/CV_Kapil_2026_Updated.pdf" target="_blank" rel="noopener">
+          <svg class="ico" aria-hidden="true"><use href="#i-download"></use></svg> Curriculum vitae
+        </a>
+        <button class="btn btn--ghost" type="button" data-copy="kapil.meena@kgpian.iitkgp.ac.in" data-copy-message="Email address copied">
+          <svg class="ico" aria-hidden="true"><use href="#i-mail"></use></svg> Copy email
+        </button>
+      </div>
+
+      <div class="social-row">
+        <a href="https://scholar.google.com/citations?user=5jIAPTEAAAAJ&hl=en" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-scholar"></use></svg> Google Scholar</a>
+        <a href="https://github.com/kapil2020" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-github"></use></svg> GitHub</a>
+        <a href="https://www.linkedin.com/in/kapilmeena/" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-linkedin"></use></svg> LinkedIn</a>
+        <a href="mailto:kapil.meena@kgpian.iitkgp.ac.in"><svg aria-hidden="true"><use href="#i-mail"></use></svg> Email</a>
       </div>
     </div>
-    <button class="cmdk-hint" id="cmdk-hint" aria-label="Open command palette"><kbd>⌘</kbd><kbd>K</kbd> Quick nav</button>
 
-    <script>
-    (function(){
-      // ---------- Console easter-egg ----------
-      try {
-        var ascii = [
-          '',
-          '  _  __          _ _ ',
-          " | |/ /__ _ _ __(_) |",
-          " | ' // _` | '_ \\\\ | |",
-          ' | . \\\\ (_| | |_) ||_|',
-          ' |_|\\\\_\\\\__,_| .__(_|_)',
-          '             |_|     ',
-          ''
-        ].join('\n');
-        console.log('%c' + ascii, 'color:#2F80ED;font-family:ui-monospace,monospace;font-size:11px;line-height:1.1');
-        console.log('%cHey there, fellow developer! 👋', 'font-size:15px;font-weight:700;color:#9B51E0');
-        console.log('%cThis portfolio was crafted with React + Vite + Tailwind, hand-tuned animations, and a lot of LaTeX love.', 'font-size:12px;color:#475569');
-        console.log('%cPress %c⌘K%c (or Ctrl+K) to open the command palette.', 'font-size:12px;color:#475569', 'background:#0f172a;color:#fff;padding:1px 6px;border-radius:4px;font-family:ui-monospace,monospace', 'font-size:12px;color:#475569');
-        console.log('%c→ Reach out: kapil.meena@kgpian.iitkgp.ac.in', 'font-size:12px;color:#EB5757;font-weight:600');
-        console.log('%c→ Code:      github.com/kapil2020', 'font-size:12px;color:#F2994A;font-weight:600');
-      } catch(e){}
+    <figure class="portrait">
+      <div class="portrait-frame">
+        <img src="https://github.com/kapil2020/web/blob/main/kp_1.png?raw=true"
+             alt="Portrait of Dr. Kapil Kumar Meena" width="800" height="1000" fetchpriority="high">
+      </div>
+      <figcaption>
+        <b>Los Angeles, California</b><br>
+        HUMAN Lab &middot; UCLA<br>
+        Previously IIT Kharagpur &middot; IIT Roorkee
+      </figcaption>
+    </figure>
+  </div>
 
-      // ---------- Scroll progress bar ----------
-      var bar = document.getElementById('scroll-progress');
-      function updateProgress(){
-        var h = document.documentElement, b = document.body;
-        var total = (h.scrollHeight || b.scrollHeight) - h.clientHeight;
-        var pct = total > 0 ? (h.scrollTop || b.scrollTop) / total * 100 : 0;
-        bar.style.width = Math.min(100, Math.max(0, pct)) + '%';
-      }
-      addEventListener('scroll', updateProgress, {passive:true});
-      addEventListener('resize', updateProgress, {passive:true});
-      requestAnimationFrame(updateProgress);
+  <div class="wrap">
+    <div class="metrics" data-reveal>
+      <div class="metric"><span class="n" data-count="200" data-suffix="+">200+</span><span class="l">Citations</span></div>
+      <div class="metric"><span class="n" data-count="6">6</span><span class="l">h-index</span></div>
+      <div class="metric"><span class="n" data-count="6">6</span><span class="l">i10-index</span></div>
+      <div class="metric"><span class="n" data-count="9">9</span><span class="l">Journal articles</span></div>
+      <div class="metric"><span class="n" data-count="6">6</span><span class="l">Conference papers</span></div>
+      <div class="metric"><span class="n" data-count="7">7</span><span class="l">Years in research</span></div>
+    </div>
+    <p class="metrics-note">
+      <svg width="13" height="13" aria-hidden="true" style="color:var(--ink-faint)"><use href="#i-quote"></use></svg>
+      Citation metrics from <a href="https://scholar.google.com/citations?user=5jIAPTEAAAAJ&hl=en" target="_blank" rel="noopener">Google Scholar</a>, updated 2026.
+    </p>
+  </div>
+</section>
 
-      // ---------- Toast helper ----------
-      function toast(msg){
-        var t = document.createElement('div');
-        t.className = 'app-toast';
-        t.innerHTML = '<span class="toast-dot"></span>' + msg;
-        document.body.appendChild(t);
-        requestAnimationFrame(function(){ t.classList.add('show'); });
-        setTimeout(function(){
-          t.classList.remove('show');
-          setTimeout(function(){ t.remove(); }, 320);
-        }, 2200);
-      }
-      function copyText(text, message){
-        var done = function(){ toast(message || 'Copied to clipboard'); };
-        if (navigator.clipboard && navigator.clipboard.writeText) {
-          navigator.clipboard.writeText(text).then(done, function(){ fallback(); });
-        } else { fallback(); }
-        function fallback(){
-          var ta = document.createElement('textarea');
-          ta.value = text; ta.style.position='fixed'; ta.style.opacity='0';
-          document.body.appendChild(ta); ta.select();
-          try { document.execCommand('copy'); done(); } catch(e){}
-          ta.remove();
-        }
-      }
-      window.__toast = toast; window.__copyText = copyText;
+<!-- ====================================================================== -->
+<!-- About                                                                  -->
+<!-- ====================================================================== -->
+<section class="section section--sunk" id="about">
+  <div class="wrap">
+    <header class="section-head" data-reveal>
+      <div>
+        <p class="kicker mono"><span class="num">01</span> <span>About</span> <span class="bar"></span></p>
+        <h2>A researcher who ships</h2>
+        <p class="lead">Seven years spent moving between survey design, econometrics, machine learning and production code &mdash; because a model that never leaves the notebook never changes a commute.</p>
+      </div>
+    </header>
 
-      // ---------- BibTeX builder + click handler ----------
-      function slug(s){ return (s||'').toLowerCase().replace(/[^a-z0-9]+/g,'').slice(0,12); }
-      function buildBibtex(d){
-        var firstAuthor = (d.authors||'').split(',')[0].trim().replace(/\\./g,'').split(/\\s+/).pop() || 'meena';
-        var firstTitleWord = (d.title||'paper').split(/\\s+/).map(function(w){return w.replace(/[^a-zA-Z]/g,'');}).filter(Boolean)[0] || 'paper';
-        var key = slug(firstAuthor) + (d.year||'') + slug(firstTitleWord);
-        var authors = (d.authors||'').split(',').map(function(a){return a.trim();}).filter(Boolean).join(' and ');
-        var isJournal = ((d.type||'')+'').toLowerCase().indexOf('journal') !== -1;
-        var entry = isJournal ? 'article' : 'inproceedings';
-        var venueKey = isJournal ? 'journal' : 'booktitle';
-        var lines = [
-          '@' + entry + '{' + key + ',',
-          '  title   = {' + (d.title||'') + '},',
-          '  author  = {' + authors + '},',
-          '  ' + venueKey + ' = {' + (d.venue||'') + '},',
-          '  year    = {' + (d.year||'') + '},'
-        ];
-        if (d.status) lines.push('  note    = {' + d.status + '},');
-        if (d.link)   lines.push('  url     = {' + d.link + '},');
-        lines.push('}');
-        return lines.join('\\n');
-      }
-      document.addEventListener('click', function(ev){
-        var btn = ev.target.closest && ev.target.closest('[data-bib-title]');
-        if (!btn) return;
-        ev.preventDefault();
-        var d = {
-          title: btn.getAttribute('data-bib-title'),
-          authors: btn.getAttribute('data-bib-authors'),
-          venue: btn.getAttribute('data-bib-venue'),
-          year: btn.getAttribute('data-bib-year'),
-          type: btn.getAttribute('data-bib-type'),
-          status: btn.getAttribute('data-bib-status'),
-          link: btn.getAttribute('data-bib-link')
-        };
-        copyText(buildBibtex(d), 'BibTeX copied to clipboard');
-      });
+    <div class="about-grid">
+      <div class="about-body" data-reveal>
+        <p class="prose">
+          I completed my Ph.D. in Transportation Engineering at <strong>IIT Kharagpur</strong> under
+          Prof. Arkopal K. Goswami, where my dissertation asked a deceptively simple question: <em>when the air
+          is bad, how do people change the way they travel &mdash; and who is able to change at all?</em>
+          Answering it took a national-scale stated-preference survey, hybrid latent-class choice models,
+          and a good deal of code.
+        </p>
+        <p class="prose">
+          I am now a <strong>Postdoctoral Researcher</strong> in the
+          <a href="https://sites.google.com/cornell.edu/youngseokim/human-lab" target="_blank" rel="noopener">HUMAN Lab</a>
+          at the <strong>University of California, Los Angeles</strong>, working with
+          <strong>Prof. Youngseo Kim</strong> on human-centred models of urban mobility. The through-line of my
+          work has not changed: take behaviour seriously, measure exposure honestly, and build the tool that
+          makes the finding usable.
+        </p>
+        <p class="prose">
+          That last part matters to me. The <strong>DRUM</strong> routing engine &mdash; a web application that
+          returns the cleanest, not merely the fastest, route across an Indian city &mdash; began as a chapter of
+          my thesis, was covered by <em>The Hindu</em>, and was presented at Google India in 2025. Earlier work
+          with Prof. Amit Agarwal at <strong>IIT Roorkee</strong> and as a consultant at
+          <strong>WRI India</strong> shaped how I think about the policy end of the pipeline.
+        </p>
+        <p class="prose">
+          Outside the lab I write, run, and cycle &mdash; the last of which is, conveniently, also a research
+          interest.
+        </p>
 
-      // ---------- Animated stat counters ----------
-      function animateCounter(el){
-        var target = parseInt(el.getAttribute('data-counter'), 10);
-        var suffix = el.getAttribute('data-suffix') || '';
-        if (isNaN(target)) return;
-        var duration = 1600;
-        var start = performance.now();
-        function step(now){
-          var t = Math.min((now - start) / duration, 1);
-          var eased = 1 - Math.pow(1 - t, 3);
-          el.textContent = Math.round(target * eased) + suffix;
-          if (t < 1) requestAnimationFrame(step);
-        }
-        requestAnimationFrame(step);
-      }
-      var counterIO = ('IntersectionObserver' in window) ? new IntersectionObserver(function(entries){
-        entries.forEach(function(e){
-          if (e.isIntersecting && !e.target.dataset.counterDone){
-            e.target.dataset.counterDone = '1';
-            animateCounter(e.target);
-            counterIO.unobserve(e.target);
-          }
-        });
-      }, {threshold: 0.45}) : null;
-      function scanCounters(){
-        var nodes = document.querySelectorAll('[data-counter]:not([data-counter-init])');
-        nodes.forEach(function(el){
-          el.dataset.counterInit = '1';
-          el.textContent = '0' + (el.getAttribute('data-suffix')||'');
-          if (counterIO) counterIO.observe(el); else animateCounter(el);
-        });
-      }
-      // React renders after this script runs; scan periodically + on mutations
-      scanCounters();
-      var mo = new MutationObserver(function(){ scanCounters(); });
-      mo.observe(document.body, {childList:true, subtree:true});
+        <div class="interest-list">
+          <span class="tag tag--accent">Travel behaviour</span>
+          <span class="tag tag--accent">Discrete choice modelling</span>
+          <span class="tag tag--accent">Air pollution exposure</span>
+          <span class="tag tag--accent">Machine learning</span>
+          <span class="tag tag--accent">Sustainable routing</span>
+          <span class="tag tag--accent">Active mobility</span>
+          <span class="tag tag--accent">Urban data science</span>
+          <span class="tag tag--accent">Transport policy</span>
+        </div>
 
-      // ---------- ⌘K Command Palette ----------
-      var SCHOLAR = 'https://scholar.google.com/citations?user=5jIAPTEAAAAJ&hl=en';
-      var GITHUB  = 'https://github.com/kapil2020';
-      var LINKEDIN= 'https://www.linkedin.com/in/kapilmeena/';
-      var EMAIL   = 'kapil.meena@kgpian.iitkgp.ac.in';
-      var HUMAN   = 'https://sites.google.com/cornell.edu/youngseokim/human-lab?authuser=0';
+        <h3 class="subhead" style="margin-top:2.5rem">Methods &amp; tools</h3>
+        <dl class="skill-rows">
+          <div class="skill-row">
+            <dt>Modelling</dt>
+            <dd>
+              <span class="tag">Discrete choice (MNL, NL, ML)</span>
+              <span class="tag">Hybrid latent class</span>
+              <span class="tag">Deep learning</span>
+              <span class="tag">MCDM</span>
+              <span class="tag">VISSIM</span>
+            </dd>
+          </div>
+          <div class="skill-row">
+            <dt>Programming</dt>
+            <dd>
+              <span class="tag">Python</span>
+              <span class="tag">R</span>
+              <span class="tag">JavaScript</span>
+              <span class="tag">React</span>
+              <span class="tag">SQL</span>
+            </dd>
+          </div>
+          <div class="skill-row">
+            <dt>Analysis</dt>
+            <dd>
+              <span class="tag">NLOGIT</span>
+              <span class="tag">SPSS</span>
+              <span class="tag">Tableau</span>
+              <span class="tag">QGIS</span>
+              <span class="tag">MiniTab</span>
+            </dd>
+          </div>
+          <div class="skill-row">
+            <dt>Infrastructure</dt>
+            <dd>
+              <span class="tag">MySQL</span>
+              <span class="tag">MongoDB</span>
+              <span class="tag">LaTeX</span>
+              <span class="tag">JabRef</span>
+              <span class="tag">Git</span>
+            </dd>
+          </div>
+        </dl>
+      </div>
 
-      var CMDS = [
-        // navigation
-        {label:'Home',          group:'Navigate', icon:'⌂', kw:'home top intro hero', run:function(){go('home');}},
-        {label:'About',         group:'Navigate', icon:'§', kw:'about bio',           run:function(){go('about');}},
-        {label:'Research',      group:'Navigate', icon:'∰', kw:'research areas',     run:function(){go('research');}},
-        {label:'Publications',  group:'Navigate', icon:'¶', kw:'publications papers journal trr', run:function(){go('publications');}},
-        {label:'Projects',      group:'Navigate', icon:'⌘', kw:'projects code repos',run:function(){go('projects');}},
-        {label:'Experience',    group:'Navigate', icon:'☗', kw:'experience career',  run:function(){go('experience');}},
-        {label:'Awards',        group:'Navigate', icon:'★', kw:'awards honors',      run:function(){go('awards');}},
-        {label:'Skills',        group:'Navigate', icon:'⌥', kw:'skills stack',       run:function(){go('skills');}},
-        {label:'Leadership',    group:'Navigate', icon:'☉', kw:'leadership service', run:function(){go('leadership');}},
-        {label:'Travel',        group:'Navigate', icon:'⌖', kw:'travel global footprint', run:function(){go('travel');}},
-        {label:'Contact',       group:'Navigate', icon:'✉', kw:'contact email',      run:function(){go('contact');}},
-        // actions
-        {label:'Copy email address',   group:'Action', icon:'✎', kw:'email copy mail',  run:function(){copyText(EMAIL,'Email copied · ' + EMAIL);}},
-        {label:'Open Google Scholar',  group:'Open',   icon:'⌬', kw:'scholar publications citations google', run:function(){window.open(SCHOLAR,'_blank','noopener');}},
-        {label:'Open GitHub profile',  group:'Open',   icon:'⎈', kw:'github code repos source', run:function(){window.open(GITHUB,'_blank','noopener');}},
-        {label:'Open LinkedIn',        group:'Open',   icon:'⌖', kw:'linkedin profile network', run:function(){window.open(LINKEDIN,'_blank','noopener');}},
-        {label:'Open HUMAN Lab (UCLA)',group:'Open',   icon:'∇', kw:'ucla human lab youngseo postdoc', run:function(){window.open(HUMAN,'_blank','noopener');}},
-        {label:'Toggle dark mode',     group:'Action', icon:'☾', kw:'dark light theme mode toggle', run:function(){document.documentElement.classList.toggle('dark');}},
-        {label:'Scroll to top',        group:'Action', icon:'↑', kw:'top scroll up', run:function(){window.scrollTo({top:0,behavior:'smooth'});}},
-        {label:'Print / Save as PDF',  group:'Action', icon:'⎙', kw:'print pdf cv resume', run:function(){window.print();}}
-      ];
-      function go(id){
-        var el = document.getElementById(id);
-        if (el) el.scrollIntoView({behavior:'smooth', block:'start'});
-        else { location.hash = '#' + id; }
-      }
+      <aside data-reveal>
+        <h3 class="subhead">Academic journey</h3>
+        <ol class="timeline">
+          <li class="tl-item is-current">
+            <span class="when">2026 &mdash; Present</span>
+            <div class="what">Postdoctoral Researcher</div>
+            <div class="where">University of California, Los Angeles &middot; <a href="https://sites.google.com/cornell.edu/youngseokim/human-lab" target="_blank" rel="noopener">HUMAN Lab</a></div>
+            <div class="who">Advisor: <b>Prof. Youngseo Kim</b></div>
+          </li>
+          <li class="tl-item">
+            <span class="when">2022 &mdash; 2026</span>
+            <div class="what">Ph.D., Transportation Engineering</div>
+            <div class="where">Indian Institute of Technology Kharagpur</div>
+            <div class="who">Advisor: <b>Prof. Arkopal K. Goswami</b></div>
+          </li>
+          <li class="tl-item">
+            <span class="when">2021 &mdash; 2022</span>
+            <div class="what">Research Consultant</div>
+            <div class="where">World Resources Institute (WRI) India</div>
+            <div class="who">Electric mobility &amp; commuter exposure</div>
+          </li>
+          <li class="tl-item">
+            <span class="when">2019 &mdash; 2021</span>
+            <div class="what">M.Tech, Transportation Engineering</div>
+            <div class="where">Indian Institute of Technology Roorkee</div>
+            <div class="who">Advisor: <b>Prof. Amit Agarwal</b></div>
+          </li>
+          <li class="tl-item">
+            <span class="when">2015 &mdash; 2019</span>
+            <div class="what">B.Tech, Civil Engineering</div>
+            <div class="where">Rajasthan Technical University, Kota</div>
+          </li>
+        </ol>
 
-      var root = document.getElementById('cmdk-root');
-      var input = document.getElementById('cmdk-input');
-      var list = document.getElementById('cmdk-list');
-      var hintBtn = document.getElementById('cmdk-hint');
-      var active = 0;
-      var filtered = CMDS.slice();
+        <h3 class="subhead" style="margin-top:2.5rem">Currently</h3>
+        <div class="card">
+          <p style="font-family:var(--font-serif); font-size:0.9688rem; line-height:1.65; color:var(--ink-body); margin:0">
+            Building human-centred mobility models at the HUMAN Lab, extending my thesis work on
+            behavioural segmentation under pollution exposure, and open to collaborations on
+            equity-aware routing, exposure modelling and choice&ndash;learning hybrids.
+          </p>
+          <div style="margin-top:1.1rem">
+            <a class="arrow-link" href="#contact">Get in touch <span class="chev" aria-hidden="true">&rsaquo;</span></a>
+          </div>
+        </div>
+      </aside>
+    </div>
+  </div>
+</section>
 
-      function score(item, q){
-        if (!q) return 1;
-        q = q.toLowerCase();
-        var hay = (item.label + ' ' + (item.kw||'')).toLowerCase();
-        if (hay.indexOf(q) !== -1) return 2;
-        // simple subsequence
-        var i = 0, j = 0;
-        while (i < hay.length && j < q.length){
-          if (hay[i] === q[j]) j++;
-          i++;
-        }
-        return j === q.length ? 1 : 0;
-      }
-      function render(){
-        list.innerHTML = '';
-        var q = input.value.trim();
-        filtered = CMDS.map(function(c){ return {c:c, s:score(c,q)}; })
-                       .filter(function(x){ return x.s > 0; })
-                       .sort(function(a,b){ return b.s - a.s; })
-                       .map(function(x){ return x.c; });
-        if (filtered.length === 0){
-          list.innerHTML = '<li class="cmdk-empty">No matches for "' + q.replace(/[<>&]/g,'') + '"</li>';
-          return;
-        }
-        active = 0;
-        var lastGroup = null;
-        filtered.forEach(function(c, i){
-          if (c.group !== lastGroup){
-            var sec = document.createElement('li');
-            sec.className = 'cmdk-section';
-            sec.textContent = c.group;
-            list.appendChild(sec);
-            lastGroup = c.group;
-          }
-          var li = document.createElement('li');
-          li.className = 'cmdk-item' + (i === 0 ? ' active' : '');
-          li.setAttribute('role','option');
-          li.setAttribute('data-idx', i);
-          li.innerHTML = '<span class="cmdk-icon">' + c.icon + '</span><span class="cmdk-label"></span><span class="cmdk-grp">' + c.group + '</span>';
-          li.querySelector('.cmdk-label').textContent = c.label;
-          li.addEventListener('mouseenter', function(){ setActive(i); });
-          li.addEventListener('click', function(){ run(i); });
-          list.appendChild(li);
-        });
-      }
-      function setActive(i){
-        active = i;
-        var items = list.querySelectorAll('.cmdk-item');
-        items.forEach(function(el){ el.classList.remove('active'); });
-        var idx = Array.prototype.findIndex.call(items, function(el){ return +el.getAttribute('data-idx') === i; });
-        if (idx >= 0){
-          items[idx].classList.add('active');
-          items[idx].scrollIntoView({block:'nearest'});
-        }
-      }
-      function run(i){
-        var c = filtered[i];
-        if (!c) return;
-        close();
-        setTimeout(function(){ try{ c.run(); }catch(e){ console.error(e); } }, 60);
-      }
-      function open(){
-        root.classList.add('open');
-        root.setAttribute('aria-hidden','false');
-        input.value = '';
-        render();
-        setTimeout(function(){ input.focus(); }, 30);
-      }
-      function close(){
-        root.classList.remove('open');
-        root.setAttribute('aria-hidden','true');
-      }
-      addEventListener('keydown', function(ev){
-        var open_ = root.classList.contains('open');
-        if ((ev.metaKey || ev.ctrlKey) && (ev.key === 'k' || ev.key === 'K')){
-          ev.preventDefault();
-          if (open_) close(); else open();
-          return;
-        }
-        if (!open_) return;
-        if (ev.key === 'Escape'){ ev.preventDefault(); close(); }
-        else if (ev.key === 'ArrowDown'){ ev.preventDefault(); setActive(Math.min(active+1, filtered.length-1)); }
-        else if (ev.key === 'ArrowUp'){ ev.preventDefault(); setActive(Math.max(active-1, 0)); }
-        else if (ev.key === 'Enter'){ ev.preventDefault(); run(active); }
-      });
-      input.addEventListener('input', render);
-      root.querySelectorAll('[data-cmdk-close]').forEach(function(el){
-        el.addEventListener('click', close);
-      });
-      hintBtn.addEventListener('click', open);
-    })();
-    </script>
+<!-- ====================================================================== -->
+<!-- Research                                                               -->
+<!-- ====================================================================== -->
+<section class="section" id="research">
+  <div class="wrap">
+    <header class="section-head" data-reveal>
+      <div>
+        <p class="kicker mono"><span class="num">02</span> <span>Research</span> <span class="bar"></span></p>
+        <h2>Six threads, one question</h2>
+        <p class="lead">How do people choose to move, what does that choice cost them in exposure and health, and how do we redesign the system so the good choice is also the easy one?</p>
+      </div>
+      <div class="side">
+        <a class="arrow-link" href="https://scholar.google.com/citations?user=5jIAPTEAAAAJ&hl=en" target="_blank" rel="noopener">All work on Scholar <span class="chev" aria-hidden="true">&rsaquo;</span></a>
+      </div>
+    </header>
+
+    <div class="research-grid" data-reveal>
+
+      <article class="research-item">
+        <span class="idx">01 / Exposure</span>
+        <h3>Air-quality exposure</h3>
+        <p>Quantifying what commuters actually inhale door-to-door, and how perceived and measured air quality reshape the trips they are willing to make.</p>
+        <div class="foot">
+          <span class="role">Core research</span>
+          <a class="arrow-link" href="https://www.sciencedirect.com/science/article/pii/S2212095521001310" target="_blank" rel="noopener">Studies <span class="chev" aria-hidden="true">&rsaquo;</span></a>
+        </div>
+      </article>
+
+      <article class="research-item">
+        <span class="idx">02 / Routing</span>
+        <h3>Sustainable routing</h3>
+        <p>DRUM: a live routing engine that offers the least-polluted and lowest-emission path instead of only the fastest one, built and deployed for Indian cities.</p>
+        <div class="foot">
+          <span class="role">Lead developer</span>
+          <a class="arrow-link" href="https://leap-routing-iitkgp.vercel.app/" target="_blank" rel="noopener">Live app <span class="chev" aria-hidden="true">&rsaquo;</span></a>
+        </div>
+      </article>
+
+      <article class="research-item">
+        <span class="idx">03 / Behaviour</span>
+        <h3>Travel-behaviour modelling</h3>
+        <p>Discrete choice and hybrid latent-class models that separate travellers who <em>can</em> change their behaviour from those who merely say they would.</p>
+        <div class="foot">
+          <span class="role">Principal investigator</span>
+          <a class="arrow-link" href="https://survey-iitkgp.vercel.app/" target="_blank" rel="noopener">Survey <span class="chev" aria-hidden="true">&rsaquo;</span></a>
+        </div>
+      </article>
+
+      <article class="research-item">
+        <span class="idx">04 / Learning</span>
+        <h3>Machine learning for mobility</h3>
+        <p>Bridging econometric theory and deep learning &mdash; interpretable predictors of mode choice, next-day PM<sub>2.5</sub>, and pollutant fields across a city.</p>
+        <div class="foot">
+          <span class="role">ML engineer</span>
+          <a class="arrow-link" href="https://www.sciencedirect.com/science/article/pii/S2772662224000638" target="_blank" rel="noopener">Paper <span class="chev" aria-hidden="true">&rsaquo;</span></a>
+        </div>
+      </article>
+
+      <article class="research-item">
+        <span class="idx">05 / Active mobility</span>
+        <h3>Walking &amp; cycling</h3>
+        <p>Health-impact assessment and choice modelling for first/last-mile access, walkability scoring from street imagery, and the case for building for bikes.</p>
+        <div class="foot">
+          <span class="role">Researcher</span>
+          <a class="arrow-link" href="https://www.tandfonline.com/doi/full/10.1080/15568318.2025.2572818" target="_blank" rel="noopener">Paper <span class="chev" aria-hidden="true">&rsaquo;</span></a>
+        </div>
+      </article>
+
+      <article class="research-item">
+        <span class="idx">06 / Data</span>
+        <h3>Urban data science</h3>
+        <p>Large spatial-temporal pipelines, dashboards and open tooling that make mobility and air-quality data legible to planners rather than only to modellers.</p>
+        <div class="foot">
+          <span class="role">Data scientist</span>
+          <a class="arrow-link" href="https://kapil2020.github.io/cycling-dashboard/" target="_blank" rel="noopener">Dashboard <span class="chev" aria-hidden="true">&rsaquo;</span></a>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- ====================================================================== -->
+<!-- Publications                                                           -->
+<!-- ====================================================================== -->
+<section class="section section--sunk" id="publications">
+  <div class="wrap">
+    <header class="section-head" data-reveal>
+      <div>
+        <p class="kicker mono"><span class="num">03</span> <span>Publications</span> <span class="bar"></span></p>
+        <h2>Selected publications</h2>
+        <p class="lead">Peer-reviewed articles in <em>Transportation Research Record</em>, <em>Transport Policy</em>, <em>Urban Climate</em>, <em>Journal of Transport &amp; Health</em> and others, plus conference proceedings and one filed patent.</p>
+      </div>
+      <div class="side">
+        <a class="arrow-link" href="https://scholar.google.com/citations?user=5jIAPTEAAAAJ&hl=en" target="_blank" rel="noopener">Google Scholar profile <span class="chev" aria-hidden="true">&rsaquo;</span></a>
+      </div>
+    </header>
+
+    <div class="pub-toolbar">
+      <div class="filters" role="group" aria-label="Filter publications by type">
+        <button class="filter" type="button" data-filter="all" aria-pressed="true">All <span class="count">16</span></button>
+        <button class="filter" type="button" data-filter="journal" aria-pressed="false">Journal <span class="count">9</span></button>
+        <button class="filter" type="button" data-filter="conference" aria-pressed="false">Conference <span class="count">6</span></button>
+        <button class="filter" type="button" data-filter="patent" aria-pressed="false">Patent <span class="count">1</span></button>
+      </div>
+      <div class="search">
+        <svg aria-hidden="true"><use href="#i-search"></use></svg>
+        <label class="visually-hidden" for="pub-search">Search publications</label>
+        <input id="pub-search" type="search" placeholder="Search title, author, venue&hellip;" autocomplete="off" spellcheck="false">
+      </div>
+    </div>
+
+    <div class="pub-list" id="pub-list">
+
+      <!-- 2026 -->
+      <article class="pub" data-type="journal" data-year="2026">
+        <div class="pub-rail"><span class="year">2026</span><span class="no"></span></div>
+        <div>
+          <h3 class="pub-title">Not all travellers think alike: Segmenting travel behaviour under air pollution exposure using a hybrid latent class and discrete choice approach</h3>
+          <p class="pub-authors"><span class="me">Meena, K. K.</span>, Goswami, A. K.</p>
+          <p class="pub-venue">Transportation Research Record: Journal of the Transportation Research Board</p>
+          <div class="pub-meta">
+            <span class="tag">Journal</span>
+            <span class="tag tag--pending">In review</span>
+            <button class="pub-action" type="button"
+              data-bib-type="article"
+              data-bib-title="Not all travellers think alike: Segmenting travel behaviour under air pollution exposure using a hybrid latent class and discrete choice approach"
+              data-bib-authors="Meena, K. K. and Goswami, A. K."
+              data-bib-venue="Transportation Research Record: Journal of the Transportation Research Board"
+              data-bib-year="2026" data-bib-note="In review">
+              <svg aria-hidden="true"><use href="#i-copy"></use></svg> BibTeX
+            </button>
+          </div>
+        </div>
+      </article>
+
+      <article class="pub" data-type="conference" data-year="2026">
+        <div class="pub-rail"><span class="year">2026</span><span class="no"></span></div>
+        <div>
+          <h3 class="pub-title">Not all travellers think alike: Segmenting travel behaviour under air pollution exposure</h3>
+          <p class="pub-authors"><span class="me">Meena, K. K.</span>, Goswami, A. K.</p>
+          <p class="pub-venue">Transportation Research Board 105th Annual Meeting, Washington D.C.</p>
+          <div class="pub-meta">
+            <span class="tag">Conference</span>
+            <span class="tag tag--ok">Accepted</span>
+            <button class="pub-action" type="button"
+              data-bib-type="inproceedings"
+              data-bib-title="Not all travellers think alike: Segmenting travel behaviour under air pollution exposure"
+              data-bib-authors="Meena, K. K. and Goswami, A. K."
+              data-bib-venue="Transportation Research Board 105th Annual Meeting, Washington D.C."
+              data-bib-year="2026" data-bib-note="Accepted">
+              <svg aria-hidden="true"><use href="#i-copy"></use></svg> BibTeX
+            </button>
+          </div>
+        </div>
+      </article>
+
+      <article class="pub" data-type="conference" data-year="2026">
+        <div class="pub-rail"><span class="year">2026</span><span class="no"></span></div>
+        <div>
+          <h3 class="pub-title">A hybrid geostatistical and deep learning framework for urban pollutant concentration prediction</h3>
+          <p class="pub-authors">Gupta, C., Amitabh, A., <span class="me">Meena, K. K.</span>, Goswami, A. K.</p>
+          <p class="pub-venue">18th International Conference on Communication Systems &amp; Networks (COMSNETS), IEEE</p>
+          <div class="pub-meta">
+            <span class="tag">Conference</span>
+            <span class="tag tag--ok">Accepted</span>
+            <button class="pub-action" type="button"
+              data-bib-type="inproceedings"
+              data-bib-title="A hybrid geostatistical and deep learning framework for urban pollutant concentration prediction"
+              data-bib-authors="Gupta, C. and Amitabh, A. and Meena, K. K. and Goswami, A. K."
+              data-bib-venue="International Conference on Communication Systems and Networks (COMSNETS), IEEE"
+              data-bib-year="2026" data-bib-note="Accepted">
+              <svg aria-hidden="true"><use href="#i-copy"></use></svg> BibTeX
+            </button>
+          </div>
+        </div>
+      </article>
+
+      <article class="pub" data-type="conference" data-year="2026">
+        <div class="pub-rail"><span class="year">2026</span><span class="no"></span></div>
+        <div>
+          <h3 class="pub-title">Developing an integrated walkability score using image-based feature extraction</h3>
+          <p class="pub-authors">Singh, A., <span class="me">Meena, K. K.</span>, Sharma, G., Goswami, A. K., Mishra, S.</p>
+          <p class="pub-venue">Transportation Research Board 105th Annual Meeting, Washington D.C.</p>
+          <div class="pub-meta">
+            <span class="tag">Conference</span>
+            <span class="tag tag--ok">Accepted</span>
+            <button class="pub-action" type="button"
+              data-bib-type="inproceedings"
+              data-bib-title="Developing an integrated walkability score using image-based feature extraction"
+              data-bib-authors="Singh, A. and Meena, K. K. and Sharma, G. and Goswami, A. K. and Mishra, S."
+              data-bib-venue="Transportation Research Board 105th Annual Meeting, Washington D.C."
+              data-bib-year="2026" data-bib-note="Accepted">
+              <svg aria-hidden="true"><use href="#i-copy"></use></svg> BibTeX
+            </button>
+          </div>
+        </div>
+      </article>
+
+      <!-- 2025 -->
+      <article class="pub" data-type="journal" data-year="2025">
+        <div class="pub-rail"><span class="year">2025</span><span class="no"></span></div>
+        <div>
+          <h3 class="pub-title">Beyond choice modelling: Bridging econometric theory and deep learning for robust mode choice prediction</h3>
+          <p class="pub-authors"><span class="me">Meena, K. K.</span>, Goswami, A. K.</p>
+          <p class="pub-venue">Transportation Research Part A: Policy and Practice</p>
+          <div class="pub-meta">
+            <span class="tag">Journal</span>
+            <span class="tag tag--pending">Under review</span>
+            <button class="pub-action" type="button"
+              data-bib-type="article"
+              data-bib-title="Beyond choice modelling: Bridging econometric theory and deep learning for robust mode choice prediction"
+              data-bib-authors="Meena, K. K. and Goswami, A. K."
+              data-bib-venue="Transportation Research Part A: Policy and Practice"
+              data-bib-year="2025" data-bib-note="Under review">
+              <svg aria-hidden="true"><use href="#i-copy"></use></svg> BibTeX
+            </button>
+          </div>
+        </div>
+      </article>
+
+      <article class="pub" data-type="journal" data-year="2025">
+        <div class="pub-rail"><span class="year">2025</span><span class="no"></span></div>
+        <div>
+          <h3 class="pub-title"><a href="https://doi.org/10.1177/03611981251331011" target="_blank" rel="noopener">Dynamic route planning for urban green mobility: Development of a web application offering sustainable route options to commuters</a></h3>
+          <p class="pub-authors"><span class="me">Meena, K. K.</span>, Singh, A. K., Goswami, A. K.</p>
+          <p class="pub-venue">Transportation Research Record: Journal of the Transportation Research Board</p>
+          <div class="pub-meta">
+            <span class="tag">Journal</span>
+            <span class="tag tag--ok">Published</span>
+            <a class="pub-action pub-action--solid" href="https://doi.org/10.1177/03611981251331011" target="_blank" rel="noopener">
+              <svg aria-hidden="true"><use href="#i-external"></use></svg> DOI
+            </a>
+            <button class="pub-action" type="button"
+              data-bib-type="article"
+              data-bib-title="Dynamic route planning for urban green mobility: Development of a web application offering sustainable route options to commuters"
+              data-bib-authors="Meena, K. K. and Singh, A. K. and Goswami, A. K."
+              data-bib-venue="Transportation Research Record: Journal of the Transportation Research Board"
+              data-bib-year="2025" data-bib-doi="10.1177/03611981251331011">
+              <svg aria-hidden="true"><use href="#i-copy"></use></svg> BibTeX
+            </button>
+          </div>
+        </div>
+      </article>
+
+      <article class="pub" data-type="journal" data-year="2025">
+        <div class="pub-rail"><span class="year">2025</span><span class="no"></span></div>
+        <div>
+          <h3 class="pub-title"><a href="https://www.tandfonline.com/doi/full/10.1080/15568318.2025.2572818" target="_blank" rel="noopener">Modeling bicycle choice behavior and its potential health impact: Case of first/last mile access to suburban rail</a></h3>
+          <p class="pub-authors">Manoj, B. S., <span class="me">Meena, K. K.</span>, Panchal, H., Sharma, G., Goswami, A. K.</p>
+          <p class="pub-venue">International Journal of Sustainable Transportation</p>
+          <div class="pub-meta">
+            <span class="tag">Journal</span>
+            <span class="tag tag--ok">Published</span>
+            <a class="pub-action pub-action--solid" href="https://www.tandfonline.com/doi/full/10.1080/15568318.2025.2572818" target="_blank" rel="noopener">
+              <svg aria-hidden="true"><use href="#i-external"></use></svg> DOI
+            </a>
+            <button class="pub-action" type="button"
+              data-bib-type="article"
+              data-bib-title="Modeling bicycle choice behavior and its potential health impact: Case of first/last mile access to suburban rail"
+              data-bib-authors="Manoj, B. S. and Meena, K. K. and Panchal, H. and Sharma, G. and Goswami, A. K."
+              data-bib-venue="International Journal of Sustainable Transportation"
+              data-bib-year="2025" data-bib-doi="10.1080/15568318.2025.2572818">
+              <svg aria-hidden="true"><use href="#i-copy"></use></svg> BibTeX
+            </button>
+          </div>
+        </div>
+      </article>
+
+      <article class="pub" data-type="journal" data-year="2025">
+        <div class="pub-rail"><span class="year">2025</span><span class="no"></span></div>
+        <div>
+          <h3 class="pub-title">A prioritization framework to identify key attributes of transit-oriented development (TOD) using a multi-criteria decision-making (MCDM) approach: An Indian context</h3>
+          <p class="pub-authors">Manoj, B. S., <span class="me">Meena, K. K.</span>, Goswami, A. K.</p>
+          <p class="pub-venue">Sustainable Transport and Livability, vol. 2</p>
+          <div class="pub-meta">
+            <span class="tag">Journal</span>
+            <span class="tag tag--ok">Published</span>
+            <button class="pub-action" type="button"
+              data-bib-type="article"
+              data-bib-title="A prioritization framework to identify key attributes of transit-oriented development (TOD) using a multi-criteria decision-making (MCDM) approach: An Indian context"
+              data-bib-authors="Manoj, B. S. and Meena, K. K. and Goswami, A. K."
+              data-bib-venue="Sustainable Transport and Livability"
+              data-bib-year="2025" data-bib-volume="2">
+              <svg aria-hidden="true"><use href="#i-copy"></use></svg> BibTeX
+            </button>
+          </div>
+        </div>
+      </article>
+
+      <article class="pub" data-type="conference" data-year="2025">
+        <div class="pub-rail"><span class="year">2025</span><span class="no"></span></div>
+        <div>
+          <h3 class="pub-title">Assessing the air pollution exposure to school children</h3>
+          <p class="pub-authors">Sumbhate, A., <span class="me">Meena, K. K.</span>, Goswami, A. K.</p>
+          <p class="pub-venue">Proceedings of the Eastern Asia Society for Transportation Studies (EASTS), Jakarta</p>
+          <div class="pub-meta">
+            <span class="tag">Conference</span>
+            <span class="tag tag--ok">Published</span>
+            <button class="pub-action" type="button"
+              data-bib-type="inproceedings"
+              data-bib-title="Assessing the air pollution exposure to school children"
+              data-bib-authors="Sumbhate, A. and Meena, K. K. and Goswami, A. K."
+              data-bib-venue="Proceedings of the Eastern Asia Society for Transportation Studies (EASTS), Jakarta"
+              data-bib-year="2025">
+              <svg aria-hidden="true"><use href="#i-copy"></use></svg> BibTeX
+            </button>
+          </div>
+        </div>
+      </article>
+
+      <article class="pub" data-type="patent" data-year="2025">
+        <div class="pub-rail"><span class="year">2025</span><span class="no"></span></div>
+        <div>
+          <h3 class="pub-title">Personalized dynamic route planning system for sustainable urban mobility</h3>
+          <p class="pub-authors"><span class="me">Meena, K. K.</span>, Goswami, A. K.</p>
+          <p class="pub-venue">Indian Patent Office &mdash; application filed</p>
+          <div class="pub-meta">
+            <span class="tag tag--gold">Patent</span>
+            <span class="tag tag--pending">In process</span>
+            <button class="pub-action" type="button"
+              data-bib-type="misc"
+              data-bib-title="Personalized dynamic route planning system for sustainable urban mobility"
+              data-bib-authors="Meena, K. K. and Goswami, A. K."
+              data-bib-venue="Indian Patent"
+              data-bib-year="2025" data-bib-note="Patent application filed">
+              <svg aria-hidden="true"><use href="#i-copy"></use></svg> BibTeX
+            </button>
+          </div>
+        </div>
+      </article>
+
+      <!-- 2024 -->
+      <article class="pub" data-type="journal" data-year="2024">
+        <div class="pub-rail"><span class="year">2024</span><span class="no"></span></div>
+        <div>
+          <h3 class="pub-title">A review of air pollution exposure impacts on travel behaviour and way forward</h3>
+          <p class="pub-authors"><span class="me">Meena, K. K.</span>, Goswami, A. K.</p>
+          <p class="pub-venue">Transport Policy, Elsevier</p>
+          <div class="pub-meta">
+            <span class="tag">Journal</span>
+            <span class="tag tag--ok">Published</span>
+            <a class="pub-action" href="https://scholar.google.com/citations?user=5jIAPTEAAAAJ&hl=en" target="_blank" rel="noopener">
+              <svg aria-hidden="true"><use href="#i-scholar"></use></svg> Scholar
+            </a>
+            <button class="pub-action" type="button"
+              data-bib-type="article"
+              data-bib-title="A review of air pollution exposure impacts on travel behaviour and way forward"
+              data-bib-authors="Meena, K. K. and Goswami, A. K."
+              data-bib-venue="Transport Policy"
+              data-bib-year="2024">
+              <svg aria-hidden="true"><use href="#i-copy"></use></svg> BibTeX
+            </button>
+          </div>
+        </div>
+      </article>
+
+      <article class="pub" data-type="journal" data-year="2024">
+        <div class="pub-rail"><span class="year">2024</span><span class="no"></span></div>
+        <div>
+          <h3 class="pub-title"><a href="https://www.sciencedirect.com/science/article/pii/S2772662224000638" target="_blank" rel="noopener">A machine learning approach for unraveling the influence of air quality awareness on travel behavior</a></h3>
+          <p class="pub-authors"><span class="me">Meena, K. K.</span>, Bairwa, D., Agarwal, A.</p>
+          <p class="pub-venue">Decision Analytics Journal, vol. 11</p>
+          <div class="pub-meta">
+            <span class="tag">Journal</span>
+            <span class="tag tag--ok">Published</span>
+            <a class="pub-action pub-action--solid" href="https://www.sciencedirect.com/science/article/pii/S2772662224000638" target="_blank" rel="noopener">
+              <svg aria-hidden="true"><use href="#i-external"></use></svg> Article
+            </a>
+            <button class="pub-action" type="button"
+              data-bib-type="article"
+              data-bib-title="A machine learning approach for unraveling the influence of air quality awareness on travel behavior"
+              data-bib-authors="Meena, K. K. and Bairwa, D. and Agarwal, A."
+              data-bib-venue="Decision Analytics Journal"
+              data-bib-year="2024" data-bib-volume="11">
+              <svg aria-hidden="true"><use href="#i-copy"></use></svg> BibTeX
+            </button>
+          </div>
+        </div>
+      </article>
+
+      <article class="pub" data-type="conference" data-year="2024">
+        <div class="pub-rail"><span class="year">2024</span><span class="no"></span></div>
+        <div>
+          <h3 class="pub-title">Impact of air pollution on informed decision-making for choice of a travel mode</h3>
+          <p class="pub-authors"><span class="me">Meena, K. K.</span>, Taneja, R., Agarwal, A.</p>
+          <p class="pub-venue">16th International Conference on Communication Systems &amp; Networks (COMSNETS), IEEE</p>
+          <div class="pub-meta">
+            <span class="tag">Conference</span>
+            <span class="tag tag--ok">Published</span>
+            <button class="pub-action" type="button"
+              data-bib-type="inproceedings"
+              data-bib-title="Impact of air pollution on informed decision-making for choice of a travel mode"
+              data-bib-authors="Meena, K. K. and Taneja, R. and Agarwal, A."
+              data-bib-venue="16th International Conference on Communication Systems and Networks (COMSNETS), IEEE"
+              data-bib-year="2024">
+              <svg aria-hidden="true"><use href="#i-copy"></use></svg> BibTeX
+            </button>
+          </div>
+        </div>
+      </article>
+
+      <!-- 2023 -->
+      <article class="pub" data-type="journal" data-year="2023">
+        <div class="pub-rail"><span class="year">2023</span><span class="no"></span></div>
+        <div>
+          <h3 class="pub-title">Perception of commuters towards air quality in Delhi</h3>
+          <p class="pub-authors"><span class="me">Meena, K. K.</span>, Singh, V., Agarwal, A.</p>
+          <p class="pub-venue">Journal of Transport &amp; Health, vol. 31</p>
+          <div class="pub-meta">
+            <span class="tag">Journal</span>
+            <span class="tag tag--ok">Published</span>
+            <a class="pub-action" href="https://scholar.google.com/citations?user=5jIAPTEAAAAJ&hl=en" target="_blank" rel="noopener">
+              <svg aria-hidden="true"><use href="#i-scholar"></use></svg> Scholar
+            </a>
+            <button class="pub-action" type="button"
+              data-bib-type="article"
+              data-bib-title="Perception of commuters towards air quality in Delhi"
+              data-bib-authors="Meena, K. K. and Singh, V. and Agarwal, A."
+              data-bib-venue="Journal of Transport and Health"
+              data-bib-year="2023" data-bib-volume="31">
+              <svg aria-hidden="true"><use href="#i-copy"></use></svg> BibTeX
+            </button>
+          </div>
+        </div>
+      </article>
+
+      <article class="pub" data-type="conference" data-year="2023">
+        <div class="pub-rail"><span class="year">2023</span><span class="no"></span></div>
+        <div>
+          <h3 class="pub-title">Dynamic route planning for urban green mobility</h3>
+          <p class="pub-authors"><span class="me">Meena, K. K.</span>, Singh, A. K., Goswami, A. K.</p>
+          <p class="pub-venue">Conference of Transportation Research Group of India (CTRG), SVNIT Surat</p>
+          <div class="pub-meta">
+            <span class="tag">Conference</span>
+            <span class="tag tag--ok">Published</span>
+            <button class="pub-action" type="button"
+              data-bib-type="inproceedings"
+              data-bib-title="Dynamic route planning for urban green mobility"
+              data-bib-authors="Meena, K. K. and Singh, A. K. and Goswami, A. K."
+              data-bib-venue="Conference of Transportation Research Group of India (CTRG), SVNIT Surat"
+              data-bib-year="2023">
+              <svg aria-hidden="true"><use href="#i-copy"></use></svg> BibTeX
+            </button>
+          </div>
+        </div>
+      </article>
+
+      <!-- 2021 -->
+      <article class="pub" data-type="journal" data-year="2021">
+        <div class="pub-rail"><span class="year">2021</span><span class="no"></span></div>
+        <div>
+          <h3 class="pub-title"><a href="https://www.sciencedirect.com/science/article/pii/S2212095521001310" target="_blank" rel="noopener">Travellers&rsquo; exposure to air pollution: A systematic review and future directions</a></h3>
+          <p class="pub-authors">Singh, V., <span class="me">Meena, K. K.</span>, Agarwal, A.</p>
+          <p class="pub-venue">Urban Climate, vol. 38</p>
+          <div class="pub-meta">
+            <span class="tag">Journal</span>
+            <span class="tag tag--ok">Published</span>
+            <a class="pub-action pub-action--solid" href="https://www.sciencedirect.com/science/article/pii/S2212095521001310" target="_blank" rel="noopener">
+              <svg aria-hidden="true"><use href="#i-external"></use></svg> Article
+            </a>
+            <button class="pub-action" type="button"
+              data-bib-type="article"
+              data-bib-title="Travellers' exposure to air pollution: A systematic review and future directions"
+              data-bib-authors="Singh, V. and Meena, K. K. and Agarwal, A."
+              data-bib-venue="Urban Climate"
+              data-bib-year="2021" data-bib-volume="38">
+              <svg aria-hidden="true"><use href="#i-copy"></use></svg> BibTeX
+            </button>
+          </div>
+        </div>
+      </article>
+
+    </div>
+
+    <p class="pub-empty" id="pub-empty">No publications match that search.</p>
+
+    <div class="pub-footnote">
+      <span id="pub-showing">Showing all 16 entries.</span>
+      <a class="arrow-link" href="https://scholar.google.com/citations?user=5jIAPTEAAAAJ&hl=en" target="_blank" rel="noopener">Full record on Google Scholar <span class="chev" aria-hidden="true">&rsaquo;</span></a>
+    </div>
+  </div>
+</section>
+
+<!-- ====================================================================== -->
+<!-- Projects                                                               -->
+<!-- ====================================================================== -->
+<section class="section" id="projects">
+  <div class="wrap">
+    <header class="section-head" data-reveal>
+      <div>
+        <p class="kicker mono"><span class="num">04</span> <span>Software</span> <span class="bar"></span></p>
+        <h2>Research that runs</h2>
+        <p class="lead">Every project below started as a research question and ended as something you can open in a browser. All source is public.</p>
+      </div>
+      <div class="side">
+        <a class="arrow-link" href="https://github.com/kapil2020" target="_blank" rel="noopener">github.com/kapil2020 <span class="chev" aria-hidden="true">&rsaquo;</span></a>
+      </div>
+    </header>
+
+    <div class="grid grid--3" data-reveal>
+
+      <a class="card project" href="https://github.com/orgs/clean-route/repositories" target="_blank" rel="noopener">
+        <div class="top">
+          <span class="glyph"><svg aria-hidden="true"><use href="#i-route"></use></svg></span>
+          <span class="tag tag--accent">Featured in <em>The Hindu</em></span>
+        </div>
+        <h3>DRUM &mdash; Dynamic Routing for Urban Mobility</h3>
+        <p>A pollution-aware routing engine that returns the cleanest, lowest-exposure path across a city rather than only the fastest. Presented at Google India, 2025.</p>
+        <div class="foot"><span>React &middot; Python &middot; OSM</span><span style="margin-left:auto">Source <span class="chev">&rsaquo;</span></span></div>
+      </a>
+
+      <a class="card project" href="https://kapil2020.github.io/global-PM-2.5-next-day-forecasting/" target="_blank" rel="noopener">
+        <div class="top">
+          <span class="glyph"><svg aria-hidden="true"><use href="#i-wind"></use></svg></span>
+          <span class="tag">Live</span>
+        </div>
+        <h3>Next-day PM<sub>2.5</sub> forecasting</h3>
+        <p>Machine-learning models that forecast next-day fine particulate concentrations, packaged as an interactive global viewer.</p>
+        <div class="foot"><span>Python &middot; ML</span><span style="margin-left:auto">Open <span class="chev">&rsaquo;</span></span></div>
+      </a>
+
+      <a class="card project" href="https://kapil2020.github.io/cycling-dashboard/" target="_blank" rel="noopener">
+        <div class="top">
+          <span class="glyph"><svg aria-hidden="true"><use href="#i-db"></use></svg></span>
+          <span class="tag">Live</span>
+        </div>
+        <h3>City mode-share dashboard</h3>
+        <p>An interactive dashboard for visualising and predicting cycling and motorcycle mode share across Indian cities.</p>
+        <div class="foot"><span>D3 &middot; JavaScript</span><span style="margin-left:auto">Open <span class="chev">&rsaquo;</span></span></div>
+      </a>
+
+      <a class="card project" href="https://github.com/kapil2020/react-frontend-kgp" target="_blank" rel="noopener">
+        <div class="top">
+          <span class="glyph"><svg aria-hidden="true"><use href="#i-doc"></use></svg></span>
+          <span class="tag">Survey instrument</span>
+        </div>
+        <h3>Dynamic travel survey</h3>
+        <p>A configurable stated-preference survey platform with real-time response analytics &mdash; the data collection backbone of my dissertation.</p>
+        <div class="foot"><span>React &middot; MongoDB</span><span style="margin-left:auto">Source <span class="chev">&rsaquo;</span></span></div>
+      </a>
+
+      <a class="card project" href="https://kapil2020.github.io/dummy-mobile-application/" target="_blank" rel="noopener">
+        <div class="top">
+          <span class="glyph"><svg aria-hidden="true"><use href="#i-bike"></use></svg></span>
+          <span class="tag">Prototype</span>
+        </div>
+        <h3>Routing mobile prototype</h3>
+        <p>A mobile-first interface exploring how route alternatives &mdash; fastest, cleanest, healthiest &mdash; should be presented to a commuter.</p>
+        <div class="foot"><span>UI research</span><span style="margin-left:auto">Open <span class="chev">&rsaquo;</span></span></div>
+      </a>
+
+      <a class="card project" href="https://survey-iitkgp.vercel.app/" target="_blank" rel="noopener">
+        <div class="top">
+          <span class="glyph"><svg aria-hidden="true"><use href="#i-flask"></use></svg></span>
+          <span class="tag">Live</span>
+        </div>
+        <h3>Choice-experiment platform</h3>
+        <p>The deployed stated-choice experiment used to estimate willingness to shift mode under varying pollution scenarios.</p>
+        <div class="foot"><span>Choice modelling</span><span style="margin-left:auto">Open <span class="chev">&rsaquo;</span></span></div>
+      </a>
+
+    </div>
+  </div>
+</section>
+
+<!-- ====================================================================== -->
+<!-- Experience & teaching                                                  -->
+<!-- ====================================================================== -->
+<section class="section section--sunk" id="experience">
+  <div class="wrap">
+    <header class="section-head" data-reveal>
+      <div>
+        <p class="kicker mono"><span class="num">05</span> <span>Experience</span> <span class="bar"></span></p>
+        <h2>Positions &amp; teaching</h2>
+        <p class="lead">Research, consulting and classroom work across UCLA, IIT Kharagpur, IIT Roorkee and WRI India.</p>
+      </div>
+    </header>
+
+    <div data-reveal>
+      <article class="exp">
+        <div class="when">2026 &mdash; Present</div>
+        <div>
+          <h3>Postdoctoral Researcher</h3>
+          <p class="org">HUMAN Lab, University of California, Los Angeles <span class="loc">&middot; Los Angeles, CA</span></p>
+          <ul>
+            <li>Human-centred modelling of urban mobility with Prof. Youngseo Kim.</li>
+            <li>Extending behavioural segmentation and exposure-aware choice models to US metropolitan contexts.</li>
+          </ul>
+        </div>
+      </article>
+
+      <article class="exp">
+        <div class="when">2022 &mdash; 2026</div>
+        <div>
+          <h3>Doctoral Researcher</h3>
+          <p class="org">RCG School of Infrastructure Design &amp; Management, IIT Kharagpur <span class="loc">&middot; India</span></p>
+          <ul>
+            <li>Designed and fielded a large stated-preference survey on travel behaviour under air-pollution exposure.</li>
+            <li>Developed hybrid latent-class discrete choice models identifying distinct traveller segments.</li>
+            <li>Built and deployed DRUM, a pollution-aware routing web application covered by <em>The Hindu</em>.</li>
+          </ul>
+        </div>
+      </article>
+
+      <article class="exp">
+        <div class="when">Nov 2021 &mdash; Mar 2022</div>
+        <div>
+          <h3>Research Consultant</h3>
+          <p class="org">World Resources Institute (WRI) India <span class="loc">&middot; Remote</span></p>
+          <ul>
+            <li>Analysed inhaled dose and exposure for commuters inside vehicles versus ambient conditions.</li>
+            <li>Developed recommendations for deploying electric mobility solutions in Tier-2 Indian cities.</li>
+          </ul>
+        </div>
+      </article>
+
+      <article class="exp">
+        <div class="when">2019 &mdash; 2023</div>
+        <div>
+          <h3>Teaching Assistant</h3>
+          <p class="org">IIT Kharagpur &amp; IIT Roorkee <span class="loc">&middot; India</span></p>
+          <ul>
+            <li>Courses: Multimodal Urban Transport (NPTEL), Intersection Design, Engineering Drawing.</li>
+            <li>Mentored students through laboratory sessions and traffic simulation in VISSIM.</li>
+          </ul>
+        </div>
+      </article>
+
+      <article class="exp">
+        <div class="when">2019 &mdash; 2025</div>
+        <div>
+          <h3>Invited lectures &amp; talks</h3>
+          <p class="org">Google India &middot; NIT Calicut &middot; Swastik Edustart</p>
+          <ul>
+            <li><strong>DRUM: routing for cleaner commutes</strong> &mdash; Google India, June 2025.</li>
+            <li><strong>Transportation data analysis</strong> &mdash; NIT Calicut.</li>
+            <li><strong>Data visualisation with Tableau</strong> &mdash; Swastik Edustart.</li>
+          </ul>
+        </div>
+      </article>
+    </div>
+
+    <h3 class="subhead" style="margin-top:3rem">From the road</h3>
+    <div class="talk-gallery" data-reveal>
+      <figure class="shot">
+        <div class="frame" data-lightbox="https://github.com/kapil2020/web/blob/main/google_github.jpg?raw=true">
+          <img src="https://github.com/kapil2020/web/blob/main/google_github.jpg?raw=true" alt="Kapil Meena presenting the DRUM routing application at Google India" loading="lazy">
+        </div>
+        <figcaption>
+          <div class="t">Presenting DRUM at Google India</div>
+          <div class="s">Invited talk &middot; June 2025</div>
+        </figcaption>
+      </figure>
+      <figure class="shot">
+        <div class="frame" data-lightbox="https://github.com/kapil2020/web/blob/main/conference_github.png?raw=true">
+          <img src="https://github.com/kapil2020/web/blob/main/conference_github.png?raw=true" alt="Collage of international conference presentations" loading="lazy">
+        </div>
+        <figcaption>
+          <div class="t">Conferences, 2023&ndash;2026</div>
+          <div class="s">TRB Washington D.C. &middot; IATBR Vienna &middot; WCTR Montréal &middot; EASTS Jakarta</div>
+        </figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<!-- ====================================================================== -->
+<!-- Honours & service                                                      -->
+<!-- ====================================================================== -->
+<section class="section" id="honours">
+  <div class="wrap">
+    <header class="section-head" data-reveal>
+      <div>
+        <p class="kicker mono"><span class="num">06</span> <span>Honours &amp; service</span> <span class="bar"></span></p>
+        <h2>Awards, grants &amp; academic service</h2>
+        <p class="lead">Recognition for the work, and the reviewing and organising that keeps the field running.</p>
+      </div>
+    </header>
+
+    <div class="service-grid">
+      <div data-reveal>
+        <h3 class="subhead">Awards &amp; grants</h3>
+        <ul>
+          <li class="award">
+            <span class="m"><svg aria-hidden="true"><use href="#i-award"></use></svg></span>
+            <div><div class="t">Best Presentation Award, Research Scholar Day</div><div class="sub">IIT Kharagpur</div></div>
+          </li>
+          <li class="award">
+            <span class="m"><svg aria-hidden="true"><use href="#i-award"></use></svg></span>
+            <div><div class="t">Best Poster Presentation, Cyber-Physical Systems Summit</div><div class="sub">CyPhySS 2023</div></div>
+          </li>
+          <li class="award">
+            <span class="m"><svg aria-hidden="true"><use href="#i-pin"></use></svg></span>
+            <div><div class="t">International Research Exchange Grant</div><div class="sub">University of Leeds, United Kingdom</div></div>
+          </li>
+          <li class="award">
+            <span class="m"><svg aria-hidden="true"><use href="#i-pin"></use></svg></span>
+            <div><div class="t">Institute Travel Grant</div><div class="sub">TRB Annual Meeting, Washington D.C.</div></div>
+          </li>
+          <li class="award">
+            <span class="m"><svg aria-hidden="true"><use href="#i-book"></use></svg></span>
+            <div><div class="t">MHRD Fellowship for doctoral research</div><div class="sub">Ministry of Education, Government of India</div></div>
+          </li>
+          <li class="award">
+            <span class="m"><svg aria-hidden="true"><use href="#i-check"></use></svg></span>
+            <div><div class="t">GATE qualified &mdash; All India Rank 559</div><div class="sub">Civil Engineering, 2019</div></div>
+          </li>
+          <li class="award">
+            <span class="m"><svg aria-hidden="true"><use href="#i-flask"></use></svg></span>
+            <div><div class="t">Regional winner, National Children&rsquo;s Science Congress</div><div class="sub">Department of Science &amp; Technology, India</div></div>
+          </li>
+        </ul>
+      </div>
+
+      <div data-reveal>
+        <h3 class="subhead">Positions of responsibility</h3>
+        <div>
+          <div class="role-row"><span class="yr">2025</span><span><span class="r">Technical Session Chair</span><br><span class="e">EASTS 2025 Conference, Jakarta</span></span></div>
+          <div class="role-row"><span class="yr">2024</span><span><span class="r">Overall Coordinator</span><br><span class="e">2nd IBSR Conference, IIT Kharagpur</span></span></div>
+          <div class="role-row"><span class="yr">2023</span><span><span class="r">Overall Coordinator</span><br><span class="e">IBSR Conference, IIT Kharagpur</span></span></div>
+          <div class="role-row"><span class="yr">2022&ndash;23</span><span><span class="r">Departmental Social Media Head</span><br><span class="e">IIT Kharagpur</span></span></div>
+          <div class="role-row"><span class="yr">2020&ndash;21</span><span><span class="r">Placement Representative</span><br><span class="e">IIT Roorkee</span></span></div>
+        </div>
+
+        <h3 class="subhead" style="margin-top:2.5rem">Peer review</h3>
+        <ul class="journal-list">
+          <li><svg aria-hidden="true"><use href="#i-check"></use></svg> Transportation Research Part A: Policy and Practice</li>
+          <li><svg aria-hidden="true"><use href="#i-check"></use></svg> Transportation Research Part D: Transport and Environment</li>
+          <li><svg aria-hidden="true"><use href="#i-check"></use></svg> Transport Policy</li>
+          <li><svg aria-hidden="true"><use href="#i-check"></use></svg> Transportation Research Record (SAGE)</li>
+          <li><svg aria-hidden="true"><use href="#i-check"></use></svg> Research in Transportation Business &amp; Management</li>
+          <li><svg aria-hidden="true"><use href="#i-check"></use></svg> Transportation in Developing Economies</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ====================================================================== -->
+<!-- Footprint                                                              -->
+<!-- ====================================================================== -->
+<section class="section section--sunk" id="footprint">
+  <div class="wrap">
+    <header class="section-head" data-reveal>
+      <div>
+        <p class="kicker mono"><span class="num">07</span> <span>Footprint</span> <span class="bar"></span></p>
+        <h2>Where the work has travelled</h2>
+        <p class="lead">Conferences, exchanges and research bases across three continents.</p>
+      </div>
+    </header>
+
+    <div class="map-shell" data-reveal>
+      <div id="map" role="region" aria-label="World map of conference and research locations"></div>
+      <p class="map-fallback" id="map-fallback">Loading map&hellip;</p>
+      <div class="map-legend">
+        <span><i style="background:#e0533d"></i> Current base &mdash; Los Angeles</span>
+        <span><i style="background:#1f5eb3"></i> International venues</span>
+        <span><i style="background:#1d6b45"></i> India</span>
+      </div>
+    </div>
+
+    <ul class="venue-list" data-reveal>
+      <li><span class="city">Los Angeles, USA</span> <span class="ev">UCLA · base</span></li>
+      <li><span class="city">Washington D.C., USA</span> <span class="ev">TRB 2026</span></li>
+      <li><span class="city">Vienna, Austria</span> <span class="ev">IATBR 2024</span></li>
+      <li><span class="city">Montréal, Canada</span> <span class="ev">WCTR 2023</span></li>
+      <li><span class="city">Nashville, USA</span> <span class="ev">UAA 2024</span></li>
+      <li><span class="city">Leeds, UK</span> <span class="ev">Exchange grant</span></li>
+      <li><span class="city">Jakarta, Indonesia</span> <span class="ev">EASTS 2025</span></li>
+      <li><span class="city">Kharagpur, India</span> <span class="ev">Ph.D.</span></li>
+      <li><span class="city">Roorkee, India</span> <span class="ev">M.Tech</span></li>
+      <li><span class="city">Surat, India</span> <span class="ev">CTRG 2023</span></li>
+      <li><span class="city">Bengaluru, India</span> <span class="ev">CyPhySS</span></li>
+      <li><span class="city">Kota, India</span> <span class="ev">B.Tech</span></li>
+    </ul>
+  </div>
+</section>
+
+</main>
+
+<!-- ====================================================================== -->
+<!-- Contact                                                                -->
+<!-- ====================================================================== -->
+<section class="contact" id="contact">
+  <div class="wrap contact-grid">
+    <div data-reveal>
+      <p class="kicker mono" style="color:var(--ink-faint); display:flex; align-items:center; gap:.7rem; margin-bottom:.85rem">
+        <span style="color:var(--accent)">08</span> <span>Contact</span> <span style="flex:1;height:1px;background:linear-gradient(90deg,var(--line),transparent);max-width:180px"></span>
+      </p>
+      <h2>Let&rsquo;s work together.</h2>
+      <p class="prose">
+        I am always glad to hear from researchers, planners and practitioners &mdash; on exposure-aware
+        routing, behavioural modelling, active mobility, or a paper you think I should read. Students
+        curious about transportation research are equally welcome.
+      </p>
+      <div class="hero-cta" style="margin-top:1.75rem">
+        <a class="btn btn--primary" href="mailto:kapil.meena@kgpian.iitkgp.ac.in">
+          <svg class="ico" aria-hidden="true"><use href="#i-mail"></use></svg> Send an email
+        </a>
+        <a class="btn btn--ghost" href="https://raw.githubusercontent.com/kapil2020/web/main/CV_Kapil_2026_Updated.pdf" target="_blank" rel="noopener">
+          <svg class="ico" aria-hidden="true"><use href="#i-download"></use></svg> Download CV
+        </a>
+      </div>
+    </div>
+
+    <div class="contact-cards" data-reveal>
+      <a class="contact-card" href="mailto:kapil.meena@kgpian.iitkgp.ac.in">
+        <span class="ic"><svg aria-hidden="true"><use href="#i-mail"></use></svg></span>
+        <span><span class="k">Email</span><br><span class="v">kapil.meena@kgpian.iitkgp.ac.in</span></span>
+        <svg class="go" width="16" height="16" aria-hidden="true"><use href="#i-chev"></use></svg>
+      </a>
+      <div class="contact-card" style="cursor:default">
+        <span class="ic"><svg aria-hidden="true"><use href="#i-pin"></use></svg></span>
+        <span><span class="k">Based in</span><br><span class="v">HUMAN Lab, UCLA<br>Los Angeles, California, USA</span></span>
+      </div>
+      <a class="contact-card" href="https://scholar.google.com/citations?user=5jIAPTEAAAAJ&hl=en" target="_blank" rel="noopener">
+        <span class="ic"><svg aria-hidden="true"><use href="#i-scholar"></use></svg></span>
+        <span><span class="k">Publications</span><br><span class="v">Google Scholar</span></span>
+        <svg class="go" width="16" height="16" aria-hidden="true"><use href="#i-external"></use></svg>
+      </a>
+      <a class="contact-card" href="https://github.com/kapil2020" target="_blank" rel="noopener">
+        <span class="ic"><svg aria-hidden="true"><use href="#i-github"></use></svg></span>
+        <span><span class="k">Code</span><br><span class="v">github.com/kapil2020</span></span>
+        <svg class="go" width="16" height="16" aria-hidden="true"><use href="#i-external"></use></svg>
+      </a>
+      <a class="contact-card" href="https://www.linkedin.com/in/kapilmeena/" target="_blank" rel="noopener">
+        <span class="ic"><svg aria-hidden="true"><use href="#i-linkedin"></use></svg></span>
+        <span><span class="k">Network</span><br><span class="v">linkedin.com/in/kapilmeena</span></span>
+        <svg class="go" width="16" height="16" aria-hidden="true"><use href="#i-external"></use></svg>
+      </a>
+    </div>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="wrap footer-inner">
+    <p style="margin:0">&copy; <span id="year">2026</span> Kapil Kumar Meena &middot; Los Angeles, California</p>
+    <nav class="footer-links" aria-label="Footer">
+      <a href="#about">About</a>
+      <a href="#publications">Publications</a>
+      <a href="#projects">Projects</a>
+      <a href="#honours">Honours</a>
+      <a href="https://scholar.google.com/citations?user=5jIAPTEAAAAJ&hl=en" target="_blank" rel="noopener">Scholar</a>
+      <a href="https://github.com/kapil2020/website" target="_blank" rel="noopener">Source</a>
+    </nav>
+  </div>
+</footer>
+
+<button class="to-top" id="to-top" type="button" aria-label="Back to top">
+  <svg width="17" height="17" aria-hidden="true"><use href="#i-up"></use></svg>
+</button>
+
+<div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Image viewer">
+  <button class="close" type="button" aria-label="Close image"><svg width="18" height="18" aria-hidden="true"><use href="#i-close"></use></svg></button>
+  <img src="" alt="">
+</div>
+
+<div class="toast" id="toast" role="status" aria-live="polite">
+  <svg aria-hidden="true"><use href="#i-check"></use></svg>
+  <span id="toast-text"></span>
+</div>
+
+<script src="assets/js/main.js" defer></script>
 </body>
 </html>
