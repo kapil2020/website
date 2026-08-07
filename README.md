@@ -54,10 +54,14 @@ scroll reveals, a counting animation on the figures and one ticker.
   stacked bar chart of output by year, and a five-stage diagram of the method.
 - **Press coverage.** A designed preview of *The Hindu* article alongside the scanned page,
   which opens full size in a lightbox.
-- **Publications.** All 28 entries — 12 journal articles, 15 refereed conference papers and one
-  filed patent — sequenced newest first as `[J1]`–`[J12]`, `[C1]`–`[C15]` and `[P1]`, with DOI
-  links, type filters, full-text search and one-click BibTeX. Entries are plain HTML, so the
-  list works without JavaScript.
+- **Publications explorer.** All 28 entries — 12 journal articles, 15 refereed conference papers
+  and one filed patent — with a faceted filter rail (research area, type, year, venue),
+  full-text search, grouping by topic / year / type, sorting, collapsible group headings, DOI
+  links and one-click BibTeX. Facets and their counts are derived from the markup, so adding a
+  paper needs no counter updates. Entries are plain HTML, so the list still reads without
+  JavaScript; on phones the rail collapses behind a Filters button.
+- **Current work.** PD-MUSE (the convex reformulation of structured choice estimation, under
+  review at *Transportation Research Part B*) and HEAT (heat, exposure, activity, travel).
 - **Light and dark.** The site always opens light, whatever the visitor's OS setting. Dark is
   opt-in via the toggle and is remembered from then on, applied before first paint so there is
   no flash.
@@ -80,9 +84,13 @@ scroll reveals, a counting animation on the figures and one ticker.
 
 Everything lives in `index.html`.
 
-- **Publications** — copy an `<article class="pub">` block. Set `data-type` to `journal`,
-  `conference` or `patent`, `data-year` to the year, and the `data-bib` JSON payload for the
-  BibTeX button. Update the counts in the filter tabs, the hero button and the ticker.
+- **Publications** — copy an `<article class="pub">` block and set `data-type`
+  (`journal` / `conference` / `patent`), `data-year`, `data-venue`, `data-topics` (space
+  separated: `behaviour exposure learning active routing`) and the `data-bib` JSON payload.
+  Facet options and counts update themselves; only the hero button, the section heading and the
+  ticker carry hard-coded totals.
+- **Topic labels** — the `TOPIC_LABEL` / `TOPIC_ORDER` maps at the top of the explorer block in
+  `assets/js/main.js`.
 - **Figures** — `data-count` on a `<span>` drives the counting animation; the unit sits in a
   sibling `.u` span so it survives the animation.
 - **Bar chart** — each `.seg` height is a percentage of the tallest year (currently 12, in 2025).
@@ -105,8 +113,9 @@ domain root and under the `/website/` sub-path.
 
 ## Contact
 
-- **Email** — kapil.meena@kgpian.iitkgp.ac.in
-- **Based in** — HUMAN Lab, UCLA · Los Angeles, California
+- **Email** — kapilm.48@gmail.com
+- **ORCID** — [0000-0002-0271-0175](https://orcid.org/0000-0002-0271-0175)
+- **Based in** — HUMAN Lab, University of California, Los Angeles
 - **Scholar** — [scholar.google.com](https://scholar.google.com/citations?user=5jIAPTEAAAAJ)
 - **GitHub** — [@kapil2020](https://github.com/kapil2020)
 
