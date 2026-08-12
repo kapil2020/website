@@ -21,17 +21,17 @@
 <meta name="twitter:image" content="https://kapil2020.github.io/website/assets/img/kapil-portrait.jpg">
 
 <link rel="icon" href="assets/img/favicon.ico" sizes="16x16 32x32 48x48">
-<link rel="icon" href="assets/img/favicon.svg?v=20260812a" type="image/svg+xml">
-<link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png?v=20260812a">
-<link rel="manifest" href="site.webmanifest?v=20260812a">
+<link rel="icon" href="assets/img/favicon.svg?v=20260812c" type="image/svg+xml">
+<link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png?v=20260812c">
+<link rel="manifest" href="site.webmanifest?v=20260812c">
 <meta name="theme-color" content="#fcfcfa" media="(prefers-color-scheme: light)">
 <meta name="theme-color" content="#0e0e10" media="(prefers-color-scheme: dark)">
 
 <link rel="preload" href="assets/fonts/InstrumentSerif-normal-400.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="assets/fonts/InstrumentSans-normal-400_700.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="assets/fonts/Newsreader-normal-400_600.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="assets/css/fonts.css?v=20260812a">
-<link rel="stylesheet" href="assets/css/style.css?v=20260812a">
+<link rel="stylesheet" href="assets/css/fonts.css?v=20260812c">
+<link rel="stylesheet" href="assets/css/style.css?v=20260812c">
 
 <script>
   /* Light is the default on arrival; dark is opt-in and remembered.
@@ -131,7 +131,7 @@
       <!-- Only rendered inside the mobile panel, where the header has no room
            for these; on desktop they live in the header bar itself. -->
       <div class="nav-act">
-        <a class="btn btn--fill" href="cv/Kapil-Kumar-Meena-CV.pdf?v=20260812a" target="_blank" rel="noopener">
+        <a class="btn btn--fill" href="cv/Kapil-Kumar-Meena-CV.pdf?v=20260812c" target="_blank" rel="noopener">
           <svg aria-hidden="true"><use href="#i-down"></use></svg> Curriculum vitae
         </a>
         <a class="btn btn--line" href="mailto:kapilm.48@gmail.com">
@@ -141,11 +141,16 @@
     </nav>
 
     <div class="head-act">
+      <button class="palbtn" id="palbtn" type="button" aria-label="Search this site" aria-keyshortcuts="Meta+K Control+K">
+        <svg aria-hidden="true"><use href="#i-search"></use></svg>
+        <span class="palbtn-t">Search</span>
+        <kbd id="palkey">&#8984;K</kbd>
+      </button>
       <button class="iconbtn themebtn" id="theme" type="button" aria-label="Switch to dark theme">
         <svg class="sun" aria-hidden="true"><use href="#i-sun"></use></svg>
         <svg class="moon" aria-hidden="true"><use href="#i-moon"></use></svg>
       </button>
-      <a class="btn btn--fill btn--sm head-cv" href="cv/Kapil-Kumar-Meena-CV.pdf?v=20260812a" target="_blank" rel="noopener">
+      <a class="btn btn--fill btn--sm head-cv" href="cv/Kapil-Kumar-Meena-CV.pdf?v=20260812c" target="_blank" rel="noopener">
         <svg aria-hidden="true"><use href="#i-down"></use></svg> CV
       </a>
       <button class="iconbtn menubtn" id="menu" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="nav">
@@ -242,7 +247,7 @@
         <a class="btn btn--fill" href="#publications">
           28 publications <svg aria-hidden="true"><use href="#i-arrow"></use></svg>
         </a>
-        <a class="btn btn--line" href="cv/Kapil-Kumar-Meena-CV.pdf?v=20260812a" target="_blank" rel="noopener">
+        <a class="btn btn--line" href="cv/Kapil-Kumar-Meena-CV.pdf?v=20260812c" target="_blank" rel="noopener">
           <svg aria-hidden="true"><use href="#i-down"></use></svg> Curriculum vitae
         </a>
         <button class="btn btn--line" type="button" data-copy="kapilm.48@gmail.com" data-copy-msg="Email copied">
@@ -411,6 +416,80 @@
           </div>
         </article>
       </div>
+    </div>
+
+    <!-- =================================================================
+         The model, running in the page. Utilities, softmax and the log-sum
+         are computed live in assets/js/main.js — nothing is pre-rendered.
+         ================================================================= -->
+    <div class="sim" id="sim" data-rise>
+      <div class="sim-head">
+        <div class="sim-intro">
+          <span class="sim-kick"><span class="beacon" aria-hidden="true"></span>Live model</span>
+          <h3>A mode choice model you can move</h3>
+          <p>This is the shape of the models I estimate, running in your browser. Change the
+            scenario and watch the modal split re-solve: utilities, a softmax over the choice
+            set, and the log&#8209;sum that measures what the whole set is worth to a traveller.</p>
+        </div>
+        <button class="sim-reset" id="sim-reset" type="button">
+          <svg aria-hidden="true"><use href="#i-arrow"></use></svg> Reset scenario
+        </button>
+      </div>
+
+      <div class="sim-grid">
+        <div class="sim-controls">
+          <div class="ctl">
+            <label for="ctl-d"><span>Trip distance</span> <output id="out-d">8.0 km</output></label>
+            <input id="ctl-d" type="range" min="2" max="16" step="0.5" value="8">
+          </div>
+          <div class="ctl">
+            <label for="ctl-p"><span>Ambient PM<sub>2.5</sub></span> <output id="out-p">90 &micro;g/m&sup3;</output></label>
+            <input id="ctl-p" type="range" min="15" max="300" step="5" value="90">
+            <p class="ctl-hint" id="hint-p">Unhealthy</p>
+          </div>
+          <div class="ctl">
+            <label for="ctl-b"><span>Exposure sensitivity</span> <output id="out-b">&beta;<sub>e</sub> = &minus;0.030</output></label>
+            <input id="ctl-b" type="range" min="0" max="70" step="1" value="30">
+            <p class="ctl-hint">How heavily this traveller weighs what they breathe</p>
+          </div>
+          <div class="ctl">
+            <label for="ctl-t"><span>Value of time</span> <output id="out-t">&#8377;240/h</output></label>
+            <input id="ctl-t" type="range" min="60" max="600" step="10" value="240">
+            <p class="ctl-hint">Sets &beta;<sub>time</sub> against &beta;<sub>cost</sub></p>
+          </div>
+        </div>
+
+        <div class="sim-out">
+          <p class="sim-lbl">Predicted modal split</p>
+          <div class="split" id="split" role="img" aria-label="Predicted mode shares"></div>
+
+          <table class="modes">
+            <thead>
+              <tr><th scope="col">Mode</th><th scope="col">Time</th><th scope="col">Cost</th>
+                  <th scope="col">Inhaled PM<sub>2.5</sub></th><th scope="col">V</th><th scope="col">Share</th></tr>
+            </thead>
+            <tbody id="modes"></tbody>
+          </table>
+
+          <div class="sim-read">
+            <div>
+              <span class="sim-lbl">Log&#8209;sum accessibility</span>
+              <b id="out-ls">&mdash;</b>
+              <em id="out-lsd">expected utility of the choice set</em>
+            </div>
+            <div>
+              <span class="sim-lbl">Exposure response</span>
+              <b id="out-el">&mdash;</b>
+              <em>share shifted by a 25&nbsp;&micro;g/m&sup3; rise in PM<sub>2.5</sub></em>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <p class="sim-note"><b>Illustrative.</b> The structure &mdash; linear-in-parameters utility,
+        a logit kernel, exposure entering as inhaled dose rather than ambient concentration &mdash;
+        is the one I estimate and publish. The coefficients here are chosen to make the mechanics
+        legible, and are not estimates from any of the papers below.</p>
     </div>
 
     <!-- Headline findings -->
@@ -680,6 +759,9 @@
               </select>
               <svg aria-hidden="true"><use href="#i-chev"></use></svg>
             </label>
+            <button class="expbt" id="exportbib" type="button" title="Download every visible entry as a .bib file">
+              <svg aria-hidden="true"><use href="#i-down"></use></svg> <span>.bib</span>
+            </button>
           </div>
         </div>
 
@@ -1043,6 +1125,30 @@
         <p class="noresults" id="noresults">Nothing matches those filters.</p>
       </div>
     </div>
+
+    <!-- =================================================================
+         Collaboration network. Nodes and edges are read out of the
+         publication markup above, then laid out by a force simulation
+         written from scratch — no data file, no library.
+         ================================================================= -->
+    <div class="net-wrap" id="net-wrap" data-rise>
+      <div class="net-head">
+        <div>
+          <span class="sim-kick">Derived from the list above</span>
+          <h3>Who I write with</h3>
+          <p>Every co-author on this page, laid out by a spring&ndash;charge simulation. Node size
+            is papers together; colour is the area we work in most. Pick anyone to filter the
+            list.</p>
+        </div>
+        <button class="net-reheat" id="net-reheat" type="button">
+          <svg aria-hidden="true"><use href="#i-arrow"></use></svg> Re-run layout
+        </button>
+      </div>
+      <div class="net" id="net">
+        <svg id="net-svg" role="img" aria-label="Co-authorship network"></svg>
+        <div class="net-tip" id="net-tip" aria-hidden="true"></div>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -1275,7 +1381,7 @@
         <a class="btn btn--fill" href="mailto:kapilm.48@gmail.com">
           <svg aria-hidden="true"><use href="#i-mail"></use></svg> Send an email
         </a>
-        <a class="btn btn--line" href="cv/Kapil-Kumar-Meena-CV.pdf?v=20260812a" target="_blank" rel="noopener">
+        <a class="btn btn--line" href="cv/Kapil-Kumar-Meena-CV.pdf?v=20260812c" target="_blank" rel="noopener">
           <svg aria-hidden="true"><use href="#i-down"></use></svg> Download CV
         </a>
       </div>
@@ -1338,10 +1444,29 @@
   <img src="" alt="">
 </div>
 
+<div class="pal" id="pal" hidden>
+  <div class="pal-box" role="dialog" aria-modal="true" aria-label="Search and commands">
+    <div class="pal-in">
+      <svg aria-hidden="true"><use href="#i-search"></use></svg>
+      <label class="sr" for="pal-q">Search publications, sections and actions</label>
+      <input id="pal-q" type="text" placeholder="Jump to a paper, a section, an action&hellip;"
+             autocomplete="off" spellcheck="false" role="combobox"
+             aria-expanded="true" aria-controls="pal-list" aria-autocomplete="list">
+      <kbd>Esc</kbd>
+    </div>
+    <div class="pal-list" id="pal-list" role="listbox" aria-label="Results"></div>
+    <div class="pal-foot">
+      <span><kbd>&uarr;</kbd><kbd>&darr;</kbd> move</span>
+      <span><kbd>&crarr;</kbd> open</span>
+      <span class="pal-foot-n" id="pal-n"></span>
+    </div>
+  </div>
+</div>
+
 <div class="toast" id="toast" role="status" aria-live="polite">
   <svg aria-hidden="true"><use href="#i-check"></use></svg><span id="toast-t"></span>
 </div>
 
-<script src="assets/js/main.js?v=20260812a" defer></script>
+<script src="assets/js/main.js?v=20260812c" defer></script>
 </body>
 </html>
