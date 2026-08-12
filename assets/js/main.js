@@ -1,5 +1,5 @@
 /* ==========================================================================
-   Kapil Kumar Meena, Ph.D. — site behaviour
+   Dr. Kapil Kumar Meena — site behaviour
    Vanilla JS, no dependencies, no third-party requests.
    ========================================================================== */
 
