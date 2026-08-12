@@ -15,11 +15,15 @@
   --paper-2:    #f4f3ef;
   --card:       #ffffff;
   --ink:        #0e0e10;
-  --ink-2:      #43444b;
-  --muted:      #797b84;
-  --faint:      #a2a4ac;
-  --line:       #e5e3dd;
-  --line-2:     #efeeea;
+  --ink-2:      #3d3e46;
+  --muted:      #74767f;
+  --faint:      #83858d;
+  --line:       #e4e2dc;
+  --line-2:     #eeede9;
+
+  /* Elevation is almost absent by design; these are the only two allowed. */
+  --lift:    0 1px 2px rgba(14, 14, 16, 0.04), 0 6px 18px -8px rgba(14, 14, 16, 0.10);
+  --lift-lg: 0 2px 4px rgba(14, 14, 16, 0.05), 0 20px 45px -18px rgba(14, 14, 16, 0.20);
 
   /* One colour per research area — used on facet dots, group headings and
      keyword highlights, never as decoration. */
@@ -57,6 +61,7 @@
      inside .wrap bleed past the centred column. */
   --bleed:  calc(max(0px, (100vw - var(--wrap)) / 2) + var(--gutter));
   --head-h: 62px;
+  --top:    3px;              /* the spectrum rule above the header */
   --r:      4px;              /* deliberately small — sharp, not bubbly */
   --r-lg:   10px;
 
@@ -72,11 +77,14 @@ html[data-theme="dark"] {
   --paper-2:    #121215;
   --card:       #141418;
   --ink:        #f3f2ef;
-  --ink-2:      #c1c1c8;
-  --muted:      #8a8b94;
-  --faint:      #64656d;
-  --line:       #26262c;
-  --line-2:     #1b1b20;
+  --ink-2:      #c6c6cd;
+  --muted:      #92939c;
+  --faint:      #6b6c74;
+  --line:       #27272e;
+  --line-2:     #1c1c21;
+
+  --lift:    0 1px 2px rgba(0, 0, 0, 0.3), 0 6px 18px -8px rgba(0, 0, 0, 0.5);
+  --lift-lg: 0 2px 4px rgba(0, 0, 0, 0.35), 0 20px 45px -18px rgba(0, 0, 0, 0.7);
 
   --c-behaviour: #9298ff;
   --c-exposure:  #ff7a45;
@@ -105,7 +113,13 @@ html[data-theme="dark"] {
 
 *, *::before, *::after { box-sizing: border-box; }
 
-html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; overflow-x: clip; }
+html {
+  -webkit-text-size-adjust: 100%;
+  scroll-behavior: smooth;
+  overflow-x: clip;
+  /* Anchor jumps land below the fixed header rather than under it. */
+  scroll-padding-top: calc(var(--head-h) + var(--top) + 1rem);
+}
 
 body {
   margin: 0;
@@ -128,9 +142,16 @@ p:last-child { margin-bottom: 0; }
 ul, ol { margin: 0; padding: 0; list-style: none; }
 a { color: inherit; text-decoration: none; }
 button { font: inherit; }
-::selection { background: var(--ink); color: var(--paper); }
+::selection { background: var(--accent); color: #fff; }
 
 :focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 2px; }
+
+/* Touch: no blue flash on tap, and hover effects are reserved for devices that
+   can actually hover — on a phone a :hover state sticks after the tap. */
+a, button, label, summary, select, input { -webkit-tap-highlight-color: transparent; }
+@media (hover: none) {
+  .btn:hover, .iconbtn:hover, .lnk:hover, .work:hover, .stop:hover { transition: none; }
+}
 
 ::-webkit-scrollbar { width: 11px; height: 11px; }
 ::-webkit-scrollbar-track { background: var(--paper-2); }
@@ -149,6 +170,7 @@ button { font: inherit; }
 
 .prose {
   font-family: var(--serif);
+  text-wrap: pretty;
   font-size: clamp(1.05rem, 1.35vw, 1.2rem);
   line-height: 1.66;
   color: var(--ink-2);
@@ -184,12 +206,18 @@ button { font: inherit; }
 
 /* --- Layout ------------------------------------------------------------- */
 
-.wrap { width: 100%; max-width: var(--wrap); margin-inline: auto; padding-inline: var(--gutter); }
+.wrap {
+  width: 100%;
+  max-width: var(--wrap);
+  margin-inline: auto;
+  padding-left: max(var(--gutter), env(safe-area-inset-left));
+  padding-right: max(var(--gutter), env(safe-area-inset-right));
+}
 
 .sec {
   padding-block: clamp(3.5rem, 8vw, 7rem);
   position: relative;
-  scroll-margin-top: var(--head-h);
+  scroll-margin-top: calc(var(--head-h) + var(--top));
 }
 .sec--tint { background: var(--paper-2); }
 
@@ -213,7 +241,7 @@ button { font: inherit; }
   user-select: none;
 }
 html[data-theme="dark"] .masthead .idx { color: var(--line); }
-.masthead h2 { font-size: clamp(1.9rem, 4.6vw, 3.25rem); }
+.masthead h2 { font-size: clamp(1.9rem, 4.6vw, 3.25rem); text-wrap: balance; }
 .masthead .eyebrow {
   font-family: var(--mono);
   font-size: 0.625rem;
@@ -224,6 +252,7 @@ html[data-theme="dark"] .masthead .idx { color: var(--line); }
   margin-bottom: 0.7rem;
 }
 .masthead .dek {
+  text-wrap: pretty;
   margin-top: 0.9rem;
   max-width: 58ch;
   font-family: var(--serif);
@@ -232,6 +261,19 @@ html[data-theme="dark"] .masthead .idx { color: var(--line); }
   line-height: 1.6;
 }
 .masthead .side { grid-column: 2; margin-top: 1.25rem; }
+
+/* On a phone the section number is a caption above the heading, not a column
+   beside it — a 390 px screen cannot spare 80 px of left margin. */
+@media (max-width: 700px) {
+  .masthead { grid-template-columns: minmax(0, 1fr); gap: 0.45rem; }
+  .masthead .idx {
+    font-size: 0.6875rem;
+    line-height: 1;
+    letter-spacing: 0.18em;
+    color: var(--faint);
+  }
+  .masthead .side { grid-column: 1; }
+}
 
 /* --- Controls ----------------------------------------------------------- */
 
@@ -256,7 +298,9 @@ html[data-theme="dark"] .masthead .idx { color: var(--line); }
 .btn svg { width: 16px; height: 16px; flex: none; }
 
 .btn--fill { background: var(--ink); color: var(--paper); }
-.btn--fill:hover { background: var(--accent); color: #fff; }
+.btn--fill:hover { background: var(--accent); color: #fff; box-shadow: var(--lift); }
+/* Transparent, not carded — this sits on the inverted contact band too, where
+   any opaque fill would erase the label. */
 .btn--line { border-color: var(--line); color: var(--ink); background: transparent; }
 .btn--line:hover { border-color: var(--ink); background: var(--card); }
 .btn--sm { min-height: 36px; padding: 0 0.9rem; font-size: 0.8125rem; }
@@ -309,9 +353,27 @@ html[data-theme="dark"] .masthead .idx { color: var(--line); }
 }
 .skip:focus { transform: translate(-50%, 0); }
 
-.head {
+/* A 3 px rule across the top of every page, in the five research-area hues in
+   their fixed order. It is the site's signature, and it is also a legend: the
+   same five colours run through the facets, the group headings and the tags. */
+.spectrum {
   position: fixed;
   inset: 0 0 auto 0;
+  z-index: 101;
+  height: 3px;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  pointer-events: none;
+}
+.spectrum i:nth-child(1) { background: var(--c-behaviour); }
+.spectrum i:nth-child(2) { background: var(--c-exposure); }
+.spectrum i:nth-child(3) { background: var(--c-learning); }
+.spectrum i:nth-child(4) { background: var(--c-active); }
+.spectrum i:nth-child(5) { background: var(--c-routing); }
+
+.head {
+  position: fixed;
+  inset: 3px 0 auto 0;
   z-index: 100;
   height: var(--head-h);
   display: flex;
@@ -321,9 +383,9 @@ html[data-theme="dark"] .masthead .idx { color: var(--line); }
   border-bottom: 1px solid transparent;
 }
 .head.stuck {
-  background: color-mix(in srgb, var(--paper) 86%, transparent);
-  backdrop-filter: blur(16px) saturate(170%);
-  -webkit-backdrop-filter: blur(16px) saturate(170%);
+  background: color-mix(in srgb, var(--paper) 92%, transparent);
+  backdrop-filter: blur(18px) saturate(180%);
+  -webkit-backdrop-filter: blur(18px) saturate(180%);
   border-bottom-color: var(--line);
 }
 @supports not (backdrop-filter: blur(1px)) {
@@ -358,7 +420,7 @@ html[data-theme="dark"] .masthead .idx { color: var(--line); }
 }
 
 .nav { display: flex; align-items: center; gap: 0.1rem; }
-.nav a {
+.nav > a {
   position: relative;
   padding: 0.45rem 0.7rem;
   font-size: 0.8375rem;
@@ -366,7 +428,7 @@ html[data-theme="dark"] .masthead .idx { color: var(--line); }
   color: var(--muted);
   transition: color var(--t) var(--ease);
 }
-.nav a::after {
+.nav > a::after {
   content: "";
   position: absolute;
   left: 0.7rem; right: 0.7rem; bottom: 0.28rem;
@@ -376,9 +438,9 @@ html[data-theme="dark"] .masthead .idx { color: var(--line); }
   transform-origin: left;
   transition: transform var(--t) var(--ease);
 }
-.nav a:hover { color: var(--ink); }
-.nav a:hover::after, .nav a.on::after { transform: scaleX(1); }
-.nav a.on { color: var(--ink); }
+.nav > a:hover { color: var(--ink); }
+.nav > a:hover::after, .nav > a.on::after { transform: scaleX(1); }
+.nav > a.on { color: var(--ink); }
 
 .head-act { display: flex; align-items: center; gap: 0.45rem; }
 
@@ -402,53 +464,82 @@ html[data-theme="dark"] .themebtn .moon { display: block; }
 .rail { position: absolute; left: 0; bottom: -1px; height: 1px; width: 100%; pointer-events: none; }
 .rail i { display: block; height: 100%; width: 0; background: var(--accent); transition: width 90ms linear; }
 
+.nav-act { display: none; }
+
 @media (max-width: 1080px) {
   .wordmark .sep, .wordmark .aff { display: none; }
   .nav {
     position: fixed;
-    inset: var(--head-h) 0 auto 0;
+    inset: calc(var(--head-h) + var(--top)) 0 auto 0;
     flex-direction: column;
     align-items: stretch;
     gap: 0;
-    padding: 0.5rem var(--gutter) 1.5rem;
+    padding: 0.35rem var(--gutter) calc(1.75rem + env(safe-area-inset-bottom));
     background: var(--paper);
     border-bottom: 1px solid var(--line);
+    box-shadow: var(--lift-lg);
     opacity: 0; visibility: hidden;
-    transform: translateY(-6px);
+    transform: translateY(-8px);
     transition: opacity var(--t) var(--ease), transform var(--t) var(--ease), visibility var(--t);
-    max-height: calc(100dvh - var(--head-h));
+    max-height: calc(100dvh - var(--head-h) - var(--top));
     overflow-y: auto;
+    overscroll-behavior: contain;
   }
   .nav.open { opacity: 1; visibility: visible; transform: none; }
-  .nav a {
-    padding: 1rem 0.15rem;
-    font-size: 1.4rem;
+  .nav > a {
+    display: flex;
+    align-items: baseline;
+    padding: 0.95rem 0.15rem;
+    font-size: 1.35rem;
     font-weight: 600;
     letter-spacing: -0.03em;
     color: var(--ink);
     border-bottom: 1px solid var(--line-2);
   }
-  .nav a::after { display: none; }
-  .nav a.on { color: var(--accent); }
-  .nav a .n {
+  .nav > a::after { display: none; }
+  .nav > a.on { color: var(--accent); }
+  .nav > a .n {
     font-family: var(--mono);
     font-size: 0.625rem;
     color: var(--faint);
-    margin-right: 0.9rem;
+    width: 2.1rem;
+    flex: none;
     letter-spacing: 0.1em;
-    vertical-align: 0.35em;
   }
+  .nav > a.on .n { color: var(--accent); }
+
+  /* Each link fades in a beat after the one above it, so the panel resolves
+     rather than snapping. */
+  .nav.open > a { animation: navin 260ms var(--ease) backwards; }
+  .nav.open > a:nth-child(1) { animation-delay: 20ms; }
+  .nav.open > a:nth-child(2) { animation-delay: 45ms; }
+  .nav.open > a:nth-child(3) { animation-delay: 70ms; }
+  .nav.open > a:nth-child(4) { animation-delay: 95ms; }
+  .nav.open > a:nth-child(5) { animation-delay: 120ms; }
+  .nav.open > a:nth-child(6) { animation-delay: 145ms; }
+  .nav.open > a:nth-child(7) { animation-delay: 170ms; }
+  .nav.open .nav-act { animation: navin 260ms var(--ease) 195ms backwards; }
+
+  .nav-act { display: flex; gap: 0.6rem; margin-top: 1.5rem; }
+  .nav-act .btn { flex: 1; min-height: 50px; }
+
+  /* With the panel down, the bar above it must be solid — a frosted header
+     over an opaque menu reads as a rendering glitch. */
+  .head:has(.nav.open) { background: var(--paper); border-bottom-color: transparent; }
+
   .menubtn { display: grid; }
   .head-cv { display: none; }
 }
-.nav a .n { display: none; }
-@media (max-width: 1080px) { .nav a .n { display: inline; } }
+@keyframes navin { from { opacity: 0; transform: translateY(9px); } }
+
+.nav > a .n { display: none; }
+@media (max-width: 1080px) { .nav > a .n { display: inline; } }
 
 /* --- Hero --------------------------------------------------------------- */
 
 .hero {
   position: relative;
-  padding-top: calc(var(--head-h) + clamp(2rem, 5vw, 4.25rem));
+  padding-top: calc(var(--head-h) + var(--top) + clamp(2rem, 5vw, 4.25rem));
   padding-bottom: clamp(2rem, 5vw, 3.5rem);
   overflow: hidden;
 }
@@ -527,6 +618,7 @@ html[data-theme="dark"] .themebtn .moon { display: block; }
 
 .hero-bio p {
   font-family: var(--serif);
+  text-wrap: pretty;
   font-size: clamp(1.02rem, 1.28vw, 1.15rem);
   line-height: 1.66;
   color: var(--ink-2);
@@ -647,20 +739,27 @@ html[data-theme="dark"] .themebtn .moon { display: block; }
 }
 .hero-tag .d { font-size: 0.8125rem; color: var(--muted); line-height: 1.45; }
 
+/* Below the two-column hero the portrait runs full-bleed under the masthead.
+   It gets wider as the viewport does, so it never swallows the first screen:
+   4:3 on a phone, 2:1 on a tablet. */
 @media (max-width: 940px) {
-  .hero { padding-top: calc(var(--head-h) + 1.1rem); padding-bottom: clamp(1.5rem, 4vw, 2.5rem); }
-  .hero-grid { grid-template-columns: minmax(0, 1fr); gap: 0; margin-top: 1.5rem; }
-  .hero-shot { order: -1; margin-bottom: clamp(1.5rem, 4vw, 2.25rem); }
+  .hero { padding-top: calc(var(--head-h) + var(--top) + 1.1rem); padding-bottom: clamp(1.5rem, 4vw, 2.5rem); }
+  .hero-grid { grid-template-columns: minmax(0, 1fr); gap: 0; margin-top: 1.35rem; }
+  .hero-shot { order: -1; margin-bottom: clamp(1.35rem, 4vw, 2.25rem); }
   .hero-shot .frame {
     width: 100vw;
     margin-inline: calc(50% - 50vw);
-    aspect-ratio: 5 / 4;
-    max-height: 50vh;
+    aspect-ratio: 4 / 3;
+    max-height: 42vh;
   }
-  .hero-shot img { object-position: 50% 10%; }
-  .hero-shot .frame::after { background: linear-gradient(to top, var(--paper) 0%, transparent 46%); }
-  .hero-tag { margin-top: -2.5rem; position: relative; z-index: 1; max-width: 92%; }
+  .hero-shot img { object-position: 50% 9%; }
+  .hero-shot .frame::after { background: linear-gradient(to top, var(--paper) 0%, transparent 44%); }
+  .hero-tag { margin-top: -2.4rem; position: relative; z-index: 1; max-width: 92%; }
   .hero-head { order: 0; }
+}
+@media (min-width: 641px) and (max-width: 940px) {
+  .hero-shot .frame { aspect-ratio: 2 / 1; max-height: 38vh; }
+  .hero-shot img { object-position: 50% 16%; }
 }
 
 /* --- Ticker ------------------------------------------------------------- */
@@ -790,14 +889,23 @@ html.js .is-in .year-col .seg { transform: scaleY(1); }
   margin-bottom: clamp(1.5rem, 3vw, 2.25rem);
 }
 
+/* Three strands of current work, ruled apart like columns of a page. The rule
+   is centred because the gap either side of it is the same measure. */
 .now-grid {
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: clamp(1.75rem, 5vw, 4.5rem);
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: clamp(1.5rem, 2.8vw, 2.5rem);
 }
-@media (max-width: 820px) {
-  .now-grid { grid-template-columns: minmax(0, 1fr); gap: 2.25rem; }
+@media (min-width: 1001px) {
+  .now + .now {
+    border-left: 1px solid var(--line);
+    padding-left: clamp(1.5rem, 2.8vw, 2.5rem);
+  }
+}
+@media (max-width: 1000px) {
+  .now-grid { grid-template-columns: minmax(0, 1fr); gap: 2rem; }
   .now + .now { padding-top: 2rem; border-top: 1px solid var(--line); }
+  .now h3 { font-size: clamp(1.85rem, 6vw, 2.4rem); }
 }
 
 .now .tagline {
@@ -816,24 +924,30 @@ html.js .is-in .year-col .seg { transform: scaleY(1); }
 .now h3 {
   font-family: var(--display);
   font-weight: 400;
-  font-size: clamp(2rem, 3.6vw, 2.9rem);
-  line-height: 1;
+  font-size: clamp(1.85rem, 2.6vw, 2.4rem);
+  line-height: 1.04;
   letter-spacing: -0.02em;
   margin-bottom: 0.45rem;
+  text-wrap: balance;
 }
 
 .now .sub {
   font-family: var(--serif);
   font-style: italic;
   font-size: clamp(0.9375rem, 1.2vw, 1.0625rem);
+  line-height: 1.5;
   color: var(--muted);
   margin-bottom: 1.1rem;
   padding-bottom: 1.1rem;
   border-bottom: 1px solid var(--line);
 }
+/* Two lines' worth, so the rule under each subtitle lands on the same line
+   across all three columns however long the subtitle runs. */
+@media (min-width: 1001px) { .now .sub { min-height: 3em; } }
 
 .now > p:not(.tagline):not(.sub):not(.note) {
   font-family: var(--serif);
+  text-wrap: pretty;
   font-size: clamp(1rem, 1.25vw, 1.0938rem);
   line-height: 1.62;
   color: var(--ink-2);
@@ -1528,6 +1642,36 @@ html[data-theme="dark"] .preview:hover { box-shadow: 0 18px 40px -22px rgba(0, 0
   margin-bottom: 1.25rem;
 }
 .subh::after { content: ""; flex: 1; height: 1px; background: var(--line); }
+.subh--spaced { margin-top: 2.5rem; }
+.subh-n { color: var(--accent); letter-spacing: 0.12em; }
+
+/* Journals reviewed for — set as titles, the way a CV sets them, rather than
+   crammed into uppercase chips. */
+.jrnls { list-style: none; margin: 0; padding: 0; display: grid; }
+.jrnls li {
+  display: flex;
+  gap: 0.7rem;
+  align-items: baseline;
+  padding: 0.62rem 0;
+  border-bottom: 1px solid var(--line-2);
+}
+.jrnls li:last-child { border-bottom: 0; }
+.jrnls li::before {
+  content: "";
+  flex: none;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--accent);
+  opacity: 0.5;
+}
+.jrnls cite {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 0.9688rem;
+  line-height: 1.45;
+  color: var(--ink);
+}
 
 .rows { display: grid; }
 .row {
@@ -1569,7 +1713,7 @@ html[data-theme="dark"] .preview:hover { box-shadow: 0 18px 40px -22px rgba(0, 0
 
 /* --- Contact ------------------------------------------------------------ */
 
-.contact { background: var(--ink); color: var(--paper); padding-block: clamp(3.5rem, 8vw, 6.5rem); scroll-margin-top: var(--head-h); }
+.contact { background: var(--ink); color: var(--paper); padding-block: clamp(3.5rem, 8vw, 6.5rem); scroll-margin-top: calc(var(--head-h) + var(--top)); }
 html[data-theme="dark"] .contact { background: var(--paper-2); border-top: 1px solid var(--line); }
 .contact h2 { color: var(--paper); font-size: clamp(2.4rem, 7vw, 5rem); letter-spacing: -0.05em; }
 html[data-theme="dark"] .contact h2 { color: var(--ink); }
@@ -1601,7 +1745,12 @@ html[data-theme="dark"] .reach .v { color: var(--ink); }
 html[data-theme="dark"] .contact .btn--fill { background: var(--ink); color: var(--paper); }
 html[data-theme="dark"] .contact .btn--line { border-color: var(--line); color: var(--ink); }
 
-.foot { border-top: 1px solid var(--line); background: var(--paper); padding-block: 1.75rem; }
+.foot {
+  border-top: 1px solid var(--line);
+  background: var(--paper);
+  padding-top: 1.75rem;
+  padding-bottom: calc(1.75rem + env(safe-area-inset-bottom));
+}
 .foot-in { display: flex; align-items: center; justify-content: space-between; gap: 1rem; flex-wrap: wrap; font-family: var(--mono); font-size: 0.625rem; letter-spacing: 0.09em; text-transform: uppercase; color: var(--faint); }
 .foot-in a:hover { color: var(--accent); }
 .foot-in nav { display: flex; gap: 1.25rem; flex-wrap: wrap; }
@@ -1609,10 +1758,16 @@ html[data-theme="dark"] .contact .btn--line { border-color: var(--line); color: 
 /* --- Overlays ----------------------------------------------------------- */
 
 .top-btn {
-  position: fixed; right: clamp(1rem, 3vw, 2rem); bottom: clamp(1rem, 3vw, 2rem);
-  width: 42px; height: 42px;
+  position: fixed;
+  right: clamp(1rem, 3vw, 2rem);
+  bottom: calc(clamp(1rem, 3vw, 2rem) + env(safe-area-inset-bottom));
+  width: 44px; height: 44px;
   border: 1px solid var(--line); border-radius: var(--r);
-  background: var(--paper); color: var(--ink);
+  background: color-mix(in srgb, var(--paper) 88%, transparent);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  box-shadow: var(--lift);
+  color: var(--ink);
   display: grid; place-items: center; cursor: pointer;
   opacity: 0; visibility: hidden; transform: translateY(6px);
   transition: all var(--t) var(--ease);
@@ -1641,7 +1796,7 @@ html[data-theme="dark"] .contact .btn--line { border-color: var(--line); color: 
 .lbox .x:hover { background: rgba(255, 255, 255, 0.18); }
 
 .toast {
-  position: fixed; left: 50%; bottom: clamp(1.25rem, 4vw, 2.25rem);
+  position: fixed; left: 50%; bottom: calc(clamp(1.25rem, 4vw, 2.25rem) + env(safe-area-inset-bottom));
   transform: translate(-50%, 12px);
   z-index: 400;
   display: inline-flex; align-items: center; gap: 0.55rem;
@@ -1655,6 +1810,53 @@ html[data-theme="dark"] .contact .btn--line { border-color: var(--line); color: 
 }
 .toast.on { opacity: 1; transform: translate(-50%, 0); }
 .toast svg { width: 13px; height: 13px; flex: none; }
+
+
+/* --- Mobile refinements --------------------------------------------------
+   Everything here exists because it was wrong on a phone first: type that was
+   set for a 62-character measure, tap targets sized for a mouse, and rhythm
+   that assumed a tall window.
+   ------------------------------------------------------------------------ */
+
+@media (max-width: 640px) {
+  :root { --head-h: 58px; }
+
+  /* Comfortable tap targets everywhere a finger lands. */
+  .iconbtn { width: 42px; height: 42px; }
+  .btn { min-height: 48px; }
+  .hero-cta .btn { flex: 1 1 auto; min-width: calc(50% - 0.3rem); }
+  .reach a, .reach div { padding-block: 1rem; }
+  .top-btn { width: 46px; height: 46px; }
+
+  /* Reading measure: a little more air between lines, a little less between
+     blocks, because the screen is doing the framing. */
+  .hero-bio p { font-size: 1.0625rem; line-height: 1.7; }
+  .prose { font-size: 1.0625rem; line-height: 1.7; }
+  .masthead .dek { font-size: 1rem; line-height: 1.62; }
+  .sec { padding-block: clamp(3rem, 11vw, 4.5rem); }
+
+  .tags { gap: 0.35rem; }
+  .tag { font-size: 0.8125rem; padding: 0.42rem 0.6rem; }
+
+  .jrnls cite { font-size: 0.9375rem; }
+  .jrnls li { padding: 0.7rem 0; }
+
+  /* The ticker is decorative; at phone width it should not shout. */
+  .ticker-set span { padding: 0.75rem 1rem; font-size: 0.625rem; }
+}
+
+@media (max-width: 400px) {
+  .hero-meta div { display: grid; grid-template-columns: minmax(0, 1fr); gap: 0.1rem; }
+  .hero-meta dt { width: auto; }
+  .hero-cta .btn { min-width: 100%; }
+}
+
+/* --- Elevation on the things you can act on ------------------------------ */
+
+@media (hover: hover) {
+  .work, .stop, .reach a { transition: background-color var(--t) var(--ease), box-shadow var(--t) var(--ease); }
+  .work:hover, .stop:hover { box-shadow: var(--lift); position: relative; z-index: 1; }
+}
 
 /* --- Motion ------------------------------------------------------------- */
 

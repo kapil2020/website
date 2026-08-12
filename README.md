@@ -1,4 +1,4 @@
-# Kapil Kumar Meena, Ph.D.
+# Dr. Kapil Kumar Meena
 
 [![Website](https://img.shields.io/badge/Live-kapil2020.github.io%2Fwebsite-d8430e?style=flat-square)](https://kapil2020.github.io/website/)
 [![Scholar](https://img.shields.io/badge/Google-Scholar-0e0e10?style=flat-square&logo=googlescholar&logoColor=white)](https://scholar.google.com/citations?user=5jIAPTEAAAAJ)
@@ -8,8 +8,8 @@ Postdoctoral Researcher at the [HUMAN Lab](https://sites.google.com/cornell.edu/
 University of California, Los Angeles, working with Prof. Youngseo Kim.
 Ph.D. in Transportation Engineering, IIT Kharagpur (2026), advised by Prof. Arkopal K. Goswami.
 
-Research: travel behaviour, air-quality exposure and machine learning for sustainable urban
-mobility. The DRUM routing engine built from this work was covered by *The Hindu* in June 2025.
+Research: travel behaviour, air-quality exposure, heat, and machine learning and AI for
+sustainable urban mobility. The DRUM routing engine built from this work was covered by *The Hindu* in June 2025.
 
 ---
 
@@ -41,9 +41,12 @@ heading, the publication identifier, and the keyword highlights in the hero.
 | --- | --- |
 | Travel behaviour & choice modelling | indigo `#3b3f9e` |
 | Air quality & exposure | orange `#d8430e` |
-| Machine learning & prediction | rose `#c2255c` |
+| Machine learning, AI & prediction | rose `#c2255c` |
 | Active mobility & accessibility | teal `#0e7c66` |
 | Routing & decision tools | amber `#9a6a00` |
+
+Those same five hues, in that order, make the 3 px rule across the top of the page: the site's
+signature, and also its legend.
 
 Rose doubles as the primary interface accent — links, active nav, section eyebrows. The
 favicon is a monogram K on ink, its diagonal in that same rose; it is drawn as SVG paths
@@ -79,13 +82,17 @@ scroll reveals, a counting animation on the figures and one ticker.
   links and one-click BibTeX. Facets and their counts are derived from the markup, so adding a
   paper needs no counter updates. Entries are plain HTML, so the list still reads without
   JavaScript; on phones the rail collapses behind a Filters button.
-- **Current work.** PD-MUSE (the convex reformulation of structured choice estimation, under
-  review at *Transportation Research Part B*) and HEAT (heat, exposure, activity, travel).
+- **Current work.** Three strands, ruled apart like columns of a page: PD-MUSE (the convex
+  reformulation of structured choice estimation, under review at *Transportation Research
+  Part B*), HEAT (heat, exposure, activity, travel), and AI in transportation.
+- **Service.** Peer review for eight journals, set as titles rather than crammed into chips.
 - **Light and dark.** The site always opens light, whatever the visitor's OS setting. Dark is
   opt-in via the toggle and is remembered from then on, applied before first paint so there is
   no flash.
-- **Responsive.** One fluid layout from 320 px up. The portrait bleeds to the viewport edge on
-  desktop and runs full width under the header on phones.
+- **Responsive.** One fluid layout from 320 px up. The portrait bleeds to the viewport edge
+  beside the text on desktop; below that it runs full width under the masthead, widening as the
+  viewport does — 4:3 on a phone, 2:1 on a tablet — so it never swallows the first screen. On
+  phones the header has no room for the CV button, so the menu carries it.
 - **Accessible.** Landmarks, skip link, focus rings, ARIA state, and full
   `prefers-reduced-motion` support.
 - **Printable.** A print stylesheet turns the page into a readable CV.
@@ -118,7 +125,9 @@ Everything lives in `index.html`.
   sibling `.u` span so it survives the animation.
 - **Bar chart** — each `.seg` height is a percentage of the tallest year (currently 12, in 2025).
 - **Colours** — the custom properties at the top of `assets/css/style.css`
-  (`:root` for light, `html[data-theme="dark"]` for dark).
+  (`:root` for light, `html[data-theme="dark"]` for dark). `--faint` carries the 10 px
+  uppercase labels, so it cannot be lightened without failing the contrast check.
+- **Peer review** — the `<li><cite>` items in `.jrnls`, with the count in `.subh-n`.
 
 ## Local preview
 
@@ -142,10 +151,14 @@ together.
 `qa.js` (Playwright) covers what is easy to break:
 
 - every class used in the markup resolves to a CSS rule, and both stylesheets parsed
-- no horizontal overflow at 320 / 360 / 390 / 430 / 600 / 768 / 1024 / 1280 / 1440 / 1920 px
+- no horizontal overflow at fifteen widths from 320 px to 1920 px, covering phones, every
+  iPad size in both orientations, and desktop
 - no touch target under 30 px on phones, no console or request errors
+- every button, link and heading clears 3:1 against whatever is actually behind it, in both
+  themes — what catches a fill that quietly erases a label on the inverted contact band
 - filters, grouping, sorting, search, BibTeX, theme persistence, lightbox, `/` shortcut
-- the mobile filter rail and menu
+- the mobile filter rail, the menu's CV and email buttons, and the scroll lock releasing
+- iPad portrait and landscape: the writing starts above the fold, and no script errors
 
 Scroll reveals are gated behind an `html.js` class, so if JavaScript never runs the content is
 plain and visible rather than stuck at `opacity: 0`.

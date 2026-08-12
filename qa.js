@@ -1,7 +1,9 @@
 /* Full-site QA: unstyled classes, overflow, tap targets, contrast, JS errors. */
 const { chromium } = require('/opt/node22/lib/node_modules/playwright');
 const URL = 'http://127.0.0.1:8899/preview/';
-const WIDTHS = [320, 360, 390, 430, 600, 768, 1024, 1280, 1440, 1920];
+/* Phones, then the tablet sizes people actually hold (iPad mini/Air/Pro
+   portrait and landscape), then desktop. */
+const WIDTHS = [320, 360, 390, 414, 430, 600, 744, 768, 834, 912, 1024, 1180, 1280, 1440, 1920];
 
 const IGNORE_CLASS = new Set(['sr', 'is-in', 'on', 'open', 'hide', 'stuck', 'me', 'yr']);
 
@@ -72,6 +74,56 @@ const IGNORE_CLASS = new Set(['sr', 'is-in', 'on', 'open', 'hide', 'stuck', 'me'
     if (r.s > r.c) bad(line + '  horizontal overflow');
     else if (errs.length) bad(line + '  errors: ' + errs.join(' | '));
     else ok(line + (w < 500 && r.tiny.length ? '  (small targets: ' + r.tiny.join(', ') + ')' : ''));
+    await c.close();
+  }
+
+  // ---------- 2b. text you can actually read ----------
+  /* Guards the whole class of "the label went the same colour as the thing
+     behind it" — how a fill on .btn--line once erased the CV button where it
+     sits on the inverted contact band. Walks up for the first opaque
+     background and compares luminance. */
+  console.log('\n2b. Contrast');
+  for (const theme of ['light', 'dark']) {
+    const c = await b.newContext({ viewport: { width: 1280, height: 900 } });
+    const p = await c.newPage();
+    await p.goto(URL, { waitUntil: 'domcontentloaded' });
+    await p.evaluate((t) => localStorage.setItem('theme', t), theme);
+    await p.goto(URL, { waitUntil: 'networkidle' });
+    await p.waitForTimeout(900);
+    await p.evaluate(() => document.querySelectorAll('[data-rise]').forEach((e) => e.classList.add('is-in')));
+    await p.waitForTimeout(300);
+
+    const faint = await p.evaluate(() => {
+      const rgb = (s) => (s.match(/[\d.]+/g) || []).map(Number);
+      const lum = ([r, g, b]) => {
+        const f = (v) => { v /= 255; return v <= 0.03928 ? v / 12.92 : Math.pow((v + 0.055) / 1.055, 2.4); };
+        return 0.2126 * f(r) + 0.7152 * f(g) + 0.0722 * f(b);
+      };
+      const bgOf = (el) => {
+        for (let n = el; n && n !== document.documentElement; n = n.parentElement) {
+          const c = rgb(getComputedStyle(n).backgroundColor);
+          if (c.length >= 3 && (c[3] === undefined || c[3] > 0.85)) return c;
+        }
+        return rgb(getComputedStyle(document.body).backgroundColor);
+      };
+      const out = [];
+      document.querySelectorAll('.btn, .nav a, h1, h2, h3, .lnk, .tag, .jrnls cite, .act, .chip').forEach((el) => {
+        const r = el.getBoundingClientRect();
+        if (!r.width || !r.height) return;
+        const st = getComputedStyle(el);
+        if (st.visibility === 'hidden' || +st.opacity < 0.1) return;
+        const fg = rgb(st.color), bg = bgOf(el);
+        if (fg.length < 3) return;
+        const a = lum(fg), z = lum(bg);
+        const ratio = (Math.max(a, z) + 0.05) / (Math.min(a, z) + 0.05);
+        if (ratio < 3.0) {
+          out.push(el.tagName.toLowerCase() + '.' + ((el.getAttribute('class') || '?').split(' ')[0]) +
+            ' "' + (el.textContent || '').trim().slice(0, 24) + '" ' + ratio.toFixed(2) + ':1');
+        }
+      });
+      return out;
+    });
+    faint.length ? bad(`${theme}: unreadable — ` + faint.join(' | ')) : ok(`${theme}: every button, link and heading clears 3:1`);
     await c.close();
   }
 
@@ -148,9 +200,46 @@ const IGNORE_CLASS = new Set(['sr', 'is-in', 'on', 'open', 'hide', 'stuck', 'me'
     await p.click('label.opt:has(input[data-key="type"][value="journal"])'); await p.waitForTimeout(200);
     await p.click('label.opt:has(input[data-key="type"][value="patent"])'); await p.waitForTimeout(300);
     (await p.textContent('#shown')).startsWith('1 of') ? ok('mobile facet filters') : bad('mobile facet → ' + await p.textContent('#shown'));
-    await p.click('#menu'); await p.waitForTimeout(350);
+    await p.click('#menu'); await p.waitForTimeout(400);
     (await p.$eval('#nav', e => e.classList.contains('open'))) ? ok('mobile menu opens') : bad('mobile menu failed');
+    /* The header hides the CV button on phones, so the menu has to carry it. */
+    const act = await p.$$eval('.nav-act .btn', els => els.filter(e => e.getBoundingClientRect().height > 40).length);
+    act === 2 ? ok('menu carries CV and email') : bad('menu actions missing (' + act + '/2)');
+    /* These are anchors inside .nav, so a nav-item rule can outrank .btn and
+       paint the label the same colour as the fill. Check them while open. */
+    const inked = await p.$$eval('.nav-act .btn', els => els.map((e) => {
+      const st = getComputedStyle(e);
+      return e.textContent.trim().split(/\s+/)[0] + ':' + (st.color === st.backgroundColor ? 'INVISIBLE' : 'ok');
+    }));
+    inked.every(s => s.endsWith('ok')) ? ok('menu buttons keep their labels') : bad('menu button labels: ' + inked.join(', '));
+    await p.click('#menu'); await p.waitForTimeout(350);
+    (await p.evaluate(() => getComputedStyle(document.body).overflow)) !== 'hidden'
+      ? ok('closing the menu releases the scroll lock') : bad('body left scroll-locked');
     errs.length ? bad('JS errors: ' + errs.join(' | ')) : ok('no JS errors');
+    await c.close();
+  }
+
+  // ---------- 5. tablet ----------
+  console.log('\n5. Tablet');
+  for (const [name, w, h] of [['iPad portrait', 834, 1112], ['iPad landscape', 1180, 820]]) {
+    const c = await b.newContext({ viewport: { width: w, height: h }, hasTouch: true });
+    const p = await c.newPage();
+    const errs = []; p.on('pageerror', e => errs.push(e.message));
+    await p.goto(URL, { waitUntil: 'networkidle' });
+    await p.waitForTimeout(900);
+    const r = await p.evaluate(() => ({
+      shot: Math.round(document.querySelector('.hero-shot .frame').getBoundingClientRect().height),
+      /* What matters is not how tall the portrait is but whether the reader
+         meets the writing without scrolling — beside it or below it. */
+      bio: Math.round(document.querySelector('.hero-bio p').getBoundingClientRect().top),
+      vh: innerHeight,
+      nav: getComputedStyle(document.querySelector('#menu')).display,
+    }));
+    r.bio < r.vh
+      ? ok(`${name}: bio starts at ${r.bio}px, above the ${r.vh}px fold (portrait ${r.shot}px)`)
+      : bad(`${name}: bio starts at ${r.bio}px, below the ${r.vh}px fold`);
+    ok(`${name}: menu button ${r.nav === 'none' ? 'hidden (full nav)' : 'shown'}`);
+    errs.length ? bad(name + ' JS errors: ' + errs.join(' | ')) : ok(name + ': no JS errors');
     await c.close();
   }
 
