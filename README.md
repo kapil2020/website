@@ -16,7 +16,8 @@ sustainable urban mobility. The DRUM routing engine built from this work was cov
 ## The site
 
 Hand-built and static. No framework, no build step, no bundler, no third-party request at
-runtime — open `index.html` and it runs.
+runtime — open `index.html` and it runs. The choice model, the force-directed network and the
+command palette are all in the same ~1,300-line `main.js`; there is no D3, no Fuse, no cmdk.
 
 ```
 index.html                all markup and content
@@ -87,9 +88,31 @@ scroll reveals, a counting animation on the figures and one ticker.
   reformulation of structured choice estimation, under review at *Transportation Research
   Part B*), HEAT (heat, exposure, activity, travel), and AI in transportation.
 - **Service.** Peer review for eight journals, set as titles rather than crammed into chips.
+- **A choice model you can move.** A multinomial logit over four urban modes, solved on every
+  input event: linear-in-parameters utilities, a numerically-guarded softmax, and the log-sum
+  reported both in utils and as a money-metric change against a reference scenario. Exposure
+  enters as *inhaled dose* — ambient concentration × micro-environment factor × breathing rate ×
+  duration — which is why walking stops being the clean option once the air is bad. Drag
+  PM<sub>2.5</sub> up at 2.5 km and the walk share falls from 27% to 1%; zero the exposure
+  coefficient and it comes straight back. Parameters are illustrative and say so.
+- **A co-authorship network that reads itself.** Nodes and edges are parsed out of the
+  publication markup, so adding a paper redraws the graph. Layout is Fruchterman–Reingold
+  written from scratch — repulsion `k²/d`, attraction `d²/k`, `k` derived from the area per node
+  so it fills whatever canvas it is given, and a cooling temperature capping each move. Node
+  size is joint papers, colour is the shared research area, and clicking anyone filters the
+  list.
+- **A command palette.** <kbd>⌘K</kbd> / <kbd>Ctrl</kbd>+<kbd>K</kbd> over every section,
+  publication, project and action. Scoring is a subsequence match with bonuses for word starts
+  and consecutive runs, so `nattr` finds *Not all travellers think alike*; matched characters
+  are marked in the result. Weak matches are dropped against a floor set from the best score,
+  because subsequence matching on a long author string will otherwise match nearly anything.
+- **Export.** One click turns whatever the filters are showing into a `.bib` file; the palette
+  exports all 28.
 - **Light and dark.** The site always opens light, whatever the visitor's OS setting. Dark is
   opt-in via the toggle and is remembered from then on, applied before first paint so there is
-  no flash.
+  no flash. Where the View Transitions API exists, the incoming theme is clipped open from the
+  middle of the toggle, so the change has a source; everywhere else it is the instant swap it
+  always was.
 - **Responsive.** One fluid layout from 320 px up. The portrait bleeds to the viewport edge
   beside the text on desktop; below that it runs full width under the masthead, widening as the
   viewport does — 4:3 on a phone, 2:1 on a tablet — so it never swallows the first screen. On
@@ -102,8 +125,11 @@ scroll reveals, a counting animation on the figures and one ticker.
 
 | Key | Action |
 | --- | --- |
+| <kbd>⌘K</kbd> / <kbd>Ctrl</kbd>+<kbd>K</kbd> | Open the command palette |
+| <kbd>↑</kbd> <kbd>↓</kbd> | Move through palette results |
+| <kbd>↵</kbd> | Open the selected result |
 | <kbd>/</kbd> | Focus the publication search |
-| <kbd>Esc</kbd> | Clear search, close the menu or the lightbox |
+| <kbd>Esc</kbd> | Close the palette, clear search, close the menu or the lightbox |
 
 ---
 
@@ -129,6 +155,13 @@ Everything lives in `index.html`.
   (`:root` for light, `html[data-theme="dark"]` for dark). `--faint` carries the 10 px
   uppercase labels, so it cannot be lightened without failing the contrast check.
 - **Peer review** — the `<li><cite>` items in `.jrnls`, with the count in `.subh-n`.
+- **The choice model** — the `MODES` table at the top of the live-model block in
+  `assets/js/main.js`: an alternative-specific constant, time and cost as functions of distance,
+  a micro-environment factor and a breathing-rate multiplier. Add a row and the table, the split
+  bar and the log-sum all follow.
+- **The network** — nothing to edit. It is read from the publication markup.
+- **The palette** — sections, publications and projects are indexed automatically; the action
+  list is the small array beside them.
 
 ## The CV
 
@@ -188,6 +221,14 @@ together.
 - filters, grouping, sorting, search, BibTeX, theme persistence, lightbox, `/` shortcut
 - the mobile filter rail, the menu's CV and email buttons, and the scroll lock releasing
 - iPad portrait and landscape: the writing starts above the fold, and no script errors
+- the choice model solves four modes to shares summing to 100%, walking collapses as
+  PM<sub>2.5</sub> rises, and zeroing the exposure coefficient brings it back — if the utility
+  function is ever broken, these fail
+- the network builds a graph of the expected size with every node settled inside its frame, and
+  clicking a co-author filters the list
+- the palette opens on Ctrl-K, fuzzy-matches, moves on arrow keys, shows a no-match state,
+  closes on Escape and releases the scroll lock
+- the `.bib` export actually produces a download
 
 Scroll reveals are gated behind an `html.js` class, so if JavaScript never runs the content is
 plain and visible rather than stuck at `opacity: 0`.

@@ -161,7 +161,7 @@ const IGNORE_CLASS = new Set(['sr', 'is-in', 'on', 'open', 'hide', 'stuck', 'me'
     await p.click('#pubs .pub [data-bib]'); await p.waitForTimeout(400);
     (await p.evaluate(() => navigator.clipboard.readText())).startsWith('@') ? ok('BibTeX copies') : bad('BibTeX failed');
 
-    await p.click('#theme'); await p.waitForTimeout(200);
+    await p.click('#theme'); await p.waitForTimeout(800);
     (await p.getAttribute('html', 'data-theme')) === 'dark' ? ok('theme toggles') : bad('theme did not toggle');
     await p.reload({ waitUntil: 'domcontentloaded' }); await p.waitForTimeout(400);
     (await p.getAttribute('html', 'data-theme')) === 'dark' ? ok('theme persists') : bad('theme did not persist');
@@ -215,6 +215,86 @@ const IGNORE_CLASS = new Set(['sr', 'is-in', 'on', 'open', 'hide', 'stuck', 'me'
     await p.click('#menu'); await p.waitForTimeout(350);
     (await p.evaluate(() => getComputedStyle(document.body).overflow)) !== 'hidden'
       ? ok('closing the menu releases the scroll lock') : bad('body left scroll-locked');
+    errs.length ? bad('JS errors: ' + errs.join(' | ')) : ok('no JS errors');
+    await c.close();
+  }
+
+  // ---------- 4b. the pieces that actually compute something ----------
+  console.log('\n4b. Interactive');
+  {
+    const c = await b.newContext({ viewport: { width: 1440, height: 950 }, acceptDownloads: true });
+    const p = await c.newPage();
+    const errs = []; p.on('pageerror', e => errs.push(e.message));
+    await p.goto(URL, { waitUntil: 'networkidle' });
+    await p.waitForTimeout(1100);
+
+    // --- the choice model ---
+    const set = (id, v) => p.$eval(id, (el, v) => { el.value = v; el.dispatchEvent(new Event('input')); }, v);
+    const shares = async () => p.$$eval('#modes .m-share', els => els.map(e => parseFloat(e.textContent)));
+
+    const base = await shares();
+    base.length === 4 ? ok('model solves four modes') : bad('model rows: ' + base.length);
+    const total = base.reduce((a, x) => a + x, 0);
+    Math.abs(total - 100) < 0.4 ? ok(`shares sum to ${total.toFixed(1)}%`) : bad(`shares sum to ${total.toFixed(1)}%`);
+
+    /* Dirty air should move trips off the most exposed mode. If this stops
+       being true the utility function has been broken. */
+    await set('#ctl-d', 2.5); await set('#ctl-p', 15); await p.waitForTimeout(120);
+    const clean = await shares();
+    await set('#ctl-p', 280); await p.waitForTimeout(120);
+    const dirty = await shares();
+    dirty[3] < clean[3] - 5
+      ? ok(`walking falls ${clean[3].toFixed(1)}% → ${dirty[3].toFixed(1)}% as PM2.5 rises`)
+      : bad(`walking did not respond to PM2.5 (${clean[3]} → ${dirty[3]})`);
+
+    /* With no taste for clean air, the same rise should do almost nothing. */
+    await set('#ctl-b', 0); await p.waitForTimeout(120);
+    const numb = await shares();
+    numb[3] > dirty[3] + 5
+      ? ok('zeroing the exposure coefficient restores the walk share')
+      : bad('exposure coefficient has no effect');
+
+    await p.click('#sim-reset'); await p.waitForTimeout(150);
+    (await p.inputValue('#ctl-p')) === '90' ? ok('reset restores the scenario') : bad('reset failed');
+
+    // --- the network ---
+    await p.evaluate(() => document.getElementById('net').scrollIntoView({ block: 'center' }));
+    await p.waitForTimeout(2600);
+    const net = await p.evaluate(() => {
+      const ns = [...document.querySelectorAll('#net-svg .node')];
+      const box = document.querySelector('#net').getBoundingClientRect();
+      const stray = ns.filter(n => {
+        const b = n.getBoundingClientRect();
+        return b.left < box.left - 4 || b.right > box.right + 4 || b.top < box.top - 4 || b.bottom > box.bottom + 4;
+      }).length;
+      return { n: ns.length, e: document.querySelectorAll('#net-svg .edge').length, stray };
+    });
+    net.n > 12 && net.e > 20 ? ok(`network: ${net.n} authors, ${net.e} ties`) : bad(`network too small: ${net.n}/${net.e}`);
+    net.stray === 0 ? ok('every node settled inside the frame') : bad(`${net.stray} node(s) escaped the frame`);
+
+    await p.click('#net-svg .node:not(.me)'); await p.waitForTimeout(500);
+    /^\d+ of 28/.test(await p.textContent('#shown'))
+      ? ok('clicking a co-author filters the list') : bad('co-author click did not filter');
+
+    // --- the palette ---
+    await p.keyboard.press('Control+k'); await p.waitForTimeout(350);
+    !(await p.$eval('#pal', e => e.hidden)) ? ok('palette opens on Ctrl-K') : bad('palette did not open');
+    await p.fill('#pal-q', 'nattr'); await p.waitForTimeout(280);
+    (await p.textContent('.pal-item .pal-t')).startsWith('Not all travellers')
+      ? ok('fuzzy match: "nattr" finds "Not all travellers…"') : bad('fuzzy match failed');
+    await p.keyboard.press('ArrowDown'); await p.waitForTimeout(120);
+    (await p.$$eval('.pal-item.on', e => e.length)) === 1 ? ok('arrow keys move one selection') : bad('selection broken');
+    await p.fill('#pal-q', 'zzqq'); await p.waitForTimeout(220);
+    (await p.$('.pal-empty')) ? ok('no-match state shows') : bad('no-match state missing');
+    await p.keyboard.press('Escape'); await p.waitForTimeout(250);
+    (await p.$eval('#pal', e => e.hidden)) ? ok('Escape closes the palette') : bad('palette did not close');
+    (await p.evaluate(() => getComputedStyle(document.body).overflow)) !== 'hidden'
+      ? ok('palette releases the scroll lock') : bad('palette left the body locked');
+
+    // --- BibTeX export ---
+    const [dl] = await Promise.all([p.waitForEvent('download', { timeout: 8000 }), p.click('#exportbib')]);
+    /\.bib$/.test(dl.suggestedFilename()) ? ok(`export downloads ${dl.suggestedFilename()}`) : bad('bad .bib filename');
+
     errs.length ? bad('JS errors: ' + errs.join(' | ')) : ok('no JS errors');
     await c.close();
   }
