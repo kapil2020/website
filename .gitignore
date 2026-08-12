@@ -22,3 +22,11 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# LaTeX build artefacts (the CV PDF itself is committed)
+cv/*.aux
+cv/*.out
+cv/*.log
+cv/*.fdb_latexmk
+cv/*.fls
+cv/*.synctex.gz
