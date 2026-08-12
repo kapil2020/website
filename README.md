@@ -20,6 +20,7 @@ runtime — open `index.html` and it runs.
 
 ```
 index.html                all markup and content
+cv/                       the CV — LaTeX source and the built PDF
 assets/css/style.css      design system and layout
 assets/css/fonts.css      @font-face declarations
 assets/fonts/*.woff2      self-hosted webfonts (latin subset)
@@ -128,6 +129,34 @@ Everything lives in `index.html`.
   (`:root` for light, `html[data-theme="dark"]` for dark). `--faint` carries the 10 px
   uppercase labels, so it cannot be lightened without failing the contrast check.
 - **Peer review** — the `<li><cite>` items in `.jrnls`, with the count in `.subh-n`.
+
+## The CV
+
+`cv/Kapil-Kumar-Meena-CV.tex`, with the page, palette and macros in `cv/preamble.tex`. The
+site's three CV buttons point at the built PDF in this repository, so the CV and the site can
+never drift apart.
+
+No CV class. moderncv fixes the layout for you and its `banking` style shows its age; this is
+ordinary LaTeX built on four macros:
+
+| Macro | For |
+| --- | --- |
+| `\row{label}{content}` | any labelled line — a skill group, an award, a talk |
+| `\post{dates}{role}{detail}{place}` | an appointment or a degree |
+| `\pubentry{id}{authors}{title}{venue}{year}{status}{url}{link}` | one publication |
+| `\me` | my own name, bold, so it is findable in a long author list |
+
+Everything hangs off one measure, `\cvlab`, which is the width of the left label column.
+Type is Source Sans Pro with Source Code Pro for dates and identifiers — the print analogue of
+the site's Instrument Sans and DM Mono. The `accent` colour in `preamble.tex` is the site's
+rose; change that one line and the section labels, rules and links all follow.
+
+```bash
+cd cv
+pdflatex Kapil-Kumar-Meena-CV.tex   # twice — the second pass resolves the page count
+```
+
+Needs `texlive-latex-recommended`, `texlive-latex-extra` and `texlive-fonts-extra`.
 
 ## Local preview
 
