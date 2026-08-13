@@ -394,32 +394,31 @@ html[data-theme="dark"] .masthead .idx { color: var(--line); }
 
 .head-in { display: flex; align-items: center; gap: 1.25rem; width: 100%; }
 
-.wordmark { display: flex; align-items: baseline; gap: 0.5rem; margin-right: auto; min-width: 0; }
+/* The bar holds a name, seven nav items, search, the theme toggle and the CV
+   button inside a 1240 px column. That is already full, so the wordmark is the
+   name and nothing else — the affiliation is two lines below it in the hero,
+   and again in the ticker, the contact block and the footer.
+   overflow: hidden is the structural guard: if anything is ever added back,
+   it truncates instead of painting over the nav. */
+.wordmark {
+  display: flex;
+  align-items: baseline;
+  gap: 0.5rem;
+  margin-right: auto;
+  min-width: 0;
+  overflow: hidden;
+}
 .wordmark .nm {
   font-size: 0.95rem;
   font-weight: 600;
   letter-spacing: -0.025em;
   color: var(--ink);
   white-space: nowrap;
-}
-.wordmark .deg {
-  font-family: var(--mono);
-  font-size: 0.625rem;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: var(--accent);
-}
-.wordmark .sep { width: 1px; height: 13px; background: var(--line); align-self: center; }
-.wordmark .aff {
-  font-family: var(--mono);
-  font-size: 0.625rem;
-  letter-spacing: 0.11em;
-  text-transform: uppercase;
-  color: var(--muted);
-  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
-.nav { display: flex; align-items: center; gap: 0.1rem; }
+.nav { display: flex; align-items: center; gap: 0.1rem; flex: none; }
 .nav > a {
   position: relative;
   padding: 0.45rem 0.7rem;
@@ -467,7 +466,6 @@ html[data-theme="dark"] .themebtn .moon { display: block; }
 .nav-act { display: none; }
 
 @media (max-width: 1080px) {
-  .wordmark .sep, .wordmark .aff { display: none; }
   .nav {
     position: fixed;
     inset: calc(var(--head-h) + var(--top)) 0 auto 0;
@@ -2268,8 +2266,10 @@ kbd {
 .palbtn:hover { border-color: var(--ink); color: var(--ink); }
 .palbtn svg { width: 14px; height: 14px; }
 .palbtn kbd { border-bottom-width: 1px; font-size: 0.625rem; }
-@media (max-width: 1180px) { .palbtn-t, .palbtn kbd { display: none; } }
-@media (max-width: 1180px) { .palbtn { padding: 0; width: 36px; justify-content: center; } }
+@media (max-width: 1320px) {
+  .palbtn-t, .palbtn kbd { display: none; }
+  .palbtn { padding: 0; width: 36px; justify-content: center; }
+}
 
 .pal {
   position: fixed;

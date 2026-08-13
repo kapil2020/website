@@ -77,6 +77,66 @@ const IGNORE_CLASS = new Set(['sr', 'is-in', 'on', 'open', 'hide', 'stuck', 'me'
     await c.close();
   }
 
+  // ---------- 2a. nothing sits on top of anything else ----------
+  /* Overflow is not overlap. A flex item with min-width:0 and nowrap text
+     shrinks its box and paints its content straight over its neighbour
+     without ever widening the page — which is how the wordmark's affiliation
+     came to sit on top of the nav at every width above 1080 px while the
+     overflow check stayed green.
+
+     Compared per line fragment via getClientRects(), not by bounding box: an
+     inline element that wraps has one box spanning every line it touches, and
+     would otherwise collide with its neighbours on paper but not on screen. */
+  console.log('\n2a. Overlap');
+  {
+    const OVERLAP = () => {
+      const SKIP = '.pal, .lbox, .toast, .skip, .top-btn, .net, .hero-tag, .ticker, .split, .sr, .rail, .spectrum';
+      const shown = (el) => {
+        const s = getComputedStyle(el);
+        if (s.visibility === 'hidden' || s.display === 'none' || +s.opacity < 0.15) return false;
+        const b = el.getBoundingClientRect();
+        return b.width > 1 && b.height > 1;
+      };
+      const owns = (el) => [...el.childNodes].some(n => n.nodeType === 3 && n.textContent.trim());
+      const els = [...document.body.querySelectorAll('*')]
+        .filter(el => !el.closest(SKIP) && owns(el) && shown(el));
+      const name = el => el.tagName.toLowerCase() + '.' + ((el.getAttribute('class') || '?').split(' ')[0]);
+      const out = [];
+      for (let i = 0; i < els.length; i++) {
+        for (let j = i + 1; j < els.length; j++) {
+          const a = els[i], b = els[j];
+          if (a.contains(b) || b.contains(a)) continue;
+          let hit = null;
+          for (const x of a.getClientRects()) {
+            for (const y of b.getClientRects()) {
+              const ox = Math.min(x.right, y.right) - Math.max(x.left, y.left);
+              const oy = Math.min(x.bottom, y.bottom) - Math.max(x.top, y.top);
+              if (ox > 2 && oy > 2) { hit = [ox, oy]; break; }
+            }
+            if (hit) break;
+          }
+          if (hit) out.push(`${name(a)} "${a.textContent.trim().slice(0, 16)}" over ${name(b)} "${b.textContent.trim().slice(0, 16)}" ${Math.round(hit[0])}×${Math.round(hit[1])}px`);
+        }
+      }
+      return out;
+    };
+
+    let clean = 0;
+    for (const w of WIDTHS) {
+      const c = await b.newContext({ viewport: { width: w, height: 900 }, isMobile: w < 500, hasTouch: w < 500 });
+      const p = await c.newPage();
+      await p.goto(URL, { waitUntil: 'networkidle' });
+      await p.waitForTimeout(500);
+      await p.evaluate(() => document.querySelectorAll('[data-rise]').forEach(e => e.classList.add('is-in')));
+      await p.waitForTimeout(250);
+      const found = await p.evaluate(OVERLAP);
+      if (found.length) bad(`${w}px: ` + found.slice(0, 3).join(' | '));
+      else clean++;
+      await c.close();
+    }
+    if (clean === WIDTHS.length) ok(`no text overlaps any other text, at all ${WIDTHS.length} widths`);
+  }
+
   // ---------- 2b. text you can actually read ----------
   /* Guards the whole class of "the label went the same colour as the thing
      behind it" — how a fill on .btn--line once erased the CV button where it
