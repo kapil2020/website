@@ -50,6 +50,12 @@ heading, the publication identifier, and the keyword highlights in the hero.
 Those same five hues, in that order, make the 3 px rule across the top of the page: the site's
 signature, and also its legend.
 
+The header bar is a name, seven nav items, search, the theme toggle and the CV button inside a
+1240 px column, which is full. The wordmark is therefore the name and nothing else — the
+affiliation sits two lines below it in the hero, and again in the ticker, the contact block and
+the footer — and `.wordmark` carries `overflow: hidden` so that anything added back truncates
+instead of painting over the nav.
+
 Rose doubles as the primary interface accent — links, active nav, section eyebrows. The
 favicon is a monogram K on ink, its diagonal in that same rose; it is drawn as SVG paths
 rather than set in a typeface, so it rasterises cleanly all the way down to 16 px.
@@ -215,6 +221,11 @@ together.
 - every class used in the markup resolves to a CSS rule, and both stylesheets parsed
 - no horizontal overflow at fifteen widths from 320 px to 1920 px, covering phones, every
   iPad size in both orientations, and desktop
+- **no text overlapping any other text** at any of those widths. Overflow is not overlap: a flex
+  item with `min-width: 0` and `nowrap` text shrinks its box and paints straight over its
+  neighbour without ever widening the page, which is exactly how the wordmark's affiliation came
+  to sit on top of the nav while the overflow check stayed green. Compared per line fragment via
+  `getClientRects()`, so an inline element that wraps is not mistaken for a collision
 - no touch target under 30 px on phones, no console or request errors
 - every button, link and heading clears 3:1 against whatever is actually behind it, in both
   themes — what catches a fill that quietly erases a label on the inverted contact band
