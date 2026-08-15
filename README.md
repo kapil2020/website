@@ -81,11 +81,17 @@ scroll reveals, a counting animation on the figures and one ticker.
 - **Findings as figures.** Published numbers rather than adjectives: exposure share, LEAP and
   LECR route savings, the monitoring-station gap, a two-wave seasonal panel comparison, a
   stacked bar chart of output by year, and a five-stage diagram of the method.
+- **Impact, as an arc.** Section 02 traces one line of work from a sensor on a Kharagpur
+  roadside to a published patent: measurement, model, the *Transportation Research Record*
+  paper, the DRUM app and its full spread in *The Hindu*, and the Indian Patent Office
+  publishing the application in July 2026. Every step already exists elsewhere on the page;
+  the arc is the thread that ties them together, with the live step picked out in the accent
+  and the formal record set out beneath it. A news line in the hero links straight to it.
 - **Press coverage.** A designed preview of *The Hindu* article alongside the scanned page,
   which opens full size in a lightbox.
 - **Publications explorer.** Opens filtered to the twelve journal articles; every other filter
   is one click away. All 28 entries — 12 journal articles, 15 refereed conference papers
-  and one filed patent — with a faceted filter rail (research area, type, year, venue),
+  and one published patent — with a faceted filter rail (research area, type, year, venue),
   full-text search, grouping by topic / year / type, sorting, collapsible group headings, DOI
   links and one-click BibTeX. Facets and their counts are derived from the markup, so adding a
   paper needs no counter updates. Entries are plain HTML, so the list still reads without
@@ -156,7 +162,8 @@ Everything lives in `index.html`.
   from it at 16/32/48, 32, 180 and 512 px.
 - **Figures** — `data-count` on a `<span>` drives the counting animation; the unit sits in a
   sibling `.u` span so it survives the animation.
-- **Bar chart** — each `.seg` height is a percentage of the tallest year (currently 12, in 2025).
+- **Bar chart** — each `.seg` height is a percentage of the tallest year (currently 11, in 2025).
+  Moving a paper between years changes the tallest column, so every height is rescaled together.
 - **Colours** — the custom properties at the top of `assets/css/style.css`
   (`:root` for light, `html[data-theme="dark"]` for dark). `--faint` carries the 10 px
   uppercase labels, so it cannot be lightened without failing the contrast check.
