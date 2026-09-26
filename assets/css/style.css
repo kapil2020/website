@@ -237,8 +237,6 @@ section > p a:hover,
   margin: 12px 0 0;
   font-size: 15px;
 }
-.xmap-data { flex-basis: 100%; color: var(--muted); }
-.xmap-data b { color: var(--text); }
 .xmap-arr { flex: none; width: 20px; height: 12px; color: #9aa1ab; }
 .xmap-out {
   padding: 1px 10px;
@@ -386,24 +384,10 @@ h2 + h3 { margin-top: 18px; }
   letter-spacing: .01em;
 }
 .news-list {
-  position: relative;
   margin: 0;
-  padding: 0 0 10px;
+  padding: 0;
   list-style: none;
 }
-.news-list::before {
-  content: "";
-  position: absolute;
-  left: 7px;
-  top: 0;
-  bottom: 0;
-  width: 2px;
-  border-radius: 1px;
-  background: var(--rule);
-}
-.news-year:first-child .news-list::before { top: 18px; }
-.news-year:last-child .news-list::before { bottom: auto; height: 18px; }
-.news-year:first-child:last-child .news-list::before { display: none; }
 
 .nw {
   --c: #2f6fca; --bg: #e7effa; --fg: #1b4f93;
@@ -414,10 +398,16 @@ h2 + h3 { margin-top: 18px; }
   margin: 0 -10px 0 0;
   padding: 7px 10px 7px 30px;
   border-radius: 6px;
+  /* The rail: each item draws its own stretch, from the first dot to the last. */
+  background: linear-gradient(var(--rule), var(--rule)) no-repeat 7px 0 / 2px 100%;
   line-height: 1.5;
   transition: background-color .2s ease;
 }
-.nw:hover { background: #f7f8fa; }
+.news-year:first-child .nw:first-child { background-position: 7px 18px; }
+.news-year:last-child .nw:last-child { background-size: 2px 18px; }
+.news-year:first-child:only-child .nw:only-child { background-image: none; }
+.news-year:not(:last-child) .nw:last-child { padding-bottom: 17px; }
+.nw:hover { background-color: #f7f8fa; }
 .nw::before {
   content: "";
   position: absolute;
@@ -1027,7 +1017,7 @@ span.pub-title { color: var(--text); }
     box-sizing: border-box;
   }
   .news-year:first-child .news-y::before { top: calc(50% + 3px); }
-  .news-year:first-child .news-list::before { top: 0; }
+  .news-year:first-child .nw:first-child { background-position: 7px 0; }
   .nw { grid-template-columns: 1fr; gap: 3px; }
   .nw-meta { flex-direction: row; align-items: center; gap: 8px; }
   .nw-when { padding-left: 0; }

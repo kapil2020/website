@@ -68,7 +68,8 @@ qa.js                       layout and link checks (see below)
 
 Everything is in `index.html`.
 
-- **News.** A timeline grouped by year. Copy an `<li class="nw nw--paper">` into the right
+- **News.** A timeline grouped by year; it shows the current year only, and older items live in
+  their own sections (Publications, Media, Talks, Awards). Copy an `<li class="nw nw--paper">` into the right
   year's list (or copy a whole `news-year` block for a new year). The class sets the colour and
   icon: `nw--paper`, `nw--patent`, `nw--award`, `nw--grant`, `nw--talk`, `nw--media` or
   `nw--career`; change the tag's label and its `#i-n-…` icon to match. Add
@@ -78,8 +79,11 @@ Everything is in `index.html`.
   `<span class="badge">` (add `badge--review`, `badge--conf` or `badge--patent`), and
   `<p class="pub-note">` is the one-line summary. A `BibTeX` button needs a matching
   `<pre class="bib" id="…" hidden>` with the same id as its `data-bib`.
-- **The counts** (1 patent, 9 journal articles, 7 under review, 17 conference papers) appear in
+- **The counts** (1 patent, 9 journal articles, 6 under review, 17 conference papers) appear in
   the intro, the Publications heading and the CV's Record line. Update all three when a paper moves.
+  Manuscripts in preparation (PD-MUSE) have their own group and are not counted.
+- **When a manuscript is submitted,** move its `<li>` from In preparation to Under review and
+  put the journal in its badge and venue line.
 - **When a paper is accepted,** move its `<li>` from Under review to Journal articles, change
   the badge class to plain `badge`, and add the DOI link.
 - **Software.** Edit the `CARDS` list in `figures/software.py` (name, text, tags, links) and
