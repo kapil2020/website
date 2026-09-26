@@ -22,7 +22,7 @@
 <meta name="theme-color" content="#ffffff">
 
 <link rel="preload" href="assets/fonts/SourceSans3-Roman.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="assets/css/style.css?v=20260926e">
+<link rel="stylesheet" href="assets/css/style.css?v=20260926f">
 
 <script type="application/ld+json">
 {
@@ -68,6 +68,132 @@
   <symbol id="i-code" viewBox="0 0 16 16"><path d="M5.5 4 1.5 8l4 4M10.5 4l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></symbol>
   <symbol id="i-act" viewBox="0 0 32 32"><path d="M8 25c0-6 16-4 16-11" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-dasharray="1 4.5"/><path d="M8 30s-5-5-5-9a5 5 0 0 1 10 0c0 4-5 9-5 9z" fill="currentColor"/><path d="M24 17s-5-5-5-9a5 5 0 0 1 10 0c0 4-5 9-5 9z" fill="currentColor"/></symbol>
 </svg>
+
+<!-- figsprite:start -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+<defs>
+  <marker id="fg-arr" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+    <path d="M0 0L10 5L0 10z" fill="#2b2f36"/>
+  </marker>
+  <marker id="fg-arr-g" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+    <path d="M0 0L10 5L0 10z" fill="#9aa1ab"/>
+  </marker>
+  <radialGradient id="fg-hot">
+    <stop offset="0" stop-color="#d24f38" stop-opacity=".55"/>
+    <stop offset="1" stop-color="#d24f38" stop-opacity="0"/>
+  </radialGradient>
+  <linearGradient id="fg-smog" x1="0" y1="0" x2="0" y2="1">
+    <stop offset="0" stop-color="#d9826f" stop-opacity=".45"/>
+    <stop offset="1" stop-color="#d9826f" stop-opacity="0"/>
+  </linearGradient>
+  <linearGradient id="fg-scale" x1="0" y1="0" x2="1" y2="0">
+    <stop offset="0" stop-color="#2e9467"/>
+    <stop offset=".5" stop-color="#e3a21a"/>
+    <stop offset="1" stop-color="#d24f38"/>
+  </linearGradient>
+</defs>
+<symbol id="fg-person" viewBox="0 0 32 32">
+  <circle cx="16" cy="7.5" r="5" fill="currentColor"/>
+  <path d="M7 31v-8a9 9 0 0 1 18 0v8z" fill="currentColor"/>
+</symbol>
+<symbol id="fg-walk" viewBox="0 0 32 32">
+  <circle cx="17.5" cy="4.5" r="3.5" fill="currentColor"/>
+  <path d="M16.5 10 14 19l-4 10M14 19l5 3 1 7M16.5 10l-5 4-1 5M16.5 10l4 5 4 1" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+</symbol>
+<symbol id="fg-bike" viewBox="0 0 32 32">
+  <g fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round">
+    <circle cx="7" cy="22" r="5.5"/><circle cx="25" cy="22" r="5.5"/>
+    <path d="M7 22 12 12h10l-7 10zM12 12l3 10M22 12l3 10M22 12V8h3M10 11h4"/>
+  </g>
+</symbol>
+<symbol id="fg-bus" viewBox="0 0 32 32">
+  <g fill="none" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round">
+    <rect x="2" y="6" width="28" height="18" rx="3"/>
+    <path d="M2 14h28M9 6v8M16 6v8M23 6v8"/>
+  </g>
+  <circle cx="9" cy="24.5" r="3.2" fill="currentColor"/><circle cx="23" cy="24.5" r="3.2" fill="currentColor"/>
+</symbol>
+<symbol id="fg-car" viewBox="0 0 32 32">
+  <path d="M3 22v-5l3-1.5L10.5 10h10l5 5.5 3.5 1.5v5z" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round"/>
+  <path d="M11 15.5h14" stroke="currentColor" stroke-width="2"/>
+  <circle cx="9" cy="23" r="3.2" fill="currentColor"/><circle cx="23" cy="23" r="3.2" fill="currentColor"/>
+</symbol>
+<symbol id="fg-auto" viewBox="0 0 32 32">
+  <path d="M5 23V13a7 7 0 0 1 7-7h8l6 9h2v8z" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round"/>
+  <path d="M5 15h15V6" fill="none" stroke="currentColor" stroke-width="2.2"/>
+  <circle cx="10" cy="24" r="3.2" fill="currentColor"/><circle cx="25" cy="24" r="3.2" fill="currentColor"/>
+</symbol>
+<symbol id="fg-train" viewBox="0 0 32 32">
+  <g fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+    <rect x="7" y="2" width="18" height="22" rx="4"/>
+    <path d="M7 13h18M11 30l3-6M21 30l-3-6"/>
+  </g>
+  <circle cx="11.5" cy="19" r="1.8" fill="currentColor"/><circle cx="20.5" cy="19" r="1.8" fill="currentColor"/>
+</symbol>
+<symbol id="fg-sensor" viewBox="0 0 32 32">
+  <g fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round">
+    <rect x="10" y="14" width="12" height="15" rx="2"/>
+    <path d="M12 9.5a6 6 0 0 1 8 0M8.5 5.5a11 11 0 0 1 15 0"/>
+  </g>
+  <circle cx="16" cy="21.5" r="2.4" fill="currentColor"/>
+</symbol>
+<symbol id="fg-sun" viewBox="0 0 32 32">
+  <circle cx="16" cy="16" r="7" fill="currentColor"/>
+  <path d="M16 1.5v4.5M16 26v4.5M1.5 16H6M26 16h4.5M5.7 5.7l3.2 3.2M23.1 23.1l3.2 3.2M5.7 26.3l3.2-3.2M23.1 8.9l3.2-3.2" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/>
+</symbol>
+<symbol id="fg-house" viewBox="0 0 32 32">
+  <path d="M3.5 15 16 4.5 28.5 15M7 12.5V29h18V12.5M13 29v-8h6v8" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+</symbol>
+<symbol id="fg-school" viewBox="0 0 32 32">
+  <g fill="none" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round" stroke-linecap="round">
+    <path d="M2 29h28M5 29V15h22v14M9 15l7-5.5 7 5.5M16 9.5V2.5l6 2-6 2"/>
+    <path d="M13 29v-6h6v6M8 19h3.5M20.5 19H24"/>
+  </g>
+</symbol>
+<symbol id="fg-doc" viewBox="0 0 32 32">
+  <path d="M7 2.5h12l6.5 6.5v20.5H7z" fill="#fff" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+  <path d="M19 2.5V9h6.5M11 14h10M11 18h10M11 22h7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+</symbol>
+<symbol id="fg-charger" viewBox="0 0 32 32">
+  <g fill="none" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round" stroke-linecap="round">
+    <rect x="4" y="3" width="15" height="26" rx="2.5"/>
+    <path d="M2 29.5h19M19 12h3.5a3 3 0 0 1 3 3v7.5a2 2 0 0 0 4 0V13l-3-3.5"/>
+  </g>
+  <path d="M13 7.5 8.5 15h4l-2 7 5.5-8.5h-4l2-6z" fill="currentColor"/>
+</symbol>
+<symbol id="fg-bolt" viewBox="0 0 32 32">
+  <path d="M18.5 2 7 18h8l-2.5 12L25 13h-8z" fill="currentColor"/>
+</symbol>
+<symbol id="fg-heart" viewBox="0 0 32 32">
+  <path d="M16 28.5S3 20.5 3 11.5a6.5 6.5 0 0 1 13-2.2 6.5 6.5 0 0 1 13 2.2c0 9-13 17-13 17z" fill="currentColor"/>
+</symbol>
+<symbol id="fg-haze" viewBox="0 0 32 32">
+  <path d="M3 9c3.5-3 7.5 3 11 0s7.5-3 11 0M3 16c3.5-3 7.5 3 11 0s7.5-3 11 0M3 23c3.5-3 7.5 3 11 0s7.5-3 11 0" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/>
+</symbol>
+<symbol id="fg-pin" viewBox="0 0 32 32">
+  <path d="M16 31s-10-10-10-18a10 10 0 0 1 20 0c0 8-10 18-10 18z" fill="currentColor"/>
+  <circle cx="16" cy="13" r="4" fill="#fff"/>
+</symbol>
+<symbol id="fg-check" viewBox="0 0 32 32">
+  <path d="M6 17l6.5 6.5L26 9" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/>
+</symbol>
+<symbol id="fg-clock" viewBox="0 0 32 32">
+  <circle cx="16" cy="16" r="12" fill="none" stroke="currentColor" stroke-width="2.4"/>
+  <path d="M16 9v7.5l5 3" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+</symbol>
+<symbol id="fg-search" viewBox="0 0 32 32">
+  <circle cx="13.5" cy="13.5" r="8.5" fill="#fff" fill-opacity=".85" stroke="currentColor" stroke-width="2.8"/>
+  <path d="M20 20l8.5 8.5" stroke="currentColor" stroke-width="3.4" stroke-linecap="round"/>
+</symbol>
+<symbol id="fg-shield" viewBox="0 0 32 32">
+  <path d="M16 3 5 7v8c0 7 4.5 11.5 11 14 6.5-2.5 11-7 11-14V7z" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round"/>
+  <path d="M11 16l3.5 3.5L21 13" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+</symbol>
+<symbol id="fg-rupee" viewBox="0 0 32 32">
+  <path d="M8 7h16M8 13h16M13 7c8.5 0 8.5 12 0 12H9l12 10" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+</symbol>
+</svg>
+<!-- figsprite:end -->
 
 <header class="top">
   <div class="wrap top-in">
@@ -270,8 +396,20 @@
       machine-learning models, and the models feed tools, prices and policy.</figcaption>
   </figure>
 
-  <div class="thrust">
-    <img class="thrust-fig" src="assets/img/pubs/seasonal-reroute.webp" alt="" width="400" height="250" loading="lazy" decoding="async">
+  <div class="thrust m-card">
+    <div class="thrust-fig" data-fig="seasonal-reroute">
+      <svg class="pubfig" viewBox="0 0 400 250" aria-hidden="true" focusable="false">
+        <rect class="a-fade" x="12" y="12" width="184" height="180" rx="10" fill="#fbe9e4"/>
+        <rect class="a-fade" style="--d:0.12s" x="204" y="12" width="184" height="180" rx="10" fill="#fdf3dc"/>
+        <text x="30" y="42">Winter</text>
+        <text x="222" y="42">Summer</text>
+        <g class="a-pop h-pulse" style="--d:0.20s"><use href="#fg-haze" x="160" y="20" width="26" height="26" color="#d24f38"/></g>
+        <g class="a-pop h-spin" style="--d:0.30s"><use href="#fg-sun" x="352" y="20" width="26" height="26" color="#e3a21a"/></g>
+        <path pathLength="1" class="a-draw" style="--d:0.35s" d="M40 164C44 96 96 70 168 78" fill="none" stroke="#2e9467" stroke-width="6" stroke-linecap="round"/><path pathLength="1" class="a-draw" style="--d:0.50s" d="M40 164L168 78" fill="none" stroke="#2b2f36" stroke-width="2.5" stroke-linecap="round"/><g opacity="0.85"><g class="a-pop h-float" style="--d:0.80s;--w:0.00s"><use href="#fg-haze" x="99" y="96" width="36" height="36" color="#d24f38"/></g></g><circle class="a-pop" style="--d:0.95s" cx="40" cy="164" r="6.5" fill="#2b2f36"/><circle class="a-pop" style="--d:1.05s" cx="168" cy="78" r="6.5" fill="#fff" stroke="#2b2f36" stroke-width="2.5"/>
+        <path pathLength="1" class="a-draw" style="--d:0.50s" d="M232 164C236 96 288 70 360 78" fill="none" stroke="#2e9467" stroke-width="2.5" stroke-linecap="round"/><path pathLength="1" class="a-draw" style="--d:0.65s" d="M232 164L360 78" fill="none" stroke="#2b2f36" stroke-width="6" stroke-linecap="round"/><g opacity="0.35"><g class="a-pop h-float" style="--d:0.95s;--w:0.96s"><use href="#fg-haze" x="291" y="96" width="36" height="36" color="#d24f38"/></g></g><circle class="a-pop" style="--d:1.10s" cx="232" cy="164" r="6.5" fill="#2b2f36"/><circle class="a-pop" style="--d:1.20s" cx="360" cy="78" r="6.5" fill="#fff" stroke="#2b2f36" stroke-width="2.5"/>
+        <text class="sub" x="200" y="224" text-anchor="middle">Same 723 commuters, two survey waves</text>
+      </svg>
+    </div>
     <div>
       <h3>Travel under air pollution and heat</h3>
       <p>I measure what commuters inhale across transport micro-environments
@@ -287,8 +425,34 @@
     </div>
   </div>
 
-  <div class="thrust">
-    <img class="thrust-fig" src="assets/img/pubs/drum-routes.webp" alt="" width="400" height="250" loading="lazy" decoding="async">
+  <div class="thrust m-card">
+    <div class="thrust-fig" data-fig="drum-routes">
+      <svg class="pubfig" viewBox="0 0 400 250" aria-hidden="true" focusable="false">
+        <defs><clipPath id="fg-drum-routes-r-drum-map"><rect x="12" y="12" width="376" height="190" rx="10"/></clipPath></defs>
+        <g clip-path="url(#fg-drum-routes-r-drum-map)">
+          <rect x="12" y="12" width="376" height="190" fill="#eef1f4"/>
+          <g stroke="#fff" stroke-width="9" stroke-linecap="round">
+            <path d="M12 56H388M12 106H388M12 158H388M74 12V202M144 12V202M214 12V202M284 12V202M346 12V202"/>
+          </g>
+          <circle class="a-pop h-pulse" style="--d:0.05s" cx="182" cy="104" r="50" fill="url(#fg-hot)"/>
+          <circle class="a-pop h-pulse" style="--d:0.15s;--w:0.40s" cx="258" cy="54" r="42" fill="url(#fg-hot)"/>
+          <path pathLength="1" class="a-draw" style="--d:0.30s" d="M44 156H144V106H284V56H346" fill="none" stroke="#2b2f36" stroke-width="4.5" stroke-linejoin="round"/>
+          <path pathLength="1" class="a-draw" style="--d:0.55s" d="M44 152H70V52H346" fill="none" stroke="#2f6fca" stroke-width="4.5" stroke-linejoin="round"/>
+          <path pathLength="1" class="a-draw" style="--d:0.80s" d="M44 161H350V56" fill="none" stroke="#2e9467" stroke-width="4.5" stroke-linejoin="round"/>
+          <path class="h-march" d="M44 161H350V56" fill="none" stroke="#fff" stroke-width="1.8" stroke-dasharray="3 9" stroke-linecap="round"/>
+        </g>
+        <g class="a-pop" style="--d:1.10s"><use href="#fg-pin" x="30" y="128" width="28" height="28" color="#2b2f36"/></g>
+        <g class="a-pop" style="--d:1.25s"><use href="#fg-pin" x="332" y="28" width="28" height="28" color="#2b2f36"/></g>
+        <g class="a-fade" style="--d:1.30s">
+          <path d="M14 225h18" stroke="#2b2f36" stroke-width="4.5" stroke-linecap="round"/>
+          <text class="sub" x="38" y="230" style="font-size:16px">Fastest</text>
+          <path d="M116 225h18" stroke="#2e9467" stroke-width="4.5" stroke-linecap="round"/>
+          <text class="sub" x="140" y="230" style="font-size:16px">Least exposure</text>
+          <path d="M262 225h18" stroke="#2f6fca" stroke-width="4.5" stroke-linecap="round"/>
+          <text class="sub" x="286" y="230" style="font-size:16px">Least energy</text>
+        </g>
+      </svg>
+    </div>
     <div>
       <h3>Information and decision tools</h3>
       <p>What travellers can do depends on what they know. I built DRUM, a routing engine that
@@ -303,8 +467,30 @@
     </div>
   </div>
 
-  <div class="thrust">
-    <img class="thrust-fig" src="assets/img/pubs/pd-muse.webp" alt="" width="400" height="250" loading="lazy" decoding="async">
+  <div class="thrust m-card">
+    <div class="thrust-fig" data-fig="pd-muse">
+      <svg class="pubfig" viewBox="0 0 400 250" aria-hidden="true" focusable="false">
+        <g class="a-fade" style="--d:0.55s">
+          <rect x="8" y="152" width="58" height="36" rx="18" fill="#eef3fb" stroke="#2f6fca" stroke-width="1.5" stroke-dasharray="3 4"/>
+          <rect x="72" y="152" width="58" height="36" rx="18" fill="#eef3fb" stroke="#2f6fca" stroke-width="1.5" stroke-dasharray="3 4"/>
+        </g>
+        <path pathLength="1" class="ln a-draw" style="--d:0.10s" d="M69 54 37 112M69 54 101 112M37 112 23 170M37 112 51 170M101 112 87 170M101 112 115 170"/>
+        <circle class="a-pop" style="--d:0.15s" cx="69" cy="54" r="9" fill="#2b2f36"/>
+        <circle class="a-pop" style="--d:0.30s" cx="37" cy="112" r="8" fill="#2f6fca"/><circle class="a-pop" style="--d:0.35s" cx="101" cy="112" r="8" fill="#2f6fca"/>
+        <g fill="#fff" stroke="#2b2f36" stroke-width="2">
+          <circle class="a-pop" style="--d:0.45s" cx="23" cy="170" r="6.5"/><circle class="a-pop" style="--d:0.50s" cx="51" cy="170" r="6.5"/><circle class="a-pop" style="--d:0.55s" cx="87" cy="170" r="6.5"/><circle class="a-pop" style="--d:0.60s" cx="115" cy="170" r="6.5"/>
+        </g>
+        <path class="ln-g" d="M150 40V184H260"/>
+        <path pathLength="1" class="a-draw" style="--d:0.60s" d="M156 178C168 60 186 150 200 100S226 60 236 128 250 170 254 178" fill="none" stroke="#d24f38" stroke-width="3" stroke-linecap="round"/>
+        <path class="ln a-fade" style="--d:1.05s" d="M268 112H292" marker-end="url(#fg-arr)"/>
+        <path class="ln-g" d="M300 40V184H392"/>
+        <path pathLength="1" class="a-draw" style="--d:1.15s" d="M306 178Q346 -2 386 178" fill="none" stroke="#2f6fca" stroke-width="3" stroke-linecap="round"/>
+        <circle class="a-pop h-pulse" style="--d:1.60s" cx="346" cy="88" r="6.5" fill="#2f6fca"/>
+        <text class="sub" x="69" y="218" text-anchor="middle">Nested logit</text>
+        <text class="sub" x="205" y="218" text-anchor="middle">Non-concave</text>
+        <text class="sub" x="346" y="218" text-anchor="middle">Convex</text>
+      </svg>
+    </div>
     <div>
       <h3>Estimation methods and behaviourally grounded AI</h3>
       <p>I develop methods that keep the structure of choice models while using what machine
@@ -334,8 +520,41 @@
 
   <h3>Patent</h3>
   <ul class="pubs pubs--fig">
-    <li class="pub pub--star" id="patent">
-      <div class="pub-fig"><img src="assets/img/pubs/patent.webp" alt="" width="400" height="250" decoding="async"></div>
+    <li class="pub pub--star m-card" id="patent">
+      <div class="pub-fig" data-fig="patent">
+        <svg class="pubfig" viewBox="0 0 400 250" aria-hidden="true" focusable="false">
+          <rect class="a-fade" x="30" y="14" width="128" height="178" rx="6" fill="#fff" stroke="#2b2f36" stroke-width="2"/>
+          <rect class="a-grow" style="--d:0.10s" x="46" y="34" width="72" height="10" rx="3" fill="#2b2f36"/>
+          <g fill="#d3d8de"><rect class="a-grow" style="--d:0.20s" x="46" y="58" width="96" height="6" rx="3"/><rect class="a-grow" style="--d:0.26s" x="46" y="72" width="96" height="6" rx="3"/><rect class="a-grow" style="--d:0.32s" x="46" y="86" width="96" height="6" rx="3"/><rect class="a-grow" style="--d:0.38s" x="46" y="100" width="96" height="6" rx="3"/><rect class="a-grow" style="--d:0.44s" x="46" y="114" width="62" height="6" rx="3"/></g>
+          <g class="a-pop h-pulse" style="--d:0.60s">
+            <path d="M110 174 103 198 112 192 118 200 120 178z" fill="#c98a12"/>
+            <path d="M134 174 141 198 132 192 126 200 124 178z" fill="#c98a12"/>
+            <circle cx="122" cy="160" r="21" fill="#e3a21a"/>
+            <circle cx="122" cy="160" r="14" fill="none" stroke="#fff" stroke-width="2"/>
+            <use href="#fg-check" x="112" y="150" width="20" height="20" color="#fff"/>
+          </g>
+          <path class="ln a-fade" style="--d:0.75s" d="M170 104H198" marker-end="url(#fg-arr)"/>
+          <g class="a-slide" style="--d:0.80s">
+            <rect x="212" y="12" width="112" height="200" rx="16" fill="#fff" stroke="#2b2f36" stroke-width="2.5"/>
+            <path d="M256 24H280" stroke="#2b2f36" stroke-width="2.5" stroke-linecap="round"/>
+          </g>
+          <defs><clipPath id="fg-patent-p-patent-screen"><rect x="221" y="34" width="94" height="164" rx="4"/></clipPath></defs>
+          <g clip-path="url(#fg-patent-p-patent-screen)">
+            <g class="a-fade" style="--d:0.90s">
+              <rect x="221" y="34" width="94" height="164" fill="#eef1f4"/>
+              <path d="M221 80H315M221 130H315M221 170H315M252 34V198M286 34V198" stroke="#fff" stroke-width="7"/>
+            </g>
+            <circle class="a-pop h-pulse" style="--d:1.00s" cx="262" cy="112" r="26" fill="url(#fg-hot)"/>
+            <path pathLength="1" class="a-draw" style="--d:1.10s" d="M236 170H252V80H300" fill="none" stroke="#2b2f36" stroke-width="4" stroke-linejoin="round"/>
+            <path pathLength="1" class="a-draw" style="--d:1.35s" d="M236 174H290V80H300" fill="none" stroke="#2e9467" stroke-width="4" stroke-linejoin="round"/>
+            <path class="h-march" d="M236 174H290V80H300" fill="none" stroke="#fff" stroke-width="1.6" stroke-dasharray="3 8" stroke-linecap="round"/>
+          </g>
+          <g class="a-pop" style="--d:1.55s"><use href="#fg-pin" x="224" y="148" width="24" height="24" color="#2b2f36"/></g>
+          <g class="a-pop" style="--d:1.65s"><use href="#fg-pin" x="288" y="58" width="24" height="24" color="#2b2f36"/></g>
+          <text class="sub" x="94" y="234" text-anchor="middle">Published patent</text>
+          <text class="sub" x="268" y="234" text-anchor="middle">DRUM app</text>
+        </svg>
+      </div>
       <div class="pub-body">
         <span class="pub-title">Personalised dynamic route planning system for sustainable urban mobility</span>
         <span class="pub-au"><b>K. K. Meena</b>, <a href="https://www.mustlab.in/">A. K. Goswami</a></span>
@@ -364,8 +583,19 @@
   <h3>Journal articles</h3>
   <ul class="pubs pubs--fig">
 
-    <li class="pub" id="j1">
-      <div class="pub-fig"><img src="assets/img/pubs/latent-class.webp" alt="" width="400" height="250" loading="lazy" decoding="async"></div>
+    <li class="pub m-card" id="j1">
+      <div class="pub-fig" data-fig="latent-class">
+        <svg class="pubfig" viewBox="0 0 400 250" aria-hidden="true" focusable="false">
+            <g class="c-grey"><g class="a-pop h-float" style="--d:0.00s;--w:0.00s"><use href="#fg-person" x="16" y="58" width="28" height="28"/></g><g class="a-pop h-float" style="--d:0.04s;--w:0.12s"><use href="#fg-person" x="46" y="58" width="28" height="28"/></g><g class="a-pop h-float" style="--d:0.08s;--w:0.24s"><use href="#fg-person" x="76" y="58" width="28" height="28"/></g><g class="a-pop h-float" style="--d:0.12s;--w:0.36s"><use href="#fg-person" x="106" y="58" width="28" height="28"/></g><g class="a-pop h-float" style="--d:0.16s;--w:0.12s"><use href="#fg-person" x="16" y="100" width="28" height="28"/></g><g class="a-pop h-float" style="--d:0.20s;--w:0.24s"><use href="#fg-person" x="46" y="100" width="28" height="28"/></g><g class="a-pop h-float" style="--d:0.24s;--w:0.36s"><use href="#fg-person" x="76" y="100" width="28" height="28"/></g><g class="a-pop h-float" style="--d:0.28s;--w:0.48s"><use href="#fg-person" x="106" y="100" width="28" height="28"/></g><g class="a-pop h-float" style="--d:0.32s;--w:0.24s"><use href="#fg-person" x="16" y="142" width="28" height="28"/></g><g class="a-pop h-float" style="--d:0.36s;--w:0.36s"><use href="#fg-person" x="46" y="142" width="28" height="28"/></g><g class="a-pop h-float" style="--d:0.40s;--w:0.48s"><use href="#fg-person" x="76" y="142" width="28" height="28"/></g><g class="a-pop h-float" style="--d:0.44s;--w:0.60s"><use href="#fg-person" x="106" y="142" width="28" height="28"/></g></g>
+            <path class="ln a-fade" style="--d:0.55s" d="M148 114h38" marker-end="url(#fg-arr)"/>
+            <text class="sub a-fade" style="--d:0.60s" x="386" y="34" text-anchor="end">Weight on exposure</text>
+            <g class="c-blue a-slide" style="--d:0.65s"><use href="#fg-person" x="200" y="51" width="30" height="30"/><use href="#fg-person" x="228" y="51" width="30" height="30"/></g><rect x="272" y="60" width="112" height="12" rx="6" fill="#eceff2"/><rect class="a-grow" style="--d:0.90s" x="272" y="60" width="28" height="12" rx="6" fill="#2f6fca"/>
+          <g class="c-amber a-slide" style="--d:0.77s"><use href="#fg-person" x="200" y="99" width="30" height="30"/><use href="#fg-person" x="228" y="99" width="30" height="30"/></g><rect x="272" y="108" width="112" height="12" rx="6" fill="#eceff2"/><rect class="a-grow" style="--d:1.02s" x="272" y="108" width="64" height="12" rx="6" fill="#e3a21a"/>
+          <g class="c-red a-slide" style="--d:0.89s"><use href="#fg-person" x="200" y="147" width="30" height="30"/><use href="#fg-person" x="228" y="147" width="30" height="30"/></g><rect x="272" y="156" width="112" height="12" rx="6" fill="#eceff2"/><rect class="a-grow" style="--d:1.14s" x="272" y="156" width="106" height="12" rx="6" fill="#d24f38"/>
+            <text class="sub" x="75" y="212" text-anchor="middle">Commuters</text>
+            <text class="sub" x="229" y="212" text-anchor="middle">Latent classes</text>
+        </svg>
+      </div>
       <div class="pub-body">
         <a class="pub-title" href="https://doi.org/10.1177/03611981261429472">Not all travellers think alike: Segmenting travel behaviour under air pollution exposure using a hybrid latent class and discrete choice approach</a>
         <span class="pub-au"><b>K. K. Meena</b>, <a href="https://www.mustlab.in/">A. K. Goswami</a></span>
@@ -383,8 +613,34 @@
       </div>
     </li>
 
-    <li class="pub" id="j5">
-      <div class="pub-fig"><img src="assets/img/pubs/drum-routes.webp" alt="" width="400" height="250" loading="lazy" decoding="async"></div>
+    <li class="pub m-card" id="j5">
+      <div class="pub-fig" data-fig="drum-routes">
+        <svg class="pubfig" viewBox="0 0 400 250" aria-hidden="true" focusable="false">
+          <defs><clipPath id="fg-drum-routes-p-drum-map"><rect x="12" y="12" width="376" height="190" rx="10"/></clipPath></defs>
+          <g clip-path="url(#fg-drum-routes-p-drum-map)">
+            <rect x="12" y="12" width="376" height="190" fill="#eef1f4"/>
+            <g stroke="#fff" stroke-width="9" stroke-linecap="round">
+              <path d="M12 56H388M12 106H388M12 158H388M74 12V202M144 12V202M214 12V202M284 12V202M346 12V202"/>
+            </g>
+            <circle class="a-pop h-pulse" style="--d:0.05s" cx="182" cy="104" r="50" fill="url(#fg-hot)"/>
+            <circle class="a-pop h-pulse" style="--d:0.15s;--w:0.40s" cx="258" cy="54" r="42" fill="url(#fg-hot)"/>
+            <path pathLength="1" class="a-draw" style="--d:0.30s" d="M44 156H144V106H284V56H346" fill="none" stroke="#2b2f36" stroke-width="4.5" stroke-linejoin="round"/>
+            <path pathLength="1" class="a-draw" style="--d:0.55s" d="M44 152H70V52H346" fill="none" stroke="#2f6fca" stroke-width="4.5" stroke-linejoin="round"/>
+            <path pathLength="1" class="a-draw" style="--d:0.80s" d="M44 161H350V56" fill="none" stroke="#2e9467" stroke-width="4.5" stroke-linejoin="round"/>
+            <path class="h-march" d="M44 161H350V56" fill="none" stroke="#fff" stroke-width="1.8" stroke-dasharray="3 9" stroke-linecap="round"/>
+          </g>
+          <g class="a-pop" style="--d:1.10s"><use href="#fg-pin" x="30" y="128" width="28" height="28" color="#2b2f36"/></g>
+          <g class="a-pop" style="--d:1.25s"><use href="#fg-pin" x="332" y="28" width="28" height="28" color="#2b2f36"/></g>
+          <g class="a-fade" style="--d:1.30s">
+            <path d="M14 225h18" stroke="#2b2f36" stroke-width="4.5" stroke-linecap="round"/>
+            <text class="sub" x="38" y="230" style="font-size:16px">Fastest</text>
+            <path d="M116 225h18" stroke="#2e9467" stroke-width="4.5" stroke-linecap="round"/>
+            <text class="sub" x="140" y="230" style="font-size:16px">Least exposure</text>
+            <path d="M262 225h18" stroke="#2f6fca" stroke-width="4.5" stroke-linecap="round"/>
+            <text class="sub" x="286" y="230" style="font-size:16px">Least energy</text>
+          </g>
+        </svg>
+      </div>
       <div class="pub-body">
         <a class="pub-title" href="https://doi.org/10.1177/03611981251331011">Dynamic route planning for urban green mobility: Development of a web application offering sustainable route options to commuters</a>
         <span class="pub-au"><b>K. K. Meena</b>, A. K. Singh, <a href="https://www.mustlab.in/">A. K. Goswami</a></span>
@@ -403,8 +659,19 @@
       </div>
     </li>
 
-    <li class="pub" id="j6">
-      <div class="pub-fig"><img src="assets/img/pubs/school-exposure.webp" alt="" width="400" height="250" loading="lazy" decoding="async"></div>
+    <li class="pub m-card" id="j6">
+      <div class="pub-fig" data-fig="school-exposure">
+        <svg class="pubfig" viewBox="0 0 400 250" aria-hidden="true" focusable="false">
+            <path pathLength="1" class="a-draw" style="--d:0.10s" d="M64 117C102 117 96 44 134 44H266C304 44 298 117 336 117" fill="none" stroke="#d3d8de" stroke-width="2"/><rect x="162" y="25" width="84" height="38" fill="#fff"/><g class="a-pop" style="--d:0.55s"><use href="#fg-walk" x="166" y="27" width="34" height="34" color="#2e9467"/></g><g class="a-pop h-pulse" style="--d:0.80s;--w:0.00s"><use href="#fg-sensor" x="210" y="31" width="26" height="26" color="#d24f38"/></g>
+          <path pathLength="1" class="a-draw" style="--d:0.18s" d="M64 117C102 117 96 92 134 92H266C304 92 298 117 336 117" fill="none" stroke="#d3d8de" stroke-width="2"/><rect x="162" y="73" width="84" height="38" fill="#fff"/><g class="a-pop" style="--d:0.65s"><use href="#fg-bike" x="166" y="75" width="34" height="34" color="#2e9467"/></g><g class="a-pop h-pulse" style="--d:0.90s;--w:0.25s"><use href="#fg-sensor" x="210" y="79" width="26" height="26" color="#d24f38"/></g>
+          <path pathLength="1" class="a-draw" style="--d:0.26s" d="M64 117C102 117 96 142 134 142H266C304 142 298 117 336 117" fill="none" stroke="#d3d8de" stroke-width="2"/><rect x="162" y="123" width="84" height="38" fill="#fff"/><g class="a-pop" style="--d:0.75s"><use href="#fg-auto" x="166" y="125" width="34" height="34" color="#2b2f36"/></g><g class="a-pop h-pulse" style="--d:1.00s;--w:0.50s"><use href="#fg-sensor" x="210" y="129" width="26" height="26" color="#d24f38"/></g>
+          <path pathLength="1" class="a-draw" style="--d:0.34s" d="M64 117C102 117 96 190 134 190H266C304 190 298 117 336 117" fill="none" stroke="#d3d8de" stroke-width="2"/><rect x="162" y="171" width="84" height="38" fill="#fff"/><g class="a-pop" style="--d:0.85s"><use href="#fg-car" x="166" y="173" width="34" height="34" color="#2b2f36"/></g><g class="a-pop h-pulse" style="--d:1.10s;--w:0.75s"><use href="#fg-sensor" x="210" y="177" width="26" height="26" color="#d24f38"/></g>
+            <g class="a-fade"><use href="#fg-house" x="8" y="92" width="52" height="52" color="#2b2f36"/></g>
+            <g class="a-fade" style="--d:0.35s"><use href="#fg-school" x="340" y="90" width="54" height="54" color="#2b2f36"/></g>
+            <text class="sub" x="34" y="170" text-anchor="middle">Home</text>
+            <text class="sub" x="367" y="170" text-anchor="middle">School</text>
+        </svg>
+      </div>
       <div class="pub-body">
         <a class="pub-title" href="https://doi.org/10.11175/easts.16.PP3879">Assessing air pollution exposure to school children in different modes of transport while commuting to school: A case of Kharagpur, India</a>
         <span class="pub-au">A. Sumbhate, <b>K. K. Meena</b>, <a href="https://www.mustlab.in/">A. K. Goswami</a></span>
@@ -423,8 +690,26 @@
       </div>
     </li>
 
-    <li class="pub" id="j7">
-      <div class="pub-fig"><img src="assets/img/pubs/bike-rail.webp" alt="" width="400" height="250" loading="lazy" decoding="async"></div>
+    <li class="pub m-card" id="j7">
+      <div class="pub-fig" data-fig="bike-rail">
+        <svg class="pubfig" viewBox="0 0 400 250" aria-hidden="true" focusable="false">
+          <path d="M12 180H386" class="ln-g"/>
+          <g class="a-fade"><use href="#fg-house" x="14" y="124" width="56" height="56" color="#2b2f36"/></g>
+          <path class="a-fade" style="--d:0.35s" d="M78 166H132" fill="none" stroke="#2e9467" stroke-width="3" stroke-linecap="round" stroke-dasharray="2 8"/>
+          <g class="a-slide" style="--d:0.25s"><g class="h-float"><use href="#fg-bike" x="136" y="116" width="66" height="66" color="#2e9467"/></g></g>
+          <g class="a-pop h-pulse" style="--d:0.70s"><use href="#fg-heart" x="157" y="84" width="24" height="24" color="#d24f38"/></g>
+          <path class="a-fade" style="--d:0.80s" d="M210 166H256" fill="none" stroke="#2e9467" stroke-width="3" stroke-linecap="round" stroke-dasharray="2 8"/>
+          <g class="a-fade" style="--d:0.45s">
+            <rect x="262" y="82" width="124" height="10" rx="3" fill="#2b2f36"/>
+            <path d="M272 92V178M376 92V178" class="ln-g"/>
+            <rect x="262" y="174" width="124" height="7" rx="2" fill="#c9cfd6"/>
+          </g>
+          <g class="a-pop" style="--d:0.90s"><use href="#fg-train" x="292" y="104" width="66" height="66" color="#2f6fca"/></g>
+          <text class="sub" x="42" y="214" text-anchor="middle">Home</text>
+          <text class="sub" x="169" y="214" text-anchor="middle">First mile</text>
+          <text class="sub" x="324" y="214" text-anchor="middle">Suburban rail</text>
+        </svg>
+      </div>
       <div class="pub-body">
         <a class="pub-title" href="https://doi.org/10.1080/15568318.2025.2572818">Modeling bicycle choice behavior and its potential health impact: Case of first/last mile access to suburban rail</a>
         <span class="pub-au">B. S. Manoj, <b>K. K. Meena</b>, H. Panchal, G. Sharma, <a href="https://www.mustlab.in/">A. K. Goswami</a></span>
@@ -442,8 +727,19 @@
       </div>
     </li>
 
-    <li class="pub" id="j8">
-      <div class="pub-fig"><img src="assets/img/pubs/tod-priority.webp" alt="" width="400" height="250" loading="lazy" decoding="async"></div>
+    <li class="pub m-card" id="j8">
+      <div class="pub-fig" data-fig="tod-priority">
+        <svg class="pubfig" viewBox="0 0 400 250" aria-hidden="true" focusable="false">
+          <circle class="a-pop h-pulse" cx="110" cy="122" r="98" fill="#eef6f1" stroke="#a9d3bd" stroke-width="1.5" stroke-dasharray="3 5"/>
+          <circle class="a-pop" style="--d:0.10s" cx="110" cy="122" r="64" fill="#e2f1e8"/>
+          <circle class="a-pop" style="--d:0.20s" cx="110" cy="122" r="32" fill="#d2eadc"/>
+          <g fill="#b3bbc5"><rect class="a-pop" style="--d:0.35s" x="70" y="84" width="15" height="15" rx="2"/><rect class="a-pop" style="--d:0.39s" x="130" y="82" width="16" height="13" rx="2"/><rect class="a-pop" style="--d:0.42s" x="64" y="142" width="13" height="17" rx="2"/><rect class="a-pop" style="--d:0.45s" x="138" y="142" width="15" height="15" rx="2"/><rect class="a-pop" style="--d:0.49s" x="98" y="60" width="13" height="11" rx="2"/><rect class="a-pop" style="--d:0.53s" x="152" y="110" width="11" height="15" rx="2"/><rect class="a-pop" style="--d:0.56s" x="50" y="110" width="11" height="13" rx="2"/><rect class="a-pop" style="--d:0.59s" x="94" y="170" width="15" height="11" rx="2"/><rect class="a-pop" style="--d:0.63s" x="40" y="70" width="10" height="10" rx="2"/><rect class="a-pop" style="--d:0.67s" x="172" y="72" width="10" height="10" rx="2"/><rect class="a-pop" style="--d:0.70s" x="32" y="158" width="10" height="10" rx="2"/><rect class="a-pop" style="--d:0.73s" x="174" y="160" width="10" height="10" rx="2"/><rect class="a-pop" style="--d:0.77s" x="112" y="36" width="9" height="9" rx="2"/><rect class="a-pop" style="--d:0.81s" x="110" y="200" width="9" height="9" rx="2"/><rect class="a-pop" style="--d:0.84s" x="20" y="116" width="9" height="9" rx="2"/><rect class="a-pop" style="--d:0.88s" x="192" y="118" width="9" height="9" rx="2"/></g>
+          <g class="a-pop" style="--d:0.25s"><circle cx="110" cy="121" r="19" fill="#fff"/>
+          <use href="#fg-train" x="94" y="105" width="32" height="32" color="#2f6fca"/></g>
+          <text class="sub" x="244" y="42">Attribute priority</text>
+          <rect class="a-grow h-wave" style="--d:0.45s;--w:0.00s" x="244" y="58" width="140" height="16" rx="3" fill="#2f6fca" fill-opacity="1"/><rect class="a-grow h-wave" style="--d:0.55s;--w:0.15s" x="244" y="90" width="114" height="16" rx="3" fill="#2f6fca" fill-opacity="0.82"/><rect class="a-grow h-wave" style="--d:0.65s;--w:0.30s" x="244" y="122" width="90" height="16" rx="3" fill="#2f6fca" fill-opacity="0.64"/><rect class="a-grow h-wave" style="--d:0.75s;--w:0.45s" x="244" y="154" width="66" height="16" rx="3" fill="#2f6fca" fill-opacity="0.46"/><rect class="a-grow h-wave" style="--d:0.85s;--w:0.60s" x="244" y="186" width="44" height="16" rx="3" fill="#2f6fca" fill-opacity="0.3"/>
+        </svg>
+      </div>
       <div class="pub-body">
         <a class="pub-title" href="https://doi.org/10.1080/29941849.2025.2516475">A prioritization framework to identify key attributes of transit-oriented development (TOD) using a multi-criteria decision-making (MCDM) approach: An Indian context</a>
         <span class="pub-au">B. S. Manoj, <b>K. K. Meena</b>, <a href="https://www.mustlab.in/">A. K. Goswami</a></span>
@@ -462,8 +758,24 @@
       </div>
     </li>
 
-    <li class="pub" id="j9">
-      <div class="pub-fig"><img src="assets/img/pubs/exposure-review.webp" alt="" width="400" height="250" loading="lazy" decoding="async"></div>
+    <li class="pub m-card" id="j9">
+      <div class="pub-fig" data-fig="exposure-review">
+        <svg class="pubfig" viewBox="0 0 400 250" aria-hidden="true" focusable="false">
+          <g class="a-slide"><use href="#fg-doc" x="14" y="72" width="72" height="72" color="#2b2f36"/></g>
+          <g class="a-slide" style="--d:0.10s"><use href="#fg-doc" x="32" y="60" width="72" height="72" color="#2b2f36"/></g>
+          <g class="a-slide" style="--d:0.20s"><use href="#fg-doc" x="50" y="48" width="72" height="72" color="#2b2f36"/></g>
+          <g class="a-pop" style="--d:0.45s"><g class="h-float"><use href="#fg-search" x="86" y="106" width="54" height="54" color="#2f6fca"/></g></g>
+          <g class="a-slide" style="--d:0.30s"><rect x="164" y="22" width="224" height="44" rx="10" fill="#fbe2db" stroke="#d24f38" stroke-width="2"/>
+            <text class="in" x="276" y="50" text-anchor="middle">Exposure to air pollution</text></g>
+          <g class="a-slide" style="--d:0.60s"><rect x="164" y="103" width="224" height="44" rx="10" fill="#fdf1d6" stroke="#e3a21a" stroke-width="2"/>
+            <text class="in" x="276" y="131" text-anchor="middle">Perception and awareness</text></g>
+          <g class="a-slide" style="--d:0.90s"><rect x="164" y="184" width="224" height="44" rx="10" fill="#dfeafa" stroke="#2f6fca" stroke-width="2"/>
+            <text class="in" x="276" y="212" text-anchor="middle">Travel choices</text></g>
+          <path class="ln a-fade" style="--d:0.55s" d="M276 68V97" marker-end="url(#fg-arr)"/>
+          <path class="ln a-fade" style="--d:0.85s" d="M276 149V178" marker-end="url(#fg-arr)"/>
+          <text class="sub" x="78" y="200" text-anchor="middle">Review</text>
+        </svg>
+      </div>
       <div class="pub-body">
         <a class="pub-title" href="https://doi.org/10.1016/j.tranpol.2024.05.024">A review of air pollution exposure impacts on travel behaviour and way forward</a>
         <span class="pub-au"><b>K. K. Meena</b>, <a href="https://www.mustlab.in/">A. K. Goswami</a></span>
@@ -483,8 +795,23 @@
       </div>
     </li>
 
-    <li class="pub" id="j10">
-      <div class="pub-fig"><img src="assets/img/pubs/ml-awareness.webp" alt="" width="400" height="250" loading="lazy" decoding="async"></div>
+    <li class="pub m-card" id="j10">
+      <div class="pub-fig" data-fig="ml-awareness">
+        <svg class="pubfig" viewBox="0 0 400 250" aria-hidden="true" focusable="false">
+          <g class="a-slide" style="--d:0.00s"><rect x="14" y="44" width="112" height="34" rx="17" fill="#f1f3f5" stroke="#cfd4da" stroke-width="1.5"/><text class="in" x="70" y="66" text-anchor="middle">Awareness</text></g><g class="a-slide" style="--d:0.10s"><rect x="14" y="100" width="112" height="34" rx="17" fill="#f1f3f5" stroke="#cfd4da" stroke-width="1.5"/><text class="in" x="70" y="122" text-anchor="middle">Trip</text></g><g class="a-slide" style="--d:0.20s"><rect x="14" y="156" width="112" height="34" rx="17" fill="#f1f3f5" stroke="#cfd4da" stroke-width="1.5"/><text class="in" x="70" y="178" text-anchor="middle">Traveller</text></g>
+          <g class="a-fade" style="--d:0.30s">
+            <path class="ln-g" d="M128 61C150 61 150 117 170 117M128 173C150 173 150 117 170 117"/>
+            <path class="ln-g" d="M128 117H168" marker-end="url(#fg-arr-g)"/>
+          </g>
+          <path pathLength="1" class="a-draw" style="--d:0.40s" d="M222 70 194 117M222 70 250 117M194 117 178 164M194 117 210 164M250 117 234 164M250 117 266 164" stroke="#6f56c4" stroke-width="2.4" fill="none"/>
+          <g fill="#6f56c4"><circle class="a-pop h-wave" style="--d:0.55s;--w:0.00s" cx="222" cy="70" r="10"/><circle class="a-pop h-wave" style="--d:0.70s;--w:0.25s" cx="194" cy="117" r="8.5"/><circle class="a-pop h-wave" style="--d:0.70s;--w:0.25s" cx="250" cy="117" r="8.5"/><circle class="a-pop h-wave" style="--d:0.85s;--w:0.50s" cx="178" cy="164" r="7"/><circle class="a-pop h-wave" style="--d:0.85s;--w:0.50s" cx="210" cy="164" r="7"/><circle class="a-pop h-wave" style="--d:0.85s;--w:0.50s" cx="234" cy="164" r="7"/><circle class="a-pop h-wave" style="--d:0.85s;--w:0.50s" cx="266" cy="164" r="7"/></g>
+          <path class="ln a-fade" style="--d:0.90s" d="M284 117H310" marker-end="url(#fg-arr)"/>
+          <g color="#2b2f36"><g class="a-pop" style="--d:1.00s"><use href="#fg-car" x="324" y="38" width="32" height="32"/></g><g class="a-pop" style="--d:1.08s"><use href="#fg-bus" x="324" y="78" width="32" height="32"/></g><g class="a-pop" style="--d:1.16s"><use href="#fg-bike" x="324" y="118" width="32" height="32"/></g><g class="a-pop" style="--d:1.24s"><use href="#fg-walk" x="324" y="158" width="32" height="32"/></g></g>
+          <text class="sub" x="70" y="226" text-anchor="middle">Inputs</text>
+          <text class="sub" x="222" y="226" text-anchor="middle">Learned model</text>
+          <text class="sub" x="340" y="226" text-anchor="middle">Mode</text>
+        </svg>
+      </div>
       <div class="pub-body">
         <a class="pub-title" href="https://doi.org/10.1016/j.dajour.2024.100459">A machine learning approach for unraveling the influence of air quality awareness on travel behavior</a>
         <span class="pub-au"><b>K. K. Meena</b>, D. Bairwa, <a href="https://faculty.iitr.ac.in/~amitfce/index.html">A. Agarwal</a></span>
@@ -504,8 +831,19 @@
       </div>
     </li>
 
-    <li class="pub" id="j11">
-      <div class="pub-fig"><img src="assets/img/pubs/delhi-perception.webp" alt="" width="400" height="250" loading="lazy" decoding="async"></div>
+    <li class="pub m-card" id="j11">
+      <div class="pub-fig" data-fig="delhi-perception">
+        <svg class="pubfig" viewBox="0 0 400 250" aria-hidden="true" focusable="false">
+          <g fill="#d5dae0"><rect class="a-growy" style="--d:0.00s" x="142" y="120" width="30" height="76"/><rect class="a-growy" style="--d:0.05s" x="174" y="92" width="24" height="104"/><rect class="a-growy" style="--d:0.10s" x="200" y="110" width="34" height="86"/><rect class="a-growy" style="--d:0.15s" x="236" y="72" width="22" height="124"/><rect class="a-growy" style="--d:0.20s" x="260" y="104" width="36" height="92"/><rect class="a-growy" style="--d:0.25s" x="298" y="86" width="26" height="110"/><rect class="a-growy" style="--d:0.30s" x="326" y="118" width="30" height="78"/><rect class="a-growy" style="--d:0.35s" x="358" y="96" width="30" height="100"/></g>
+          <rect class="a-fade" style="--d:0.40s" x="130" y="30" width="262" height="166" fill="url(#fg-smog)"/>
+          <g color="#d24f38" opacity=".75"><g class="a-fade h-float" style="--d:0.50s;--w:0.00s"><use href="#fg-haze" x="166" y="40" width="40" height="40"/></g><g class="a-fade h-float" style="--d:0.62s;--w:0.35s"><use href="#fg-haze" x="262" y="28" width="44" height="44"/></g><g class="a-fade h-float" style="--d:0.74s;--w:0.70s"><use href="#fg-haze" x="334" y="48" width="40" height="40"/></g></g>
+          <path class="ln-g" d="M12 196H388"/>
+          <g color="#2b2f36"><g class="a-pop" style="--d:0.45s"><use href="#fg-person" x="18" y="150" width="46" height="46"/></g><g class="a-pop" style="--d:0.55s"><use href="#fg-person" x="58" y="150" width="46" height="46"/></g><g class="a-pop" style="--d:0.65s"><use href="#fg-person" x="98" y="150" width="46" height="46"/></g></g>
+          <path class="a-pop" style="--d:0.80s" d="M28 40H184a12 12 0 0 1 12 12V90a12 12 0 0 1-12 12H84L66 122l2-20H28a12 12 0 0 1-12-12V52a12 12 0 0 1 12-12z" fill="#fff" stroke="#2b2f36" stroke-width="2" stroke-linejoin="round"/>
+          <circle class="a-pop h-wave" style="--d:1.00s;--w:0.00s" cx="44" cy="71" r="10.5" fill="#2e9467"/><circle class="a-pop h-wave" style="--d:1.08s;--w:0.15s" cx="76" cy="71" r="10.5" fill="#86a83a"/><circle class="a-pop h-wave" style="--d:1.16s;--w:0.30s" cx="108" cy="71" r="10.5" fill="#e3a21a"/><circle class="a-pop h-wave" style="--d:1.24s;--w:0.45s" cx="140" cy="71" r="10.5" fill="#df7a2e"/><circle class="a-pop h-wave" style="--d:1.32s;--w:0.60s" cx="172" cy="71" r="10.5" fill="#d24f38"/>
+          <text class="sub" x="388" y="226" text-anchor="end">Delhi</text>
+        </svg>
+      </div>
       <div class="pub-body">
         <a class="pub-title" href="https://doi.org/10.1016/j.jth.2023.101643">Perception of commuters towards air quality in Delhi</a>
         <span class="pub-au"><b>K. K. Meena</b>, V. Singh, <a href="https://faculty.iitr.ac.in/~amitfce/index.html">A. Agarwal</a></span>
@@ -524,8 +862,21 @@
       </div>
     </li>
 
-    <li class="pub" id="j12">
-      <div class="pub-fig"><img src="assets/img/pubs/systematic-review.webp" alt="" width="400" height="250" loading="lazy" decoding="async"></div>
+    <li class="pub m-card" id="j12">
+      <div class="pub-fig" data-fig="systematic-review">
+        <svg class="pubfig" viewBox="0 0 400 250" aria-hidden="true" focusable="false">
+          <g class="a-drop h-wave"><polygon points="22,36 218,36 196,80 44,80" fill="#eceff2"/>
+            <text class="in" x="120" y="63" text-anchor="middle">Identified</text></g>
+          <g class="a-drop h-wave" style="--d:0.20s;--w:0.30s"><polygon points="50,88 190,88 170,132 70,132" fill="#dfeafa"/>
+            <text class="in" x="120" y="115" text-anchor="middle">Screened</text></g>
+          <g class="a-drop h-wave" style="--d:0.40s;--w:0.60s"><polygon points="76,140 164,140 148,184 92,184" fill="#2f6fca"/>
+            <text class="in" x="120" y="167" text-anchor="middle" style="fill:#fff">Included</text></g>
+          <path class="ln a-fade" style="--d:0.60s" d="M234 112H262" marker-end="url(#fg-arr)"/>
+          <g class="a-pop" style="--d:0.75s"><rect x="276" y="58" width="50" height="50" rx="8" fill="#f1f3f5"/><use href="#fg-walk" x="285" y="67" width="32" height="32" color="#2e9467"/></g><g class="a-pop" style="--d:0.83s"><rect x="334" y="58" width="50" height="50" rx="8" fill="#f1f3f5"/><use href="#fg-bike" x="343" y="67" width="32" height="32" color="#2e9467"/></g><g class="a-pop" style="--d:0.91s"><rect x="276" y="116" width="50" height="50" rx="8" fill="#f1f3f5"/><use href="#fg-bus" x="285" y="125" width="32" height="32" color="#2b2f36"/></g><g class="a-pop" style="--d:0.99s"><rect x="334" y="116" width="50" height="50" rx="8" fill="#f1f3f5"/><use href="#fg-car" x="343" y="125" width="32" height="32" color="#2b2f36"/></g>
+          <text class="sub" x="120" y="212" text-anchor="middle">Systematic review</text>
+          <text class="sub" x="330" y="196" text-anchor="middle">Travel modes</text>
+        </svg>
+      </div>
       <div class="pub-body">
         <a class="pub-title" href="https://doi.org/10.1016/j.uclim.2021.100901">Travellers&rsquo; exposure to air pollution: A systematic review and future directions</a>
         <span class="pub-au">V. Singh, <b>K. K. Meena</b>, <a href="https://faculty.iitr.ac.in/~amitfce/index.html">A. Agarwal</a></span>
@@ -548,8 +899,24 @@
 
   <h3>Under review</h3>
   <ul class="pubs pubs--fig">
-    <li class="pub" id="evc">
-      <div class="pub-fig"><img src="assets/img/pubs/ev-charging.webp" alt="" width="400" height="250" loading="lazy" decoding="async"></div>
+    <li class="pub m-card" id="evc">
+      <div class="pub-fig" data-fig="ev-charging">
+        <svg class="pubfig" viewBox="0 0 400 250" aria-hidden="true" focusable="false">
+          <path class="ln-g" d="M12 168H128"/>
+          <g class="a-fade"><use href="#fg-charger" x="18" y="64" width="104" height="104" color="#2b2f36"/></g>
+          <g class="a-slide" style="--d:0.20s">
+            <rect x="140" y="34" width="136" height="150" rx="12" fill="#f6f7f9" stroke="#2b2f36" stroke-width="2"/>
+            <text class="in" x="208" y="62" text-anchor="middle">Charging info</text>
+            <path class="ln-g" d="M152 74H264"/>
+          </g>
+          <g class="a-fade" style="--d:0.45s"><use href="#fg-check" x="152" y="88" width="22" height="22" color="#2e9467"/><text class="in" x="182" y="105" style="font-weight:500">Available</text></g><g class="a-fade" style="--d:0.57s"><use href="#fg-clock" x="152" y="120" width="22" height="22" color="#e3a21a"/><text class="in" x="182" y="137" style="font-weight:500">Wait time</text></g><g class="a-fade" style="--d:0.69s"><use href="#fg-shield" x="152" y="152" width="22" height="22" color="#2f6fca"/><text class="in" x="182" y="169" style="font-weight:500">Reliability</text></g>
+          <path class="ln a-fade" style="--d:0.80s" d="M284 128H306" marker-end="url(#fg-arr)"/>
+          <g class="a-slide" style="--d:0.85s"><g class="h-float"><use href="#fg-car" x="312" y="96" width="72" height="72" color="#2f6fca"/></g></g>
+          <g class="a-pop h-pulse" style="--d:1.10s"><use href="#fg-bolt" x="334" y="84" width="28" height="28" color="#e3a21a"/></g>
+          <text class="sub" x="70" y="212" text-anchor="middle">Public charger</text>
+          <text class="sub" x="388" y="212" text-anchor="end">Choice and trust</text>
+        </svg>
+      </div>
       <div class="pub-body">
         <span class="pub-title">How charging information shapes choice, reliability, and trust in public EV charging</span>
         <span class="pub-au"><b>K. K. Meena</b>, S. V. Sesidhar</span>
@@ -559,8 +926,20 @@
       </div>
     </li>
 
-    <li class="pub" id="j4">
-      <div class="pub-fig"><img src="assets/img/pubs/seasonal-reroute.webp" alt="" width="400" height="250" loading="lazy" decoding="async"></div>
+    <li class="pub m-card" id="j4">
+      <div class="pub-fig" data-fig="seasonal-reroute">
+        <svg class="pubfig" viewBox="0 0 400 250" aria-hidden="true" focusable="false">
+          <rect class="a-fade" x="12" y="12" width="184" height="180" rx="10" fill="#fbe9e4"/>
+          <rect class="a-fade" style="--d:0.12s" x="204" y="12" width="184" height="180" rx="10" fill="#fdf3dc"/>
+          <text x="30" y="42">Winter</text>
+          <text x="222" y="42">Summer</text>
+          <g class="a-pop h-pulse" style="--d:0.20s"><use href="#fg-haze" x="160" y="20" width="26" height="26" color="#d24f38"/></g>
+          <g class="a-pop h-spin" style="--d:0.30s"><use href="#fg-sun" x="352" y="20" width="26" height="26" color="#e3a21a"/></g>
+          <path pathLength="1" class="a-draw" style="--d:0.35s" d="M40 164C44 96 96 70 168 78" fill="none" stroke="#2e9467" stroke-width="6" stroke-linecap="round"/><path pathLength="1" class="a-draw" style="--d:0.50s" d="M40 164L168 78" fill="none" stroke="#2b2f36" stroke-width="2.5" stroke-linecap="round"/><g opacity="0.85"><g class="a-pop h-float" style="--d:0.80s;--w:0.00s"><use href="#fg-haze" x="99" y="96" width="36" height="36" color="#d24f38"/></g></g><circle class="a-pop" style="--d:0.95s" cx="40" cy="164" r="6.5" fill="#2b2f36"/><circle class="a-pop" style="--d:1.05s" cx="168" cy="78" r="6.5" fill="#fff" stroke="#2b2f36" stroke-width="2.5"/>
+          <path pathLength="1" class="a-draw" style="--d:0.50s" d="M232 164C236 96 288 70 360 78" fill="none" stroke="#2e9467" stroke-width="2.5" stroke-linecap="round"/><path pathLength="1" class="a-draw" style="--d:0.65s" d="M232 164L360 78" fill="none" stroke="#2b2f36" stroke-width="6" stroke-linecap="round"/><g opacity="0.35"><g class="a-pop h-float" style="--d:0.95s;--w:0.96s"><use href="#fg-haze" x="291" y="96" width="36" height="36" color="#d24f38"/></g></g><circle class="a-pop" style="--d:1.10s" cx="232" cy="164" r="6.5" fill="#2b2f36"/><circle class="a-pop" style="--d:1.20s" cx="360" cy="78" r="6.5" fill="#fff" stroke="#2b2f36" stroke-width="2.5"/>
+          <text class="sub" x="200" y="224" text-anchor="middle">Same 723 commuters, two survey waves</text>
+        </svg>
+      </div>
       <div class="pub-body">
         <a class="pub-title" href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=6904230">Do commuters reroute for cleaner air? Seasonal salience in route choice behaviour from a two-wave panel in Kolkata, India</a>
         <span class="pub-au"><b>K. K. Meena</b>, <a href="https://www.mustlab.in/">A. K. Goswami</a></span>
@@ -572,8 +951,30 @@
       </div>
     </li>
 
-    <li class="pub" id="pdmuse">
-      <div class="pub-fig"><img src="assets/img/pubs/pd-muse.webp" alt="" width="400" height="250" loading="lazy" decoding="async"></div>
+    <li class="pub m-card" id="pdmuse">
+      <div class="pub-fig" data-fig="pd-muse">
+        <svg class="pubfig" viewBox="0 0 400 250" aria-hidden="true" focusable="false">
+          <g class="a-fade" style="--d:0.55s">
+            <rect x="8" y="152" width="58" height="36" rx="18" fill="#eef3fb" stroke="#2f6fca" stroke-width="1.5" stroke-dasharray="3 4"/>
+            <rect x="72" y="152" width="58" height="36" rx="18" fill="#eef3fb" stroke="#2f6fca" stroke-width="1.5" stroke-dasharray="3 4"/>
+          </g>
+          <path pathLength="1" class="ln a-draw" style="--d:0.10s" d="M69 54 37 112M69 54 101 112M37 112 23 170M37 112 51 170M101 112 87 170M101 112 115 170"/>
+          <circle class="a-pop" style="--d:0.15s" cx="69" cy="54" r="9" fill="#2b2f36"/>
+          <circle class="a-pop" style="--d:0.30s" cx="37" cy="112" r="8" fill="#2f6fca"/><circle class="a-pop" style="--d:0.35s" cx="101" cy="112" r="8" fill="#2f6fca"/>
+          <g fill="#fff" stroke="#2b2f36" stroke-width="2">
+            <circle class="a-pop" style="--d:0.45s" cx="23" cy="170" r="6.5"/><circle class="a-pop" style="--d:0.50s" cx="51" cy="170" r="6.5"/><circle class="a-pop" style="--d:0.55s" cx="87" cy="170" r="6.5"/><circle class="a-pop" style="--d:0.60s" cx="115" cy="170" r="6.5"/>
+          </g>
+          <path class="ln-g" d="M150 40V184H260"/>
+          <path pathLength="1" class="a-draw" style="--d:0.60s" d="M156 178C168 60 186 150 200 100S226 60 236 128 250 170 254 178" fill="none" stroke="#d24f38" stroke-width="3" stroke-linecap="round"/>
+          <path class="ln a-fade" style="--d:1.05s" d="M268 112H292" marker-end="url(#fg-arr)"/>
+          <path class="ln-g" d="M300 40V184H392"/>
+          <path pathLength="1" class="a-draw" style="--d:1.15s" d="M306 178Q346 -2 386 178" fill="none" stroke="#2f6fca" stroke-width="3" stroke-linecap="round"/>
+          <circle class="a-pop h-pulse" style="--d:1.60s" cx="346" cy="88" r="6.5" fill="#2f6fca"/>
+          <text class="sub" x="69" y="218" text-anchor="middle">Nested logit</text>
+          <text class="sub" x="205" y="218" text-anchor="middle">Non-concave</text>
+          <text class="sub" x="346" y="218" text-anchor="middle">Convex</text>
+        </svg>
+      </div>
       <div class="pub-body">
         <span class="pub-title">PD-MUSE: Primal-dual maximum-utility structured estimator for discrete choice models</span>
         <span class="pub-au"><b>K. K. Meena</b>, S. Tang, <a href="https://sites.google.com/cornell.edu/youngseokim/human-lab">Y. Kim</a></span>
@@ -584,8 +985,27 @@
       </div>
     </li>
 
-    <li class="pub" id="shade">
-      <div class="pub-fig"><img src="assets/img/pubs/shade-pricing.webp" alt="" width="400" height="250" loading="lazy" decoding="async"></div>
+    <li class="pub m-card" id="shade">
+      <div class="pub-fig" data-fig="shade-pricing">
+        <svg class="pubfig" viewBox="0 0 400 250" aria-hidden="true" focusable="false">
+          <g class="a-pop h-spin"><use href="#fg-sun" x="342" y="4" width="44" height="44" color="#e3a21a"/></g>
+          <path class="ln-g" d="M12 178H156"/>
+          <ellipse class="a-fade" style="--d:0.30s" cx="86" cy="180" rx="66" ry="7" fill="#2b2f36" fill-opacity=".16"/>
+          <rect class="a-growy" style="--d:0.10s" x="70" y="100" width="12" height="80" rx="3" fill="#7a6650"/>
+          <ellipse class="a-pop" style="--d:0.30s" cx="76" cy="82" rx="62" ry="44" fill="#2e9467"/>
+          <g class="a-slide" style="--d:0.50s"><g class="h-float"><use href="#fg-walk" x="94" y="130" width="48" height="48" color="#2b2f36"/></g></g>
+          <g class="a-pop h-pulse" style="--d:0.60s">
+            <path d="M170 100H232L252 124 232 148H170z" fill="#fdf1d6" stroke="#e3a21a" stroke-width="2.5" stroke-linejoin="round"/>
+            <circle cx="183" cy="124" r="5" fill="#fff" stroke="#e3a21a" stroke-width="2"/>
+            <use href="#fg-rupee" x="203" y="110" width="26" height="26" color="#b67d0c"/>
+          </g>
+          <rect class="a-fade" style="--d:0.65s" x="282" y="72" width="104" height="104" rx="8" fill="#fff" stroke="#cfd4da" stroke-width="1.5"/>
+          <g fill="#e3e7eb"><rect class="a-pop" style="--d:0.75s" x="292" y="82" width="22" height="22" rx="2"/><rect class="a-pop" style="--d:0.80s" x="292" y="112" width="22" height="22" rx="2"/><rect class="a-pop" style="--d:0.85s" x="292" y="142" width="22" height="22" rx="2"/><rect class="a-pop" style="--d:0.80s" x="322" y="82" width="22" height="22" rx="2"/><rect class="a-pop" style="--d:0.85s" x="322" y="112" width="22" height="22" rx="2"/><rect class="a-pop" style="--d:0.90s" x="322" y="142" width="22" height="22" rx="2"/><rect class="a-pop" style="--d:0.85s" x="352" y="82" width="22" height="22" rx="2"/><rect class="a-pop" style="--d:0.90s" x="352" y="112" width="22" height="22" rx="2"/><rect class="a-pop" style="--d:0.95s" x="352" y="142" width="22" height="22" rx="2"/></g>
+          <path pathLength="1" class="a-draw" style="--d:1.10s" d="M318 80V138H376" fill="none" stroke="#2e9467" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+          <text class="sub" x="210" y="206" text-anchor="middle">Pricing</text>
+          <text class="sub" x="334" y="206" text-anchor="middle">Allocation</text>
+        </svg>
+      </div>
       <div class="pub-body">
         <span class="pub-title">Pricing shade in urban mobility: Behavioural evidence and optimal allocation for heat-resilient access in Delhi</span>
         <span class="pub-au">S. V. Sesidhar, <b>K. K. Meena</b></span>
@@ -595,8 +1015,18 @@
       </div>
     </li>
 
-    <li class="pub" id="conflict">
-      <div class="pub-fig"><img src="assets/img/pubs/conflict-screening.webp" alt="" width="400" height="250" loading="lazy" decoding="async"></div>
+    <li class="pub m-card" id="conflict">
+      <div class="pub-fig" data-fig="conflict-screening">
+        <svg class="pubfig" viewBox="0 0 400 250" aria-hidden="true" focusable="false">
+          <rect x="0" y="92" width="400" height="64" fill="#e3e7eb"/>
+          <rect x="168" y="0" width="64" height="200" fill="#e3e7eb"/>
+          <path d="M0 124H164M236 124H400M200 0V88M200 160V200" stroke="#fff" stroke-width="2" stroke-dasharray="8 8"/>
+          <g class="a-slide" style="--d:0.10s"><rect class="h-drive" style="--d:0.00s;--w:0.00s" x="62" y="99" width="44" height="20" rx="6" fill="#2f6fca"/></g><g class="a-slide" style="--d:0.18s"><rect class="h-drive" style="--d:0.00s;--w:0.30s" x="116" y="102" width="24" height="10" rx="5" fill="#6f56c4"/></g><g class="a-slide" style="--d:0.26s"><rect class="h-drive" style="--d:0.00s;--w:0.60s" x="250" y="130" width="78" height="22" rx="5" fill="#e3a21a"/></g><g class="a-slide" style="--d:0.34s"><rect class="h-drive" style="--d:0.00s;--w:0.90s" x="208" y="36" width="20" height="28" rx="6" fill="#2e9467"/></g><g class="a-slide" style="--d:0.42s"><rect class="h-drive" style="--d:0.00s;--w:1.20s" x="182" y="166" width="10" height="24" rx="5" fill="#6f56c4"/></g><g class="a-slide" style="--d:0.50s"><rect class="h-drive" style="--d:0.00s;--w:1.50s" x="20" y="130" width="40" height="19" rx="6" fill="#8f96a0"/></g>
+          <circle class="a-pop h-pulse" style="--d:0.80s" cx="112" cy="110" r="32" fill="none" stroke="#d24f38" stroke-width="2.2" stroke-dasharray="5 5"/>
+          <circle class="a-pop h-pulse" style="--d:0.95s;--w:0.50s" cx="214" cy="160" r="30" fill="none" stroke="#d24f38" stroke-width="2.2" stroke-dasharray="5 5"/>
+          <text x="200" y="232" text-anchor="middle">Closer = more dangerous?</text>
+        </svg>
+      </div>
       <div class="pub-body">
         <span class="pub-title">Are closer encounters really more dangerous? Evidence from conflict screening in heterogeneous traffic</span>
         <span class="pub-au">S. Basu, S. Guha Majumdar, <b>K. K. Meena</b>, S. V. Sesidhar</span>
@@ -606,8 +1036,33 @@
       </div>
     </li>
 
-    <li class="pub" id="j2">
-      <div class="pub-fig"><img src="assets/img/pubs/seasonal-mode.webp" alt="" width="400" height="250" loading="lazy" decoding="async"></div>
+    <li class="pub m-card" id="j2">
+      <div class="pub-fig" data-fig="seasonal-mode">
+        <svg class="pubfig" viewBox="0 0 400 250" aria-hidden="true" focusable="false">
+          <g class="a-slide"><rect x="10" y="70" width="100" height="36" rx="18" fill="#fbe2db"/>
+            <use href="#fg-haze" x="20" y="78" width="20" height="20" color="#d24f38"/>
+            <text class="in" x="45" y="93" style="font-size:16px">Winter</text></g>
+          <g class="a-slide" style="--d:0.12s"><rect x="10" y="128" width="100" height="36" rx="18" fill="#fdf1d6"/>
+            <use href="#fg-sun" x="20" y="136" width="20" height="20" color="#e3a21a"/>
+            <text class="in" x="45" y="151" style="font-size:16px">Summer</text></g>
+          <path class="ln-g a-fade" style="--d:0.30s" d="M112 88H119V146H112M119 117H127" marker-end="url(#fg-arr-g)"/>
+          <g class="a-fade" style="--d:0.20s">
+            <path d="M142 26H292a10 10 0 0 1 10 10V64H132V36a10 10 0 0 1 10-10z" fill="#f1f3f5"/>
+            <rect x="132" y="26" width="170" height="178" rx="10" fill="none" stroke="#2b2f36" stroke-width="2"/>
+            <path class="ln-g" d="M132 64H302"/>
+            <use href="#fg-bus" x="208" y="31" width="28" height="28" color="#2b2f36"/>
+            <use href="#fg-car" x="258" y="31" width="28" height="28" color="#2b2f36"/>
+          </g>
+          <g class="a-pop" style="--d:0.40s"><use href="#fg-clock" x="147" y="81" width="22" height="22" color="#2b2f36"/></g>
+          <g class="a-pop" style="--d:0.45s"><use href="#fg-rupee" x="148" y="120" width="20" height="20" color="#2b2f36"/></g>
+          <g class="a-pop h-pulse" style="--d:0.50s"><use href="#fg-haze" x="146" y="160" width="24" height="24" color="#d24f38"/></g>
+          <rect class="a-grow" style="--d:0.55s" x="205" y="88" width="34" height="8" rx="4" fill="#8f96a0"/><rect class="a-grow" style="--d:0.61s" x="261" y="88" width="22" height="8" rx="4" fill="#8f96a0"/><rect class="a-grow" style="--d:0.67s" x="213" y="128" width="18" height="8" rx="4" fill="#8f96a0"/><rect class="a-grow" style="--d:0.73s" x="253" y="128" width="38" height="8" rx="4" fill="#8f96a0"/><rect class="a-grow" style="--d:0.79s" x="202" y="168" width="40" height="8" rx="4" fill="#d24f38"/><rect class="a-grow" style="--d:0.85s" x="265" y="168" width="14" height="8" rx="4" fill="#d24f38"/>
+          <g class="a-pop h-float" style="--d:1.00s"><use href="#fg-person" x="329" y="90" width="44" height="44" color="#2b2f36"/></g>
+          <text class="sub" x="351" y="156" text-anchor="middle" style="font-size:16px">Mode</text>
+          <text class="sub" x="351" y="177" text-anchor="middle" style="font-size:16px">choice</text>
+          <text class="sub" x="217" y="230" text-anchor="middle">Choice experiment</text>
+        </svg>
+      </div>
       <div class="pub-body">
         <span class="pub-title">Beyond time and cost: Seasonal air-quality preferences in travel mode choice from a two-wave commuter panel</span>
         <span class="pub-au"><b>K. K. Meena</b>, <a href="https://www.mustlab.in/">A. K. Goswami</a></span>
@@ -617,8 +1072,18 @@
       </div>
     </li>
 
-    <li class="pub" id="j3">
-      <div class="pub-fig"><img src="assets/img/pubs/econ-deep.webp" alt="" width="400" height="250" loading="lazy" decoding="async"></div>
+    <li class="pub m-card" id="j3">
+      <div class="pub-fig" data-fig="econ-deep">
+        <svg class="pubfig" viewBox="0 0 400 250" aria-hidden="true" focusable="false">
+          <g class="a-slide"><rect x="14" y="70" width="136" height="84" rx="12" fill="#dfeafa" stroke="#2f6fca" stroke-width="2"/>
+            <text x="82" y="121" text-anchor="middle" style="font-size:25px">U = &#946;x + &#949;</text></g>
+          <path class="ln a-fade" style="--d:0.30s" d="M166 112H230" marker-start="url(#fg-arr)" marker-end="url(#fg-arr)"/>
+          <path pathLength="1" class="a-draw" style="--d:0.35s" d="M248 80L300 66M248 80L300 101M248 80L300 136M248 80L300 171M248 122L300 66M248 122L300 101M248 122L300 136M248 122L300 171M248 164L300 66M248 164L300 101M248 164L300 136M248 164L300 171M300 66L352 101M300 66L352 136M300 101L352 101M300 101L352 136M300 136L352 101M300 136L352 136M300 171L352 101M300 171L352 136" stroke="#cfc6ef" stroke-width="1.6" fill="none"/>
+          <g fill="#6f56c4"><circle class="a-pop h-wave" style="--d:0.55s;--w:0.00s" cx="248" cy="80" r="9.5"/><circle class="a-pop h-wave" style="--d:0.59s;--w:0.00s" cx="248" cy="122" r="9.5"/><circle class="a-pop h-wave" style="--d:0.63s;--w:0.00s" cx="248" cy="164" r="9.5"/><circle class="a-pop h-wave" style="--d:0.73s;--w:0.30s" cx="300" cy="66" r="9.5"/><circle class="a-pop h-wave" style="--d:0.77s;--w:0.30s" cx="300" cy="101" r="9.5"/><circle class="a-pop h-wave" style="--d:0.81s;--w:0.30s" cx="300" cy="136" r="9.5"/><circle class="a-pop h-wave" style="--d:0.85s;--w:0.30s" cx="300" cy="171" r="9.5"/><circle class="a-pop h-wave" style="--d:0.91s;--w:0.60s" cx="352" cy="101" r="9.5"/><circle class="a-pop h-wave" style="--d:0.95s;--w:0.60s" cx="352" cy="136" r="9.5"/></g>
+          <text class="sub" x="82" y="204" text-anchor="middle">Econometric theory</text>
+          <text class="sub" x="300" y="210" text-anchor="middle">Deep learning</text>
+        </svg>
+      </div>
       <div class="pub-body">
         <span class="pub-title">Beyond choice modelling: Bridging econometric theory and deep learning for robust mode choice prediction</span>
         <span class="pub-au"><b>K. K. Meena</b>, <a href="https://www.mustlab.in/">A. K. Goswami</a></span>
@@ -756,7 +1221,7 @@
     <p class="aside">Tools built from the research, most of them live.</p>
   </div>
   <div class="apps">
-  <article class="app">
+  <article class="app m-card">
     <a class="app-fig" href="https://leap-routing-iitkgp.vercel.app/" tabindex="-1" aria-hidden="true">
       <svg class="app-svg" viewBox="0 0 400 250" role="img" aria-label="DRUM: a map with a pollution hotspot, the fastest route through it and the least-exposure route around it, and five route options"><defs><radialGradient id="ap-d-hot"><stop offset="0" stop-color="#d24f38" stop-opacity=".55"/><stop offset="1" stop-color="#d24f38" stop-opacity="0"/></radialGradient><clipPath id="ap-d-map"><rect x="14" y="14" width="236" height="222" rx="10"/></clipPath></defs><g clip-path="url(#ap-d-map)"><rect x="14" y="14" width="236" height="222" fill="#e4e8ed"/><path d="M14 72H250M14 132H250M14 192H250M66 14V236M132 14V236M198 14V236" stroke="#fff" stroke-width="9"/><circle class="h-pulse" cx="132" cy="132" r="48" fill="url(#ap-d-hot)"/><path class="a-draw" pathLength="1" d="M40 189H132V69H222" fill="none" stroke="#2b2f36" stroke-width="5" stroke-linejoin="round" style="--d:.1s"/><path class="a-draw" pathLength="1" d="M40 195H198V75H222" fill="none" stroke="#2e9467" stroke-width="5" stroke-linejoin="round" style="--d:.45s"/><path class="h-march" d="M40 195H198V75H222" fill="none" stroke="#fff" stroke-width="2" stroke-dasharray="3 9" stroke-linecap="round"/></g><g transform="translate(40 192)"><path d="M0 0C-6-7-9-11-9-15.5a9 9 0 0 1 18 0C9-11 6-7 0 0z" fill="#2b2f36"/><circle cy="-15.5" r="3.4" fill="#fff"/></g><g transform="translate(222 72)"><path d="M0 0C-6-7-9-11-9-15.5a9 9 0 0 1 18 0C9-11 6-7 0 0z" fill="#2b2f36"/><circle cy="-15.5" r="3.4" fill="#fff"/></g><g class="a-slide" style="--d:0.35s"><rect x="262" y="26" width="124" height="32" rx="8" fill="#fff" stroke="#e1e5ea"/><path d="M272 42h12" stroke="#2b2f36" stroke-width="4" stroke-linecap="round"/><text x="291" y="46.5" class="t13">Fastest</text></g><g class="a-slide" style="--d:0.44s"><rect x="262" y="68" width="124" height="32" rx="8" fill="#fff" stroke="#e1e5ea"/><path d="M272 84h12" stroke="#9aa1ab" stroke-width="4" stroke-linecap="round"/><text x="291" y="88.5" class="t13">Shortest</text></g><g class="a-slide" style="--d:0.53s"><rect x="262" y="110" width="124" height="32" rx="8" fill="#e5f3ec" stroke="#2e9467"/><path d="M272 126h12" stroke="#2e9467" stroke-width="4" stroke-linecap="round"/><text x="291" y="130.5" class="t13">Least exposure</text></g><g class="a-slide" style="--d:0.62s"><rect x="262" y="152" width="124" height="32" rx="8" fill="#fff" stroke="#e1e5ea"/><path d="M272 168h12" stroke="#2f6fca" stroke-width="4" stroke-linecap="round"/><text x="291" y="172.5" class="t13">Least energy</text></g><g class="a-slide" style="--d:0.71s"><rect x="262" y="194" width="124" height="32" rx="8" fill="#fff" stroke="#e1e5ea"/><path d="M272 210h12" stroke="#e3a21a" stroke-width="4" stroke-linecap="round"/><text x="291" y="214.5" class="t13">Balanced</text></g></svg>
     </a>
@@ -769,7 +1234,7 @@
       <p class="app-links"><a href="https://leap-routing-iitkgp.vercel.app/">Open app <svg class="i" aria-hidden="true"><use href="#i-out"></use></svg></a><a href="https://github.com/orgs/clean-route/repositories">Code <svg class="i" aria-hidden="true"><use href="#i-code"></use></svg></a></p>
     </div>
   </article>
-  <article class="app">
+  <article class="app m-card">
     <a class="app-fig" href="https://survey-iitkgp.vercel.app/" tabindex="-1" aria-hidden="true">
       <svg class="app-svg" viewBox="0 0 400 250" role="img" aria-label="Survey platform: a stated-choice question comparing two routes on time, cost and air quality, and a live chart of responses"><rect x="14" y="14" width="236" height="222" rx="14" fill="#fff" stroke="#2b2f36" stroke-width="2.5"/><text x="30" y="44" class="t14 b">Which route would you take?</text><rect x="56" y="62" width="84" height="118" rx="10" fill="#fff" stroke="#e1e5ea"/><rect x="150" y="62" width="84" height="118" rx="10" fill="#fff" stroke="#e1e5ea"/><rect class="h-selA" x="56" y="62" width="84" height="118" rx="10" fill="none" stroke="#2e9467" stroke-width="2.5" opacity="0"/><rect class="h-selB" x="150" y="62" width="84" height="118" rx="10" fill="#f1f8f4" fill-opacity=".6" stroke="#2e9467" stroke-width="2.5"/><text x="66" y="84" class="t13 b">Route A</text><text x="160" y="84" class="t13 b">Route B</text><circle cx="40" cy="108" r="6" fill="none" stroke="#2b2f36" stroke-width="1.8"/><path d="M40 104.5V108l2.5 1.5" stroke="#2b2f36" stroke-width="1.6" fill="none" stroke-linecap="round"/><circle cx="40" cy="134" r="6" fill="none" stroke="#2b2f36" stroke-width="1.8"/><path d="M40 130.5v7" stroke="#2b2f36" stroke-width="1.8" stroke-linecap="round"/><path d="M34 157c2-2 4 2 6 0s4-2 6 0M34 162c2-2 4 2 6 0s4-2 6 0" stroke="#d24f38" stroke-width="1.6" fill="none" stroke-linecap="round"/><rect class="a-grow" style="--d:0.30s" x="66" y="104" width="40" height="8" rx="4" fill="#9aa1ab"/><rect class="a-grow" style="--d:0.40s" x="66" y="130" width="22" height="8" rx="4" fill="#9aa1ab"/><rect class="a-grow" style="--d:0.50s" x="66" y="156" width="52" height="8" rx="4" fill="#d24f38"/><rect class="a-grow" style="--d:0.30s" x="160" y="104" width="58" height="8" rx="4" fill="#9aa1ab"/><rect class="a-grow" style="--d:0.40s" x="160" y="130" width="34" height="8" rx="4" fill="#9aa1ab"/><rect class="a-grow" style="--d:0.50s" x="160" y="156" width="18" height="8" rx="4" fill="#d24f38"/><rect x="170" y="196" width="64" height="26" rx="13" fill="#2f6fca"/><text x="202" y="213.5" class="t13 b" text-anchor="middle" fill="#fff">Next</text><text x="266" y="40" class="t13" fill="#5d636b">Responses</text><path d="M266 202H386" stroke="#e1e5ea" stroke-width="2"/><rect class="a-growy" style="--d:.5s" x="284" y="120" width="34" height="82" rx="5" fill="#b8bfc8"/><rect class="a-growy" style="--d:.65s" x="336" y="72" width="34" height="130" rx="5" fill="#2e9467"/><text x="301" y="222" class="t13 b" text-anchor="middle">A</text><text x="353" y="222" class="t13 b" text-anchor="middle">B</text></svg>
     </a>
@@ -781,7 +1246,7 @@
       <p class="app-links"><a href="https://survey-iitkgp.vercel.app/">Open app <svg class="i" aria-hidden="true"><use href="#i-out"></use></svg></a></p>
     </div>
   </article>
-  <article class="app">
+  <article class="app m-card">
     <a class="app-fig" href="https://kapil2020.github.io/global-PM-2.5-next-day-forecasting/" tabindex="-1" aria-hidden="true">
       <svg class="app-svg" viewBox="0 0 400 250" role="img" aria-label="Next-day PM2.5 forecasting: an observed pollution series up to today, a forecast point for tomorrow with its uncertainty band, and a globe of cities"><path d="M36 26V198H304" fill="none" stroke="#c3c9d0" stroke-width="1.6"/><path d="M40 198v5" stroke="#c3c9d0" stroke-width="1.6"/><path d="M70 198v5" stroke="#c3c9d0" stroke-width="1.6"/><path d="M100 198v5" stroke="#c3c9d0" stroke-width="1.6"/><path d="M130 198v5" stroke="#c3c9d0" stroke-width="1.6"/><path d="M160 198v5" stroke="#c3c9d0" stroke-width="1.6"/><path d="M190 198v5" stroke="#c3c9d0" stroke-width="1.6"/><path d="M220 198v5" stroke="#c3c9d0" stroke-width="1.6"/><path d="M250 198v5" stroke="#c3c9d0" stroke-width="1.6"/><path d="M280 198v5" stroke="#c3c9d0" stroke-width="1.6"/><path d="M265 30V198" stroke="#9aa1ab" stroke-width="1.4" stroke-dasharray="4 4"/><path class="a-draw" pathLength="1" d="M40.0 131.5L55.0 109.3L70.0 119.7L85.0 123.1L100.0 118.8L115.0 142.1L130.0 155.4L145.0 128.2L160.0 106.2L175.0 101.0L190.0 87.6L205.0 93.5L220.0 128.1L235.0 141.1L250.0 137.1L265.0 151.4" fill="none" stroke="#2b2f36" stroke-width="2.6" stroke-linejoin="round" stroke-linecap="round" style="--d:.1s"/><path class="a-fade" style="--d:1.1s" d="M265 151.4371533940148L295 109.43715339401481V149.4371533940148Z" fill="#d24f38" fill-opacity=".16"/><path class="a-fade" style="--d:1.1s" d="M265 151.4371533940148L295 129.4371533940148" stroke="#d24f38" stroke-width="2.6" stroke-dasharray="5 4"/><circle class="a-pop h-pulse" style="--d:1.3s" cx="295" cy="129.4371533940148" r="6.5" fill="#d24f38"/><text x="265" y="222" class="t13" text-anchor="middle" fill="#5d636b">Today</text><text x="44" y="42" class="t13 b">PM<tspan dy="3" font-size="9.5">2.5</tspan></text><g class="a-fade" style="--d:.2s"><circle cx="350" cy="84" r="34" fill="#eaf2fb" stroke="#c7d6ea" stroke-width="1.5"/><ellipse cx="350" cy="84" rx="14" ry="34" fill="none" stroke="#c7d6ea" stroke-width="1.3"/><path d="M316 84H384M320 68H380M320 100H380" stroke="#c7d6ea" stroke-width="1.3"/></g><circle class="a-pop h-pulse" style="--d:0.40s;--w:0.00s" cx="338" cy="72" r="3.6" fill="#d24f38"/><circle class="a-pop h-pulse" style="--d:0.52s;--w:0.25s" cx="362" cy="90" r="3.6" fill="#e3a21a"/><circle class="a-pop h-pulse" style="--d:0.64s;--w:0.50s" cx="344" cy="104" r="3.6" fill="#2e9467"/><circle class="a-pop h-pulse" style="--d:0.76s;--w:0.75s" cx="366" cy="66" r="3.6" fill="#d24f38"/><text x="350" y="148" class="t14 b" text-anchor="middle">Next day</text><text x="350" y="170" class="t13" text-anchor="middle" fill="#5d636b">forecast</text></svg>
     </a>
@@ -793,7 +1258,7 @@
       <p class="app-links"><a href="https://kapil2020.github.io/global-PM-2.5-next-day-forecasting/">Open viewer <svg class="i" aria-hidden="true"><use href="#i-out"></use></svg></a><a href="https://github.com/kapil2020/global-PM-2.5-next-day-forecasting">Code <svg class="i" aria-hidden="true"><use href="#i-code"></use></svg></a></p>
     </div>
   </article>
-  <article class="app">
+  <article class="app m-card">
     <a class="app-fig" href="https://github.com/kapil2020/india-air-quality-dashboard" tabindex="-1" aria-hidden="true">
       <svg class="app-svg" viewBox="0 0 400 250" role="img" aria-label="India air-quality dashboard: an AQI gauge and bars comparing cities"><rect x="14" y="14" width="372" height="222" rx="12" fill="#fff" stroke="#e1e5ea"/><path d="M14 26a12 12 0 0 1 12-12h348a12 12 0 0 1 12 12V42H14z" fill="#f1f3f5"/><circle cx="30" cy="28" r="3.5" fill="#cfd4da"/><circle cx="42" cy="28" r="3.5" fill="#cfd4da"/><circle cx="54" cy="28" r="3.5" fill="#cfd4da"/><text x="72" y="33" class="t13 b">Air quality, India</text><circle class="h-pulse" cx="364" cy="28" r="4" fill="#2e9467"/><path d="M40.0 170.0A62 62 0 0 1 50.8 135.1" fill="none" stroke="#2e9467" stroke-width="13"/><path d="M51.8 133.6A62 62 0 0 1 81.1 111.6" fill="none" stroke="#86a83a" stroke-width="13"/><path d="M82.8 111.0A62 62 0 0 1 119.4 110.5" fill="none" stroke="#e3a21a" stroke-width="13"/><path d="M121.2 111.0A62 62 0 0 1 151.0 132.1" fill="none" stroke="#df7a2e" stroke-width="13"/><path d="M152.2 133.6A62 62 0 0 1 164.0 168.1" fill="none" stroke="#d24f38" stroke-width="13"/><g class="a-needle h-swing"><path d="M102 170L132.6 133.0" stroke="#2b2f36" stroke-width="3.2" stroke-linecap="round"/></g><circle cx="102" cy="170" r="6" fill="#2b2f36"/><text x="102" y="200" class="t14 b" text-anchor="middle">AQI</text><rect x="206" y="64" width="28" height="10" rx="3" fill="#e1e5ea"/><rect class="a-grow" style="--d:0.25s" x="242" y="64" width="118" height="10" rx="5" fill="#d24f38"/><rect x="206" y="90" width="28" height="10" rx="3" fill="#e1e5ea"/><rect class="a-grow" style="--d:0.33s" x="242" y="90" width="104" height="10" rx="5" fill="#df7a2e"/><rect x="206" y="116" width="28" height="10" rx="3" fill="#e1e5ea"/><rect class="a-grow" style="--d:0.41s" x="242" y="116" width="90" height="10" rx="5" fill="#df7a2e"/><rect x="206" y="142" width="28" height="10" rx="3" fill="#e1e5ea"/><rect class="a-grow" style="--d:0.49s" x="242" y="142" width="72" height="10" rx="5" fill="#e3a21a"/><rect x="206" y="168" width="28" height="10" rx="3" fill="#e1e5ea"/><rect class="a-grow" style="--d:0.57s" x="242" y="168" width="56" height="10" rx="5" fill="#86a83a"/><rect x="206" y="194" width="28" height="10" rx="3" fill="#e1e5ea"/><rect class="a-grow" style="--d:0.65s" x="242" y="194" width="40" height="10" rx="5" fill="#2e9467"/></svg>
     </a>
@@ -805,7 +1270,7 @@
       <p class="app-links"><a href="https://github.com/kapil2020/india-air-quality-dashboard">Code <svg class="i" aria-hidden="true"><use href="#i-code"></use></svg></a></p>
     </div>
   </article>
-  <article class="app">
+  <article class="app m-card">
     <a class="app-fig" href="https://kapil2020.github.io/cycling-dashboard/" tabindex="-1" aria-hidden="true">
       <svg class="app-svg" viewBox="0 0 400 250" role="img" aria-label="Cycling and motorcycle mode-share dashboard: cities on a globe and the share of each mode by city"><g class="a-fade" style="--d:.1s"><circle cx="104" cy="125" r="86" fill="#eaf2fb" stroke="#c7d6ea" stroke-width="1.5"/><ellipse cx="104" cy="125" rx="34" ry="86" fill="none" stroke="#c7d6ea" stroke-width="1.3"/><ellipse cx="104" cy="125" rx="66" ry="86" fill="none" stroke="#c7d6ea" stroke-width="1.3"/><path d="M18 125H190M28 85H180M28 165H180" stroke="#c7d6ea" stroke-width="1.3"/></g><circle class="a-pop h-float" style="--d:0.30s;--w:0.00s" cx="70" cy="92" r="6" fill="#2e9467" stroke="#fff" stroke-width="2"/><circle class="a-pop h-float" style="--d:0.37s;--w:0.20s" cx="118" cy="80" r="6" fill="#e3a21a" stroke="#fff" stroke-width="2"/><circle class="a-pop h-float" style="--d:0.44s;--w:0.40s" cx="92" cy="132" r="6" fill="#e3a21a" stroke="#fff" stroke-width="2"/><circle class="a-pop h-float" style="--d:0.51s;--w:0.60s" cx="140" cy="120" r="6" fill="#2e9467" stroke="#fff" stroke-width="2"/><circle class="a-pop h-float" style="--d:0.58s;--w:0.80s" cx="60" cy="150" r="6" fill="#2e9467" stroke="#fff" stroke-width="2"/><circle class="a-pop h-float" style="--d:0.65s;--w:1.00s" cx="126" cy="164" r="6" fill="#e3a21a" stroke="#fff" stroke-width="2"/><circle class="a-pop h-float" style="--d:0.72s;--w:1.20s" cx="100" cy="100" r="6" fill="#2e9467" stroke="#fff" stroke-width="2"/><circle class="a-pop h-float" style="--d:0.79s;--w:1.40s" cx="150" cy="150" r="6" fill="#e3a21a" stroke="#fff" stroke-width="2"/><g stroke="#2e9467" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><circle cx="210" cy="40" r="5"/><circle cx="228" cy="40" r="5"/><path d="M210 40l5-9h9l4 9M215 31l4 9M224 31v-4"/></g><text x="238" y="45" class="t13">Cycling</text><g stroke="#e3a21a" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><circle cx="292" cy="40" r="5"/><circle cx="310" cy="40" r="5"/><path d="M292 40l6-8h8l4 8M298 32l-2-4h-4M306 32l3-5"/></g><text x="320" y="45" class="t13">Motorcycle</text><g class="a-grow" style="--d:0.30s"><rect x="204" y="78" width="109.1" height="14" rx="3" fill="#2e9467"/><rect x="313.1" y="78" width="66.9" height="14" rx="3" fill="#e3a21a"/></g><g class="a-grow" style="--d:0.38s"><rect x="204" y="106" width="66.9" height="14" rx="3" fill="#2e9467"/><rect x="270.9" y="106" width="109.1" height="14" rx="3" fill="#e3a21a"/></g><g class="a-grow" style="--d:0.46s"><rect x="204" y="134" width="88.0" height="14" rx="3" fill="#2e9467"/><rect x="292.0" y="134" width="88.0" height="14" rx="3" fill="#e3a21a"/></g><g class="a-grow" style="--d:0.54s"><rect x="204" y="162" width="42.2" height="14" rx="3" fill="#2e9467"/><rect x="246.2" y="162" width="133.8" height="14" rx="3" fill="#e3a21a"/></g><g class="a-grow" style="--d:0.62s"><rect x="204" y="190" width="123.2" height="14" rx="3" fill="#2e9467"/><rect x="327.2" y="190" width="52.8" height="14" rx="3" fill="#e3a21a"/></g></svg>
     </a>
@@ -817,7 +1282,7 @@
       <p class="app-links"><a href="https://kapil2020.github.io/cycling-dashboard/">Open dashboard <svg class="i" aria-hidden="true"><use href="#i-out"></use></svg></a><a href="https://github.com/kapil2020/cycling-dashboard">Code <svg class="i" aria-hidden="true"><use href="#i-code"></use></svg></a></p>
     </div>
   </article>
-  <article class="app">
+  <article class="app m-card">
     <a class="app-fig" href="https://kapil2020.github.io/Bharat-Districts-Explorer/" tabindex="-1" aria-hidden="true">
       <svg class="app-svg" viewBox="0 0 400 250" role="img" aria-label="Bharat Districts Explorer: a grid of districts shaded by a statistic, with one district selected and its values shown"><polygon class="a-pop h-wave" style="--d:0.11s;--w:0.37s" points="105.8,23.8 105.8,36.2 95.0,42.5 84.1,36.2 84.1,23.8 95.0,17.5" fill="#5b8fd2" stroke="#fff" stroke-width="1.5"/><polygon class="a-pop h-wave" style="--d:0.15s;--w:0.45s" points="127.4,23.8 127.4,36.2 116.6,42.5 105.8,36.2 105.8,23.8 116.6,17.5" fill="#5b8fd2" stroke="#fff" stroke-width="1.5"/><polygon class="a-pop h-wave" style="--d:0.06s;--w:0.32s" points="95.0,42.5 95.0,55.0 84.1,61.2 73.3,55.0 73.3,42.5 84.1,36.2" fill="#5b8fd2" stroke="#fff" stroke-width="1.5"/><polygon class="a-pop h-wave" style="--d:0.11s;--w:0.41s" points="116.6,42.5 116.6,55.0 105.8,61.2 95.0,55.0 95.0,42.5 105.8,36.2" fill="#5b8fd2" stroke="#fff" stroke-width="1.5"/><polygon class="a-pop h-wave" style="--d:0.16s;--w:0.49s" points="138.3,42.5 138.3,55.0 127.4,61.2 116.6,55.0 116.6,42.5 127.4,36.2" fill="#5b8fd2" stroke="#fff" stroke-width="1.5"/><polygon class="a-pop h-wave" style="--d:0.21s;--w:0.57s" points="159.9,42.5 159.9,55.0 149.1,61.2 138.3,55.0 138.3,42.5 149.1,36.2" fill="#8db2e3" stroke="#fff" stroke-width="1.5"/><polygon class="a-pop h-wave" style="--d:0.04s;--w:0.28s" points="84.1,61.2 84.1,73.8 73.3,80.0 62.5,73.8 62.5,61.2 73.3,55.0" fill="#8db2e3" stroke="#fff" stroke-width="1.5"/><polygon class="a-pop h-wave" style="--d:0.09s;--w:0.37s" points="105.8,61.2 105.8,73.8 95.0,80.0 84.1,73.8 84.1,61.2 95.0,55.0" fill="#5b8fd2" stroke="#fff" stroke-width="1.5"/><polygon class="a-pop h-wave" style="--d:0.14s;--w:0.45s" points="127.4,61.2 127.4,73.8 116.6,80.0 105.8,73.8 105.8,61.2 116.6,55.0" fill="#5b8fd2" stroke="#fff" stroke-width="1.5"/><polygon class="a-pop h-wave" style="--d:0.19s;--w:0.53s" points="149.1,61.2 149.1,73.8 138.3,80.0 127.4,73.8 127.4,61.2 138.3,55.0" fill="#5b8fd2" stroke="#fff" stroke-width="1.5"/><polygon class="a-pop h-wave" style="--d:0.24s;--w:0.62s" points="170.7,61.2 170.7,73.8 159.9,80.0 149.1,73.8 149.1,61.2 159.9,55.0" fill="#8db2e3" stroke="#fff" stroke-width="1.5"/><polygon class="a-pop h-wave" style="--d:0.29s;--w:0.70s" points="192.4,61.2 192.4,73.8 181.6,80.0 170.7,73.8 170.7,61.2 181.6,55.0" fill="#8db2e3" stroke="#fff" stroke-width="1.5"/><polygon class="a-pop h-wave" style="--d:0.34s;--w:0.78s" points="214.0,61.2 214.0,73.8 203.2,80.0 192.4,73.8 192.4,61.2 203.2,55.0" fill="#8db2e3" stroke="#fff" stroke-width="1.5"/><polygon class="a-pop h-wave" style="--d:0.06s;--w:0.24s" points="73.3,80.0 73.3,92.5 62.5,98.8 51.7,92.5 51.7,80.0 62.5,73.8" fill="#8db2e3" stroke="#fff" stroke-width="1.5"/><polygon class="a-pop h-wave" style="--d:0.08s;--w:0.32s" points="95.0,80.0 95.0,92.5 84.1,98.8 73.3,92.5 73.3,80.0 84.1,73.8" fill="#5b8fd2" stroke="#fff" stroke-width="1.5"/><polygon class="a-pop h-wave" style="--d:0.13s;--w:0.41s" points="116.6,80.0 116.6,92.5 105.8,98.8 95.0,92.5 95.0,80.0 105.8,73.8" fill="#5b8fd2" stroke="#fff" stroke-width="1.5"/><polygon class="a-pop h-wave" style="--d:0.17s;--w:0.49s" points="138.3,80.0 138.3,92.5 127.4,98.8 116.6,92.5 116.6,80.0 127.4,73.8" fill="#5b8fd2" stroke="#fff" stroke-width="1.5"/><polygon class="a-pop h-wave" style="--d:0.22s;--w:0.57s" points="159.9,80.0 159.9,92.5 149.1,98.8 138.3,92.5 138.3,80.0 149.1,73.8" fill="#8db2e3" stroke="#fff" stroke-width="1.5"/><polygon class="a-pop h-wave" style="--d:0.27s;--w:0.66s" points="181.6,80.0 181.6,92.5 170.7,98.8 159.9,92.5 159.9,80.0 170.7,73.8" fill="#8db2e3" stroke="#fff" stroke-width="1.5"/><polygon class="a-pop h-wave" style="--d:0.32s;--w:0.74s" points="203.2,80.0 203.2,92.5 192.4,98.8 181.6,92.5 181.6,80.0 192.4,73.8" fill="#5b8fd2" stroke="#fff" stroke-width="1.5"/><polygon class="a-pop h-wave" style="--d:0.37s;--w:0.82s" points="224.9,80.0 224.9,92.5 214.0,98.8 203.2,92.5 203.2,80.0 214.0,73.8" fill="#5b8fd2" stroke="#fff" stroke-width="1.5"/><polygon class="a-pop h-wave" style="--d:0.11s;--w:0.20s" points="62.5,98.8 62.5,111.2 51.7,117.5 40.8,111.2 40.8,98.8 51.7,92.5" fill="#b8d0f0" stroke="#fff" stroke-width="1.5"/><polygon class="a-pop h-wave" style="--d:0.11s;--w:0.28s" points="84.1,98.8 84.1,111.2 73.3,117.5 62.5,111.2 62.5,98.8 73.3,92.5" fill="#8db2e3" stroke="#fff" stroke-width="1.5"/><polygon class="a-pop h-wave" style="--d:0.14s;--w:0.37s" points="105.8,98.8 105.8,111.2 95.0,117.5 84.1,111.2 84.1,98.8 95.0,92.5" fill="#8db2e3" stroke="#fff" stroke-width="1.5"/><polygon class="a-pop h-wave" style="--d:0.17s;--w:0.45s" points="127.4,98.8 127.4,111.2 116.6,117.5 105.8,111.2 105.8,98.8 116.6,92.5" fill="#8db2e3" stroke="#fff" stroke-width="1.5"/><polygon class="a-pop h-wave" style="--d:0.21s;--w:0.53s" points="149.1,98.8 149.1,111.2 138.3,117.5 127.4,111.2 127.4,98.8 138.3,92.5" fill="#8db2e3" stroke="#fff" stroke-width="1.5"/><polygon class="a-pop h-wave" style="--d:0.26s;--w:0.62s" points="170.7,98.8 170.7,111.2 159.9,117.5 149.1,111.2 149.1,98.8 159.9,92.5" fill="#5b8fd2" stroke="#fff" stroke-width="1.5"/><polygon class="a-pop h-wave" style="--d:0.31s;--w:0.70s" points="192.4,98.8 192.4,111.2 181.6,117.5 170.7,111.2 170.7,98.8 181.6,92.5" fill="#2f6fca" stroke="#fff" stroke-width="1.5"/><polygon class="a-pop h-wave" style="--d:0.36s;--w:0.78s" points="214.0,98.8 214.0,111.2 203.2,117.5 192.4,111.2 192.4,98.8 203.2,92.5" fill="#2f6fca" stroke="#fff" stroke-width="1.5"/><polygon class="a-pop h-wave" style="--d:0.16s;--w:0.16s" points="51.7,117.5 51.7,130.0 40.8,136.2 30.0,130.0 30.0,117.5 40.8,111.2" fill="#b8d0f0" stroke="#fff" stroke-width="1.5"/><polygon class="a-pop h-wave" style="--d:0.15s;--w:0.24s" points="73.3,117.5 73.3,130.0 62.5,136.2 51.7,130.0 51.7,117.5 62.5,111.2" fill="#b8d0f0" stroke="#fff" stroke-width="1.5"/><polygon class="a-pop h-wave" style="--d:0.16s;--w:0.32s" points="95.0,117.5 95.0,130.0 84.1,136.2 73.3,130.0 73.3,117.5 84.1,111.2" fill="#b8d0f0" stroke="#fff" stroke-width="1.5"/><polygon class="a-pop h-wave" style="--d:0.19s;--w:0.41s" points="116.6,117.5 116.6,130.0 105.8,136.2 95.0,130.0 95.0,117.5 105.8,111.2" fill="#b8d0f0" stroke="#fff" stroke-width="1.5"/><polygon class="a-pop h-wave" style="--d:0.22s;--w:0.49s" points="138.3,117.5 138.3,130.0 127.4,136.2 116.6,130.0 116.6,117.5 127.4,111.2" fill="#8db2e3" stroke="#fff" stroke-width="1.5"/><polygon class="a-pop h-wave" style="--d:0.26s;--w:0.57s" points="159.9,117.5 159.9,130.0 149.1,136.2 138.3,130.0 138.3,117.5 149.1,111.2" fill="#5b8fd2" stroke="#fff" stroke-width="1.5"/><polygon class="a-pop h-wave" style="--d:0.30s;--w:0.66s" points="181.6,117.5 181.6,130.0 170.7,136.2 159.9,130.0 159.9,117.5 170.7,111.2" fill="#1f4f99" stroke="#fff" stroke-width="1.5"/><polygon class="a-pop h-wave" style="--d:0.35s;--w:0.74s" points="203.2,117.5 203.2,130.0 192.4,136.2 181.6,130.0 181.6,117.5 192.4,111.2" fill="#1f4f99" stroke="#fff" stroke-width="1.5"/><polygon class="a-pop h-wave" style="--d:0.21s;--w:0.12s" points="40.8,136.2 40.8,148.8 30.0,155.0 19.2,148.8 19.2,136.2 30.0,130.0" fill="#8db2e3" stroke="#fff" stroke-width="1.5"/><polygon class="a-pop h-wave" style="--d:0.20s;--w:0.20s" points="62.5,136.2 62.5,148.8 51.7,155.0 40.8,148.8 40.8,136.2 51.7,130.0" fill="#b8d0f0" stroke="#fff" stroke-width="1.5"/><polygon class="a-pop h-wave" style="--d:0.20s;--w:0.28s" points="84.1,136.2 84.1,148.8 73.3,155.0 62.5,148.8 62.5,136.2 73.3,130.0" fill="#b8d0f0" stroke="#fff" stroke-width="1.5"/><polygon class="a-pop h-wave" style="--d:0.21s;--w:0.37s" points="105.8,136.2 105.8,148.8 95.0,155.0 84.1,148.8 84.1,136.2 95.0,130.0" fill="#b8d0f0" stroke="#fff" stroke-width="1.5"/><polygon class="a-pop h-wave" style="--d:0.24s;--w:0.45s" points="127.4,136.2 127.4,148.8 116.6,155.0 105.8,148.8 105.8,136.2 116.6,130.0" fill="#b8d0f0" stroke="#fff" stroke-width="1.5"/><polygon class="a-pop h-wave" style="--d:0.27s;--w:0.53s" points="149.1,136.2 149.1,148.8 138.3,155.0 127.4,148.8 127.4,136.2 138.3,130.0" fill="#5b8fd2" stroke="#fff" stroke-width="1.5"/><polygon class="a-pop h-wave" style="--d:0.31s;--w:0.62s" points="170.7,136.2 170.7,148.8 159.9,155.0 149.1,148.8 149.1,136.2 159.9,130.0" fill="#1f4f99" stroke="#fff" stroke-width="1.5"/><polygon class="a-pop h-wave" style="--d:0.35s;--w:0.70s" points="192.4,136.2 192.4,148.8 181.6,155.0 170.7,148.8 170.7,136.2 181.6,130.0" fill="#1f4f99" stroke="#fff" stroke-width="1.5"/><polygon class="a-pop h-wave" style="--d:0.39s;--w:0.78s" points="214.0,136.2 214.0,148.8 203.2,155.0 192.4,148.8 192.4,136.2 203.2,130.0" fill="#1f4f99" stroke="#fff" stroke-width="1.5"/><polygon class="a-pop h-wave" style="--d:0.25s;--w:0.16s" points="51.7,155.0 51.7,167.5 40.8,173.8 30.0,167.5 30.0,155.0 40.8,148.8" fill="#b8d0f0" stroke="#fff" stroke-width="1.5"/><polygon class="a-pop h-wave" style="--d:0.24s;--w:0.24s" points="73.3,155.0 73.3,167.5 62.5,173.8 51.7,167.5 51.7,155.0 62.5,148.8" fill="#dce8f8" stroke="#fff" stroke-width="1.5"/><polygon class="a-pop h-wave" style="--d:0.25s;--w:0.32s" points="95.0,155.0 95.0,167.5 84.1,173.8 73.3,167.5 73.3,155.0 84.1,148.8" fill="#dce8f8" stroke="#fff" stroke-width="1.5"/><polygon class="a-pop h-wave" style="--d:0.26s;--w:0.41s" points="116.6,155.0 116.6,167.5 105.8,173.8 95.0,167.5 95.0,155.0 105.8,148.8" fill="#b8d0f0" stroke="#fff" stroke-width="1.5"/><polygon class="a-pop h-wave" style="--d:0.29s;--w:0.49s" points="138.3,155.0 138.3,167.5 127.4,173.8 116.6,167.5 116.6,155.0 127.4,148.8" fill="#5b8fd2" stroke="#fff" stroke-width="1.5"/><polygon class="a-pop h-wave" style="--d:0.32s;--w:0.57s" points="159.9,155.0 159.9,167.5 149.1,173.8 138.3,167.5 138.3,155.0 149.1,148.8" fill="#1f4f99" stroke="#fff" stroke-width="1.5"/><polygon class="a-pop h-wave" style="--d:0.36s;--w:0.66s" points="181.6,155.0 181.6,167.5 170.7,173.8 159.9,167.5 159.9,155.0 170.7,148.8" fill="#1f4f99" stroke="#fff" stroke-width="1.5"/><polygon class="a-pop h-wave" style="--d:0.40s;--w:0.74s" points="203.2,155.0 203.2,167.5 192.4,173.8 181.6,167.5 181.6,155.0 192.4,148.8" fill="#1f4f99" stroke="#fff" stroke-width="1.5"/><polygon class="a-pop h-wave" style="--d:0.29s;--w:0.28s" points="84.1,173.8 84.1,186.2 73.3,192.5 62.5,186.2 62.5,173.8 73.3,167.5" fill="#dce8f8" stroke="#fff" stroke-width="1.5"/><polygon class="a-pop h-wave" style="--d:0.30s;--w:0.37s" points="105.8,173.8 105.8,186.2 95.0,192.5 84.1,186.2 84.1,173.8 95.0,167.5" fill="#b8d0f0" stroke="#fff" stroke-width="1.5"/><polygon class="a-pop h-wave" style="--d:0.32s;--w:0.45s" points="127.4,173.8 127.4,186.2 116.6,192.5 105.8,186.2 105.8,173.8 116.6,167.5" fill="#5b8fd2" stroke="#fff" stroke-width="1.5"/><polygon class="a-pop h-wave" style="--d:0.34s;--w:0.53s" points="149.1,173.8 149.1,186.2 138.3,192.5 127.4,186.2 127.4,173.8 138.3,167.5" fill="#2f6fca" stroke="#fff" stroke-width="1.5"/><polygon class="a-pop h-wave" style="--d:0.37s;--w:0.62s" points="170.7,173.8 170.7,186.2 159.9,192.5 149.1,186.2 149.1,173.8 159.9,167.5" fill="#2f6fca" stroke="#fff" stroke-width="1.5"/><polygon class="a-pop h-wave" style="--d:0.41s;--w:0.70s" points="192.4,173.8 192.4,186.2 181.6,192.5 170.7,186.2 170.7,173.8 181.6,167.5" fill="#2f6fca" stroke="#fff" stroke-width="1.5"/><polygon class="a-pop h-wave" style="--d:0.44s;--w:0.78s" points="214.0,173.8 214.0,186.2 203.2,192.5 192.4,186.2 192.4,173.8 203.2,167.5" fill="#5b8fd2" stroke="#fff" stroke-width="1.5"/><polygon class="a-pop h-wave" style="--d:0.35s;--w:0.41s" points="116.6,192.5 116.6,205.0 105.8,211.2 95.0,205.0 95.0,192.5 105.8,186.2" fill="#5b8fd2" stroke="#fff" stroke-width="1.5"/><polygon class="a-pop h-wave" style="--d:0.37s;--w:0.49s" points="138.3,192.5 138.3,205.0 127.4,211.2 116.6,205.0 116.6,192.5 127.4,186.2" fill="#5b8fd2" stroke="#fff" stroke-width="1.5"/><polygon class="a-pop h-wave" style="--d:0.39s;--w:0.57s" points="159.9,192.5 159.9,205.0 149.1,211.2 138.3,205.0 138.3,192.5 149.1,186.2" fill="#5b8fd2" stroke="#fff" stroke-width="1.5"/><polygon points="181.6,117.5 181.6,130.0 170.7,136.2 159.9,130.0 159.9,117.5 170.7,111.2" fill="none" stroke="#2b2f36" stroke-width="2.6"/><path class="a-fade" style="--d:.7s" d="M179.7 123.8H262" stroke="#2b2f36" stroke-width="1.6" stroke-dasharray="3 3"/><g class="a-slide" style="--d:.7s"><rect x="262" y="44" width="124" height="138" rx="10" fill="#fff" stroke="#e1e5ea"/><text x="276" y="70" class="t14 b">District</text><rect x="276" y="86" width="40" height="7" rx="3.5" fill="#e1e5ea"/><rect class="a-grow" style="--d:0.90s" x="276" y="97" width="92" height="8" rx="4" fill="#2f6fca"/><rect x="276" y="116" width="40" height="7" rx="3.5" fill="#e1e5ea"/><rect class="a-grow" style="--d:1.00s" x="276" y="127" width="60" height="8" rx="4" fill="#2f6fca"/><rect x="276" y="146" width="40" height="7" rx="3.5" fill="#e1e5ea"/><rect class="a-grow" style="--d:1.10s" x="276" y="157" width="78" height="8" rx="4" fill="#2f6fca"/></g><defs><linearGradient id="ap-b-leg"><stop offset="0" stop-color="#dce8f8"/><stop offset="1" stop-color="#1f4f99"/></linearGradient></defs><rect x="262" y="204" width="124" height="8" rx="4" fill="url(#ap-b-leg)"/></svg>
     </a>
@@ -910,7 +1375,7 @@
   </div>
 </footer>
 
-<script src="assets/js/main.js?v=20260926e" defer></script>
+<script src="assets/js/main.js?v=20260926f" defer></script>
 <script src="assets/js/story.js?v=20260926d" defer></script>
 </body>
 </html>

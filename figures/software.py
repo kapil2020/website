@@ -11,7 +11,8 @@ The drawings carry class names that the stylesheet animates:
   a-draw   a line traces itself in        a-grow / a-growy  a bar grows
   a-pop    a mark pops in                 a-fade / a-slide  fades or slides in
   a-needle the gauge needle swings up     (all once, when the card scrolls into view)
-  h-*      small loops that run while the card is hovered
+  h-*      small loops that run while the card is hovered, or on a touch
+           screen while it sits mid-screen
 --d sets a delay for the entrance; --w a delay for the hover loop.
 """
 
@@ -272,7 +273,7 @@ def card(c):
     cred = f'\n      <p class="app-cred">{c["cred"]}</p>' if c.get('cred') else ''
     tags = ''.join(f'<li>{t}</li>' for t in c['tags'])
     links = ''.join(f'<a href="{u}">{label} {icon}</a>' for label, u, icon in c['links'])
-    return f'''  <article class="app">
+    return f'''  <article class="app m-card">
     <a class="app-fig" href="{c['url']}" tabindex="-1" aria-hidden="true">
       {c['draw']()}
     </a>

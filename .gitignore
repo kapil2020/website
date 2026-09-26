@@ -30,3 +30,6 @@ cv/*.log
 cv/*.fdb_latexmk
 cv/*.fls
 cv/*.synctex.gz
+
+# Images exported by figures/render.js
+figures/export/

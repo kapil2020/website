@@ -1,23 +1,15 @@
 <svg class="fig" viewBox="0 0 400 250" xmlns="http://www.w3.org/2000/svg">
   <!-- J10. Traveller, trip and air-quality awareness go into a learned
        model that predicts mode choice. -->
-  <rect x="14" y="44" width="112" height="34" rx="17" fill="#f1f3f5" stroke="#cfd4da" stroke-width="1.5"/><text class="in" x="70" y="66" text-anchor="middle">Awareness</text><rect x="14" y="100" width="112" height="34" rx="17" fill="#f1f3f5" stroke="#cfd4da" stroke-width="1.5"/><text class="in" x="70" y="122" text-anchor="middle">Trip</text><rect x="14" y="156" width="112" height="34" rx="17" fill="#f1f3f5" stroke="#cfd4da" stroke-width="1.5"/><text class="in" x="70" y="178" text-anchor="middle">Traveller</text>
-  <path class="ln-g" d="M128 61C150 61 150 117 170 117M128 173C150 173 150 117 170 117"/>
-  <path class="ln-g" d="M128 117H168" marker-end="url(#arr-g)"/>
-  <g stroke="#6f56c4" stroke-width="2.4" fill="none">
-    <path d="M222 70 194 117M222 70 250 117M194 117 178 164M194 117 210 164M250 117 234 164M250 117 266 164"/>
+  <g class="a-slide" style="--d:0.00s"><rect x="14" y="44" width="112" height="34" rx="17" fill="#f1f3f5" stroke="#cfd4da" stroke-width="1.5"/><text class="in" x="70" y="66" text-anchor="middle">Awareness</text></g><g class="a-slide" style="--d:0.10s"><rect x="14" y="100" width="112" height="34" rx="17" fill="#f1f3f5" stroke="#cfd4da" stroke-width="1.5"/><text class="in" x="70" y="122" text-anchor="middle">Trip</text></g><g class="a-slide" style="--d:0.20s"><rect x="14" y="156" width="112" height="34" rx="17" fill="#f1f3f5" stroke="#cfd4da" stroke-width="1.5"/><text class="in" x="70" y="178" text-anchor="middle">Traveller</text></g>
+  <g class="a-fade" style="--d:0.30s">
+    <path class="ln-g" d="M128 61C150 61 150 117 170 117M128 173C150 173 150 117 170 117"/>
+    <path class="ln-g" d="M128 117H168" marker-end="url(#arr-g)"/>
   </g>
-  <g fill="#6f56c4">
-    <circle cx="222" cy="70" r="10"/><circle cx="194" cy="117" r="8.5"/><circle cx="250" cy="117" r="8.5"/>
-    <circle cx="178" cy="164" r="7"/><circle cx="210" cy="164" r="7"/><circle cx="234" cy="164" r="7"/><circle cx="266" cy="164" r="7"/>
-  </g>
-  <path class="ln" d="M284 117H310" marker-end="url(#arr)"/>
-  <g class="c-ink">
-    <use href="#car" x="324" y="38" width="32" height="32"/>
-    <use href="#bus" x="324" y="78" width="32" height="32"/>
-    <use href="#bike" x="324" y="118" width="32" height="32"/>
-    <use href="#walk" x="324" y="158" width="32" height="32"/>
-  </g>
+  <path class="a-draw" style="--d:0.40s" d="M222 70 194 117M222 70 250 117M194 117 178 164M194 117 210 164M250 117 234 164M250 117 266 164" stroke="#6f56c4" stroke-width="2.4" fill="none"/>
+  <g fill="#6f56c4"><circle class="a-pop h-wave" style="--d:0.55s;--w:0.00s" cx="222" cy="70" r="10"/><circle class="a-pop h-wave" style="--d:0.70s;--w:0.25s" cx="194" cy="117" r="8.5"/><circle class="a-pop h-wave" style="--d:0.70s;--w:0.25s" cx="250" cy="117" r="8.5"/><circle class="a-pop h-wave" style="--d:0.85s;--w:0.50s" cx="178" cy="164" r="7"/><circle class="a-pop h-wave" style="--d:0.85s;--w:0.50s" cx="210" cy="164" r="7"/><circle class="a-pop h-wave" style="--d:0.85s;--w:0.50s" cx="234" cy="164" r="7"/><circle class="a-pop h-wave" style="--d:0.85s;--w:0.50s" cx="266" cy="164" r="7"/></g>
+  <path class="ln a-fade" style="--d:0.90s" d="M284 117H310" marker-end="url(#arr)"/>
+  <g color="#2b2f36"><use class="a-pop" style="--d:1.00s" href="#car" x="324" y="38" width="32" height="32"/><use class="a-pop" style="--d:1.08s" href="#bus" x="324" y="78" width="32" height="32"/><use class="a-pop" style="--d:1.16s" href="#bike" x="324" y="118" width="32" height="32"/><use class="a-pop" style="--d:1.24s" href="#walk" x="324" y="158" width="32" height="32"/></g>
   <text class="sub" x="70" y="226" text-anchor="middle">Inputs</text>
   <text class="sub" x="222" y="226" text-anchor="middle">Learned model</text>
   <text class="sub" x="340" y="226" text-anchor="middle">Mode</text>

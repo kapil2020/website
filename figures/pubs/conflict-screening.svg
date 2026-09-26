@@ -4,13 +4,8 @@
   <rect x="0" y="92" width="400" height="64" fill="#e3e7eb"/>
   <rect x="168" y="0" width="64" height="200" fill="#e3e7eb"/>
   <path d="M0 124H164M236 124H400M200 0V88M200 160V200" stroke="#fff" stroke-width="2" stroke-dasharray="8 8"/>
-  <rect x="62" y="99" width="44" height="20" rx="6" fill="#2f6fca"/>
-  <rect x="116" y="102" width="24" height="10" rx="5" fill="#6f56c4"/>
-  <rect x="250" y="130" width="78" height="22" rx="5" fill="#e3a21a"/>
-  <rect x="208" y="36" width="20" height="28" rx="6" fill="#2e9467"/>
-  <rect x="182" y="166" width="10" height="24" rx="5" fill="#6f56c4"/>
-  <rect x="20" y="130" width="40" height="19" rx="6" fill="#8f96a0"/>
-  <circle cx="112" cy="110" r="32" fill="none" stroke="#d24f38" stroke-width="2.2" stroke-dasharray="5 5"/>
-  <circle cx="214" cy="160" r="30" fill="none" stroke="#d24f38" stroke-width="2.2" stroke-dasharray="5 5"/>
+  <g class="a-slide" style="--d:0.10s"><rect class="h-drive" style="--d:0.00s;--w:0.00s" x="62" y="99" width="44" height="20" rx="6" fill="#2f6fca"/></g><g class="a-slide" style="--d:0.18s"><rect class="h-drive" style="--d:0.00s;--w:0.30s" x="116" y="102" width="24" height="10" rx="5" fill="#6f56c4"/></g><g class="a-slide" style="--d:0.26s"><rect class="h-drive" style="--d:0.00s;--w:0.60s" x="250" y="130" width="78" height="22" rx="5" fill="#e3a21a"/></g><g class="a-slide" style="--d:0.34s"><rect class="h-drive" style="--d:0.00s;--w:0.90s" x="208" y="36" width="20" height="28" rx="6" fill="#2e9467"/></g><g class="a-slide" style="--d:0.42s"><rect class="h-drive" style="--d:0.00s;--w:1.20s" x="182" y="166" width="10" height="24" rx="5" fill="#6f56c4"/></g><g class="a-slide" style="--d:0.50s"><rect class="h-drive" style="--d:0.00s;--w:1.50s" x="20" y="130" width="40" height="19" rx="6" fill="#8f96a0"/></g>
+  <circle class="a-pop h-pulse" style="--d:0.80s" cx="112" cy="110" r="32" fill="none" stroke="#d24f38" stroke-width="2.2" stroke-dasharray="5 5"/>
+  <circle class="a-pop h-pulse" style="--d:0.95s;--w:0.50s" cx="214" cy="160" r="30" fill="none" stroke="#d24f38" stroke-width="2.2" stroke-dasharray="5 5"/>
   <text x="200" y="232" text-anchor="middle">Closer = more dangerous?</text>
 </svg>

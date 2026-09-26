@@ -59,7 +59,15 @@ function serve() {
       const dupIds = [...document.querySelectorAll('[id]')].map((e) => e.id).filter((v, i, a) => a.indexOf(v) !== i);
       const h1 = document.querySelectorAll('h1').length;
       const bibs = [...document.querySelectorAll('button[data-bib]')].filter((b) => !document.getElementById(b.dataset.bib)).length;
-      return { anchors, local, noAlt, noSize, dupIds, h1, bibs };
+      // Icons, markers, gradients and clip paths inside the drawings.
+      const svgRefs = [...document.querySelectorAll('svg use, svg [marker-end], svg [marker-start], svg [fill^="url"], svg [clip-path]')]
+        .flatMap((e) => [e.getAttribute('href'), e.getAttribute('marker-end'), e.getAttribute('marker-start'),
+          e.getAttribute('fill'), e.getAttribute('clip-path')])
+        .map((v) => v && (v.match(/^#([\w-]+)$/) || v.match(/^url\(#([\w-]+)\)$/)))
+        .filter(Boolean).map((m) => m[1]).filter((id) => !ids.has(id));
+      // Nothing below the fold has started its drawing yet.
+      const early = document.querySelectorAll('#publications .m-card.is-on, #software .m-card.is-on').length;
+      return { anchors, local, noAlt, noSize, dupIds, h1, bibs, svgRefs, early };
     });
 
     r.anchors.length ? bad('in-page links with no target: ' + r.anchors.join(', ')) : ok('every in-page link has a target');
@@ -68,6 +76,8 @@ function serve() {
     r.noAlt ? bad(`${r.noAlt} images without alt`) : ok('every image has alt text');
     r.noSize ? bad(`${r.noSize} images without width/height`) : ok('every image reserves its space');
     r.bibs ? bad(`${r.bibs} BibTeX buttons point at nothing`) : ok('every BibTeX button has its entry');
+    r.svgRefs.length ? bad('drawings point at missing ids: ' + [...new Set(r.svgRefs)].join(', '))
+      : ok('every icon, marker and gradient in the drawings resolves');
 
     for (const u of new Set(r.local)) {
       const res = await p.request.get(new URL(u, BASE).href);
@@ -130,12 +140,21 @@ function serve() {
     }
     clashes.length ? bad('story labels collide: ' + clashes.join('; ')) : ok('story labels stay apart and inside the frame in all six scenes');
 
-    // Software cards draw themselves in once they scroll into view.
-    const armed = await p.evaluate(() => document.querySelector('.apps').classList.contains('anim'));
-    await p.locator('.app').last().scrollIntoViewIfNeeded();
-    await p.waitForTimeout(400);
-    const on = await p.evaluate(() => document.querySelectorAll('.app.is-on').length);
-    armed && on > 0 ? ok(`software cards animate in (${on} of 6 so far)`) : bad('software cards never start their drawings');
+    // Drawings (thumbnails and software) draw themselves in once they
+    // scroll into view, and not before.
+    const armed = await p.evaluate(() => document.documentElement.classList.contains('anim'));
+    const early = r.early;
+    const figs = await p.evaluate(() => document.querySelectorAll('.pub-fig .pubfig, .thrust-fig .pubfig').length);
+    const cards = p.locator('#patent, #j3, .app');
+    for (let i = 0; i < await cards.count(); i++) {
+      await cards.nth(i).scrollIntoViewIfNeeded();
+      await p.waitForTimeout(250);
+    }
+    const on = await p.evaluate(() => [...document.querySelectorAll('#patent, #j3, .app')].filter((c) => c.classList.contains('is-on')).length);
+    const total = await p.evaluate(() => document.querySelectorAll('#patent, #j3, .app').length);
+    figs === 20 ? ok('20 thumbnails drawn inline') : bad(`${figs} inline thumbnails, expected 20`);
+    armed && early === 0 && on === total ? ok('thumbnails and software cards animate in as they scroll into view')
+      : bad(`drawings do not start on scroll (armed ${armed}, early ${early}, on ${on} of ${total})`);
     visible && scenes === 6 ? ok('story drawn, 6 scenes') : bad(`story not drawn (visible ${visible}, scenes ${scenes})`);
     b > a ? ok('story plays while on screen') : bad('story does not advance');
     Math.abs(d - c) < .01 ? ok('story pauses') : bad('pause button does not stop the story');

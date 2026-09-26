@@ -2,23 +2,26 @@
   <!-- J2 / TRB 2027. A stated-choice card: modes compared on time, cost
        and air quality, asked in winter and again in summer. Bars are
        placeholders for attribute levels, not results. -->
-  <rect x="10" y="70" width="100" height="36" rx="18" fill="#fbe2db"/>
-  <use href="#haze" x="20" y="78" width="20" height="20" class="c-red"/>
-  <text class="in" x="45" y="93" style="font-size:16px">Winter</text>
-  <rect x="10" y="128" width="100" height="36" rx="18" fill="#fdf1d6"/>
-  <use href="#sun" x="20" y="136" width="20" height="20" class="c-amber"/>
-  <text class="in" x="45" y="151" style="font-size:16px">Summer</text>
-  <path class="ln-g" d="M112 88H119V146H112M119 117H127" marker-end="url(#arr-g)"/>
-  <path d="M142 26H292a10 10 0 0 1 10 10V64H132V36a10 10 0 0 1 10-10z" fill="#f1f3f5"/>
-  <rect x="132" y="26" width="170" height="178" rx="10" fill="none" stroke="#2b2f36" stroke-width="2"/>
-  <path class="ln-g" d="M132 64H302"/>
-  <use href="#bus" x="208" y="31" width="28" height="28" class="c-ink"/>
-  <use href="#car" x="258" y="31" width="28" height="28" class="c-ink"/>
-  <use href="#clock" x="147" y="81" width="22" height="22" class="c-ink"/>
-  <text x="158" y="139" text-anchor="middle" style="font-size:20px;font-weight:700">&#8377;</text>
-  <use href="#haze" x="146" y="160" width="24" height="24" class="c-red"/>
-  <rect x="205.0" y="88" width="34" height="8" rx="4" fill="#8f96a0"/><rect x="261.0" y="88" width="22" height="8" rx="4" fill="#8f96a0"/><rect x="213.0" y="128" width="18" height="8" rx="4" fill="#8f96a0"/><rect x="253.0" y="128" width="38" height="8" rx="4" fill="#8f96a0"/><rect x="202.0" y="168" width="40" height="8" rx="4" fill="#d24f38"/><rect x="265.0" y="168" width="14" height="8" rx="4" fill="#d24f38"/>
-  <use href="#person" x="322" y="94" width="44" height="44" class="c-ink"/>
-  <text class="sub" x="347" y="166" text-anchor="middle" style="font-size:16px">Mode choice</text>
+  <g class="a-slide"><rect x="10" y="70" width="100" height="36" rx="18" fill="#fbe2db"/>
+    <use href="#haze" x="20" y="78" width="20" height="20" color="#d24f38"/>
+    <text class="in" x="45" y="93" style="font-size:16px">Winter</text></g>
+  <g class="a-slide" style="--d:0.12s"><rect x="10" y="128" width="100" height="36" rx="18" fill="#fdf1d6"/>
+    <use href="#sun" x="20" y="136" width="20" height="20" color="#e3a21a"/>
+    <text class="in" x="45" y="151" style="font-size:16px">Summer</text></g>
+  <path class="ln-g a-fade" style="--d:0.30s" d="M112 88H119V146H112M119 117H127" marker-end="url(#arr-g)"/>
+  <g class="a-fade" style="--d:0.20s">
+    <path d="M142 26H292a10 10 0 0 1 10 10V64H132V36a10 10 0 0 1 10-10z" fill="#f1f3f5"/>
+    <rect x="132" y="26" width="170" height="178" rx="10" fill="none" stroke="#2b2f36" stroke-width="2"/>
+    <path class="ln-g" d="M132 64H302"/>
+    <use href="#bus" x="208" y="31" width="28" height="28" color="#2b2f36"/>
+    <use href="#car" x="258" y="31" width="28" height="28" color="#2b2f36"/>
+  </g>
+  <use class="a-pop" style="--d:0.40s" href="#clock" x="147" y="81" width="22" height="22" color="#2b2f36"/>
+  <use class="a-pop" style="--d:0.45s" href="#rupee" x="148" y="120" width="20" height="20" color="#2b2f36"/>
+  <use class="a-pop h-pulse" style="--d:0.50s" href="#haze" x="146" y="160" width="24" height="24" color="#d24f38"/>
+  <rect class="a-grow" style="--d:0.55s" x="205" y="88" width="34" height="8" rx="4" fill="#8f96a0"/><rect class="a-grow" style="--d:0.61s" x="261" y="88" width="22" height="8" rx="4" fill="#8f96a0"/><rect class="a-grow" style="--d:0.67s" x="213" y="128" width="18" height="8" rx="4" fill="#8f96a0"/><rect class="a-grow" style="--d:0.73s" x="253" y="128" width="38" height="8" rx="4" fill="#8f96a0"/><rect class="a-grow" style="--d:0.79s" x="202" y="168" width="40" height="8" rx="4" fill="#d24f38"/><rect class="a-grow" style="--d:0.85s" x="265" y="168" width="14" height="8" rx="4" fill="#d24f38"/>
+  <use class="a-pop h-float" style="--d:1.00s" href="#person" x="329" y="90" width="44" height="44" color="#2b2f36"/>
+  <text class="sub" x="351" y="156" text-anchor="middle" style="font-size:16px">Mode</text>
+  <text class="sub" x="351" y="177" text-anchor="middle" style="font-size:16px">choice</text>
   <text class="sub" x="217" y="230" text-anchor="middle">Choice experiment</text>
 </svg>

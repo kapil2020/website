@@ -1,13 +1,13 @@
 <svg class="fig" viewBox="0 0 400 250" xmlns="http://www.w3.org/2000/svg">
   <!-- J6. Children travel from home to school by different modes, each
        carrying a personal PM sensor. -->
-  <path d="M64 117C102 117 96 44 134 44H266C304 44 298 117 336 117" fill="none" stroke="#d3d8de" stroke-width="2"/><rect x="162" y="25" width="84" height="38" fill="#fff"/><use href="#walk" x="166" y="27" width="34" height="34" class="c-green"/><use href="#sensor" x="210" y="31" width="26" height="26" class="c-red"/>
-<path d="M64 117C102 117 96 92 134 92H266C304 92 298 117 336 117" fill="none" stroke="#d3d8de" stroke-width="2"/><rect x="162" y="73" width="84" height="38" fill="#fff"/><use href="#bike" x="166" y="75" width="34" height="34" class="c-green"/><use href="#sensor" x="210" y="79" width="26" height="26" class="c-red"/>
-<path d="M64 117C102 117 96 142 134 142H266C304 142 298 117 336 117" fill="none" stroke="#d3d8de" stroke-width="2"/><rect x="162" y="123" width="84" height="38" fill="#fff"/><use href="#auto" x="166" y="125" width="34" height="34" class="c-ink"/><use href="#sensor" x="210" y="129" width="26" height="26" class="c-red"/>
-<path d="M64 117C102 117 96 190 134 190H266C304 190 298 117 336 117" fill="none" stroke="#d3d8de" stroke-width="2"/><rect x="162" y="171" width="84" height="38" fill="#fff"/><use href="#car" x="166" y="173" width="34" height="34" class="c-ink"/><use href="#sensor" x="210" y="177" width="26" height="26" class="c-red"/>
+  <path class="a-draw" style="--d:0.10s" d="M64 117C102 117 96 44 134 44H266C304 44 298 117 336 117" fill="none" stroke="#d3d8de" stroke-width="2"/><rect x="162" y="25" width="84" height="38" fill="#fff"/><use class="a-pop" style="--d:0.55s" href="#walk" x="166" y="27" width="34" height="34" color="#2e9467"/><use class="a-pop h-pulse" style="--d:0.80s;--w:0.00s" href="#sensor" x="210" y="31" width="26" height="26" color="#d24f38"/>
+<path class="a-draw" style="--d:0.18s" d="M64 117C102 117 96 92 134 92H266C304 92 298 117 336 117" fill="none" stroke="#d3d8de" stroke-width="2"/><rect x="162" y="73" width="84" height="38" fill="#fff"/><use class="a-pop" style="--d:0.65s" href="#bike" x="166" y="75" width="34" height="34" color="#2e9467"/><use class="a-pop h-pulse" style="--d:0.90s;--w:0.25s" href="#sensor" x="210" y="79" width="26" height="26" color="#d24f38"/>
+<path class="a-draw" style="--d:0.26s" d="M64 117C102 117 96 142 134 142H266C304 142 298 117 336 117" fill="none" stroke="#d3d8de" stroke-width="2"/><rect x="162" y="123" width="84" height="38" fill="#fff"/><use class="a-pop" style="--d:0.75s" href="#auto" x="166" y="125" width="34" height="34" color="#2b2f36"/><use class="a-pop h-pulse" style="--d:1.00s;--w:0.50s" href="#sensor" x="210" y="129" width="26" height="26" color="#d24f38"/>
+<path class="a-draw" style="--d:0.34s" d="M64 117C102 117 96 190 134 190H266C304 190 298 117 336 117" fill="none" stroke="#d3d8de" stroke-width="2"/><rect x="162" y="171" width="84" height="38" fill="#fff"/><use class="a-pop" style="--d:0.85s" href="#car" x="166" y="173" width="34" height="34" color="#2b2f36"/><use class="a-pop h-pulse" style="--d:1.10s;--w:0.75s" href="#sensor" x="210" y="177" width="26" height="26" color="#d24f38"/>
 
-  <use href="#house" x="8" y="92" width="52" height="52" class="c-ink"/>
-  <use href="#school" x="340" y="90" width="54" height="54" class="c-ink"/>
+  <use class="a-fade" href="#house" x="8" y="92" width="52" height="52" color="#2b2f36"/>
+  <use class="a-fade" style="--d:0.35s" href="#school" x="340" y="90" width="54" height="54" color="#2b2f36"/>
   <text class="sub" x="34" y="170" text-anchor="middle">Home</text>
   <text class="sub" x="367" y="170" text-anchor="middle">School</text>
 </svg>

@@ -1,11 +1,11 @@
 <svg class="fig" viewBox="0 0 400 250" xmlns="http://www.w3.org/2000/svg">
   <!-- J3. A random-utility model and a neural network, joined for mode
        choice prediction. -->
-  <rect x="14" y="70" width="136" height="84" rx="12" fill="#dfeafa" stroke="#2f6fca" stroke-width="2"/>
-  <text x="82" y="121" text-anchor="middle" style="font-size:25px">U = &#946;x + &#949;</text>
-  <path class="ln" d="M166 112H230" marker-start="url(#arr)" marker-end="url(#arr)"/>
-  <path d="M248 80L300 66M248 80L300 101M248 80L300 136M248 80L300 171M248 122L300 66M248 122L300 101M248 122L300 136M248 122L300 171M248 164L300 66M248 164L300 101M248 164L300 136M248 164L300 171M300 66L352 101M300 66L352 136M300 101L352 101M300 101L352 136M300 136L352 101M300 136L352 136M300 171L352 101M300 171L352 136" stroke="#cfc6ef" stroke-width="1.6"/>
-  <g fill="#6f56c4"><circle cx="248" cy="80" r="9.5"/><circle cx="248" cy="122" r="9.5"/><circle cx="248" cy="164" r="9.5"/><circle cx="300" cy="66" r="9.5"/><circle cx="300" cy="101" r="9.5"/><circle cx="300" cy="136" r="9.5"/><circle cx="300" cy="171" r="9.5"/><circle cx="352" cy="101" r="9.5"/><circle cx="352" cy="136" r="9.5"/></g>
+  <g class="a-slide"><rect x="14" y="70" width="136" height="84" rx="12" fill="#dfeafa" stroke="#2f6fca" stroke-width="2"/>
+    <text x="82" y="121" text-anchor="middle" style="font-size:25px">U = &#946;x + &#949;</text></g>
+  <path class="ln a-fade" style="--d:0.30s" d="M166 112H230" marker-start="url(#arr)" marker-end="url(#arr)"/>
+  <path class="a-draw" style="--d:0.35s" d="M248 80L300 66M248 80L300 101M248 80L300 136M248 80L300 171M248 122L300 66M248 122L300 101M248 122L300 136M248 122L300 171M248 164L300 66M248 164L300 101M248 164L300 136M248 164L300 171M300 66L352 101M300 66L352 136M300 101L352 101M300 101L352 136M300 136L352 101M300 136L352 136M300 171L352 101M300 171L352 136" stroke="#cfc6ef" stroke-width="1.6" fill="none"/>
+  <g fill="#6f56c4"><circle class="a-pop h-wave" style="--d:0.55s;--w:0.00s" cx="248" cy="80" r="9.5"/><circle class="a-pop h-wave" style="--d:0.59s;--w:0.00s" cx="248" cy="122" r="9.5"/><circle class="a-pop h-wave" style="--d:0.63s;--w:0.00s" cx="248" cy="164" r="9.5"/><circle class="a-pop h-wave" style="--d:0.73s;--w:0.30s" cx="300" cy="66" r="9.5"/><circle class="a-pop h-wave" style="--d:0.77s;--w:0.30s" cx="300" cy="101" r="9.5"/><circle class="a-pop h-wave" style="--d:0.81s;--w:0.30s" cx="300" cy="136" r="9.5"/><circle class="a-pop h-wave" style="--d:0.85s;--w:0.30s" cx="300" cy="171" r="9.5"/><circle class="a-pop h-wave" style="--d:0.91s;--w:0.60s" cx="352" cy="101" r="9.5"/><circle class="a-pop h-wave" style="--d:0.95s;--w:0.60s" cx="352" cy="136" r="9.5"/></g>
   <text class="sub" x="82" y="204" text-anchor="middle">Econometric theory</text>
   <text class="sub" x="300" y="210" text-anchor="middle">Deep learning</text>
 </svg>

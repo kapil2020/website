@@ -17,6 +17,15 @@
   font-display: swap;
   src: url("../fonts/SourceSans3-Italic.woff2") format("woff2");
 }
+/* Only the two Greek letters one thumbnail needs (β, ε). */
+@font-face {
+  font-family: "Source Sans 3";
+  font-style: normal;
+  font-weight: 200 900;
+  font-display: swap;
+  src: url("../fonts/SourceSans3-Greek.woff2") format("woff2");
+  unicode-range: U+03B2, U+03B5;
+}
 
 :root {
   --text: #1f2328;
@@ -442,14 +451,40 @@ h2 + h3 { margin-top: 18px; }
 .thrust h3 { margin: 0 0 6px; }
 .thrust p { margin: 0; }
 
-/* Thumbnails, in the research thrusts and beside papers. */
-.thrust-fig,
-.pub-fig img {
+/* Thumbnails, in the research thrusts and beside papers: inline SVG from
+   figures/pubs, placed by figures/pubs.py. */
+.pubfig,
+.pub-fig img,
+img.thrust-fig {
+  display: block;
   width: 100%;
   height: auto;
+  aspect-ratio: 8 / 5;
   border: 1px solid var(--rule);
   border-radius: 6px;
+  background: #fff;
   box-shadow: 0 1px 2px rgba(31, 35, 40, .05);
+  font-family: var(--font);
+  transition: transform .25s ease, box-shadow .25s ease;
+}
+.pubfig text { fill: #2b2f36; font-size: 19px; font-weight: 600; }
+.pubfig text.sub { fill: #5d636b; font-size: 18px; }
+.pubfig text.in { font-size: 17px; }
+.pubfig .ln,
+.pubfig .ln-g { fill: none; stroke: #2b2f36; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+.pubfig .ln-g { stroke: #b3bac3; }
+.pubfig .c-ink    { color: #2b2f36; }
+.pubfig .c-grey   { color: #a3aab3; }
+.pubfig .c-blue   { color: #2f6fca; }
+.pubfig .c-red    { color: #d24f38; }
+.pubfig .c-green  { color: #2e9467; }
+.pubfig .c-amber  { color: #e3a21a; }
+.pubfig .c-violet { color: #6f56c4; }
+@media (hover: hover) {
+  .m-card:hover .pubfig {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 22px -14px rgba(31, 35, 40, .4);
+  }
 }
 
 /* ---- Publications ------------------------------------------------------ */
@@ -685,36 +720,57 @@ span.pub-title { color: var(--text); }
 .app-links .i { width: 13px; height: 13px; transition: transform .2s ease; }
 .app-links a:hover .i { transform: translate(2px, -2px); }
 
-/* Motion. Each drawing traces itself in once, when its card first scrolls
-   into view (main.js adds .anim to the grid and .is-on to the card), and
-   comes alive while hovered. Without script or with reduced motion the
-   finished drawing simply shows. */
-.app-svg * { transform-box: fill-box; transform-origin: center; }
-.apps.anim .a-draw { stroke-dasharray: 1; transition: stroke-dashoffset 1.3s cubic-bezier(.3, .7, .2, 1) var(--d, 0s); }
-.apps.anim .a-grow, .apps.anim .a-growy, .apps.anim .a-pop,
-.apps.anim .a-fade, .apps.anim .a-slide, .apps.anim .a-needle {
+/* Motion, for the software drawings and the paper thumbnails. Each drawing
+   traces itself in once, when its card (.m-card) first scrolls into view:
+   main.js adds .anim to <html> and .is-on to the card. While a card is
+   hovered, or on a touch screen while it sits mid-screen (.is-live), parts
+   of the drawing loop: exposure pulses, the clean route flows, vehicles
+   drive, the sun turns. Without script or with reduced motion the finished
+   drawing simply shows.
+
+   Entrances (delay --d): a-draw traces a line, a-grow / a-growy grow a bar
+   across / up, a-pop pops in, a-fade fades in, a-slide slides in from the
+   right, a-drop drops in from above, a-needle swings the gauge up.
+   Loops (delay --w): h-pulse, h-march, h-swing, h-float, h-wave, h-spin,
+   h-drive, h-selA / h-selB. */
+.app-svg *, .pubfig * { transform-box: fill-box; transform-origin: center; }
+.anim .a-draw { stroke-dasharray: 1; transition: stroke-dashoffset 1.3s cubic-bezier(.3, .7, .2, 1) var(--d, 0s); }
+.anim .a-grow, .anim .a-growy, .anim .a-pop, .anim .a-fade,
+.anim .a-slide, .anim .a-drop, .anim .a-needle {
   transition: transform .9s cubic-bezier(.3, .7, .2, 1) var(--d, 0s), opacity .6s ease var(--d, 0s);
 }
 .a-grow  { transform-origin: left center; }
 .a-growy { transform-origin: center bottom; }
-.a-needle, .h-swing { transform-box: view-box; transform-origin: 102px 170px; }
-.apps.anim .app:not(.is-on) .a-draw   { stroke-dashoffset: 1; }
-.apps.anim .app:not(.is-on) .a-grow   { transform: scaleX(0); }
-.apps.anim .app:not(.is-on) .a-growy  { transform: scaleY(0); }
-.apps.anim .app:not(.is-on) .a-pop    { transform: scale(.3); opacity: 0; }
-.apps.anim .app:not(.is-on) .a-fade   { opacity: 0; }
-.apps.anim .app:not(.is-on) .a-slide  { transform: translateX(16px); opacity: 0; }
-.apps.anim .app:not(.is-on) .a-needle { transform: rotate(-120deg); }
+.app-svg .a-needle, .app-svg .h-swing { transform-box: view-box; transform-origin: 102px 170px; }
+.anim .m-card:not(.is-on) .a-draw   { stroke-dashoffset: 1; }
+.anim .m-card:not(.is-on) .a-grow   { transform: scaleX(0); }
+.anim .m-card:not(.is-on) .a-growy  { transform: scaleY(0); }
+.anim .m-card:not(.is-on) .a-pop    { transform: scale(.3); opacity: 0; }
+.anim .m-card:not(.is-on) .a-fade   { opacity: 0; }
+.anim .m-card:not(.is-on) .a-slide  { transform: translateX(16px); opacity: 0; }
+.anim .m-card:not(.is-on) .a-drop   { transform: translateY(-14px); opacity: 0; }
+.anim .m-card:not(.is-on) .a-needle { transform: rotate(-120deg); }
 .h-march { opacity: 0; transition: opacity .3s ease; }
 
+.m-card.is-live .h-pulse { animation: ap-pulse 1.6s ease-in-out infinite var(--w, 0s); }
+.m-card.is-live .h-march { opacity: .95; animation: ap-march .8s linear infinite; }
+.m-card.is-live .h-swing { animation: ap-swing 2.4s ease-in-out infinite; }
+.m-card.is-live .h-float { animation: ap-float 2.2s ease-in-out infinite var(--w, 0s); }
+.m-card.is-live .h-wave  { animation: ap-wave 1.8s ease-in-out infinite var(--w, 0s); }
+.m-card.is-live .h-spin  { animation: ap-spin 9s linear infinite; }
+.m-card.is-live .h-drive { animation: ap-drive 2.4s ease-in-out infinite var(--w, 0s); }
+.m-card.is-live .h-selA  { animation: ap-selA 2.6s steps(1) infinite; }
+.m-card.is-live .h-selB  { animation: ap-selB 2.6s steps(1) infinite; }
 @media (hover: hover) {
-  .app:hover .h-pulse { animation: ap-pulse 1.6s ease-in-out infinite var(--w, 0s); }
-  .app:hover .h-march { opacity: .95; animation: ap-march .8s linear infinite; }
-  .app:hover .h-swing { animation: ap-swing 2.4s ease-in-out infinite; }
-  .app:hover .h-float { animation: ap-float 2.2s ease-in-out infinite var(--w, 0s); }
-  .app:hover .h-wave  { animation: ap-wave 1.8s ease-in-out infinite var(--w, 0s); }
-  .app:hover .h-selA  { animation: ap-selA 2.6s steps(1) infinite; }
-  .app:hover .h-selB  { animation: ap-selB 2.6s steps(1) infinite; }
+  .m-card:hover .h-pulse { animation: ap-pulse 1.6s ease-in-out infinite var(--w, 0s); }
+  .m-card:hover .h-march { opacity: .95; animation: ap-march .8s linear infinite; }
+  .m-card:hover .h-swing { animation: ap-swing 2.4s ease-in-out infinite; }
+  .m-card:hover .h-float { animation: ap-float 2.2s ease-in-out infinite var(--w, 0s); }
+  .m-card:hover .h-wave  { animation: ap-wave 1.8s ease-in-out infinite var(--w, 0s); }
+  .m-card:hover .h-spin  { animation: ap-spin 9s linear infinite; }
+  .m-card:hover .h-drive { animation: ap-drive 2.4s ease-in-out infinite var(--w, 0s); }
+  .m-card:hover .h-selA  { animation: ap-selA 2.6s steps(1) infinite; }
+  .m-card:hover .h-selB  { animation: ap-selB 2.6s steps(1) infinite; }
 }
 @keyframes ap-live  { 0% { box-shadow: 0 0 0 0 rgba(46, 148, 103, .55); } 100% { box-shadow: 0 0 0 7px rgba(46, 148, 103, 0); } }
 @keyframes ap-pulse { 50% { transform: scale(1.14); } }
@@ -722,12 +778,14 @@ span.pub-title { color: var(--text); }
 @keyframes ap-swing { 0%, 100% { transform: rotate(0); } 50% { transform: rotate(-26deg); } }
 @keyframes ap-float { 50% { transform: translateY(-5px); } }
 @keyframes ap-wave  { 50% { opacity: .5; } }
+@keyframes ap-spin  { to { transform: rotate(360deg); } }
+@keyframes ap-drive { 0%, 100% { transform: translateX(0); } 50% { transform: translateX(6px); } }
 @keyframes ap-selA  { 0% { opacity: 0; } 50% { opacity: 1; } }
 @keyframes ap-selB  { 0% { opacity: 1; } 50% { opacity: 0; } }
 
 @media (prefers-reduced-motion: reduce) {
-  .app, .app *, .app *::before { animation: none !important; transition: none !important; }
-  .app:hover, .app:focus-within { transform: none; }
+  .m-card, .m-card *, .m-card *::before { animation: none !important; transition: none !important; }
+  .app:hover, .app:focus-within, .m-card:hover .pubfig { transform: none; }
 }
 
 /* ---- Media ------------------------------------------------------------- */
@@ -806,7 +864,7 @@ span.pub-title { color: var(--text); }
   .press { grid-template-columns: 1fr; gap: 12px; }
   .apps { grid-template-columns: 1fr; gap: 16px; }
   .thrust-fig,
-  .pub-fig img,
+  .pub-fig,
   .press-img img { max-width: 400px; }
 }
 
