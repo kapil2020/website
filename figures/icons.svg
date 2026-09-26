@@ -1,0 +1,144 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="0" height="0" style="position:absolute" aria-hidden="true">
+  <!-- Shared by every figure in figures/pubs. Icons are drawn on a 32 x 32
+       grid in currentColor, so a figure sets the colour with `color`. -->
+  <defs>
+    <marker id="arr" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0 0L10 5L0 10z" fill="#2b2f36"/>
+    </marker>
+    <marker id="arr-g" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0 0L10 5L0 10z" fill="#9aa1ab"/>
+    </marker>
+    <radialGradient id="hot">
+      <stop offset="0" stop-color="#d24f38" stop-opacity=".55"/>
+      <stop offset="1" stop-color="#d24f38" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="smog" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#d9826f" stop-opacity=".45"/>
+      <stop offset="1" stop-color="#d9826f" stop-opacity="0"/>
+    </linearGradient>
+    <linearGradient id="scale" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#2e9467"/>
+      <stop offset=".5" stop-color="#e3a21a"/>
+      <stop offset="1" stop-color="#d24f38"/>
+    </linearGradient>
+  </defs>
+
+  <symbol id="person" viewBox="0 0 32 32">
+    <circle cx="16" cy="7.5" r="5" fill="currentColor"/>
+    <path d="M7 31v-8a9 9 0 0 1 18 0v8z" fill="currentColor"/>
+  </symbol>
+
+  <symbol id="walk" viewBox="0 0 32 32">
+    <circle cx="17.5" cy="4.5" r="3.5" fill="currentColor"/>
+    <path d="M16.5 10 14 19l-4 10M14 19l5 3 1 7M16.5 10l-5 4-1 5M16.5 10l4 5 4 1" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+  </symbol>
+
+  <symbol id="bike" viewBox="0 0 32 32">
+    <g fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="7" cy="22" r="5.5"/><circle cx="25" cy="22" r="5.5"/>
+      <path d="M7 22 12 12h10l-7 10zM12 12l3 10M22 12l3 10M22 12V8h3M10 11h4"/>
+    </g>
+  </symbol>
+
+  <symbol id="bus" viewBox="0 0 32 32">
+    <g fill="none" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round">
+      <rect x="2" y="6" width="28" height="18" rx="3"/>
+      <path d="M2 14h28M9 6v8M16 6v8M23 6v8"/>
+    </g>
+    <circle cx="9" cy="24.5" r="3.2" fill="currentColor"/><circle cx="23" cy="24.5" r="3.2" fill="currentColor"/>
+  </symbol>
+
+  <symbol id="car" viewBox="0 0 32 32">
+    <path d="M3 22v-5l3-1.5L10.5 10h10l5 5.5 3.5 1.5v5z" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round"/>
+    <path d="M11 15.5h14" stroke="currentColor" stroke-width="2"/>
+    <circle cx="9" cy="23" r="3.2" fill="currentColor"/><circle cx="23" cy="23" r="3.2" fill="currentColor"/>
+  </symbol>
+
+  <symbol id="auto" viewBox="0 0 32 32">
+    <path d="M5 23V13a7 7 0 0 1 7-7h8l6 9h2v8z" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round"/>
+    <path d="M5 15h15V6" fill="none" stroke="currentColor" stroke-width="2.2"/>
+    <circle cx="10" cy="24" r="3.2" fill="currentColor"/><circle cx="25" cy="24" r="3.2" fill="currentColor"/>
+  </symbol>
+
+  <symbol id="train" viewBox="0 0 32 32">
+    <g fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="7" y="2" width="18" height="22" rx="4"/>
+      <path d="M7 13h18M11 30l3-6M21 30l-3-6"/>
+    </g>
+    <circle cx="11.5" cy="19" r="1.8" fill="currentColor"/><circle cx="20.5" cy="19" r="1.8" fill="currentColor"/>
+  </symbol>
+
+  <symbol id="sensor" viewBox="0 0 32 32">
+    <g fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round">
+      <rect x="10" y="14" width="12" height="15" rx="2"/>
+      <path d="M12 9.5a6 6 0 0 1 8 0M8.5 5.5a11 11 0 0 1 15 0"/>
+    </g>
+    <circle cx="16" cy="21.5" r="2.4" fill="currentColor"/>
+  </symbol>
+
+  <symbol id="sun" viewBox="0 0 32 32">
+    <circle cx="16" cy="16" r="7" fill="currentColor"/>
+    <path d="M16 1.5v4.5M16 26v4.5M1.5 16H6M26 16h4.5M5.7 5.7l3.2 3.2M23.1 23.1l3.2 3.2M5.7 26.3l3.2-3.2M23.1 8.9l3.2-3.2" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/>
+  </symbol>
+
+  <symbol id="house" viewBox="0 0 32 32">
+    <path d="M3.5 15 16 4.5 28.5 15M7 12.5V29h18V12.5M13 29v-8h6v8" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+  </symbol>
+
+  <symbol id="school" viewBox="0 0 32 32">
+    <g fill="none" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round" stroke-linecap="round">
+      <path d="M2 29h28M5 29V15h22v14M9 15l7-5.5 7 5.5M16 9.5V2.5l6 2-6 2"/>
+      <path d="M13 29v-6h6v6M8 19h3.5M20.5 19H24"/>
+    </g>
+  </symbol>
+
+  <symbol id="doc" viewBox="0 0 32 32">
+    <path d="M7 2.5h12l6.5 6.5v20.5H7z" fill="#fff" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+    <path d="M19 2.5V9h6.5M11 14h10M11 18h10M11 22h7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+  </symbol>
+
+  <symbol id="charger" viewBox="0 0 32 32">
+    <g fill="none" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round" stroke-linecap="round">
+      <rect x="4" y="3" width="15" height="26" rx="2.5"/>
+      <path d="M2 29.5h19M19 12h3.5a3 3 0 0 1 3 3v7.5a2 2 0 0 0 4 0V13l-3-3.5"/>
+    </g>
+    <path d="M13 7.5 8.5 15h4l-2 7 5.5-8.5h-4l2-6z" fill="currentColor"/>
+  </symbol>
+
+  <symbol id="bolt" viewBox="0 0 32 32">
+    <path d="M18.5 2 7 18h8l-2.5 12L25 13h-8z" fill="currentColor"/>
+  </symbol>
+
+  <symbol id="heart" viewBox="0 0 32 32">
+    <path d="M16 28.5S3 20.5 3 11.5a6.5 6.5 0 0 1 13-2.2 6.5 6.5 0 0 1 13 2.2c0 9-13 17-13 17z" fill="currentColor"/>
+  </symbol>
+
+  <symbol id="haze" viewBox="0 0 32 32">
+    <path d="M3 9c3.5-3 7.5 3 11 0s7.5-3 11 0M3 16c3.5-3 7.5 3 11 0s7.5-3 11 0M3 23c3.5-3 7.5 3 11 0s7.5-3 11 0" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/>
+  </symbol>
+
+  <symbol id="pin" viewBox="0 0 32 32">
+    <path d="M16 31s-10-10-10-18a10 10 0 0 1 20 0c0 8-10 18-10 18z" fill="currentColor"/>
+    <circle cx="16" cy="13" r="4" fill="#fff"/>
+  </symbol>
+
+  <symbol id="check" viewBox="0 0 32 32">
+    <path d="M6 17l6.5 6.5L26 9" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/>
+  </symbol>
+
+  <symbol id="clock" viewBox="0 0 32 32">
+    <circle cx="16" cy="16" r="12" fill="none" stroke="currentColor" stroke-width="2.4"/>
+    <path d="M16 9v7.5l5 3" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+  </symbol>
+
+  <symbol id="search" viewBox="0 0 32 32">
+    <circle cx="13.5" cy="13.5" r="8.5" fill="#fff" fill-opacity=".85" stroke="currentColor" stroke-width="2.8"/>
+    <path d="M20 20l8.5 8.5" stroke="currentColor" stroke-width="3.4" stroke-linecap="round"/>
+  </symbol>
+
+  <symbol id="shield" viewBox="0 0 32 32">
+    <path d="M16 3 5 7v8c0 7 4.5 11.5 11 14 6.5-2.5 11-7 11-14V7z" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round"/>
+    <path d="M11 16l3.5 3.5L21 13" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+  </symbol>
+
+</svg>

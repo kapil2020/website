@@ -1,0 +1,17 @@
+<svg class="fig" viewBox="0 0 400 250" xmlns="http://www.w3.org/2000/svg">
+  <!-- J7. Cycling the first mile from home to a suburban rail station,
+       with the health benefit that comes with it. -->
+  <path d="M12 180H386" class="ln-g"/>
+  <use href="#house" x="14" y="124" width="56" height="56" class="c-ink"/>
+  <path d="M78 166H132" fill="none" stroke="#2e9467" stroke-width="3" stroke-linecap="round" stroke-dasharray="2 8"/>
+  <use href="#bike" x="136" y="116" width="66" height="66" class="c-green"/>
+  <use href="#heart" x="157" y="84" width="24" height="24" class="c-red"/>
+  <path d="M210 166H256" fill="none" stroke="#2e9467" stroke-width="3" stroke-linecap="round" stroke-dasharray="2 8"/>
+  <rect x="262" y="82" width="124" height="10" rx="3" fill="#2b2f36"/>
+  <path d="M272 92V178M376 92V178" class="ln-g"/>
+  <rect x="262" y="174" width="124" height="7" rx="2" fill="#c9cfd6"/>
+  <use href="#train" x="292" y="104" width="66" height="66" class="c-blue"/>
+  <text class="sub" x="42" y="214" text-anchor="middle">Home</text>
+  <text class="sub" x="169" y="214" text-anchor="middle">First mile</text>
+  <text class="sub" x="324" y="214" text-anchor="middle">Suburban rail</text>
+</svg>

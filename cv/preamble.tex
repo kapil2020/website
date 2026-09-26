@@ -7,8 +7,8 @@
 %  what a CV is.
 % =============================================================================
 
-\usepackage[letterpaper, top=0.75in, bottom=0.8in, left=0.85in, right=0.85in,
-            footskip=0.35in]{geometry}
+\usepackage[a4paper, top=19mm, bottom=20mm, left=21mm, right=21mm,
+            footskip=9mm]{geometry}
 
 \usepackage[T1]{fontenc}
 \usepackage[utf8]{inputenc}
@@ -18,6 +18,7 @@
 \usepackage{titlesec}
 \usepackage{etoolbox}
 \usepackage{lastpage}
+\usepackage{needspace}
 \usepackage{fancyhdr}
 \usepackage{xurl}          % lets a long DOI break at the margin
 \usepackage{hyperref}
@@ -50,7 +51,7 @@
 \newcommand{\detail}[1]{{\small\color{muted}#1}}
 
 % Width of the left-hand date/label column. The page hangs off this measure.
-\newlength{\cvlab}\setlength{\cvlab}{0.95in}
+\newlength{\cvlab}\setlength{\cvlab}{25mm}
 
 % --- Section heads ---------------------------------------------------------------
 \titleformat{\section}
@@ -81,11 +82,12 @@
 
 \newcommand{\entry}[2]{\item[#1] #2}
 
-% A position or a degree.
+% A position or a degree: title and place on the first line, institution on
+% the second, detail beneath.
 % \post{dates}{title}{institution}{place}{detail}
 \newcommand{\post}[5]{%
-  \item[#1]\textbf{#2}, #3\ifblank{#4}{}{\hfill #4}%
-  \ifblank{#5}{}{\\[1pt]\detail{#5}}}
+  \item[#1]\textbf{#2}\ifblank{#4}{}{\hfill #4}\\
+  #3\ifblank{#5}{}{\\[1pt]\detail{#5}}}
 
 % One publication.
 % \pub{id}{authors}{year}{title}{venue}{trailing: status, doi}

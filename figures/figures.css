@@ -1,0 +1,25 @@
+/* Shared look for every publication thumbnail. Read by figures/render.js. */
+
+.fig {
+  display: block;
+  width: 400px;
+  height: 250px;
+  background: #fff;
+  font-family: "Source Sans 3", sans-serif;
+}
+.fig text { fill: #2b2f36; font-size: 19px; font-weight: 600; }
+.fig text.sub { fill: #5d636b; font-size: 18px; font-weight: 600; }
+.fig text.in { font-size: 17px; font-weight: 600; }
+.fig .ln  { fill: none; stroke: #2b2f36; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+.fig .ln-g { fill: none; stroke: #b3bac3; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+
+/* Palette: ink, grey, and one hue per idea.
+   blue = models and information, red = pollution and risk,
+   green = clean or active travel, amber = heat, violet = learning. */
+.c-ink    { color: #2b2f36; }
+.c-grey   { color: #a3aab3; }
+.c-blue   { color: #2f6fca; }
+.c-red    { color: #d24f38; }
+.c-green  { color: #2e9467; }
+.c-amber  { color: #e3a21a; }
+.c-violet { color: #6f56c4; }

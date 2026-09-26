@@ -24,7 +24,6 @@
   --rule: #e4e6e9;
   --link: #1d5fb5;
   --link-hover: #0f3f80;
-  --hl: #fff9e0;
   --bg: #ffffff;
   --wrap: 820px;
   --gutter: 24px;
@@ -160,6 +159,11 @@ section > p a:hover,
   color: var(--muted);
   font-size: 18px;
 }
+.glance {
+  margin: 0;
+  color: var(--muted);
+  font-size: 16px;
+}
 .links {
   display: flex;
   flex-wrap: wrap;
@@ -199,7 +203,6 @@ h2 + h3 { margin-top: 18px; }
 .sec-head { margin-bottom: 4px; }
 .sec-head h2 { margin-bottom: 12px; }
 .aside { color: var(--muted); font-size: 16px; }
-.hl-key { background: var(--hl); padding: 1px 3px; margin: 0 -1px; border-radius: 3px; }
 
 /* A date in the margin, text beside it: news, talks, service, awards. */
 .dated {
@@ -227,6 +230,97 @@ h2 + h3 { margin-top: 18px; }
 .projects li { margin-bottom: .6em; }
 .projects li::marker { color: var(--muted); }
 
+/* ---- Research ----------------------------------------------------------- */
+
+.lede { font-size: 18px; }
+
+/* Figure 1: three stages, left to right, with a notch between them that
+   points the way. On phones the stages stack and the notch turns down. */
+.fig1 { margin: 24px 0 30px; }
+.fig1-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  border: 1px solid var(--rule);
+  border-radius: 8px;
+  overflow: hidden;
+}
+.fig1-col {
+  position: relative;
+  padding: 16px 18px 12px;
+  border-top: 3px solid;
+}
+.fig1-col--data  { border-top-color: #2e9467; }
+.fig1-col--model { border-top-color: #6f56c4; }
+.fig1-col--act   { border-top-color: #2f6fca; }
+.fig1-col--data .fig1-h svg  { color: #2e9467; }
+.fig1-col--model .fig1-h svg { color: #6f56c4; }
+.fig1-col--act .fig1-h svg   { color: #2f6fca; }
+.fig1-col + .fig1-col { border-left: 1px solid var(--rule); }
+.fig1-col + .fig1-col::before {
+  content: "";
+  position: absolute;
+  left: -8px;
+  top: 21px;
+  width: 14px;
+  height: 14px;
+  background: #fff;
+  border-top: 1px solid #b3bac3;
+  border-right: 1px solid #b3bac3;
+  transform: rotate(45deg);
+}
+.fig1-h {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  margin: 0 0 8px;
+  font-weight: 600;
+}
+.fig1-h svg { width: 22px; height: 22px; flex: none; }
+.fig1-col ul {
+  margin: 0;
+  padding-left: 1.05em;
+  font-size: 15.5px;
+  line-height: 1.45;
+}
+.fig1-col li { margin-bottom: 5px; }
+.fig1-col li::marker { color: #9aa1ab; }
+.fig1-base {
+  grid-column: 1 / -1;
+  margin: 0;
+  padding: 10px 18px;
+  border-top: 1px solid var(--rule);
+  background: #f7f8fa;
+  color: var(--muted);
+  font-size: 15.5px;
+}
+.fig1-base b { color: var(--text); }
+.fig1 figcaption {
+  margin-top: 8px;
+  color: var(--muted);
+  font-size: 15px;
+}
+.fig1 figcaption b { color: var(--text); }
+
+.thrust {
+  display: grid;
+  grid-template-columns: 220px minmax(0, 1fr);
+  gap: 24px;
+  align-items: start;
+  margin: 0 0 28px;
+}
+.thrust h3 { margin: 0 0 6px; }
+.thrust p { margin: 0; }
+
+/* Thumbnails, in the research thrusts and beside papers. */
+.thrust-fig,
+.pub-fig img {
+  width: 100%;
+  height: auto;
+  border: 1px solid var(--rule);
+  border-radius: 6px;
+  box-shadow: 0 1px 2px rgba(31, 35, 40, .05);
+}
+
 /* ---- Publications ------------------------------------------------------ */
 
 .pubs {
@@ -240,8 +334,7 @@ h2 + h3 { margin-top: 18px; }
   border-radius: 6px;
   line-height: 1.5;
 }
-.pub.hl { background: var(--hl); }
-.pub:target { box-shadow: inset 3px 0 0 var(--link); }
+.pub:target { background: #f2f6fc; }
 
 .pub-title {
   display: block;
@@ -273,6 +366,41 @@ span.pub-title { color: var(--text); }
 }
 .pub-links button:hover { color: var(--link-hover); text-decoration: underline; text-underline-offset: .18em; }
 
+.pubs--fig .pub {
+  display: grid;
+  grid-template-columns: 220px minmax(0, 1fr);
+  gap: 24px;
+  align-items: start;
+  padding-top: 14px;
+  padding-bottom: 14px;
+}
+
+/* Venue and year, abbreviated, ahead of the full name. */
+.badge {
+  display: inline-block;
+  margin-right: 6px;
+  padding: 0 7px;
+  border-radius: 4px;
+  background: #e7effa;
+  color: #1b4f93;
+  font-size: 13.5px;
+  font-weight: 600;
+  font-style: normal;
+  line-height: 1.6;
+  vertical-align: 1px;
+  white-space: nowrap;
+}
+.badge--review { background: #eff1f3; color: #4c525a; }
+.badge--conf   { background: #e5f3ec; color: #1d6644; }
+.badge--patent { background: #fbf0db; color: #7c5305; }
+
+.media-tag {
+  padding: 0 8px;
+  border-radius: 4px;
+  background: #f6efe0;
+  color: #5b4a2a;
+}
+
 /* Conference papers: authors and venue share a line. */
 .pubs--compact .pub { padding-top: 7px; padding-bottom: 7px; }
 .pubs--compact .pub-au,
@@ -290,7 +418,6 @@ span.pub-title { color: var(--text); }
   color: var(--text);
   white-space: pre;
 }
-.pub.hl .bib { background: #fff; }
 
 /* ---- Software ---------------------------------------------------------- */
 
@@ -332,10 +459,13 @@ span.pub-title { color: var(--text); }
 
 /* ---- Small screens ----------------------------------------------------- */
 
-@media (max-width: 720px) {
+@media (max-width: 800px) {
   .top-name { display: none; }
   .top-in { justify-content: center; }
   .top-nav { gap: 18px; }
+}
+
+@media (max-width: 720px) {
 
   .intro {
     grid-template-columns: 1fr;
@@ -345,6 +475,21 @@ span.pub-title { color: var(--text); }
   .intro-photo { order: -1; width: 132px; }
   .intro-photo img { width: 132px; height: 132px; }
   .intro h1 { font-size: 31px; }
+}
+
+@media (max-width: 640px) {
+  .fig1-grid { grid-template-columns: 1fr; }
+  .fig1-col + .fig1-col { border-left: 0; }
+  .fig1-col + .fig1-col::before {
+    left: calc(50% - 7px);
+    top: -10px;
+    transform: rotate(135deg);
+  }
+
+  .thrust,
+  .pubs--fig .pub { grid-template-columns: 1fr; gap: 12px; }
+  .thrust-fig,
+  .pub-fig img { max-width: 400px; }
 }
 
 @media (max-width: 540px) {
@@ -371,7 +516,8 @@ span.pub-title { color: var(--text); }
 @media print {
   .top, .skip, .pub-links, .bib, .foot { display: none !important; }
   body { font-size: 11pt; }
-  .pub.hl { background: none; }
+  .pub-fig, .thrust-fig, .fig1 { display: none; }
+  .pubs--fig .pub, .thrust { display: block; }
   a { color: inherit; }
   main > section { break-inside: auto; }
   .pub { break-inside: avoid; }

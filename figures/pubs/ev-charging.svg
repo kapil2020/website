@@ -1,0 +1,20 @@
+<svg class="fig" viewBox="0 0 400 250" xmlns="http://www.w3.org/2000/svg">
+  <!-- TR-D. What a public charger tells a driver (availability, waiting
+       time, reliability) shapes which charger they choose and trust. -->
+  <path class="ln-g" d="M12 168H128"/>
+  <use href="#charger" x="18" y="64" width="104" height="104" class="c-ink"/>
+  <rect x="140" y="34" width="136" height="150" rx="12" fill="#f6f7f9" stroke="#2b2f36" stroke-width="2"/>
+  <text class="in" x="208" y="62" text-anchor="middle">Charging info</text>
+  <path class="ln-g" d="M152 74H264"/>
+  <use href="#check" x="152" y="88" width="22" height="22" class="c-green"/>
+  <text class="in" x="182" y="105" style="font-weight:500">Available</text>
+  <use href="#clock" x="152" y="120" width="22" height="22" class="c-amber"/>
+  <text class="in" x="182" y="137" style="font-weight:500">Wait time</text>
+  <use href="#shield" x="152" y="152" width="22" height="22" class="c-blue"/>
+  <text class="in" x="182" y="169" style="font-weight:500">Reliability</text>
+  <path class="ln" d="M284 128H306" marker-end="url(#arr)"/>
+  <use href="#car" x="312" y="96" width="72" height="72" class="c-blue"/>
+  <use href="#bolt" x="334" y="84" width="28" height="28" class="c-amber"/>
+  <text class="sub" x="70" y="212" text-anchor="middle">Public charger</text>
+  <text class="sub" x="388" y="212" text-anchor="end">Choice and trust</text>
+</svg>
