@@ -36,8 +36,10 @@ qa.js                       layout and link checks (see below)
   such as venues and dates.
 - One typeface, Source Sans 3, at 17 px. Hierarchy comes from size and weight.
 - The Research section is a short research statement: a lede, Figure 1 (field data, models,
-  decisions) built in HTML so it reflows on phones, three thrusts that cite the papers, and an
-  agenda.
+  decisions) built in HTML so it reflows on phones, and three thrusts that cite the papers.
+- Publications open with the patent and the press coverage, each on a pale highlighter
+  background (`.pub--star`, `.press--star`). In the CV the same two come right after Education,
+  marked by a thin blue rule down the left edge (`\featured`).
 - Journal articles and manuscripts under review have a thumbnail, a venue badge
   (`TRR 2026`; grey for under review, green for conferences) and a one-line summary.
 - The column is 820 px wide. The header drops the name below 800 px; below 720 px the photo
@@ -55,8 +57,8 @@ Everything is in `index.html`.
   `<span class="badge">` (add `badge--review`, `badge--conf` or `badge--patent`), and
   `<p class="pub-note">` is the one-line summary. A `BibTeX` button needs a matching
   `<pre class="bib" id="…" hidden>` with the same id as its `data-bib`.
-- **The counts** (9 journal articles, 7 under review, 17 conference papers) appear in the intro,
-  the Publications heading and the CV's Record line. Update all three when a paper moves.
+- **The counts** (1 patent, 9 journal articles, 7 under review, 17 conference papers) appear in
+  the intro, the Publications heading and the CV's Record line. Update all three when a paper moves.
 - **When a paper is accepted,** move its `<li>` from Under review to Journal articles, change
   the badge class to plain `badge`, and add the DOI link.
 - **Software, talks, service, awards.** Plain lists, one `<li>` each.
