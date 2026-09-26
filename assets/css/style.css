@@ -75,8 +75,7 @@ a:focus-visible, button:focus-visible {
 .intro-text p:not(.links):not(.xmap-flow) a,
 section > p a,
 .projects a,
-.dated a,
-.tools p a {
+.dated a {
   text-decoration: underline;
   text-decoration-color: rgba(29, 95, 181, .28);
   text-decoration-thickness: 1px;
@@ -85,8 +84,7 @@ section > p a,
 .intro-text p:not(.links):not(.xmap-flow) a:hover,
 section > p a:hover,
 .projects a:hover,
-.dated a:hover,
-.tools p a:hover { text-decoration-color: currentColor; }
+.dated a:hover { text-decoration-color: currentColor; }
 
 .muted { color: var(--muted); }
 
@@ -567,15 +565,170 @@ span.pub-title { color: var(--text); }
 
 /* ---- Software ---------------------------------------------------------- */
 
-.tools {
-  list-style: none;
-  margin: 0;
-  padding: 0;
+.apps {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 20px;
+  margin-top: 6px;
 }
-.tools li { padding: 8px 0 10px; }
-.tool-name { font-weight: 600; }
-.tools p { margin: 1px 0 1px; }
-.tool-meta { color: var(--muted); font-size: 15.5px; }
+.app {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  border: 1px solid var(--rule);
+  border-radius: 12px;
+  background: #fff;
+  transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease;
+}
+.app:hover,
+.app:focus-within {
+  transform: translateY(-3px);
+  border-color: #d3d8de;
+  box-shadow: 0 14px 30px -18px rgba(31, 35, 40, .35);
+}
+.app-fig {
+  display: block;
+  background: #f5f7fa;
+  border-bottom: 1px solid var(--rule);
+}
+.app-svg {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 8 / 5;
+  font-family: var(--font);
+}
+.app-svg text { fill: #2b2f36; font-weight: 500; }
+.app-svg .t13 { font-size: 13px; }
+.app-svg .t14 { font-size: 14px; }
+.app-svg .b { font-weight: 700; }
+.app-body {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  padding: 14px 18px 16px;
+}
+.app-sub {
+  margin: 0;
+  color: var(--muted);
+  font-size: 14.5px;
+}
+.app-name {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 4px 10px;
+  margin: 1px 0 6px;
+  font-size: 19px;
+  line-height: 1.3;
+}
+.app-name a { color: var(--text); }
+.app-name a:hover { color: var(--link); text-decoration: none; }
+.app-live {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 0 8px;
+  border-radius: 999px;
+  background: #e5f3ec;
+  color: #1d6644;
+  font-size: 12.5px;
+  font-weight: 600;
+  line-height: 1.7;
+}
+.app-live::before {
+  content: "";
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #2e9467;
+  animation: ap-live 2s ease-out infinite;
+}
+.app-text {
+  margin: 0 0 10px;
+  font-size: 15.5px;
+  line-height: 1.5;
+}
+.app-cred {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin: 0 0 10px;
+}
+.app-cred .badge { margin: 0; }
+.app-cred .badge:hover { text-decoration: none; filter: brightness(.96); }
+.app-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin: 0 0 14px;
+  padding: 0;
+  list-style: none;
+}
+.app-tags li {
+  padding: 1px 8px;
+  border-radius: 4px;
+  background: #eff1f3;
+  color: #4c525a;
+  font-size: 13px;
+  font-weight: 600;
+}
+.app-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 18px;
+  margin: auto 0 0;
+  font-size: 15.5px;
+  font-weight: 600;
+}
+.app-links a { display: inline-flex; align-items: center; gap: 5px; }
+.app-links .i { width: 13px; height: 13px; transition: transform .2s ease; }
+.app-links a:hover .i { transform: translate(2px, -2px); }
+
+/* Motion. Each drawing traces itself in once, when its card first scrolls
+   into view (main.js adds .anim to the grid and .is-on to the card), and
+   comes alive while hovered. Without script or with reduced motion the
+   finished drawing simply shows. */
+.app-svg * { transform-box: fill-box; transform-origin: center; }
+.apps.anim .a-draw { stroke-dasharray: 1; transition: stroke-dashoffset 1.3s cubic-bezier(.3, .7, .2, 1) var(--d, 0s); }
+.apps.anim .a-grow, .apps.anim .a-growy, .apps.anim .a-pop,
+.apps.anim .a-fade, .apps.anim .a-slide, .apps.anim .a-needle {
+  transition: transform .9s cubic-bezier(.3, .7, .2, 1) var(--d, 0s), opacity .6s ease var(--d, 0s);
+}
+.a-grow  { transform-origin: left center; }
+.a-growy { transform-origin: center bottom; }
+.a-needle, .h-swing { transform-box: view-box; transform-origin: 102px 170px; }
+.apps.anim .app:not(.is-on) .a-draw   { stroke-dashoffset: 1; }
+.apps.anim .app:not(.is-on) .a-grow   { transform: scaleX(0); }
+.apps.anim .app:not(.is-on) .a-growy  { transform: scaleY(0); }
+.apps.anim .app:not(.is-on) .a-pop    { transform: scale(.3); opacity: 0; }
+.apps.anim .app:not(.is-on) .a-fade   { opacity: 0; }
+.apps.anim .app:not(.is-on) .a-slide  { transform: translateX(16px); opacity: 0; }
+.apps.anim .app:not(.is-on) .a-needle { transform: rotate(-120deg); }
+.h-march { opacity: 0; transition: opacity .3s ease; }
+
+@media (hover: hover) {
+  .app:hover .h-pulse { animation: ap-pulse 1.6s ease-in-out infinite var(--w, 0s); }
+  .app:hover .h-march { opacity: .95; animation: ap-march .8s linear infinite; }
+  .app:hover .h-swing { animation: ap-swing 2.4s ease-in-out infinite; }
+  .app:hover .h-float { animation: ap-float 2.2s ease-in-out infinite var(--w, 0s); }
+  .app:hover .h-wave  { animation: ap-wave 1.8s ease-in-out infinite var(--w, 0s); }
+  .app:hover .h-selA  { animation: ap-selA 2.6s steps(1) infinite; }
+  .app:hover .h-selB  { animation: ap-selB 2.6s steps(1) infinite; }
+}
+@keyframes ap-live  { 0% { box-shadow: 0 0 0 0 rgba(46, 148, 103, .55); } 100% { box-shadow: 0 0 0 7px rgba(46, 148, 103, 0); } }
+@keyframes ap-pulse { 50% { transform: scale(1.14); } }
+@keyframes ap-march { to { stroke-dashoffset: -24; } }
+@keyframes ap-swing { 0%, 100% { transform: rotate(0); } 50% { transform: rotate(-26deg); } }
+@keyframes ap-float { 50% { transform: translateY(-5px); } }
+@keyframes ap-wave  { 50% { opacity: .5; } }
+@keyframes ap-selA  { 0% { opacity: 0; } 50% { opacity: 1; } }
+@keyframes ap-selB  { 0% { opacity: 1; } 50% { opacity: 0; } }
+
+@media (prefers-reduced-motion: reduce) {
+  .app, .app *, .app *::before { animation: none !important; transition: none !important; }
+  .app:hover, .app:focus-within { transform: none; }
+}
 
 /* ---- Media ------------------------------------------------------------- */
 
@@ -651,6 +804,7 @@ span.pub-title { color: var(--text); }
   .thrust,
   .pubs--fig .pub,
   .press { grid-template-columns: 1fr; gap: 12px; }
+  .apps { grid-template-columns: 1fr; gap: 16px; }
   .thrust-fig,
   .pub-fig img,
   .press-img img { max-width: 400px; }

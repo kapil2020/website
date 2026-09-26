@@ -19,7 +19,7 @@ the paper thumbnails after editing one (see below).
 ```
 index.html                  all content
 assets/css/style.css        the whole stylesheet
-assets/js/main.js           shows and hides BibTeX (the page works without it)
+assets/js/main.js           shows and hides BibTeX; starts the software drawings on scroll
 assets/js/story.js          "Research in 30 seconds", the animation under the photo
 assets/fonts/               Source Sans 3, roman and italic (variable, latin subset)
 assets/img/portrait.jpg     the photo on the page (square crop of kapil-portrait.jpg)
@@ -27,7 +27,8 @@ assets/img/hindu-*.jpg      press thumbnail and the full print page
 assets/img/favicon.*        monogram K, svg source plus .ico and png sizes
 assets/img/pubs/*.webp      paper thumbnails, drawn from figures/
 figures/                    thumbnail sources (one SVG per paper, shared icons, render script)
-                            and render-story.js, which exports the animation as an MP4
+                            render-story.js, which exports the animation as an MP4, and
+                            software.py, which writes the Software section
 cv/                         the CV: LaTeX source and the built PDF
 qa.js                       layout and link checks (see below)
 ```
@@ -68,7 +69,13 @@ Everything is in `index.html`.
   the intro, the Publications heading and the CV's Record line. Update all three when a paper moves.
 - **When a paper is accepted,** move its `<li>` from Under review to Journal articles, change
   the badge class to plain `badge`, and add the DOI link.
-- **Software, talks, service, awards.** Plain lists, one `<li>` each.
+- **Software.** Edit the `CARDS` list in `figures/software.py` (name, text, tags, links) and
+  run `python3 figures/software.py`; it rewrites the section between the `software:start` and
+  `software:end` comments. Each card's thumbnail is inline SVG drawn by a function in the same
+  file, so it animates and uses the site's font: it traces itself in when the card scrolls into
+  view, and comes alive on hover (the clean route flows, the gauge swings, the survey answer
+  changes). Reduced motion shows the finished drawing.
+- **Talks, service, awards.** Plain lists, one `<li>` each.
 
 ### Research in 30 seconds
 
