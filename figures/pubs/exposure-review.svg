@@ -1,0 +1,17 @@
+<svg class="fig" viewBox="0 0 400 250" xmlns="http://www.w3.org/2000/svg">
+  <!-- J9. A review that follows exposure through perception to travel
+       choices. -->
+  <use href="#doc" x="14" y="72" width="72" height="72" class="c-ink"/>
+  <use href="#doc" x="32" y="60" width="72" height="72" class="c-ink"/>
+  <use href="#doc" x="50" y="48" width="72" height="72" class="c-ink"/>
+  <use href="#search" x="86" y="106" width="54" height="54" class="c-blue"/>
+  <rect x="164" y="22" width="224" height="44" rx="10" fill="#fbe2db" stroke="#d24f38" stroke-width="2"/>
+  <rect x="164" y="103" width="224" height="44" rx="10" fill="#fdf1d6" stroke="#e3a21a" stroke-width="2"/>
+  <rect x="164" y="184" width="224" height="44" rx="10" fill="#dfeafa" stroke="#2f6fca" stroke-width="2"/>
+  <text class="in" x="276" y="50" text-anchor="middle">Exposure to air pollution</text>
+  <text class="in" x="276" y="131" text-anchor="middle">Perception and awareness</text>
+  <text class="in" x="276" y="212" text-anchor="middle">Travel choices</text>
+  <path class="ln" d="M276 68V97" marker-end="url(#arr)"/>
+  <path class="ln" d="M276 149V178" marker-end="url(#arr)"/>
+  <text class="sub" x="78" y="200" text-anchor="middle">Review</text>
+</svg>

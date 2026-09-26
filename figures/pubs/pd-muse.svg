@@ -1,0 +1,22 @@
+<svg class="fig" viewBox="0 0 400 250" xmlns="http://www.w3.org/2000/svg">
+  <!-- TR-C. A nested choice structure, whose likelihood has several
+       peaks, recast so that estimation is a convex program with one
+       optimum. Curves are schematic. -->
+  <rect x="8" y="152" width="58" height="36" rx="18" fill="#eef3fb" stroke="#2f6fca" stroke-width="1.5" stroke-dasharray="3 4"/>
+  <rect x="72" y="152" width="58" height="36" rx="18" fill="#eef3fb" stroke="#2f6fca" stroke-width="1.5" stroke-dasharray="3 4"/>
+  <path class="ln" d="M69 54 37 112M69 54 101 112M37 112 23 170M37 112 51 170M101 112 87 170M101 112 115 170"/>
+  <circle cx="69" cy="54" r="9" fill="#2b2f36"/>
+  <circle cx="37" cy="112" r="8" fill="#2f6fca"/><circle cx="101" cy="112" r="8" fill="#2f6fca"/>
+  <g fill="#fff" stroke="#2b2f36" stroke-width="2">
+    <circle cx="23" cy="170" r="6.5"/><circle cx="51" cy="170" r="6.5"/><circle cx="87" cy="170" r="6.5"/><circle cx="115" cy="170" r="6.5"/>
+  </g>
+  <path class="ln-g" d="M150 40V184H260"/>
+  <path d="M156 178C168 60 186 150 200 100S226 60 236 128 250 170 254 178" fill="none" stroke="#d24f38" stroke-width="3" stroke-linecap="round"/>
+  <path class="ln" d="M268 112H292" marker-end="url(#arr)"/>
+  <path class="ln-g" d="M300 40V184H392"/>
+  <path d="M306 178Q346 -2 386 178" fill="none" stroke="#2f6fca" stroke-width="3" stroke-linecap="round"/>
+  <circle cx="346" cy="88" r="6.5" fill="#2f6fca"/>
+  <text class="sub" x="69" y="218" text-anchor="middle">Nested logit</text>
+  <text class="sub" x="205" y="218" text-anchor="middle">Non-concave</text>
+  <text class="sub" x="346" y="218" text-anchor="middle">Convex</text>
+</svg>

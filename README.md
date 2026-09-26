@@ -13,7 +13,8 @@ One static page in the style of a conventional academic homepage (the layout tha
 [Jon Barron](https://jonbarron.info/), [Ye Yuan](https://ye-yuan.com/) and
 [Vindula Jayawardana](https://vindulamj.github.io/) use): a short bio with a photo and links,
 then news, research, publications, software, media, teaching, service and awards, in one
-column. No framework, no build step and no third-party requests.
+column. No framework and no third-party requests. The only build step is optional: redrawing
+the paper thumbnails after editing one (see below).
 
 ```
 index.html                  all content
@@ -23,6 +24,8 @@ assets/fonts/               Source Sans 3, roman and italic (variable, latin sub
 assets/img/portrait.jpg     the photo on the page (square crop of kapil-portrait.jpg)
 assets/img/hindu-*.jpg      press thumbnail and the full print page
 assets/img/favicon.*        monogram K, svg source plus .ico and png sizes
+assets/img/pubs/*.webp      paper thumbnails, drawn from figures/
+figures/                    thumbnail sources: one SVG per paper, shared icons, render script
 cv/                         the CV: LaTeX source and the built PDF
 qa.js                       layout and link checks (see below)
 ```
@@ -32,9 +35,14 @@ qa.js                       layout and link checks (see below)
 - White page, near-black text, one link blue (`#1d5fb5`). Grey is used only for secondary text
   such as venues and dates.
 - One typeface, Source Sans 3, at 17 px. Hierarchy comes from size and weight.
-- Four representative papers have a pale highlight and a one-sentence summary.
-- The column is 820 px wide. Below 720 px the photo moves above the name; below 540 px dates
-  stack above their entries and the nav drops "Service" so it fits on one line.
+- The Research section is a short research statement: a lede, Figure 1 (field data, models,
+  decisions) built in HTML so it reflows on phones, three thrusts that cite the papers, and an
+  agenda.
+- Journal articles and manuscripts under review have a thumbnail, a venue badge
+  (`TRR 2026`; grey for under review, green for conferences) and a one-line summary.
+- The column is 820 px wide. The header drops the name below 800 px; below 720 px the photo
+  moves above the name; below 640 px thumbnails stack above their papers; below 540 px dates
+  stack above their entries and the nav drops Teaching and Service.
 - Light only, by choice.
 
 ## Editing
@@ -43,12 +51,35 @@ Everything is in `index.html`.
 
 - **News.** Add an `<li>` at the top of the `#news` list: a `<span class="when">` with the
   date and a `<p>` with the text. Keep it to about ten items.
-- **A publication.** Copy an `<li class="pub">` in the right group. Add `hl` to the class to
-  highlight it, and a `<p class="pub-note">` for a one-line summary. A `BibTeX` button needs a
-  matching `<pre class="bib" id="…" hidden>` with the same id as its `data-bib`.
-- **A thumbnail.** There are no paper figures yet. The `.press` block in Media is the pattern
-  to follow if you want to add some.
+- **A publication.** Copy an `<li class="pub">` in the right group. The badge is
+  `<span class="badge">` (add `badge--review`, `badge--conf` or `badge--patent`), and
+  `<p class="pub-note">` is the one-line summary. A `BibTeX` button needs a matching
+  `<pre class="bib" id="…" hidden>` with the same id as its `data-bib`.
+- **The counts** (9 journal articles, 7 under review, 17 conference papers) appear in the intro,
+  the Publications heading and the CV's Record line. Update all three when a paper moves.
+- **When a paper is accepted,** move its `<li>` from Under review to Journal articles, change
+  the badge class to plain `badge`, and add the DOI link.
 - **Software, talks, service, awards.** Plain lists, one `<li>` each.
+
+### Paper thumbnails
+
+Each thumbnail is a schematic of the study (its setting or its method), not a figure from the
+paper, and says so in the footer. The sources are in `figures/`:
+
+- `figures/pubs/NAME.svg` is one drawing on a 400 × 250 canvas
+- `figures/icons.svg` holds the shared icons (people, modes, sensor, sun, charger…) and arrows
+- `figures/figures.css` holds the type and the palette: blue for models and information, red for
+  pollution and risk, green for clean or active travel, amber for heat, violet for learning
+
+```bash
+npm i --no-save playwright
+node figures/render.js                 # all thumbnails → assets/img/pubs/*.webp
+node figures/render.js pd-muse         # just one
+node figures/render.js --sheet s.png   # plus a contact sheet to review
+```
+
+To use a real figure from a paper instead, save it as `assets/img/pubs/NAME.webp` (400 × 250,
+or any 8:5 image) and point the `<img>` at it.
 
 **Change the cache key when you edit CSS or JS.** `index.html` loads them as
 `style.css?v=YYYYMMDDx`. Without a new key, a returning visitor can get the new HTML with the old
@@ -56,10 +87,10 @@ stylesheet. Change every `?v=` together.
 
 ## The CV
 
-`cv/Kapil-Kumar-Meena-CV.tex`, with page, type and macros in `cv/preamble.tex`. US Letter,
-Charter (XCharter) at 10 pt, small-caps section headings, one dark blue for links. Published
-papers, manuscripts under review, conference papers and the patent are listed separately and
-numbered newest-first.
+`cv/Kapil-Kumar-Meena-CV.tex`, with page, type and macros in `cv/preamble.tex`. A4 (the size
+Indian institutes expect), Charter (XCharter) at 10 pt, small-caps section headings, one dark
+blue for links. It opens with interests and a one-line record, and lists published papers,
+manuscripts under review, conference papers and the patent separately, numbered newest-first.
 
 | Macro | For |
 | --- | --- |

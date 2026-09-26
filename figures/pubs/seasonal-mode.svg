@@ -1,0 +1,24 @@
+<svg class="fig" viewBox="0 0 400 250" xmlns="http://www.w3.org/2000/svg">
+  <!-- J2 / TRB 2027. A stated-choice card: modes compared on time, cost
+       and air quality, asked in winter and again in summer. Bars are
+       placeholders for attribute levels, not results. -->
+  <rect x="10" y="70" width="100" height="36" rx="18" fill="#fbe2db"/>
+  <use href="#haze" x="20" y="78" width="20" height="20" class="c-red"/>
+  <text class="in" x="45" y="93" style="font-size:16px">Winter</text>
+  <rect x="10" y="128" width="100" height="36" rx="18" fill="#fdf1d6"/>
+  <use href="#sun" x="20" y="136" width="20" height="20" class="c-amber"/>
+  <text class="in" x="45" y="151" style="font-size:16px">Summer</text>
+  <path class="ln-g" d="M112 88H119V146H112M119 117H127" marker-end="url(#arr-g)"/>
+  <path d="M142 26H292a10 10 0 0 1 10 10V64H132V36a10 10 0 0 1 10-10z" fill="#f1f3f5"/>
+  <rect x="132" y="26" width="170" height="178" rx="10" fill="none" stroke="#2b2f36" stroke-width="2"/>
+  <path class="ln-g" d="M132 64H302"/>
+  <use href="#bus" x="208" y="31" width="28" height="28" class="c-ink"/>
+  <use href="#car" x="258" y="31" width="28" height="28" class="c-ink"/>
+  <use href="#clock" x="147" y="81" width="22" height="22" class="c-ink"/>
+  <text x="158" y="139" text-anchor="middle" style="font-size:20px;font-weight:700">&#8377;</text>
+  <use href="#haze" x="146" y="160" width="24" height="24" class="c-red"/>
+  <rect x="205.0" y="88" width="34" height="8" rx="4" fill="#8f96a0"/><rect x="261.0" y="88" width="22" height="8" rx="4" fill="#8f96a0"/><rect x="213.0" y="128" width="18" height="8" rx="4" fill="#8f96a0"/><rect x="253.0" y="128" width="38" height="8" rx="4" fill="#8f96a0"/><rect x="202.0" y="168" width="40" height="8" rx="4" fill="#d24f38"/><rect x="265.0" y="168" width="14" height="8" rx="4" fill="#d24f38"/>
+  <use href="#person" x="322" y="94" width="44" height="44" class="c-ink"/>
+  <text class="sub" x="347" y="166" text-anchor="middle" style="font-size:16px">Mode choice</text>
+  <text class="sub" x="217" y="230" text-anchor="middle">Choice experiment</text>
+</svg>

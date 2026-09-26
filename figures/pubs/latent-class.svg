@@ -1,0 +1,13 @@
+<svg class="fig" viewBox="0 0 400 250" xmlns="http://www.w3.org/2000/svg">
+  <!-- J1. Commuters, unsorted on the left, fall into latent classes that
+       weigh exposure differently. Schematic: no estimates are shown. -->
+  <g class="c-grey"><use href="#person" x="16" y="58" width="28" height="28"/><use href="#person" x="46" y="58" width="28" height="28"/><use href="#person" x="76" y="58" width="28" height="28"/><use href="#person" x="106" y="58" width="28" height="28"/><use href="#person" x="16" y="100" width="28" height="28"/><use href="#person" x="46" y="100" width="28" height="28"/><use href="#person" x="76" y="100" width="28" height="28"/><use href="#person" x="106" y="100" width="28" height="28"/><use href="#person" x="16" y="142" width="28" height="28"/><use href="#person" x="46" y="142" width="28" height="28"/><use href="#person" x="76" y="142" width="28" height="28"/><use href="#person" x="106" y="142" width="28" height="28"/></g>
+  <path class="ln" d="M148 114h38" marker-end="url(#arr)"/>
+  <text class="sub" x="386" y="34" text-anchor="end">Weight on exposure</text>
+  <g class="c-blue"><use href="#person" x="200" y="51" width="30" height="30"/><use href="#person" x="228" y="51" width="30" height="30"/></g><rect x="272" y="60" width="112" height="12" rx="6" fill="#eceff2"/><rect x="272" y="60" width="28" height="12" rx="6" fill="#2f6fca"/>
+<g class="c-amber"><use href="#person" x="200" y="99" width="30" height="30"/><use href="#person" x="228" y="99" width="30" height="30"/></g><rect x="272" y="108" width="112" height="12" rx="6" fill="#eceff2"/><rect x="272" y="108" width="64" height="12" rx="6" fill="#e3a21a"/>
+<g class="c-red"><use href="#person" x="200" y="147" width="30" height="30"/><use href="#person" x="228" y="147" width="30" height="30"/></g><rect x="272" y="156" width="112" height="12" rx="6" fill="#eceff2"/><rect x="272" y="156" width="106" height="12" rx="6" fill="#d24f38"/>
+
+  <text class="sub" x="75" y="212" text-anchor="middle">Commuters</text>
+  <text class="sub" x="229" y="212" text-anchor="middle">Latent classes</text>
+</svg>
