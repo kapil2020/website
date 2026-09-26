@@ -72,7 +72,7 @@ a:focus-visible, button:focus-visible {
 
 /* Links inside running prose carry a faint underline, so they are not told
    apart from the text by colour alone. */
-.intro-text p:not(.links) a,
+.intro-text p:not(.links):not(.xmap-flow) a,
 section > p a,
 .projects a,
 .dated a,
@@ -82,7 +82,7 @@ section > p a,
   text-decoration-thickness: 1px;
   text-underline-offset: .18em;
 }
-.intro-text p:not(.links) a:hover,
+.intro-text p:not(.links):not(.xmap-flow) a:hover,
 section > p a:hover,
 .projects a:hover,
 .dated a:hover,
@@ -140,12 +140,21 @@ section > p a:hover,
 
 /* ---- Intro ------------------------------------------------------------- */
 
+/* Text on the left; the photo and the 30-second story stacked on the right.
+   On phones the blocks are re-ordered (see the 720 px query). */
 .intro {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) 220px;
-  gap: 48px;
+  grid-template-columns: minmax(0, 1fr) clamp(270px, 36vw, 310px);
+  gap: 40px;
+  align-items: start;
+  padding: 52px 0 8px;
+}
+.intro-side {
+  display: flex;
+  flex-direction: column;
   align-items: center;
-  padding: 56px 0 8px;
+  gap: 24px;
+  padding-top: 4px;
 }
 .intro h1 {
   margin: 0;
@@ -158,7 +167,9 @@ section > p a:hover,
   margin: 6px 0 22px;
   color: var(--muted);
   font-size: 18px;
+  line-height: 1.4;
 }
+.role span { display: block; }
 .glance {
   margin: 0;
   color: var(--muted);
@@ -178,6 +189,128 @@ section > p a:hover,
   border-radius: 50%;
   object-fit: cover;
 }
+
+/* Research at a glance: three fields, joined, and what came of them. */
+.xmap { margin: 20px 0 18px; }
+.xmap-fields {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 18px minmax(0, 1fr) 18px minmax(0, 1fr);
+  align-items: stretch;
+}
+.xf {
+  padding: 10px 11px 11px;
+  border: 1px solid var(--rule);
+  border-top: 3px solid;
+  border-radius: 8px;
+  background: #fff;
+}
+.xf--t { border-top-color: #2f6fca; }
+.xf--e { border-top-color: #d24f38; }
+.xf--a { border-top-color: #6f56c4; }
+.xf svg { display: block; width: 22px; height: 22px; margin-bottom: 6px; }
+.xf--t svg { color: #2f6fca; }
+.xf--e svg { color: #d24f38; }
+.xf--a svg { color: #6f56c4; }
+.xf b { display: block; font-size: 15.5px; line-height: 1.25; }
+.xf span { display: block; margin-top: 3px; color: var(--muted); font-size: 14.5px; line-height: 1.35; }
+.xf-x {
+  align-self: center;
+  justify-self: center;
+  color: var(--muted);
+  font-size: 17px;
+  font-weight: 600;
+}
+.xmap-flow {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  margin: 12px 0 0;
+  font-size: 15px;
+}
+.xmap-data { flex-basis: 100%; color: var(--muted); }
+.xmap-data b { color: var(--text); }
+.xmap-arr { flex: none; width: 20px; height: 12px; color: #9aa1ab; }
+.xmap-out {
+  padding: 1px 10px;
+  border-radius: 999px;
+  background: #edf2fa;
+  font-size: 14.5px;
+  font-weight: 600;
+  white-space: nowrap;
+}
+.xmap-out:hover { text-decoration: none; background: #e1eaf7; }
+.xmap-out--star { background: #fff7d6; box-shadow: inset 0 0 0 1px #f1e2a8; }
+.xmap-out--star:hover { background: #fdefc2; }
+
+/* Research in 30 seconds. The frame keeps a 4:5 shape at every width; the
+   drawing inside is SVG, so it stays sharp however it is scaled. */
+.story { width: 100%; margin: 0; }
+.story[hidden] { display: none; }
+.story-screen {
+  position: relative;
+  overflow: hidden;
+  border-radius: 14px;
+  background: #f5f7fa;
+  box-shadow: inset 0 0 0 1px var(--rule);
+}
+.story-svg { display: block; width: 100%; height: auto; aspect-ratio: 4 / 5; font-family: var(--font); }
+.story-svg .st-k   { font-size: 15px; font-weight: 700; }
+.story-svg .st-h   { font-size: 23px; font-weight: 700; fill: #1f2328; }
+.story-svg .st-l   { font-size: 16px; font-weight: 600; fill: #5d636b; }
+.story-svg .st-s   { font-size: 15px; font-weight: 600; fill: #5d636b; }
+.story-svg .st-b   { font-size: 17px; font-weight: 700; fill: #2b2f36; }
+.story-svg .st-n   { font-size: 34px; font-weight: 700; fill: #1f2328; font-variant-numeric: tabular-nums; }
+.story-svg .st-big { font-size: 36px; font-weight: 700; }
+.story-bar {
+  position: absolute;
+  left: 12px;
+  right: 12px;
+  bottom: 6px;
+  display: flex;
+  gap: 4px;
+}
+.story-bar button {
+  flex: 1;
+  padding: 8px 0;
+  border: 0;
+  background: none;
+  cursor: pointer;
+}
+.story-bar span {
+  display: block;
+  height: 4px;
+  overflow: hidden;
+  border-radius: 2px;
+  background: #d6dbe1;
+}
+.story-bar i { display: block; width: 0; height: 100%; background: #2b2f36; }
+.story-cap {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 10px;
+  color: var(--muted);
+  font-size: 15px;
+}
+.story-play {
+  flex: none;
+  display: grid;
+  place-items: center;
+  width: 34px;
+  height: 34px;
+  padding: 0;
+  border: 1px solid var(--rule);
+  border-radius: 50%;
+  background: #fff;
+  color: var(--text);
+  cursor: pointer;
+}
+.story-play:hover { border-color: #b9c0c8; }
+.story-play svg { width: 14px; height: 14px; }
+.story .i-play,
+.story.is-paused .i-pause { display: none; }
+.story.is-paused .i-play { display: block; }
 
 /* ---- Sections ---------------------------------------------------------- */
 
@@ -478,16 +611,32 @@ span.pub-title { color: var(--text); }
   .top-nav { gap: 18px; }
 }
 
+/* Phones: the header scrolls away with the page instead of sitting over
+   it, and the intro becomes a profile: photo beside the name, the text,
+   then the story at full width. */
 @media (max-width: 720px) {
+  html { scroll-padding-top: 12px; }
+  .top { position: relative; }
 
   .intro {
-    grid-template-columns: 1fr;
-    gap: 20px;
-    padding-top: 32px;
+    grid-template-columns: 92px minmax(0, 1fr);
+    grid-template-areas:
+      "photo head"
+      "body  body"
+      "story story";
+    gap: 18px 16px;
+    align-items: center;
+    padding-top: 26px;
   }
-  .intro-photo { order: -1; width: 132px; }
-  .intro-photo img { width: 132px; height: 132px; }
-  .intro h1 { font-size: 31px; }
+  .intro-text,
+  .intro-side { display: contents; }
+  .intro-head  { grid-area: head; }
+  .intro-body  { grid-area: body; }
+  .intro-photo { grid-area: photo; }
+  .story       { grid-area: story; justify-self: center; max-width: 440px; margin-top: 6px; }
+  .intro-photo img { width: 92px; height: 92px; }
+  .intro h1 { font-size: 28px; }
+  .role { margin: 4px 0 0; font-size: 16px; line-height: 1.4; }
 }
 
 @media (max-width: 640px) {
@@ -516,6 +665,18 @@ span.pub-title { color: var(--text); }
   .dated li { grid-template-columns: 1fr; gap: 0; padding: 5px 0; }
   .dated .when { font-size: 14.5px; }
 
+  /* The three fields stack, icon beside each. */
+  .xmap-fields { grid-template-columns: 1fr; }
+  .xf {
+    display: grid;
+    grid-template-columns: 26px minmax(0, 1fr);
+    column-gap: 12px;
+    align-items: center;
+    padding: 9px 12px;
+  }
+  .xf svg { grid-row: span 2; margin: 0; }
+  .xf span { margin-top: 1px; }
+  .xf-x { line-height: 1; padding: 3px 0; font-size: 15px; }
 
   .pub,
   .press--star { margin-left: -10px; margin-right: -10px; padding-left: 10px; padding-right: 10px; }

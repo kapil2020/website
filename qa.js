@@ -84,6 +84,54 @@ function serve() {
     await btn.click();
     const hidden = !(await pre.isVisible());
     shown && hidden ? ok('BibTeX opens and closes') : bad('BibTeX toggle is broken');
+
+    // The 30-second story: drawn, playing while on screen, and pausable.
+    const story = p.locator('.story');
+    await story.scrollIntoViewIfNeeded();
+    const progress = () => p.evaluate(() =>
+      [...document.querySelectorAll('.story-bar i')].reduce((a, i) => a + parseFloat(i.style.width || 0), 0));
+    const visible = await story.isVisible();
+    const a = await progress();
+    await p.waitForTimeout(1200);
+    const b = await progress();
+    await p.click('.story-play');
+    const c = await progress();
+    await p.waitForTimeout(700);
+    const d = await progress();
+    const scenes = await p.evaluate(() => document.querySelectorAll('.story-svg .st-scene').length);
+
+    // Each scene near its end, when every label has arrived: no two labels'
+    // glyphs overlap and none leaves the frame. SVG text boxes include the
+    // font's full line gap (1.4em here), so trim them to the ink first.
+    const clashes = [];
+    for (let k = 0; k < 6; k++) {
+      clashes.push(...await p.evaluate((k) => {
+        window.__story.seek(k * 5 + 4.3);
+        const svg = document.querySelector('.story-svg');
+        const frame = svg.getBoundingClientRect();
+        const scale = frame.width / 400;
+        const boxes = [...svg.querySelectorAll('.st-scene[data-scene="' + k + '"] text')]
+          .filter((t) => getComputedStyle(t).display !== 'none' && t.textContent.trim())
+          .map((t) => {
+            const r = t.getBoundingClientRect();
+            const fs = parseFloat(getComputedStyle(t).fontSize) * scale;
+            return { t: t.textContent.trim().slice(0, 24), l: r.left, r: r.right, top: r.top + .3 * fs, bot: r.bottom - .2 * fs };
+          });
+        const out = [];
+        boxes.forEach((a, i) => {
+          if (a.l < frame.left - 1 || a.r > frame.right + 1) out.push(`scene ${k + 1}: "${a.t}" leaves the frame`);
+          boxes.slice(i + 1).forEach((b) => {
+            const x = Math.min(a.r, b.r) - Math.max(a.l, b.l), y = Math.min(a.bot, b.bot) - Math.max(a.top, b.top);
+            if (x > 1 && y > 1) out.push(`scene ${k + 1}: "${a.t}" / "${b.t}"`);
+          });
+        });
+        return out;
+      }, k));
+    }
+    clashes.length ? bad('story labels collide: ' + clashes.join('; ')) : ok('story labels stay apart and inside the frame in all six scenes');
+    visible && scenes === 6 ? ok('story drawn, 6 scenes') : bad(`story not drawn (visible ${visible}, scenes ${scenes})`);
+    b > a ? ok('story plays while on screen') : bad('story does not advance');
+    Math.abs(d - c) < .01 ? ok('story pauses') : bad('pause button does not stop the story');
     await p.close();
   }
 
@@ -106,21 +154,33 @@ function serve() {
 
       // Every line of every text node, as a rectangle; any two that
       // intersect are text painted over text.
+      // SVG text inside a display:none group still reports boxes, so check
+      // every ancestor rather than trusting getClientRects.
+      const shown = (el) => {
+        for (let e = el; e && e !== document.body; e = e.parentElement) {
+          if (getComputedStyle(e).display === 'none') return false;
+        }
+        return true;
+      };
       const rects = [];
       const walker = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT);
       for (let n = walker.nextNode(); n; n = walker.nextNode()) {
         if (!n.textContent.trim()) continue;
         const el = n.parentElement;
-        if (el.closest('[hidden], .skip, script, style')) continue;
+        // The story is checked scene by scene in section 1, where every
+        // label is on screen at once.
+        if (el.closest('[hidden], .skip, script, style, .story-svg') || !shown(el)) continue;
         const range = document.createRange();
         range.selectNodeContents(n);
         for (const r of range.getClientRects()) {
-          if (r.width > 1 && r.height > 1) rects.push({ r, el, t: n.textContent.trim().slice(0, 30) });
+          if (r.width > 1 && r.height > 1) rects.push({ r, el, n, t: n.textContent.trim().slice(0, 30) });
         }
       }
       const hits = [];
       for (let i = 0; i < rects.length; i++) {
         for (let j = i + 1; j < rects.length; j++) {
+          // Two lines of one wrapped text node may touch; that is not a collision.
+          if (rects[i].n === rects[j].n) continue;
           const a = rects[i].r, b = rects[j].r;
           const x = Math.min(a.right, b.right) - Math.max(a.left, b.left);
           const y = Math.min(a.bottom, b.bottom) - Math.max(a.top, b.top);
@@ -130,10 +190,10 @@ function serve() {
 
       // Boxes or lines of text that run past the edge of the screen.
       const outside = [...document.querySelectorAll('main *, .top *')]
-        .filter((e) => e.getClientRects().length && !e.closest('pre'))
+        .filter((e) => e.getClientRects().length && !e.closest('pre, .story-screen'))
         .filter((e) => { const b = e.getBoundingClientRect(); return b.right > W + 1 || b.left < -1; })
         .map((e) => e.tagName.toLowerCase() + (e.className ? '.' + e.className : ''))
-        .concat(rects.filter((x) => x.r.right > W + 1 && !x.el.closest('pre')).map((x) => `"${x.t}"`));
+        .concat(rects.filter((x) => x.r.right > W + 1 && !x.el.closest('pre, .story-screen')).map((x) => `"${x.t}"`));
 
       return { overflow, hits: hits.slice(0, 5), outside: [...new Set(outside)].slice(0, 5) };
     }, w);
