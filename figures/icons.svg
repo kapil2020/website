@@ -141,4 +141,8 @@
     <path d="M11 16l3.5 3.5L21 13" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
   </symbol>
 
+  <symbol id="rupee" viewBox="0 0 32 32">
+    <path d="M8 7h16M8 13h16M13 7c8.5 0 8.5 12 0 12H9l12 10" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+  </symbol>
+
 </svg>

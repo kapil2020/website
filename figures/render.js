@@ -1,25 +1,24 @@
-/* Draws the publication thumbnails.
+/* Exports the paper thumbnails as images, for slides, posters or a
+ * research statement. The page itself shows them as inline SVG (see
+ * figures/pubs.py), so it does not need this.
  *
  *   npm i --no-save playwright && node figures/render.js
  *
  * Each figures/pubs/NAME.svg is drawn with the shared icons (icons.svg),
- * styles (figures.css) and the site's typeface, then written to
- * assets/img/pubs/NAME.webp at twice its size. Needs `cwebp` (package
- * `webp`); without it the PNG is kept instead.
+ * styles (figures.css) and the site's typeface, finished (no motion), and
+ * saved as figures/export/NAME.png at three times its size (1200 x 750).
  *
  * Options:  --sheet FILE   also save every figure on one page, for review
  *           NAME ...       only draw these figures
  * Set CHROMIUM=/path/to/chrome to use a browser that is already installed. */
 
 const fs = require('fs');
-const os = require('os');
 const path = require('path');
-const { execFileSync } = require('child_process');
 const { chromium } = require('playwright');
 
 const DIR = __dirname;
 const ROOT = path.join(DIR, '..');
-const OUT = path.join(ROOT, 'assets', 'img', 'pubs');
+const OUT = path.join(DIR, 'export');
 
 const args = process.argv.slice(2);
 const sheetAt = args.indexOf('--sheet');
@@ -32,7 +31,6 @@ const face = (file, range) => `@font-face{font-family:"Source Sans 3";font-weigh
 
 const fonts = [
   face(path.join(ROOT, 'assets/fonts/SourceSans3-Roman.woff2')),
-  face(path.join(DIR, 'fonts/SourceSans3-latin-ext.woff2'), 'U+0100-024F,U+20A0-20C0'),
   face(path.join(DIR, 'fonts/SourceSans3-greek.woff2'), 'U+0370-03FF'),
 ].join('\n');
 
@@ -54,25 +52,15 @@ ${figs.map((n) => `<div class="shot" id="f-${n}">${fs.readFileSync(path.join(DIR
 
 (async () => {
   const browser = await chromium.launch(process.env.CHROMIUM ? { executablePath: process.env.CHROMIUM } : {});
-  const page = await browser.newPage({ viewport: { width: 1312, height: 900 }, deviceScaleFactor: 2 });
+  const page = await browser.newPage({ viewport: { width: 1312, height: 900 }, deviceScaleFactor: 3 });
   await page.setContent(html, { waitUntil: 'load' });
   await page.evaluate(() => document.fonts.ready);
 
   fs.mkdirSync(OUT, { recursive: true });
-  const tmp = fs.mkdtempSync(path.join(os.tmpdir(), 'figs-'));
-  let webp = true;
   for (const n of figs) {
-    const png = path.join(tmp, n + '.png');
-    await page.locator('#f-' + n).screenshot({ path: png });
-    try {
-      execFileSync('cwebp', ['-quiet', '-q', '92', '-m', '6', png, '-o', path.join(OUT, n + '.webp')]);
-    } catch (e) {
-      webp = false;
-      fs.copyFileSync(png, path.join(OUT, n + '.png'));
-    }
+    await page.locator('#f-' + n).screenshot({ path: path.join(OUT, n + '.png') });
     console.log('  ' + n);
   }
-  if (!webp) console.log('cwebp not found: wrote PNG instead of WebP');
 
   if (sheet) {
     await page.setViewportSize({ width: 1312, height: 200 });

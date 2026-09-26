@@ -7,15 +7,16 @@
     <g stroke="#fff" stroke-width="9" stroke-linecap="round">
       <path d="M12 56H388M12 106H388M12 158H388M74 12V202M144 12V202M214 12V202M284 12V202M346 12V202"/>
     </g>
-    <circle cx="182" cy="104" r="50" fill="url(#hot)"/>
-    <circle cx="258" cy="54" r="42" fill="url(#hot)"/>
-    <path d="M44 156H144V106H284V56H346" fill="none" stroke="#2b2f36" stroke-width="4.5" stroke-linejoin="round"/>
-    <path d="M44 152H70V52H346" fill="none" stroke="#2f6fca" stroke-width="4.5" stroke-linejoin="round"/>
-    <path d="M44 161H350V56" fill="none" stroke="#2e9467" stroke-width="4.5" stroke-linejoin="round"/>
+    <circle class="a-pop h-pulse" style="--d:0.05s" cx="182" cy="104" r="50" fill="url(#hot)"/>
+    <circle class="a-pop h-pulse" style="--d:0.15s;--w:0.40s" cx="258" cy="54" r="42" fill="url(#hot)"/>
+    <path class="a-draw" style="--d:0.30s" d="M44 156H144V106H284V56H346" fill="none" stroke="#2b2f36" stroke-width="4.5" stroke-linejoin="round"/>
+    <path class="a-draw" style="--d:0.55s" d="M44 152H70V52H346" fill="none" stroke="#2f6fca" stroke-width="4.5" stroke-linejoin="round"/>
+    <path class="a-draw" style="--d:0.80s" d="M44 161H350V56" fill="none" stroke="#2e9467" stroke-width="4.5" stroke-linejoin="round"/>
+    <path class="h-march" d="M44 161H350V56" fill="none" stroke="#fff" stroke-width="1.8" stroke-dasharray="3 9" stroke-linecap="round"/>
   </g>
-  <use href="#pin" x="30" y="128" width="28" height="28" class="c-ink"/>
-  <use href="#pin" x="332" y="28" width="28" height="28" class="c-ink"/>
-  <g style="font-size:16px">
+  <use class="a-pop" style="--d:1.10s" href="#pin" x="30" y="128" width="28" height="28" color="#2b2f36"/>
+  <use class="a-pop" style="--d:1.25s" href="#pin" x="332" y="28" width="28" height="28" color="#2b2f36"/>
+  <g class="a-fade" style="--d:1.30s">
     <path d="M14 225h18" stroke="#2b2f36" stroke-width="4.5" stroke-linecap="round"/>
     <text class="sub" x="38" y="230" style="font-size:16px">Fastest</text>
     <path d="M116 225h18" stroke="#2e9467" stroke-width="4.5" stroke-linecap="round"/>

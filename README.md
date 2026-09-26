@@ -13,22 +13,22 @@ One static page in the style of a conventional academic homepage (the layout tha
 [Jon Barron](https://jonbarron.info/), [Ye Yuan](https://ye-yuan.com/) and
 [Vindula Jayawardana](https://vindulamj.github.io/) use): a short bio with a photo and links,
 then news, research, publications, software, media, teaching, service and awards, in one
-column. No framework and no third-party requests. The only build step is optional: redrawing
-the paper thumbnails after editing one (see below).
+column. No framework and no third-party requests. There is no build step: after editing a
+thumbnail or a software card, a small Python script rewrites that part of `index.html` (see below).
 
 ```
 index.html                  all content
 assets/css/style.css        the whole stylesheet
-assets/js/main.js           shows and hides BibTeX; starts the software drawings on scroll
+assets/js/main.js           shows and hides BibTeX; starts the drawings on scroll
 assets/js/story.js          "Research in 30 seconds", the animation under the photo
-assets/fonts/               Source Sans 3, roman and italic (variable, latin subset)
+assets/fonts/               Source Sans 3, roman and italic (variable, latin subset), plus β and ε
 assets/img/portrait.jpg     the photo on the page (square crop of kapil-portrait.jpg)
 assets/img/hindu-*.jpg      press thumbnail and the full print page
 assets/img/favicon.*        monogram K, svg source plus .ico and png sizes
-assets/img/pubs/*.webp      paper thumbnails, drawn from figures/
-figures/                    thumbnail sources (one SVG per paper, shared icons, render script)
-                            render-story.js, which exports the animation as an MP4, and
-                            software.py, which writes the Software section
+figures/                    thumbnail sources (one SVG per paper, shared icons) and scripts:
+                            pubs.py puts the thumbnails into the page, software.py writes the
+                            Software section, render.js and render-story.js export images
+                            and the video
 cv/                         the CV: LaTeX source and the built PDF
 qa.js                       layout and link checks (see below)
 ```
@@ -50,6 +50,12 @@ qa.js                       layout and link checks (see below)
   marked by a thin blue rule down the left edge (`\featured`).
 - Journal articles and manuscripts under review have a thumbnail, a venue badge
   (`TRR 2026`; grey for under review, green for conferences) and a one-line summary.
+- The thumbnails, like the software drawings, are inline SVG that move. Each draws itself in
+  the first time it scrolls into view (routes trace, bars grow, people and icons pop in). While
+  a paper is hovered, parts of its drawing loop: pollution pulses, the clean route flows,
+  vehicles drive, the sun turns. Phones and tablets have no hover, so there the loop runs while
+  the paper sits in the middle of the screen. With reduced motion, or without JavaScript, the
+  finished drawing shows.
 - The column is 820 px wide. The header drops the name below 800 px; below 720 px the photo
   moves above the name; below 640 px thumbnails stack above their papers; below 540 px dates
   stack above their entries and the nav drops Teaching and Service.
@@ -97,22 +103,44 @@ node figures/render-story.js research-in-30-seconds.mp4
 ### Paper thumbnails
 
 Each thumbnail is a schematic of the study (its setting or its method), not a figure from the
-paper, and says so in the footer. The sources are in `figures/`:
+paper. The sources are in `figures/`:
 
 - `figures/pubs/NAME.svg` is one drawing on a 400 × 250 canvas
-- `figures/icons.svg` holds the shared icons (people, modes, sensor, sun, charger…) and arrows
+- `figures/icons.svg` holds the shared icons (people, modes, sensor, sun, charger, rupee…),
+  arrows and gradients
 - `figures/figures.css` holds the type and the palette: blue for models and information, red for
   pollution and risk, green for clean or active travel, amber for heat, violet for learning
 
+The page shows them as inline SVG, so they use the site's font and can move. After editing a
+drawing, or to give a new paper one, run:
+
+```bash
+python3 figures/pubs.py
+```
+
+It fills every `<div class="pub-fig" data-fig="NAME">` (and `thrust-fig` in Research) with
+`figures/pubs/NAME.svg`, and puts the shared icons in once near the top of the page. For a new
+paper, copy an existing `<li>` and change `data-fig`.
+
+The motion is set with class names on the parts of a drawing. Entrances, once, delayed by
+`--d`: `a-draw` (a line traces itself), `a-grow` / `a-growy` (a bar grows across / up),
+`a-pop`, `a-fade`, `a-slide`, `a-drop`. Loops while hovered, delayed by `--w`: `h-pulse`,
+`h-float`, `h-wave`, `h-march` (dashes flowing along a route), `h-spin`, `h-drive`. For example
+`<path class="a-draw" style="--d:.3s" …>`. The rules are in `style.css` under "Motion".
+
+To export the drawings as images (1200 × 750 PNG, for slides or a research statement):
+
 ```bash
 npm i --no-save playwright
-node figures/render.js                 # all thumbnails → assets/img/pubs/*.webp
+node figures/render.js                 # all → figures/export/NAME.png
 node figures/render.js pd-muse         # just one
 node figures/render.js --sheet s.png   # plus a contact sheet to review
 ```
 
-To use a real figure from a paper instead, save it as `assets/img/pubs/NAME.webp` (400 × 250,
-or any 8:5 image) and point the `<img>` at it.
+To use a real figure from a paper instead, save it as `assets/img/pubs/NAME.webp` (any 8:5
+image) and write `<div class="pub-fig"><img src="assets/img/pubs/NAME.webp" alt="" width="400"
+height="250" loading="lazy"></div>`. `pubs.py` leaves an image alone when there is no drawing
+of that name.
 
 **Change the cache key when you edit CSS or JS.** `index.html` loads them as
 `style.css?v=YYYYMMDDx`. Without a new key, a returning visitor can get the new HTML with the old
@@ -162,6 +190,8 @@ node qa.js            # or: CHROMIUM=/path/to/chrome node qa.js
   no line of text overlaps another, and there are no script errors
 - the 30-second story draws all six scenes, plays while on screen, pauses on the button, and in
   every scene its labels stay apart and inside the frame
+- all 20 thumbnails are inline, every icon and gradient they use resolves, and the drawings
+  start only when they scroll into view
 - all text is at least 4.5:1 against its background
 
 ## Deployment

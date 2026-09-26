@@ -1,19 +1,11 @@
 <svg class="fig" viewBox="0 0 400 250" xmlns="http://www.w3.org/2000/svg">
   <!-- J11. Commuters in a hazy city rate the air on a five-point scale. -->
-  <g fill="#d5dae0"><rect x="142" y="120" width="30" height="76"/><rect x="174" y="92" width="24" height="104"/><rect x="200" y="110" width="34" height="86"/><rect x="236" y="72" width="22" height="124"/><rect x="260" y="104" width="36" height="92"/><rect x="298" y="86" width="26" height="110"/><rect x="326" y="118" width="30" height="78"/><rect x="358" y="96" width="30" height="100"/></g>
-  <rect x="130" y="30" width="262" height="166" fill="url(#smog)"/>
-  <g class="c-red" opacity=".75">
-    <use href="#haze" x="166" y="40" width="40" height="40"/>
-    <use href="#haze" x="262" y="28" width="44" height="44"/>
-    <use href="#haze" x="334" y="48" width="40" height="40"/>
-  </g>
+  <g fill="#d5dae0"><rect class="a-growy" style="--d:0.00s" x="142" y="120" width="30" height="76"/><rect class="a-growy" style="--d:0.05s" x="174" y="92" width="24" height="104"/><rect class="a-growy" style="--d:0.10s" x="200" y="110" width="34" height="86"/><rect class="a-growy" style="--d:0.15s" x="236" y="72" width="22" height="124"/><rect class="a-growy" style="--d:0.20s" x="260" y="104" width="36" height="92"/><rect class="a-growy" style="--d:0.25s" x="298" y="86" width="26" height="110"/><rect class="a-growy" style="--d:0.30s" x="326" y="118" width="30" height="78"/><rect class="a-growy" style="--d:0.35s" x="358" y="96" width="30" height="100"/></g>
+  <rect class="a-fade" style="--d:0.40s" x="130" y="30" width="262" height="166" fill="url(#smog)"/>
+  <g color="#d24f38" opacity=".75"><use class="a-fade h-float" style="--d:0.50s;--w:0.00s" href="#haze" x="166" y="40" width="40" height="40"/><use class="a-fade h-float" style="--d:0.62s;--w:0.35s" href="#haze" x="262" y="28" width="44" height="44"/><use class="a-fade h-float" style="--d:0.74s;--w:0.70s" href="#haze" x="334" y="48" width="40" height="40"/></g>
   <path class="ln-g" d="M12 196H388"/>
-  <g class="c-ink">
-    <use href="#person" x="18" y="150" width="46" height="46"/>
-    <use href="#person" x="58" y="150" width="46" height="46"/>
-    <use href="#person" x="98" y="150" width="46" height="46"/>
-  </g>
-  <path d="M28 40H184a12 12 0 0 1 12 12V90a12 12 0 0 1-12 12H84L66 122l2-20H28a12 12 0 0 1-12-12V52a12 12 0 0 1 12-12z" fill="#fff" stroke="#2b2f36" stroke-width="2" stroke-linejoin="round"/>
-  <circle cx="44" cy="71" r="10.5" fill="#2e9467"/><circle cx="76" cy="71" r="10.5" fill="#86a83a"/><circle cx="108" cy="71" r="10.5" fill="#e3a21a"/><circle cx="140" cy="71" r="10.5" fill="#df7a2e"/><circle cx="172" cy="71" r="10.5" fill="#d24f38"/>
+  <g color="#2b2f36"><use class="a-pop" style="--d:0.45s" href="#person" x="18" y="150" width="46" height="46"/><use class="a-pop" style="--d:0.55s" href="#person" x="58" y="150" width="46" height="46"/><use class="a-pop" style="--d:0.65s" href="#person" x="98" y="150" width="46" height="46"/></g>
+  <path class="a-pop" style="--d:0.80s" d="M28 40H184a12 12 0 0 1 12 12V90a12 12 0 0 1-12 12H84L66 122l2-20H28a12 12 0 0 1-12-12V52a12 12 0 0 1 12-12z" fill="#fff" stroke="#2b2f36" stroke-width="2" stroke-linejoin="round"/>
+  <circle class="a-pop h-wave" style="--d:1.00s;--w:0.00s" cx="44" cy="71" r="10.5" fill="#2e9467"/><circle class="a-pop h-wave" style="--d:1.08s;--w:0.15s" cx="76" cy="71" r="10.5" fill="#86a83a"/><circle class="a-pop h-wave" style="--d:1.16s;--w:0.30s" cx="108" cy="71" r="10.5" fill="#e3a21a"/><circle class="a-pop h-wave" style="--d:1.24s;--w:0.45s" cx="140" cy="71" r="10.5" fill="#df7a2e"/><circle class="a-pop h-wave" style="--d:1.32s;--w:0.60s" cx="172" cy="71" r="10.5" fill="#d24f38"/>
   <text class="sub" x="388" y="226" text-anchor="end">Delhi</text>
 </svg>

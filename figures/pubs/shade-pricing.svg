@@ -1,18 +1,20 @@
 <svg class="fig" viewBox="0 0 400 250" xmlns="http://www.w3.org/2000/svg">
   <!-- TP. Shade on a hot street: what walkers value it at, and where a
        city should put it. -->
-  <use href="#sun" x="342" y="4" width="44" height="44" class="c-amber"/>
+  <use class="a-pop h-spin" href="#sun" x="342" y="4" width="44" height="44" color="#e3a21a"/>
   <path class="ln-g" d="M12 178H156"/>
-  <ellipse cx="86" cy="180" rx="66" ry="7" fill="#2b2f36" fill-opacity=".16"/>
-  <rect x="70" y="100" width="12" height="80" rx="3" fill="#7a6650"/>
-  <ellipse cx="76" cy="82" rx="62" ry="44" fill="#2e9467"/>
-  <use href="#walk" x="94" y="130" width="48" height="48" class="c-ink"/>
-  <path d="M170 100H232L252 124 232 148H170z" fill="#fdf1d6" stroke="#e3a21a" stroke-width="2.5" stroke-linejoin="round"/>
-  <circle cx="183" cy="124" r="5" fill="#fff" stroke="#e3a21a" stroke-width="2"/>
-  <text x="216" y="134" text-anchor="middle" style="font-size:27px;font-weight:700;fill:#b67d0c">&#8377;</text>
-  <rect x="282" y="72" width="104" height="104" rx="8" fill="#fff" stroke="#cfd4da" stroke-width="1.5"/>
-  <g fill="#e3e7eb"><rect x="292" y="82" width="22" height="22" rx="2"/><rect x="292" y="112" width="22" height="22" rx="2"/><rect x="292" y="142" width="22" height="22" rx="2"/><rect x="322" y="82" width="22" height="22" rx="2"/><rect x="322" y="112" width="22" height="22" rx="2"/><rect x="322" y="142" width="22" height="22" rx="2"/><rect x="352" y="82" width="22" height="22" rx="2"/><rect x="352" y="112" width="22" height="22" rx="2"/><rect x="352" y="142" width="22" height="22" rx="2"/></g>
-  <path d="M318 80V138H376" fill="none" stroke="#2e9467" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+  <ellipse class="a-fade" style="--d:0.30s" cx="86" cy="180" rx="66" ry="7" fill="#2b2f36" fill-opacity=".16"/>
+  <rect class="a-growy" style="--d:0.10s" x="70" y="100" width="12" height="80" rx="3" fill="#7a6650"/>
+  <ellipse class="a-pop" style="--d:0.30s" cx="76" cy="82" rx="62" ry="44" fill="#2e9467"/>
+  <g class="a-slide" style="--d:0.50s"><use class="h-float" href="#walk" x="94" y="130" width="48" height="48" color="#2b2f36"/></g>
+  <g class="a-pop h-pulse" style="--d:0.60s">
+    <path d="M170 100H232L252 124 232 148H170z" fill="#fdf1d6" stroke="#e3a21a" stroke-width="2.5" stroke-linejoin="round"/>
+    <circle cx="183" cy="124" r="5" fill="#fff" stroke="#e3a21a" stroke-width="2"/>
+    <use href="#rupee" x="203" y="110" width="26" height="26" color="#b67d0c"/>
+  </g>
+  <rect class="a-fade" style="--d:0.65s" x="282" y="72" width="104" height="104" rx="8" fill="#fff" stroke="#cfd4da" stroke-width="1.5"/>
+  <g fill="#e3e7eb"><rect class="a-pop" style="--d:0.75s" x="292" y="82" width="22" height="22" rx="2"/><rect class="a-pop" style="--d:0.80s" x="292" y="112" width="22" height="22" rx="2"/><rect class="a-pop" style="--d:0.85s" x="292" y="142" width="22" height="22" rx="2"/><rect class="a-pop" style="--d:0.80s" x="322" y="82" width="22" height="22" rx="2"/><rect class="a-pop" style="--d:0.85s" x="322" y="112" width="22" height="22" rx="2"/><rect class="a-pop" style="--d:0.90s" x="322" y="142" width="22" height="22" rx="2"/><rect class="a-pop" style="--d:0.85s" x="352" y="82" width="22" height="22" rx="2"/><rect class="a-pop" style="--d:0.90s" x="352" y="112" width="22" height="22" rx="2"/><rect class="a-pop" style="--d:0.95s" x="352" y="142" width="22" height="22" rx="2"/></g>
+  <path class="a-draw" style="--d:1.10s" d="M318 80V138H376" fill="none" stroke="#2e9467" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
   <text class="sub" x="210" y="206" text-anchor="middle">Pricing</text>
   <text class="sub" x="334" y="206" text-anchor="middle">Allocation</text>
 </svg>

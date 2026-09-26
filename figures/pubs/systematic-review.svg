@@ -1,21 +1,14 @@
 <svg class="fig" viewBox="0 0 400 250" xmlns="http://www.w3.org/2000/svg">
   <!-- J12. Studies screened down to the ones included, across the travel
        modes in which exposure was measured. -->
-  <polygon points="22,36 218,36 196,80 44,80" fill="#eceff2"/>
-  <polygon points="50,88 190,88 170,132 70,132" fill="#dfeafa"/>
-  <polygon points="76,140 164,140 148,184 92,184" fill="#2f6fca"/>
-  <text class="in" x="120" y="63" text-anchor="middle">Identified</text>
-  <text class="in" x="120" y="115" text-anchor="middle">Screened</text>
-  <text class="in" x="120" y="167" text-anchor="middle" style="fill:#fff">Included</text>
-  <path class="ln" d="M234 112H262" marker-end="url(#arr)"/>
-  <g fill="#f1f3f5">
-    <rect x="276" y="58" width="50" height="50" rx="8"/><rect x="334" y="58" width="50" height="50" rx="8"/>
-    <rect x="276" y="116" width="50" height="50" rx="8"/><rect x="334" y="116" width="50" height="50" rx="8"/>
-  </g>
-  <use href="#walk" x="285" y="67" width="32" height="32" class="c-green"/>
-  <use href="#bike" x="343" y="67" width="32" height="32" class="c-green"/>
-  <use href="#bus" x="285" y="125" width="32" height="32" class="c-ink"/>
-  <use href="#car" x="343" y="125" width="32" height="32" class="c-ink"/>
+  <g class="a-drop h-wave"><polygon points="22,36 218,36 196,80 44,80" fill="#eceff2"/>
+    <text class="in" x="120" y="63" text-anchor="middle">Identified</text></g>
+  <g class="a-drop h-wave" style="--d:0.20s;--w:0.30s"><polygon points="50,88 190,88 170,132 70,132" fill="#dfeafa"/>
+    <text class="in" x="120" y="115" text-anchor="middle">Screened</text></g>
+  <g class="a-drop h-wave" style="--d:0.40s;--w:0.60s"><polygon points="76,140 164,140 148,184 92,184" fill="#2f6fca"/>
+    <text class="in" x="120" y="167" text-anchor="middle" style="fill:#fff">Included</text></g>
+  <path class="ln a-fade" style="--d:0.60s" d="M234 112H262" marker-end="url(#arr)"/>
+  <g class="a-pop" style="--d:0.75s"><rect x="276" y="58" width="50" height="50" rx="8" fill="#f1f3f5"/><use href="#walk" x="285" y="67" width="32" height="32" color="#2e9467"/></g><g class="a-pop" style="--d:0.83s"><rect x="334" y="58" width="50" height="50" rx="8" fill="#f1f3f5"/><use href="#bike" x="343" y="67" width="32" height="32" color="#2e9467"/></g><g class="a-pop" style="--d:0.91s"><rect x="276" y="116" width="50" height="50" rx="8" fill="#f1f3f5"/><use href="#bus" x="285" y="125" width="32" height="32" color="#2b2f36"/></g><g class="a-pop" style="--d:0.99s"><rect x="334" y="116" width="50" height="50" rx="8" fill="#f1f3f5"/><use href="#car" x="343" y="125" width="32" height="32" color="#2b2f36"/></g>
   <text class="sub" x="120" y="212" text-anchor="middle">Systematic review</text>
   <text class="sub" x="330" y="196" text-anchor="middle">Travel modes</text>
 </svg>
