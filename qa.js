@@ -129,6 +129,13 @@ function serve() {
       }, k));
     }
     clashes.length ? bad('story labels collide: ' + clashes.join('; ')) : ok('story labels stay apart and inside the frame in all six scenes');
+
+    // Software cards draw themselves in once they scroll into view.
+    const armed = await p.evaluate(() => document.querySelector('.apps').classList.contains('anim'));
+    await p.locator('.app').last().scrollIntoViewIfNeeded();
+    await p.waitForTimeout(400);
+    const on = await p.evaluate(() => document.querySelectorAll('.app.is-on').length);
+    armed && on > 0 ? ok(`software cards animate in (${on} of 6 so far)`) : bad('software cards never start their drawings');
     visible && scenes === 6 ? ok('story drawn, 6 scenes') : bad(`story not drawn (visible ${visible}, scenes ${scenes})`);
     b > a ? ok('story plays while on screen') : bad('story does not advance');
     Math.abs(d - c) < .01 ? ok('story pauses') : bad('pause button does not stop the story');
