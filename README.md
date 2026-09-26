@@ -43,6 +43,9 @@ qa.js                       layout and link checks (see below)
   photo and a 30-second animation fill the right-hand column. On phones the photo sits beside
   the name, the header scrolls away with the page instead of covering it, and the animation
   follows the text at full width.
+- News is a timeline by year: a coloured tag says what each item is (paper, patent, award,
+  grant, talk, media, career), a dot of the same colour sits on the rail, and the year stays in
+  view while its items scroll past. On phones the year becomes a marker on the rail.
 - The Research section is a short research statement: a lede, Figure 1 (field data, models,
   decisions) built in HTML so it reflows on phones, and three thrusts that cite the papers.
 - Publications open with the patent and the press coverage, each on a pale highlighter
@@ -65,8 +68,12 @@ qa.js                       layout and link checks (see below)
 
 Everything is in `index.html`.
 
-- **News.** Add an `<li>` at the top of the `#news` list: a `<span class="when">` with the
-  date and a `<p>` with the text. Keep it to about ten items.
+- **News.** A timeline grouped by year. Copy an `<li class="nw nw--paper">` into the right
+  year's list (or copy a whole `news-year` block for a new year). The class sets the colour and
+  icon: `nw--paper`, `nw--patent`, `nw--award`, `nw--grant`, `nw--talk`, `nw--media` or
+  `nw--career`; change the tag's label and its `#i-n-…` icon to match. Add
+  `<span class="nw-when">Jul</span>` after the tag when the month is known, and start the text
+  with a short bold lead. The newest item's dot pings.
 - **A publication.** Copy an `<li class="pub">` in the right group. The badge is
   `<span class="badge">` (add `badge--review`, `badge--conf` or `badge--patent`), and
   `<p class="pub-note">` is the one-line summary. A `BibTeX` button needs a matching

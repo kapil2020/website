@@ -22,7 +22,7 @@
 <meta name="theme-color" content="#ffffff">
 
 <link rel="preload" href="assets/fonts/SourceSans3-Roman.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="assets/css/style.css?v=20260926f">
+<link rel="stylesheet" href="assets/css/style.css?v=20260926g">
 
 <script type="application/ld+json">
 {
@@ -67,6 +67,13 @@
   <symbol id="i-out" viewBox="0 0 16 16"><path d="M6 3h7v7M13 3 4.5 11.5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></symbol>
   <symbol id="i-code" viewBox="0 0 16 16"><path d="M5.5 4 1.5 8l4 4M10.5 4l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></symbol>
   <symbol id="i-act" viewBox="0 0 32 32"><path d="M8 25c0-6 16-4 16-11" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-dasharray="1 4.5"/><path d="M8 30s-5-5-5-9a5 5 0 0 1 10 0c0 4-5 9-5 9z" fill="currentColor"/><path d="M24 17s-5-5-5-9a5 5 0 0 1 10 0c0 4-5 9-5 9z" fill="currentColor"/></symbol>
+  <symbol id="i-n-paper" viewBox="0 0 16 16"><path d="M4 1.5h5.5L13 5v9.5H4zM9.5 1.5V5H13M6.5 8.5h4M6.5 11h4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" stroke-linecap="round"/></symbol>
+  <symbol id="i-n-patent" viewBox="0 0 16 16"><circle cx="8" cy="6.5" r="4.5" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M5.6 10.3 4.8 15 8 13.2l3.2 1.8-.8-4.7" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><circle cx="8" cy="6.5" r="1.8" fill="currentColor"/></symbol>
+  <symbol id="i-n-award" viewBox="0 0 16 16"><path d="M4.5 1.8h7v3.7a3.5 3.5 0 0 1-7 0zM4.5 3.3h-2c0 2 1 3.2 2.4 3.4M11.5 3.3h2c0 2-1 3.2-2.4 3.4M8 9v3.3M5 14.2h6" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" stroke-linecap="round"/></symbol>
+  <symbol id="i-n-grant" viewBox="0 0 16 16"><path d="M1.5 7.3 14.5 1.8l-3.8 12.4-3.1-5.2zM7.6 9l6.9-7.2" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" stroke-linecap="round"/></symbol>
+  <symbol id="i-n-talk" viewBox="0 0 16 16"><path d="M6 3a2 2 0 0 1 4 0v4.5a2 2 0 0 1-4 0zM3.5 7a4.5 4.5 0 0 0 9 0M8 11.5v3M5.5 14.5h5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" stroke-linecap="round"/></symbol>
+  <symbol id="i-n-media" viewBox="0 0 16 16"><path d="M2 2.8h9.5v10.7H3.5A1.5 1.5 0 0 1 2 12zM11.5 6h2.5v6a1.5 1.5 0 0 1-3 0M4.5 5.5h4.5M4.5 8h4.5M4.5 10.5h3" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" stroke-linecap="round"/></symbol>
+  <symbol id="i-n-career" viewBox="0 0 16 16"><path d="M3.5 14.5V1.8M3.5 2.3h9l-2 3 2 3h-9" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" stroke-linecap="round"/></symbol>
 </svg>
 
 <!-- figsprite:start -->
@@ -321,35 +328,84 @@
      =================================================================== -->
 <section id="news">
   <h2>News</h2>
-  <ul class="dated">
-    <li><span class="when">2026</span>
-      <p>Two papers accepted for presentation at the 106th TRB Annual Meeting, Washington, DC,
-        January 2027: <a href="#trb27a">seasonal air-quality preferences in mode choice</a> and
-        <a href="#trb27b">conflict screening from a single traffic image</a>.</p></li>
-    <li><span class="when">Jul 2026</span>
-      <p>Our patent application on a personalised dynamic route planning system for sustainable
-        urban mobility was published by the Indian Patent Office (No. 202631018379).</p></li>
-    <li><span class="when">2026</span>
-      <p>Joined the HUMAN Lab at UCLA as a postdoctoral researcher.</p></li>
-    <li><span class="when">2026</span>
-      <p>Completed my Ph.D. at IIT Kharagpur. Thesis: <i>Assessing impacts of perceived air
-        pollution exposure on urban travel behaviour</i>.</p></li>
-    <li><span class="when">Jan 2026</span>
-      <p>Presented <a href="#j1">&ldquo;Not all travellers think alike&rdquo;</a> at the 105th TRB
-        Annual Meeting in Washington, DC. The full paper is accepted in <i>Transportation Research
-        Record</i>.</p></li>
-    <li><span class="when">2026</span>
-      <p>Two papers on estimating air quality from sparse sensor networks, at
-        <a href="#c2">IEEE COMSNETS</a> and <a href="#c3">IEEE AIEI</a>.</p></li>
-    <li><span class="when">Jun 2025</span>
-      <p><i>The Hindu</i> <a href="#media">wrote about DRUM</a>, our pollution-aware routing app.</p></li>
-    <li><span class="when">2025</span>
-      <p>Invited talk on DRUM at Google India.</p></li>
-    <li><span class="when">Apr 2025</span>
-      <p>The <a href="#j5">DRUM paper</a> was published in <i>Transportation Research Record</i>.</p></li>
-    <li><span class="when">2024</span>
-      <p>Visiting research fellow at the Institute for Transport Studies, University of Leeds.</p></li>
-  </ul>
+  <div class="news">
+    <div class="news-year">
+      <h3 class="news-y">2026</h3>
+      <ul class="news-list">
+        <li class="nw nw--paper">
+          <span class="nw-meta"><span class="nw-tag"><svg aria-hidden="true"><use href="#i-n-paper"></use></svg>Paper</span></span>
+          <p><b>Two papers accepted at TRB 2027</b>, the 106th Annual Meeting in Washington, DC,
+            in January 2027: <a href="#trb27a">seasonal air-quality preferences in mode choice</a> and
+            <a href="#trb27b">conflict screening from a single traffic image</a>.</p></li>
+        <li class="nw nw--patent">
+          <span class="nw-meta"><span class="nw-tag"><svg aria-hidden="true"><use href="#i-n-patent"></use></svg>Patent</span><span class="nw-when">Jul</span></span>
+          <p><b>Patent published.</b> Our application on a personalised dynamic route planning system
+            for sustainable urban mobility was published by the Indian Patent Office
+            (<a href="#patent">No. 202631018379</a>).</p></li>
+        <li class="nw nw--career">
+          <span class="nw-meta"><span class="nw-tag"><svg aria-hidden="true"><use href="#i-n-career"></use></svg>Career</span></span>
+          <p><b>Joined the HUMAN Lab at UCLA</b> as a postdoctoral researcher.</p></li>
+        <li class="nw nw--career">
+          <span class="nw-meta"><span class="nw-tag"><svg aria-hidden="true"><use href="#i-n-career"></use></svg>Career</span></span>
+          <p><b>Completed my Ph.D.</b> at IIT Kharagpur. Thesis: <i>Assessing impacts of perceived air
+            pollution exposure on urban travel behaviour</i>.</p></li>
+        <li class="nw nw--talk">
+          <span class="nw-meta"><span class="nw-tag"><svg aria-hidden="true"><use href="#i-n-talk"></use></svg>Talk</span><span class="nw-when">Jan</span></span>
+          <p><b>Presented at the 105th TRB Annual Meeting</b> in Washington, DC:
+            <a href="#j1">&ldquo;Not all travellers think alike&rdquo;</a>, now accepted in
+            <i>Transportation Research Record</i>.</p></li>
+        <li class="nw nw--grant">
+          <span class="nw-meta"><span class="nw-tag"><svg aria-hidden="true"><use href="#i-n-grant"></use></svg>Grant</span></span>
+          <p><b>Institute travel grant</b> (full funding) for the TRB Annual Meeting, IIT Kharagpur.</p></li>
+        <li class="nw nw--paper">
+          <span class="nw-meta"><span class="nw-tag"><svg aria-hidden="true"><use href="#i-n-paper"></use></svg>Paper</span></span>
+          <p><b>Two conference papers</b> on estimating air quality from sparse sensor networks, at
+            <a href="#c2">IEEE COMSNETS</a> and <a href="#c3">IEEE AIEI</a>.</p></li>
+      </ul>
+    </div>
+    <div class="news-year">
+      <h3 class="news-y">2025</h3>
+      <ul class="news-list">
+        <li class="nw nw--media">
+          <span class="nw-meta"><span class="nw-tag"><svg aria-hidden="true"><use href="#i-n-media"></use></svg>Media</span><span class="nw-when">Jun</span></span>
+          <p><b><i>The Hindu</i> wrote about DRUM</b>, our pollution-aware routing app.
+            <a href="#media">See the article</a>.</p></li>
+        <li class="nw nw--talk">
+          <span class="nw-meta"><span class="nw-tag"><svg aria-hidden="true"><use href="#i-n-talk"></use></svg>Talk</span></span>
+          <p><b>Invited talk at Google India</b> on DRUM.</p></li>
+        <li class="nw nw--paper">
+          <span class="nw-meta"><span class="nw-tag"><svg aria-hidden="true"><use href="#i-n-paper"></use></svg>Paper</span><span class="nw-when">Apr</span></span>
+          <p><b>DRUM paper published</b> in <i>Transportation Research Record</i>:
+            <a href="#j5">dynamic route planning for urban green mobility</a>.</p></li>
+      </ul>
+    </div>
+    <div class="news-year">
+      <h3 class="news-y">2024</h3>
+      <ul class="news-list">
+        <li class="nw nw--career">
+          <span class="nw-meta"><span class="nw-tag"><svg aria-hidden="true"><use href="#i-n-career"></use></svg>Career</span></span>
+          <p><b>Visiting research fellow</b> at the Institute for Transport Studies, University of Leeds.</p></li>
+        <li class="nw nw--grant">
+          <span class="nw-meta"><span class="nw-tag"><svg aria-hidden="true"><use href="#i-n-grant"></use></svg>Grant</span></span>
+          <p><b>International Research Exchange grant</b>, University of Leeds and IIT Kharagpur.</p></li>
+        <li class="nw nw--grant">
+          <span class="nw-meta"><span class="nw-tag"><svg aria-hidden="true"><use href="#i-n-grant"></use></svg>Grant</span></span>
+          <p><b>Institute travel grant</b> (partial funding) for <a href="#c13">IATBR, Vienna</a>,
+            IIT Kharagpur.</p></li>
+        <li class="nw nw--award">
+          <span class="nw-meta"><span class="nw-tag"><svg aria-hidden="true"><use href="#i-n-award"></use></svg>Award</span></span>
+          <p><b>Best Presentation Award</b>, Research Scholar Day, RCGSIDM, IIT Kharagpur.</p></li>
+      </ul>
+    </div>
+    <div class="news-year">
+      <h3 class="news-y">2023</h3>
+      <ul class="news-list">
+        <li class="nw nw--award">
+          <span class="nw-meta"><span class="nw-tag"><svg aria-hidden="true"><use href="#i-n-award"></use></svg>Award</span></span>
+          <p><b>Best Poster Presentation</b>, Cyber-Physical Systems Summit (CyPhySS), IISc Bengaluru.</p></li>
+      </ul>
+    </div>
+  </div>
 </section>
 
 <!-- ===================================================================
