@@ -1,122 +1,105 @@
 % =============================================================================
-%  Dr. Kapil Kumar Meena — curriculum vitae
-%  Shared preamble: page, type, colour, and the handful of macros the CV is
-%  written in.
+%  Kapil Kumar Meena — curriculum vitae
+%  Page, type and the few macros the CV is written in.
 %
-%  No CV class. moderncv fixes the layout for you and its "banking" style shows
-%  its age; everything below is ordinary LaTeX, so the layout stays editable.
+%  Plain LaTeX, no CV class: black serif text, small-caps section heads, one
+%  dark blue for links. Charter was drawn for print at small sizes, which is
+%  what a CV is.
 % =============================================================================
 
-\usepackage[a4paper, top=15mm, bottom=17mm, left=17mm, right=17mm,
-            footskip=9mm]{geometry}
+\usepackage[letterpaper, top=0.75in, bottom=0.8in, left=0.85in, right=0.85in,
+            footskip=0.35in]{geometry}
 
 \usepackage[T1]{fontenc}
 \usepackage[utf8]{inputenc}
-\usepackage[default, semibold]{sourcesanspro}   % body — humanist, modern, prints well
-\usepackage{sourcecodepro}                      % dates, identifiers, labels
-\usepackage[final]{microtype}                   % the reason the margins look calm
+\usepackage{XCharter}
+\usepackage[final]{microtype}
 \usepackage{xcolor}
 \usepackage{titlesec}
-\usepackage{enumitem}
-\usepackage{tabularx}
-\usepackage{array}
 \usepackage{etoolbox}
-\usepackage{fontawesome5}
 \usepackage{lastpage}
 \usepackage{fancyhdr}
-\usepackage[hidelinks]{hyperref}
+\usepackage{xurl}          % lets a long DOI break at the margin
+\usepackage{hyperref}
+\urlstyle{same}
 
-% --- Palette -----------------------------------------------------------------
-% Matches the website: near-black ink, one accent. Change `accent` here and the
-% section labels, rules and links all follow.
-\definecolor{ink}{HTML}{14161A}
-\definecolor{body}{HTML}{2B2D34}
-\definecolor{muted}{HTML}{5C5F6A}
-\definecolor{faint}{HTML}{868992}
-\definecolor{rule}{HTML}{D8D7D2}
-\definecolor{accent}{HTML}{B4184C}      % deep rose, as on the website
-\definecolor{venue}{HTML}{1F3157}       % journal and conference names
-
-\color{body}
+% --- Colour --------------------------------------------------------------------
+\definecolor{ink}{HTML}{111111}
+\definecolor{muted}{HTML}{4D4D4D}
+\definecolor{rulegray}{HTML}{A8A8A8}
+\definecolor{link}{HTML}{1A4E94}
 
 \hypersetup{
   colorlinks  = true,
-  linkcolor   = accent,
-  urlcolor    = accent,
+  linkcolor   = link,
+  urlcolor    = link,
   pdfauthor   = {Kapil Kumar Meena},
-  pdftitle    = {Curriculum Vitae — Dr. Kapil Kumar Meena},
-  pdfsubject  = {Transportation engineering, travel behaviour, air-quality exposure},
+  pdftitle    = {Kapil Kumar Meena: Curriculum Vitae},
+  pdfsubject  = {Transportation engineering, travel behaviour, air-pollution exposure},
   pdfkeywords = {travel behaviour, discrete choice modelling, air pollution exposure,
-                 machine learning, artificial intelligence, sustainable mobility},
+                 heat, machine learning, sustainable mobility},
 }
 
-% --- Rhythm ------------------------------------------------------------------
+\color{ink}
+
+% --- Rhythm --------------------------------------------------------------------
 \setlength{\parindent}{0pt}
 \setlength{\parskip}{0pt}
-\linespread{1.05}
-\newcommand{\lab}{\fontsize{7.7}{9}\selectfont\ttfamily\color{faint}}
-\newcommand{\note}[1]{{\fontsize{8.6}{10.5}\selectfont\color{muted}#1}}
+\linespread{1.06}
+\frenchspacing
+\newcommand{\detail}[1]{{\small\color{muted}#1}}
 
-% Width of the left label column. The whole page hangs off this one measure.
-\newlength{\cvlab}\setlength{\cvlab}{20mm}
-\newlength{\cvgap}\setlength{\cvgap}{24mm}
+% Width of the left-hand date/label column. The page hangs off this measure.
+\newlength{\cvlab}\setlength{\cvlab}{0.95in}
 
-% --- Sections ----------------------------------------------------------------
+% --- Section heads ---------------------------------------------------------------
 \titleformat{\section}
-  {\normalfont\bfseries\fontsize{8.8}{11}\selectfont\color{accent}}
-  {}{0pt}{\MakeUppercase}
-  [\vspace{-7.5pt}{\color{rule}\rule{\linewidth}{0.5pt}}]
-\titlespacing*{\section}{0pt}{13pt plus 3pt minus 2pt}{7pt}
+  {\normalfont\large\scshape\color{ink}}
+  {}{0pt}{}
+  [\vspace{-4pt}{\color{rulegray}\titlerule[0.4pt]}]
+\titlespacing*{\section}{0pt}{14pt plus 3pt minus 2pt}{7pt}
 
 \titleformat{\subsection}
-  {\normalfont\bfseries\fontsize{8.2}{10}\selectfont\color{muted}}
-  {}{0pt}{\MakeUppercase}
-\titlespacing*{\subsection}{0pt}{11pt plus 2pt minus 1pt}{3pt}
+  {\normalfont\normalsize\itshape\color{ink}}
+  {}{0pt}{}
+\titlespacing*{\subsection}{0pt}{9pt plus 2pt minus 1pt}{3pt}
 
-% --- The macros the whole CV is written in -----------------------------------
+% --- Macros ---------------------------------------------------------------------
 
-% A labelled row: date, identifier or category on the left; content on the right.
-\newenvironment{cvrows}[1][5pt]
+% A list with a label column: dates, or a publication number.
+\newenvironment{cvlist}[1][4pt]
   {\begin{list}{}{%
-      \setlength{\leftmargin}{\cvgap}
-      \setlength{\labelwidth}{\cvlab}
-      \setlength{\labelsep}{\dimexpr\cvgap-\cvlab\relax}
+      \setlength{\leftmargin}{\cvlab}
+      \setlength{\labelwidth}{\dimexpr\cvlab-10pt\relax}
+      \setlength{\labelsep}{10pt}
       \setlength{\itemsep}{#1}
-      \setlength{\parsep}{1pt}
-      \setlength{\topsep}{3pt}
+      \setlength{\parsep}{0pt}
+      \setlength{\topsep}{2pt}
       \setlength{\partopsep}{0pt}
-      \renewcommand{\makelabel}[1]{\hfill\lab ##1}}}
+      \renewcommand{\makelabel}[1]{##1\hfill}}}
   {\end{list}}
 
-\newcommand{\row}[2]{\item[#1] #2}
+\newcommand{\entry}[2]{\item[#1] #2}
 
-% An appointment or degree: role in ink, place beneath, location on the right.
-% \post{dates}{role}{institution and detail}{location}
-\newcommand{\post}[4]{%
-  \item[#1]{\bfseries\color{ink}#2}%
-  \ifblank{#4}{}{\hfill\note{#4}}\\[1.5pt]#3}
+% A position or a degree.
+% \post{dates}{title}{institution}{place}{detail}
+\newcommand{\post}[5]{%
+  \item[#1]\textbf{#2}, #3\ifblank{#4}{}{\hfill #4}%
+  \ifblank{#5}{}{\\[1pt]\detail{#5}}}
 
 % One publication.
-% \pubentry{id}{authors}{title}{venue}{year}{status}{url}{link text}
-\newcommand{\pubentry}[8]{%
-  \item[{[#1]}]#2\ \emph{#3}\ {\bfseries\color{venue}#4}%
-  \ifblank{#5}{}{{\bfseries\color{venue}, #5}}.%
-  \ifblank{#6}{}{\ {\fontsize{7.3}{9}\selectfont\ttfamily\color{accent}[\MakeUppercase{#6}]}}%
-  \ifblank{#7}{}{\ {\fontsize{7.5}{9}\selectfont\quietlink{#7}{#8}}}%
-}
+% \pub{id}{authors}{year}{title}{venue}{trailing: status, doi}
+\newcommand{\pub}[6]{%
+  \item[#1]#2 (#3). #4. \emph{#5}.\ifblank{#6}{}{ #6}}
 
-% Links that should not shout. A DOI is metadata, and a software title is a
-% heading that happens to be clickable — neither wants the accent colour that
-% hyperref gives every link by default.
-\newcommand{\quietlink}[2]{\href{#1}{\textcolor{faint}{#2}}}
-\newcommand{\inklink}[2]{\href{#1}{\textcolor{ink}{\bfseries #2}}}
+\newcommand{\doi}[1]{\href{https://doi.org/#1}{\nolinkurl{doi:#1}}}
 
-% My own name, bold, so it is findable at a glance in a long author list.
-\newcommand{\me}{\textbf{\color{ink}Meena, K.\,K.}}
+% My own name, bold, so it can be found at a glance in an author list.
+\newcommand{\me}{\textbf{Meena, K.\,K.}}
 
-% --- Running foot ------------------------------------------------------------
+% --- Running foot ----------------------------------------------------------------
 \pagestyle{fancy}
 \fancyhf{}
 \renewcommand{\headrulewidth}{0pt}
-\fancyfoot[L]{\fontsize{7.4}{9}\selectfont\color{faint}Dr.\ Kapil Kumar Meena \ $\cdot$\ Curriculum vitae}
-\fancyfoot[R]{\fontsize{7.4}{9}\selectfont\ttfamily\color{faint}\thepage\,/\,\pageref{LastPage}}
+\fancyfoot[L]{\small\color{muted}Kapil Kumar Meena, curriculum vitae}
+\fancyfoot[R]{\small\color{muted}\thepage\ of \pageref*{LastPage}}

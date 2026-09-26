@@ -1,12 +1,12 @@
 {
-  "name": "Kapil Kumar Meena, Ph.D.",
+  "name": "Kapil Kumar Meena",
   "short_name": "K. K. Meena",
-  "description": "Postdoctoral Researcher, HUMAN Lab, University of California, Los Angeles.",
+  "description": "Postdoctoral researcher, HUMAN Lab, University of California, Los Angeles.",
   "start_url": ".",
   "scope": ".",
   "display": "browser",
-  "background_color": "#fcfcfa",
-  "theme_color": "#fcfcfa",
+  "background_color": "#ffffff",
+  "theme_color": "#ffffff",
   "icons": [
     { "src": "assets/img/favicon-32.png", "sizes": "32x32", "type": "image/png" },
     { "src": "assets/img/apple-touch-icon.png", "sizes": "180x180", "type": "image/png" },
