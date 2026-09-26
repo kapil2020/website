@@ -1,0 +1,32 @@
+<svg class="fig" viewBox="0 0 400 250" xmlns="http://www.w3.org/2000/svg">
+  <!-- Patent. The published application, and the DRUM app that implements
+       it: two routes between the same points, one around a pollution
+       hotspot. Schematic. -->
+  <rect x="30" y="14" width="128" height="178" rx="6" fill="#fff" stroke="#2b2f36" stroke-width="2"/>
+  <rect x="46" y="34" width="72" height="10" rx="3" fill="#2b2f36"/>
+  <g fill="#d3d8de">
+    <rect x="46" y="58" width="96" height="6" rx="3"/><rect x="46" y="72" width="96" height="6" rx="3"/>
+    <rect x="46" y="86" width="96" height="6" rx="3"/><rect x="46" y="100" width="96" height="6" rx="3"/>
+    <rect x="46" y="114" width="62" height="6" rx="3"/>
+  </g>
+  <path d="M110 174 103 198 112 192 118 200 120 178z" fill="#c98a12"/>
+  <path d="M134 174 141 198 132 192 126 200 124 178z" fill="#c98a12"/>
+  <circle cx="122" cy="160" r="21" fill="#e3a21a"/>
+  <circle cx="122" cy="160" r="14" fill="none" stroke="#fff" stroke-width="2"/>
+  <use href="#check" x="112" y="150" width="20" height="20" style="color:#fff"/>
+  <path class="ln" d="M170 104H198" marker-end="url(#arr)"/>
+  <rect x="212" y="12" width="112" height="200" rx="16" fill="#fff" stroke="#2b2f36" stroke-width="2.5"/>
+  <path d="M256 24H280" stroke="#2b2f36" stroke-width="2.5" stroke-linecap="round"/>
+  <defs><clipPath id="patent-screen"><rect x="221" y="34" width="94" height="164" rx="4"/></clipPath></defs>
+  <g clip-path="url(#patent-screen)">
+    <rect x="221" y="34" width="94" height="164" fill="#eef1f4"/>
+    <path d="M221 80H315M221 130H315M221 170H315M252 34V198M286 34V198" stroke="#fff" stroke-width="7"/>
+    <circle cx="262" cy="112" r="26" fill="url(#hot)"/>
+    <path d="M236 170H252V80H300" fill="none" stroke="#2b2f36" stroke-width="4" stroke-linejoin="round"/>
+    <path d="M236 174H290V80H300" fill="none" stroke="#2e9467" stroke-width="4" stroke-linejoin="round"/>
+  </g>
+  <use href="#pin" x="224" y="148" width="24" height="24" class="c-ink"/>
+  <use href="#pin" x="288" y="58" width="24" height="24" class="c-ink"/>
+  <text class="sub" x="94" y="234" text-anchor="middle">Published patent</text>
+  <text class="sub" x="268" y="234" text-anchor="middle">DRUM app</text>
+</svg>

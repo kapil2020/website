@@ -94,6 +94,13 @@
 \newcommand{\pub}[6]{%
   \item[#1]#2 (#3). #4. \emph{#5}.\ifblank{#6}{}{ #6}}
 
+% An entry that should stand out (the patent, the press coverage): a rule in
+% the link colour down its left edge. A running \vrule takes the height of the
+% line it sits in, so it spans the whole top-aligned \parbox beside it.
+\newcommand{\featured}[1]{%
+  {\color{link}\vrule width 1.5pt}\hspace{8pt}%
+  \parbox[t]{\dimexpr\linewidth-9.5pt\relax}{#1}}
+
 \newcommand{\doi}[1]{\href{https://doi.org/#1}{\nolinkurl{doi:#1}}}
 
 % My own name, bold, so it can be found at a glance in an author list.
